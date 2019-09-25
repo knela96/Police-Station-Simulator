@@ -19,6 +19,7 @@ In this GOD style game, you are a new police captain and your duty is to lead th
 - Containment Cell: Where the criminals are guarded until sent to jail.
 - Detective offices: Where the detectives do their investigation.
 - Interrogation Cell: Where the detectives interrogate the criminals.
+- Lineup Room: Criminals get line up while a citizen and a police watch.
 - Break room: Where the police relax and regain energy.
 
 - (Maybe) Nursery: Where the citizens and the criminals are healed.
