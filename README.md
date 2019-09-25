@@ -1,6 +1,10 @@
 # Police-Station-Simulator
 In this GOD style game, you are a new police captain and your duty is to lead this police station to maximum efficency.
 
+# Mechanics:
+
+As the police captain your job is to assign different workers to different tasks and try to make the city as safe as possible.
+
 # Different npc's roles:
 
 - Citizen: Brings crime notifications to the police station
