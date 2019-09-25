@@ -1,7 +1,7 @@
 # Police-Station-Simulator
 
 
-Different npc's roles:
+# Different npc's roles:
 
 -Citizen: Brings crime notifications to the police station
 -Police: Works outside the police station and brings criminals to the containment cell.
@@ -13,7 +13,7 @@ Different npc's roles:
 -(Maybe) Emergency Doctor: Heals the citizens and the criminals that are hurt.
 
 
-Different Police station Rooms:
+# Different Police station Rooms:
 
 -Lobby: Where the citizen make the crime notifications, also where the door to the street is located.
 -Containment Cell: Where the criminals are guarded until sent to jail.
