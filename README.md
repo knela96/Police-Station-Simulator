@@ -27,3 +27,8 @@ As the police captain your job is to assign different workers to different tasks
 - Break room: Where the police relax and regain energy.
 
 - (Maybe) Nursery: Where the citizens and the criminals are healed.
+
+# Recursos:
+ - Money
+ - Detective numbers
+ - 
