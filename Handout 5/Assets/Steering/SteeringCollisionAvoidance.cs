@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SteeringCollisionAvoidance : MonoBehaviour {
+public class SteeringCollisionAvoidance : SteeringAbstract
+{
 
 	public LayerMask mask;
 	public float search_radius = 5.0f;
@@ -71,7 +72,7 @@ public class SteeringCollisionAvoidance : MonoBehaviour {
          	else
          		escape_pos = target_relative_pos + target_relative_vel * target_shortest_time;
 
-         	move.AccelerateMovement(- (escape_pos.normalized * move.max_mov_acceleration));
+         	move.AccelerateMovement(- (escape_pos.normalized * move.max_mov_acceleration), priority);
          }
     }
 

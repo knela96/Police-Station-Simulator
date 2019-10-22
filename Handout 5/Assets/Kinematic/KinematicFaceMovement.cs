@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class KinematicFaceMovement : MonoBehaviour {
+public class KinematicFaceMovement : SteeringAbstract
+{
 
 	public float min_angle = 1.0f;
 

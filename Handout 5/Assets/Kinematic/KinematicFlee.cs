@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class KinematicFlee : MonoBehaviour {
+public class KinematicFlee : SteeringAbstract
+{
 
 	Move move;
 

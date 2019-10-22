@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class KinematicSeek : MonoBehaviour {
+public class KinematicSeek : SteeringAbstract {
 
 	Move move;
 
