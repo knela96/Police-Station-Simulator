@@ -4,7 +4,7 @@ using BansheeGz;
 using BansheeGz.BGSpline.Components;
 using UnityEngine;
 
-public class FollowCurve : MonoBehaviour
+public class FollowCurve : SteeringAbstract
 {
 
     public BGCcMath path;

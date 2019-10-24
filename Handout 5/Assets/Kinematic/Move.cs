@@ -2,9 +2,10 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class Move : MonoBehaviour {
-
-	public GameObject target;
+public class Move : SteeringAbstract
+{
+    public Vector3[] movement_velocity = new Vector3[5];
+    public GameObject target;
 	public GameObject aim;
 	public Slider arrow;
 	public float max_mov_speed = 5.0f;
@@ -22,9 +23,11 @@ public class Move : MonoBehaviour {
         current_velocity = velocity;
 	}
 
-	public void AccelerateMovement (Vector3 acceleration) 
+	public void AccelerateMovement (Vector3 acceleration, int priority) 
 	{
-        current_velocity += acceleration;
+            Debug.Log(priority);
+        movement_velocity[priority] = acceleration;
+        //current_velocity += acceleration;
 	}
 
 	public void SetRotationVelocity (float rotation_speed) 
@@ -32,14 +35,25 @@ public class Move : MonoBehaviour {
         current_rotation_speed = rotation_speed;
 	}
 
-	public void AccelerateRotation (float rotation_acceleration) 
-	{
-        current_rotation_speed += rotation_acceleration;
+	public void AccelerateRotation (float rotation_acceleration, int priority)
+    {
+        //movement_velocity[priority].x = rotation_acceleration;
+        //current_rotation_speed += rotation_acceleration;
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
+        for(int i = 0; i < movement_velocity.Length; ++i)
+        {
+            if(movement_velocity[i].magnitude > 0.0f)
+            {
+                current_velocity += movement_velocity[i];
+                break;
+            }
+        }
+
+
 		// cap velocity
 		if(current_velocity.magnitude > max_mov_speed)
 		{
@@ -61,5 +75,10 @@ public class Move : MonoBehaviour {
 
 		// finally move
 		transform.position += current_velocity * Time.deltaTime;
+
+        //Reset movement_velocity to 0
+        foreach(Vector3 m_vel in movement_velocity){
+            m_vel.Set(0, 0, 0);
+        }
 	}
 }
