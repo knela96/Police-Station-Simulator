@@ -10,7 +10,7 @@ public class Desk : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        point = transform.Find("Point");
+        point = transform;
         available = true;
     }
 	

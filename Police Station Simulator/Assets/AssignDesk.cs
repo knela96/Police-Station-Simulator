@@ -9,7 +9,8 @@ public class AssignDesk : MonoBehaviour {
 	void Start () {
         foreach (Transform child in gameObject.transform)
         {
-            desks.Add(child.gameObject);
+            Transform c = child.Find("AI_Prop_ComputerChair").transform.Find("Point");
+            desks.Add(c.gameObject);
         }
         
 	}
