@@ -1,0 +1,27 @@
+Simple Military - Changelog
+
+Version 1.1
+Vehicles
+- Add medic truck
+- Separate all wheels on vehicles
+Buildings
+- Added Guard tower
+Props
+- Broken concrete walls x2
+Animations
+- Change the way guns are animated (with the character)
+- Walking/Running with weapons animation
+- Stationary animations version with no root motion (Walk and Run)
+- Look up, down, left, right
+- Body orientation
+- Add Mini gun animations
+- FPS hands
+Weapons
+- Add mini gun
+
+Version 1.0
+Initial release
+
+
+Thank you for purchasing Simple Military, check out our other packs
+https://www.assetstore.unity3d.com/en/#!/publisher/5217
