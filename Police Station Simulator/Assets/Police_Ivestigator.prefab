@@ -46,7 +46,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1006325347371044}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
@@ -2160,9 +2160,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1824732585295654}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
@@ -2270,14 +2270,14 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 512
-  avoid_distance: 4
+  avoid_distance: 3
   rays:
   - length: 2
-    direction: {x: -10, y: 0, z: 20}
+    direction: {x: -10, y: 0, z: 10}
   - length: 3
     direction: {x: 0, y: 0, z: 20}
   - length: 2
-    direction: {x: 10, y: 0, z: 20}
+    direction: {x: 10, y: 0, z: 10}
 --- !u!114 &766774281140992727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2391,6 +2391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a968724c3b6f64198b9b015470e4f6f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  move: 0
   movement_velocity:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -2406,7 +2407,7 @@ MonoBehaviour:
   aim: {fileID: 1811300652342088}
   arrow: {fileID: 114366528192320026}
   max_mov_speed: 3.5
-  max_mov_acceleration: 0.1
+  max_mov_acceleration: 0.5
   max_rot_speed: 50
   max_rot_acceleration: 5
   current_velocity: {x: 0, y: 0, z: 0}

@@ -44,6 +44,7 @@ public class PoliceBehaviour : MonoBehaviour {
         pursue = gameObject.GetComponent<SteeringPursue>();
         follow_path.path = new NavMeshPath();
         start = false;
+        move.move = true;
         cur_time = 0;
     }
 
@@ -100,17 +101,20 @@ public class PoliceBehaviour : MonoBehaviour {
     public void startTask()
     {
         start = true;
+        move.move = false;
         slider_task.gameObject.SetActive(true);
         cur_time = 0;
     }
     public void resumeTask()
     {
         start = true;
+        move.move = false;
         slider_task.gameObject.SetActive(true);
     }
     public void stopTask()
     {
         start = false;
+        move.move = true;
         slider_task.gameObject.SetActive(false);
     }
 

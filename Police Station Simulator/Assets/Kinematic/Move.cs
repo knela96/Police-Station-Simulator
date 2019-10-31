@@ -4,6 +4,7 @@ using System.Collections;
 
 public class Move : MonoBehaviour {
 
+    public bool move = true;
     public Vector3[] movement_velocity = new Vector3[10];
     public GameObject target;
 	public GameObject aim;
@@ -44,13 +45,15 @@ public class Move : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-
-        for (int i = 0; i < movement_velocity.Length; ++i)
+        if (move)
         {
-            if (movement_velocity[i].magnitude > 0.0f)
+            for (int i = 0; i < movement_velocity.Length; ++i)
             {
-                current_velocity += movement_velocity[i];
-                break;
+                if (movement_velocity[i].magnitude > 0.0f)
+                {
+                    current_velocity += movement_velocity[i];
+                    break;
+                }
             }
         }
 
