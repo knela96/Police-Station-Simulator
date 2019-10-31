@@ -19,14 +19,13 @@ public class SteeringWander : MonoBehaviour {
 
     private void Update()
     {
-        seek.Steer(random_point);
+        seek.Steer(random_point,seek.priority);
     }
 
     // Update is called once per frame
     void ChangeTarget () 
 	{
-		random_point = Random.insideUnitSphere;
-		random_point *= radius;
+		random_point = Random.insideUnitSphere * radius;
 		random_point += transform.position + offset;
 		random_point.y = transform.position.y;
 

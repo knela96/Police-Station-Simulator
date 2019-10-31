@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SteeringSeek : MonoBehaviour {
+public class SteeringSeek : SteeringAbstract {
 
 	Move move;
 
@@ -16,13 +16,10 @@ public class SteeringSeek : MonoBehaviour {
 		//Steer(move.target.transform.position);
 	}
 
-	public void Steer(Vector3 target)
+	public void Steer(Vector3 target,int priority)
 	{
-		if(!move)
-			move = GetComponent<Move>();
-
 		Vector3 distance = (target - transform.position).normalized * move.max_mov_acceleration;
 
-		move.AccelerateMovement(distance);
+		move.AccelerateMovement(distance,priority);
 	}
 }

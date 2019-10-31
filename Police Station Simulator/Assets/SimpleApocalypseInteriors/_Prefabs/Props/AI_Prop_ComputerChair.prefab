@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 488642}
   - component: {fileID: 3312318}
   - component: {fileID: 2305906}
-  m_Layer: 0
+  - component: {fileID: 8591041760829885217}
+  m_Layer: 9
   m_Name: AI_Prop_ComputerChair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,7 +49,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 169840}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -78,6 +79,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &8591041760829885217
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 169840}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: e46292f65faed874a9e13539d5a99f70, type: 3}
 --- !u!1 &5523665279368522175
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,7 +103,8 @@ GameObject:
   m_Component:
   - component: {fileID: 308023669985334987}
   - component: {fileID: 598210838619715448}
-  m_Layer: 0
+  - component: {fileID: 1754348657}
+  m_Layer: 9
   m_Name: Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,3 +137,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8df69ebcca9fe7b40b1be5af0e86150a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &1754348657
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5523665279368522175}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.5, y: 2, z: 1.5}
+  m_Center: {x: 0, y: 1, z: 0}

@@ -1,53 +1,50 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SteeringAlign : MonoBehaviour {
+public class SteeringAlign : MonoBehaviour
+{
 
-	public float min_angle = 10.0f;
-	public float slow_angle = 0.1f;
-	public float time_to_accel = 1.0f;
+    public float min_angle = 10.0f;
+    public float slow_angle = 0.1f;
+    public float time_to_accel = 1.0f;
 
-	Move move;
+    Move move;
     // Use this for initialization
-    void Start () {
-		move = GetComponent<Move>();
-	}
+    void Start()
+    {
+        move = GetComponent<Move>();
+    }
 
-	// Update is called once per frame
-	void Update () 
-	{
-        if(move.target != null)
+    // Update is called once per frame
+    void Update()
+    {
+        if (move.target != null)
             Steering(move.target.transform);
     }
 
     public void Steering(Transform target)
     {
-        // Orientation we are trying to match
-        if (move.target != null)
+        float rotation = Vector3.SignedAngle(transform.forward, move.target.transform.forward, Vector3.up);
+        float rotationSize = Mathf.Abs(rotation);
+
+        if (rotationSize < min_angle)
         {
-            float delta_angle = Vector3.SignedAngle(transform.forward, move.target.transform.forward, new Vector3(0.0f, 1.0f, 0.0f));
-
-
-            float diff_absolute = Mathf.Abs(delta_angle);
-
-            if (diff_absolute < min_angle)
-            {
-                move.SetRotationVelocity(0.0f);
-                return;
-            }
-
-            float ideal_rotation_speed = move.max_rot_speed;
-
-            if (diff_absolute < slow_angle)
-                ideal_rotation_speed *= (diff_absolute / slow_angle);
-
-            float angular_acceleration = ideal_rotation_speed / time_to_accel;
-
-            //Invert rotation direction if the angle is negative
-            if (delta_angle < 0)
-                angular_acceleration = -angular_acceleration;
-
-            move.AccelerateRotation(Mathf.Clamp(angular_acceleration, -move.max_rot_acceleration, move.max_rot_acceleration));
+            move.SetRotationVelocity(0.0f);
+            return;
         }
+
+        float target_rotation;
+
+        if (rotationSize < slow_angle)
+            target_rotation = move.max_rot_speed * (rotationSize / slow_angle);
+        else
+            target_rotation = move.max_rot_speed;
+
+        float target_accel = target_rotation / time_to_accel;
+
+        if (rotation < 0)
+            target_accel = -target_accel;
+
+        move.AccelerateRotation(Mathf.Clamp(target_accel, -move.max_rot_acceleration, move.max_rot_acceleration));
     }
 }

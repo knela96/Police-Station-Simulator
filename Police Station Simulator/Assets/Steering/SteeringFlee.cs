@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SteeringFlee : MonoBehaviour {
+public class SteeringFlee : SteeringAbstract {
 
 	Move move;
 
@@ -20,6 +20,6 @@ public class SteeringFlee : MonoBehaviour {
 	{
         Vector3 distance = (transform.position - target).normalized * move.max_mov_acceleration;
 
-        move.AccelerateMovement(distance);
+        move.AccelerateMovement(distance,priority);
     }
 }

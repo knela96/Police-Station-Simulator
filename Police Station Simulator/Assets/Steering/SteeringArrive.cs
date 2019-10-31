@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SteeringArrive : MonoBehaviour {
+public class SteeringArrive : SteeringAbstract {
 
 	public float min_distance = 1.0f;
 	public float slow_distance = 5.0f;
@@ -22,40 +22,28 @@ public class SteeringArrive : MonoBehaviour {
 
 	public void Steer(Vector3 target)
 	{
-		if(!move)
-			move = GetComponent<Move>();
-
-		// Velocity we are trying to match
-		float ideal_speed = 0.0f;
-		Vector3 diff = target - transform.position;
-
-		if(diff.magnitude < min_distance)
+        Vector3 direction = target - transform.position;
+        float distance = direction.magnitude;
+        if (distance < min_distance)
         {
             move.SetMovementVelocity(Vector3.zero);
             return;
         }
 
-        // Decide which would be our ideal velocity
-        if (diff.magnitude > slow_distance)
-			ideal_speed = move.max_mov_speed;
-		else
-            ideal_speed = move.max_mov_speed * (diff.magnitude / slow_distance);
+        float target_speed;
+        if (distance < slow_distance)
+            target_speed = move.max_mov_speed * (distance / slow_distance);
+        else
+            target_speed = move.max_mov_speed;
 
-		// Create a vector that describes the ideal velocity
-		Vector3 ideal_movement = diff.normalized * ideal_speed;
+        Vector3 target_vel = direction.normalized * target_speed;
+        Vector3 accel = (target_vel - move.current_velocity) / time_to_target;
 
-		// Calculate acceleration needed to match that velocity
-		Vector3 acceleration = ideal_movement - move.current_velocity;
-		acceleration /= time_to_target;
+        if (accel.magnitude > move.max_mov_acceleration)
+            accel = accel.normalized * move.max_mov_acceleration;
 
-		// Cap acceleration
-		if(acceleration.magnitude > move.max_mov_acceleration)
-		{
-			acceleration = acceleration.normalized * move.max_mov_acceleration;
-		}
-
-		move.AccelerateMovement(acceleration);
-	}
+        move.AccelerateMovement(accel,priority);
+    }
 
 	void OnDrawGizmosSelected() 
 	{

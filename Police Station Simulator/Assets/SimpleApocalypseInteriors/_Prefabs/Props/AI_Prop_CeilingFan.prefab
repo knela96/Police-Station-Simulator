@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 403684}
   - component: {fileID: 3305984}
   - component: {fileID: 2306208}
+  - component: {fileID: 940665454}
   m_Layer: 0
   m_Name: AI_CeilingFan_Blade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &403684
 Transform:
@@ -31,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 429194}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -2.96, z: 0}
 --- !u!33 &3305984
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -77,6 +78,25 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!95 &940665454
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 117244}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 871e1c45340d1e440b6badc325cd29b7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &162540
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,8 +112,8 @@ GameObject:
   m_Name: AI_Prop_CeilingFan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &429194
 Transform:

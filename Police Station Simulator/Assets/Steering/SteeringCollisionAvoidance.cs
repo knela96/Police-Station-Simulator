@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SteeringCollisionAvoidance : MonoBehaviour {
+public class SteeringCollisionAvoidance : SteeringAbstract {
 
 	public LayerMask mask;
 	public float search_radius = 5.0f;
@@ -53,7 +53,7 @@ public class SteeringCollisionAvoidance : MonoBehaviour {
             if(time_to_collision > target_shortest_time)
             	continue;
 
-            Debug.Log("Avoiding " + go.name);
+            //Debug.Log("Avoiding " + go.name);
             target = go;
             target_shortest_time = time_to_collision;
             target_min_separation = min_separation;
@@ -71,7 +71,7 @@ public class SteeringCollisionAvoidance : MonoBehaviour {
          	else
          		escape_pos = target_relative_pos + target_relative_vel * target_shortest_time;
 
-         	move.AccelerateMovement(- (escape_pos.normalized * move.max_mov_acceleration));
+         	move.AccelerateMovement(- (escape_pos.normalized * move.max_mov_acceleration),priority);
          }
     }
 

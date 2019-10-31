@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 457540}
   - component: {fileID: 3318362}
   - component: {fileID: 2379608}
-  m_Layer: 0
+  - component: {fileID: 3449427701536917306}
+  m_Layer: 9
   m_Name: AI_Prop_Desk_Straight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &457540
 Transform:
@@ -77,3 +78,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &3449427701536917306
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 141328}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 6dc06d60199fa0344b6ac5057f75ef52, type: 3}

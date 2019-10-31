@@ -22,18 +22,18 @@ public class SteeringPursue : MonoBehaviour {
 
 	public void Steer(Vector3 target, Vector3 velocity)
 	{
-		Vector3 diff = target - transform.position;
+		Vector3 direction = target - transform.position;
 
-		float distance = diff.magnitude;
-		float current_speed = move.current_velocity.magnitude;
-		float prediction;
+		float distance = direction.magnitude;
+		float c_speed = move.current_velocity.magnitude;
 
-		// is the speed too small ?
-		if(current_speed < distance / max_seconds_prediction)
-			prediction = max_seconds_prediction;
+		float predictionTime;
+
+		if(c_speed <= distance / max_seconds_prediction)
+            predictionTime = max_seconds_prediction;
 		else
-			prediction = distance / current_speed;
+            predictionTime = distance / c_speed;
 
-		arrive.Steer(target + (velocity * prediction));
+		arrive.Steer(target + (velocity * predictionTime));
 	}
 }

@@ -4,7 +4,8 @@ using System.Collections;
 
 public class Move : MonoBehaviour {
 
-	public GameObject target;
+    public Vector3[] movement_velocity = new Vector3[10];
+    public GameObject target;
 	public GameObject aim;
 	public Slider arrow;
 	public float max_mov_speed = 5.0f;
@@ -15,16 +16,19 @@ public class Move : MonoBehaviour {
 	[Header("-------- Read Only --------")]
 	public Vector3 current_velocity = Vector3.zero;
 	public float current_rotation_speed = 0.0f; // degrees
+    public float orientation = 0.0f; // degrees
 
-	// Methods for behaviours to set / add velocities
-	public void SetMovementVelocity (Vector3 velocity) 
+    // Methods for behaviours to set / add velocities
+    public void SetMovementVelocity (Vector3 velocity) 
 	{
         current_velocity = velocity;
 	}
 
-	public void AccelerateMovement (Vector3 acceleration) 
-	{
-        current_velocity += acceleration;
+	public void AccelerateMovement (Vector3 acceleration, int priority)
+    {
+        Debug.Log(priority);
+        movement_velocity[priority] = acceleration;
+        //current_velocity += acceleration;
 	}
 
 	public void SetRotationVelocity (float rotation_speed) 
@@ -40,8 +44,18 @@ public class Move : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		// cap velocity
-		if(current_velocity.magnitude > max_mov_speed)
+
+        for (int i = 0; i < movement_velocity.Length; ++i)
+        {
+            if (movement_velocity[i].magnitude > 0.0f)
+            {
+                current_velocity += movement_velocity[i];
+                break;
+            }
+        }
+
+        // cap velocity
+        if (current_velocity.magnitude > max_mov_speed)
 		{
             current_velocity = current_velocity.normalized * max_mov_speed;
 		}
@@ -61,5 +75,15 @@ public class Move : MonoBehaviour {
 
 		// finally move
 		transform.position += current_velocity * Time.deltaTime;
-	}
+
+        orientation = angle * Time.deltaTime;
+
+        //Reset movement_velocity to 0
+        for (int i = 0; i < movement_velocity.Length; ++i)
+        {
+            Debug.Log(movement_velocity[i]);
+            movement_velocity[i] = Vector3.zero;
+        }
+        Debug.Log("---------");
+    }
 }

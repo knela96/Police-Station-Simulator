@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 401108}
   - component: {fileID: 3384274}
   - component: {fileID: 2301106}
-  m_Layer: 0
+  - component: {fileID: 383583828}
+  m_Layer: 9
   m_Name: AI_Env_Wall_Blue_Blank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &401108
 Transform:
@@ -77,3 +78,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &383583828
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164546}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 7deef43613a0ea34aae6dce303a772ee, type: 3}

@@ -8,7 +8,7 @@ public class my_ray
     public Vector3 direction = Vector3.forward;
 }
 
-public class SteeringObstacleAvoidance : MonoBehaviour {
+public class SteeringObstacleAvoidance : SteeringAbstract {
 
     public LayerMask mask;
     public float avoid_distance = 5.0f;
@@ -34,7 +34,7 @@ public class SteeringObstacleAvoidance : MonoBehaviour {
             RaycastHit hit;
 
             if(Physics.Raycast(new Vector3(transform.position.x, 1.0f, transform.position.z), q * ray.direction.normalized, out hit, ray.length, mask) == true)
-                seek.Steer(new Vector3(hit.point.x, transform.position.y, hit.point.z) + hit.normal * avoid_distance);
+                seek.Steer(new Vector3(hit.point.x, transform.position.y, hit.point.z) + hit.normal * avoid_distance,priority);
         }
     }
 

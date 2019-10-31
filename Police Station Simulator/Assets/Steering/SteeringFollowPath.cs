@@ -9,6 +9,7 @@ public class SteeringFollowPath : MonoBehaviour {
 	Move move;
 	SteeringSeek seek;
     SteeringArrive arrive;
+    SteeringFaceHeading face_heading;
     public NavMeshPath path;
     public Transform pivot;
     int cur_node;
@@ -22,6 +23,7 @@ public class SteeringFollowPath : MonoBehaviour {
 		move = GetComponent<Move>();
 		seek = GetComponent<SteeringSeek>();
         arrive = GetComponent<SteeringArrive>();
+        face_heading = GetComponent<SteeringFaceHeading>();
         cur_node = 0;
     }
 
@@ -51,7 +53,7 @@ public class SteeringFollowPath : MonoBehaviour {
 
                 if (cur_node < corners.Length - 1)
                 {
-                    seek.Steer(corners[cur_node]);
+                    seek.Steer(corners[cur_node],seek.priority);
                 }
                 else if (cur_node == corners.Length - 1)
                 {
@@ -59,13 +61,7 @@ public class SteeringFollowPath : MonoBehaviour {
                 }
 
 
-                Vector3 direction = (corners[cur_node] - transform.position).normalized;
-
-                //create the rotation we need to be in to look at the target
-                Quaternion lookRotation = Quaternion.LookRotation(direction);
-
-                //rotate us over time according to speed until we are in the required rotation
-                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5);
+                face_heading.Steer(corners[cur_node]);
 
 
                 for (int i = 0; i < path.corners.Length - 1; i++)
