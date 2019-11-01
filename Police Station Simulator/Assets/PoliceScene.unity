@@ -6919,8 +6919,8 @@ Transform:
   - {fileID: 195238033}
   - {fileID: 413988068}
   - {fileID: 198259700}
-  - {fileID: 1167842732}
   - {fileID: 1454967324}
+  - {fileID: 1167842732}
   - {fileID: 678354750}
   m_Father: {fileID: 1191378127}
   m_RootOrder: 1
@@ -24666,6 +24666,30 @@ PrefabInstance:
     - target: {fileID: 4046694934630576, guid: daca8dbc261075d4b9fa405a8d988627, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 95247473968923266, guid: daca8dbc261075d4b9fa405a8d988627,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 95036903bd2d7044cb85e54cc43b3c13, type: 2}
+    - target: {fileID: 95247473968923266, guid: daca8dbc261075d4b9fa405a8d988627,
+        type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed by
+        Humanoid clips.\n\tTransform 'Hat_jnt'\n\tTransform 'Hat_jnt'\n\tTransform
+        'Hat_jnt'\n\tFrom animation clip 'Idle'\n\tFrom animation clip 'Walk'\n\tFrom
+        animation clip 'Run'"
+      objectReference: {fileID: 0}
+    - target: {fileID: 95247473968923266, guid: daca8dbc261075d4b9fa405a8d988627,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 95247473968923266, guid: daca8dbc261075d4b9fa405a8d988627,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: daca8dbc261075d4b9fa405a8d988627, type: 3}
