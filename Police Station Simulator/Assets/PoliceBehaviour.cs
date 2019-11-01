@@ -23,7 +23,6 @@ public class PoliceBehaviour : MonoBehaviour {
     bool start;
     public TypeAction behaviour;
     public Slider slider_task;
-    private GameObject curve;
     SteeringFollowPath follow_path;
     public SteeringAlign align;
     Move move;
@@ -70,7 +69,8 @@ public class PoliceBehaviour : MonoBehaviour {
             }
         }else if (behaviour == TypeAction.Patrol)
         {
-
+            if(!follow_path.patroling)
+                follow_path.createPatrol(1);
         }
         else if (behaviour == TypeAction.Capture)
         {

@@ -1,0 +1,215 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6859221328063016794
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3329479006667884766}
+  - component: {fileID: 9128178669154348754}
+  - component: {fileID: 7385327789113186775}
+  m_Layer: 0
+  m_Name: patrol_path2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3329479006667884766
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6859221328063016794}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.7367516, y: 0, z: -20.18}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9128178669154348754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6859221328063016794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70f079e2a6bf364e8185b765fbe61c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settings:
+    hideHandles: 0
+    newPointDistance: 2
+    showCurve: 1
+    showCurveMode: 1
+    showCurveOption: 0
+    sections: 20
+    showPointMenu: 1
+    showTangents: 0
+    tangentsSize: 0.7
+    tangentsColor: {r: 1, g: 1, b: 1, a: 1}
+    tangentsPerSection: 1
+    controlType: 0
+    vRay: 0
+    lineColor: {r: 1, g: 0, b: 0, a: 1}
+    restrictGizmoz: 
+    showPointControlType: 1
+    showPointPosition: 1
+    showHandles: 1
+    handlesType: 0
+    handlesSettings:
+      RemoveX: 0
+      RemoveY: 0
+      RemoveZ: 0
+      RemoveXZ: 0
+      RemoveXY: 0
+      RemoveYZ: 0
+      AxisScale: 1
+      PlanesScale: 1
+      Alpha: 1
+    showLabels: 1
+    labelColor: {r: 1, g: 1, b: 1, a: 1}
+    showPositions: 0
+    labelColorSelected: {r: 0, g: 1, b: 0, a: 1}
+    showSpheres: 1
+    sphereRadius: 0.1
+    sphereColor: {r: 1, g: 0, b: 0, a: 1}
+    showPointControlPositions: 1
+    showControlHandles: 1
+    controlHandlesType: 0
+    controlHandlesSettings:
+      RemoveX: 0
+      RemoveY: 0
+      RemoveZ: 0
+      RemoveXZ: 0
+      RemoveXY: 0
+      RemoveYZ: 0
+      AxisScale: 0.7
+      PlanesScale: 0.7
+      Alpha: 0.7
+    controlHandlesColor: {r: 0, g: 1, b: 1, a: 1}
+    showControlLabels: 1
+    showControlPositions: 0
+    labelControlColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    showTransformField: 0
+    existing: 1
+  mode2D: 0
+  closed: 1
+  points:
+  - controlType: 1
+    positionLocal: {x: 7.8516307, y: 0, z: 0.3194847}
+    controlFirstLocal: {x: -1.0720887, y: -0, z: -1.1934967}
+    controlSecondLocal: {x: 1.0720887, y: 0, z: 1.1934967}
+    pointTransform: {fileID: 0}
+    curve: {fileID: 9128178669154348754}
+    fieldsValues: []
+  - controlType: 1
+    positionLocal: {x: 8.544365, y: 0, z: 9.176005}
+    controlFirstLocal: {x: -0.13963062, y: -0, z: -2.403446}
+    controlSecondLocal: {x: 0.13963062, y: 0, z: 2.403446}
+    pointTransform: {fileID: 0}
+    curve: {fileID: 9128178669154348754}
+    fieldsValues: []
+  - controlType: 1
+    positionLocal: {x: 15.8584385, y: 0, z: 11.624835}
+    controlFirstLocal: {x: -1.178338, y: 0, z: -0.9784241}
+    controlSecondLocal: {x: 1.178338, y: -0, z: 0.9784241}
+    pointTransform: {fileID: 0}
+    curve: {fileID: 9128178669154348754}
+    fieldsValues: []
+  - controlType: 1
+    positionLocal: {x: 16.254377, y: 0, z: 20.402802}
+    controlFirstLocal: {x: 0.43736267, y: -0, z: -1.8190994}
+    controlSecondLocal: {x: -0.43736267, y: 0, z: 1.8190994}
+    pointTransform: {fileID: 0}
+    curve: {fileID: 9128178669154348754}
+    fieldsValues: []
+  - controlType: 1
+    positionLocal: {x: 2.2529807, y: 0, z: 20.677238}
+    controlFirstLocal: {x: 3.2599955, y: -0, z: 0.063424684}
+    controlSecondLocal: {x: -3.2599955, y: 0, z: -0.063424684}
+    pointTransform: {fileID: 0}
+    curve: {fileID: 9128178669154348754}
+    fieldsValues: []
+  - controlType: 0
+    positionLocal: {x: 0.27231264, y: 0, z: 33.509884}
+    controlFirstLocal: {x: -0.007254839, y: -0, z: -2.5613708}
+    controlSecondLocal: {x: 0.007254839, y: 0, z: 2.5613708}
+    pointTransform: {fileID: 0}
+    curve: {fileID: 9128178669154348754}
+    fieldsValues: []
+  - controlType: 1
+    positionLocal: {x: -0.17367458, y: 0, z: 21.3769}
+    controlFirstLocal: {x: 0.24321103, y: -0, z: 1.0458965}
+    controlSecondLocal: {x: -0.24321103, y: 0, z: -1.0458965}
+    pointTransform: {fileID: 0}
+    curve: {fileID: 9128178669154348754}
+    fieldsValues: []
+  - controlType: 1
+    positionLocal: {x: -10.358981, y: 0, z: 20.938377}
+    controlFirstLocal: {x: 1.1358433, y: -0, z: 0.52178764}
+    controlSecondLocal: {x: -1.1358433, y: 0, z: -0.52178764}
+    pointTransform: {fileID: 0}
+    curve: {fileID: 9128178669154348754}
+    fieldsValues: []
+  - controlType: 1
+    positionLocal: {x: -11.024433, y: 0, z: 0.803442}
+    controlFirstLocal: {x: -0.062113762, y: -0, z: 1.9361534}
+    controlSecondLocal: {x: 0.062113762, y: 0, z: -1.9361534}
+    pointTransform: {fileID: 0}
+    curve: {fileID: 9128178669154348754}
+    fieldsValues: []
+  pointsComponents: []
+  pointsGameObjects: []
+  fields: []
+  snapType: 0
+  snapAxis: 1
+  snapDistance: 10
+  snapLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  snapTriggerInteraction: 0
+  snapToBackFaces: 0
+  snapMonitoring: 0
+  eventMode: 0
+  pointsMode: 0
+  forceChangedEventMode: 0
+--- !u!114 &7385327789113186775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6859221328063016794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6d20671ad38ded4fa2362df353b9a31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showHandles: 1
+  hidden: 0
+  parent: {fileID: 0}
+  ccName: 
+  fields: 1
+  mathType: 0
+  sectionParts: 30
+  optimizeStraightLines: 0
+  tolerance: 0.2
+  usePositionToCalculateTangents: 0
+  updateMode: 0
+  rendererForUpdateCheck: {fileID: 0}
+  mathChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: BansheeGz.BGSpline.Components.BGCcMath+MathChangedEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  spheresScale: 1
+  spheresColor: {r: 1, g: 1, b: 1, a: 1}
+  spheresCount: 100
