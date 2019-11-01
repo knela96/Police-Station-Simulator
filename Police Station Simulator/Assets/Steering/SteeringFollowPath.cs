@@ -42,6 +42,13 @@ public class SteeringFollowPath : MonoBehaviour {
         // If so, create a new point further ahead in the path
         if(curve != null)
         {
+            if (patroling)
+            {
+                if (current_ratio >= 1)
+                    current_ratio = 0;
+            }
+
+
             Vector3 target = curve_path.CalcPositionByDistanceRatio(current_ratio);
 
             Vector3 distance = transform.position - target;
@@ -126,7 +133,7 @@ public class SteeringFollowPath : MonoBehaviour {
 
         for (int i = 0; i < path.corners.Length; ++i)
         {
-            curve.AddPoint(new BGCurvePoint(curve, path.corners[i], BGCurvePoint.ControlTypeEnum.Absent, path.corners[i], path.corners[i], true));
+            curve.AddPoint(new BGCurvePoint(curve, new Vector3(path.corners[i].x,0, path.corners[i].z), BGCurvePoint.ControlTypeEnum.Absent, path.corners[i], path.corners[i], true));
         }
 
     }

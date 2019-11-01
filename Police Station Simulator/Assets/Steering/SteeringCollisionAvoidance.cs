@@ -165,7 +165,7 @@ public class SteeringCollisionAvoidance : SteeringAbstract
             else
                 escape_pos = target_relative_pos + target_relative_vel * target_shortest_time;
 
-            move.AccelerateMovement(-(escape_pos.normalized * move.max_mov_acceleration), priority);
+            move.AccelerateMovement(-(escape_pos.normalized * move.max_mov_acceleration * 0.1f), priority);
         }
     }
 
