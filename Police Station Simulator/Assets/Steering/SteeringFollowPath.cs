@@ -25,6 +25,7 @@ public class SteeringFollowPath : MonoBehaviour {
         arrive = GetComponent<SteeringArrive>();
         face_heading = GetComponent<SteeringFaceHeading>();
         cur_node = 0;
+        move.move = true;
     }
 
     // Update is called once per frame
@@ -46,6 +47,7 @@ public class SteeringFollowPath : MonoBehaviour {
                     else if (cur_node == corners.Length - 1 && move.current_velocity == Vector3.zero)
                     {
                         path.ClearCorners();
+                        
                         cur_node = 0;
                         return;
                     }

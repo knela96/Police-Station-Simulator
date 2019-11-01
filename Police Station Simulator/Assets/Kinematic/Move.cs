@@ -76,8 +76,8 @@ public class Move : MonoBehaviour {
 		// final rotate
 		transform.rotation *= Quaternion.AngleAxis(current_rotation_speed * Time.deltaTime, Vector3.up);
 
-		// finally move
-		transform.position += current_velocity * Time.deltaTime;
+        // finally move
+        transform.position += current_velocity * Time.deltaTime;
 
         orientation = angle * Time.deltaTime;
 
@@ -87,6 +87,14 @@ public class Move : MonoBehaviour {
             Debug.Log(movement_velocity[i]);
             movement_velocity[i] = Vector3.zero;
         }
-        Debug.Log("---------");
+
+        
+        resetTransform();
+    }
+
+    public void resetTransform()
+    {
+        transform.position.Set(transform.position.x, 0, transform.position.z);
+        transform.rotation.Set(0, transform.rotation.y, 0, transform.rotation.w);
     }
 }

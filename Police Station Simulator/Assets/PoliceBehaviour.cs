@@ -30,10 +30,6 @@ public class PoliceBehaviour : MonoBehaviour {
     SteeringPursue pursue;
 
     // Use this for initialization
-    void Start () {
-
-    }
-
     void Awake()
     {
         desks = GameObject.Find("Desks");
@@ -80,9 +76,9 @@ public class PoliceBehaviour : MonoBehaviour {
         {
             if (move.target == null)
                 behaviour = TypeAction.Investigate;
-            pursue.Steer(move.target.transform.position, move.target.GetComponent<Move>().current_velocity);
+            if(move.target != null)
+                pursue.Steer(move.target.transform.position, move.target.GetComponent<Move>().current_velocity);
         }
-
     }
 
     void AssignDesk()
@@ -120,15 +116,19 @@ public class PoliceBehaviour : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other == desk.getPoint().GetComponent<Collider>())
+        if (desk != null)
         {
-            align.Steering(desk.getPoint());
-            if (cur_time < time_task && cur_time > 0)
-                resumeTask();
-            else
-                startTask();
+            if (other == desk.getPoint().GetComponent<Collider>())
+            {
+                align.Steering(desk.getPoint());
+                if (cur_time < time_task && cur_time > 0)
+                    resumeTask();
+                else
+                    startTask();
+            }
         }
-        else if (other == GameObject.Find("Exit").GetComponent<Collider>())
+
+        if (other == GameObject.Find("Exit").GetComponent<Collider>())
         {
             Destroy(gameObject);
         }
@@ -136,16 +136,22 @@ public class PoliceBehaviour : MonoBehaviour {
 
     private void OnTriggerStay(Collider other)
     {
-        if (other == desk.getPoint().GetComponent<Collider>())
+        if (desk != null)
         {
-            align.Steering(desk.getPoint());
+            if (other == desk.getPoint().GetComponent<Collider>())
+            {
+                align.Steering(desk.getPoint());
+            }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other == desk.getPoint().GetComponent<Collider>())
-            stopTask();
+        if (desk != null)
+        {
+            if (other == desk.getPoint().GetComponent<Collider>())
+                stopTask();
+        }
     }
 
     

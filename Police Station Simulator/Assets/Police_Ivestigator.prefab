@@ -2094,6 +2094,7 @@ GameObject:
   - component: {fileID: 114034430329603066}
   - component: {fileID: 114707097134893142}
   - component: {fileID: 114873469969095944}
+  - component: {fileID: 5149406945430226677}
   m_Layer: 8
   m_Name: Police_Ivestigator
   m_TagString: Untagged
@@ -2294,7 +2295,7 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 256
-  search_radius: 1
+  search_radius: 2
 --- !u!114 &8906008413441049469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2302,7 +2303,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1824732585295654}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 782558cc3a6d845a990f61f72475c82d, type: 3}
   m_Name: 
@@ -2317,19 +2318,19 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
-      tangentMode: 34
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
@@ -2376,8 +2377,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priority: 4
-  min_distance: 0.1
-  slow_distance: 1
+  min_distance: 0.5
+  slow_distance: 3
   time_to_target: 0.1
 --- !u!114 &114873469969095944
 MonoBehaviour:
@@ -2406,13 +2407,26 @@ MonoBehaviour:
   target: {fileID: 0}
   aim: {fileID: 1811300652342088}
   arrow: {fileID: 114366528192320026}
-  max_mov_speed: 3.5
+  max_mov_speed: 3
   max_mov_acceleration: 0.5
   max_rot_speed: 50
   max_rot_acceleration: 5
   current_velocity: {x: 0, y: 0, z: 0}
   current_rotation_speed: 0
   orientation: 0
+--- !u!114 &5149406945430226677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1824732585295654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e00aba7cc561b495a9a1faa0fad585dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  max_seconds_prediction: 2
 --- !u!1 &1834386528239832
 GameObject:
   m_ObjectHideFlags: 0

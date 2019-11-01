@@ -11,21 +11,24 @@ public class CitizenBehaviour : MonoBehaviour {
     public Transform pivot;
     public NavMeshPath path;
     SteeringFollowPath follow_path;
+    public GameObject[] citizens;
 
 
     // Use this for initialization
-    void Start () {
+    void Awake () {
         move = GetComponent<Move>();
         arrive = GetComponent<SteeringArrive>();
         action = false;
         follow_path = gameObject.GetComponent<SteeringFollowPath>();
         follow_path.path = new NavMeshPath();
+        move.target = GameObject.Find("Reception_Point");
+        follow_path.calcPath(move.target.transform);
+        move.move = true;
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        follow_path.calcPath(move.target.transform);
 
         Vector3 distance = move.target.transform.position - transform.position;
 
@@ -34,13 +37,14 @@ public class CitizenBehaviour : MonoBehaviour {
             move.target = GameObject.Find("Exit");
             follow_path.calcPath(move.target.transform);
             action = true;
+            Instantiate(citizens[Random.Range(0, citizens.Length - 1)], move.target.transform.position,Quaternion.Euler(0,90,0)).name = "Citizen";
             return;
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other == GameObject.Find("Exit").GetComponent<Collider>())
+        if (other == GameObject.Find("Exit").GetComponent<Collider>() && action)
         {
             Destroy(gameObject);
         }
