@@ -1695,7 +1695,7 @@ Rigidbody:
   m_Mass: 100000
   m_Drag: 10
   m_AngularDrag: 10
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
@@ -1708,7 +1708,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 874470827446112286}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 2.9159284, z: 1}
@@ -1726,6 +1726,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pivot: {fileID: 876681405588149654}
+  patrol1: {fileID: 0}
+  patrol2: {fileID: 0}
+  path_prefab: {fileID: 1928359113399005341, guid: ba6663f40bdcf6e48a598db5e4d54c9e,
+    type: 3}
+  patroling: 0
   ratio_increment: 0.1
   min_distance: 1
 --- !u!114 &1059401674204408396
@@ -1772,13 +1777,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   avoid_distance: 3
-  rays:
-  - length: 2
-    direction: {x: -10, y: 0, z: 10}
-  - length: 3
-    direction: {x: 0, y: 0, z: 20}
-  - length: 2
-    direction: {x: 10, y: 0, z: 10}
+  l_rays: []
 --- !u!114 &468625210413684207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1795,7 +1794,7 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 256
-  search_radius: 3
+  search_radius: 5
 --- !u!114 &986821263607835842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1875,7 +1874,7 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 256
-  search_radius: 1.38
+  search_radius: 1
   falloff:
     serializedVersion: 2
     m_Curve:

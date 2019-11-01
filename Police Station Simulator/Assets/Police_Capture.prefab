@@ -819,7 +819,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1467,6 +1467,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pivot: {fileID: 4335567584487704194}
+  patrol1: {fileID: 1928359113399005341, guid: 103ded9016d5e7b4fbde637c440a971f, type: 3}
+  patrol2: {fileID: 6859221328063016794, guid: 960565075af7d544abec069cb891b82c, type: 3}
+  path_prefab: {fileID: 1928359113399005341, guid: ba6663f40bdcf6e48a598db5e4d54c9e,
+    type: 3}
+  patroling: 0
   ratio_increment: 0.1
   min_distance: 1
 --- !u!114 &4517777404830906712
@@ -1526,13 +1531,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   avoid_distance: 3
-  rays:
-  - length: 2
-    direction: {x: -10, y: 0, z: 10}
-  - length: 3
-    direction: {x: 0, y: 0, z: 20}
-  - length: 2
-    direction: {x: 10, y: 0, z: 10}
+  l_rays: []
 --- !u!114 &3927555099875018491
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -71,7 +71,7 @@ public class SteeringCollisionAvoidance : SteeringAbstract
         if (target != null)
         {
             Vector3 escape_pos;
-            if (target_min_separation <= 0.0f || target_distance < search_radius * 2.0f)
+            if (target_min_separation <= search_radius * 2.0f || target_distance < search_radius * 2.0f)
                 escape_pos = target.transform.position - transform.position;
             else
                 escape_pos = target_relative_pos + target_relative_vel * target_shortest_time;

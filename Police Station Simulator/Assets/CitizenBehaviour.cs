@@ -35,6 +35,7 @@ public class CitizenBehaviour : MonoBehaviour {
         if (distance.magnitude <= arrive.min_distance + 0.2 && !action && move.current_velocity == Vector3.zero)
         {
             move.target = GameObject.Find("Exit");
+            follow_path.deleteCurve();
             follow_path.calcPath(move.target.transform);
             action = true;
             Instantiate(citizens[Random.Range(0, citizens.Length - 1)], move.target.transform.position,Quaternion.Euler(0,90,0)).name = "Citizen";
