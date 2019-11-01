@@ -25,7 +25,6 @@ public class CriminalBehavior : MonoBehaviour {
         action = false;
         follow_path = gameObject.GetComponent<SteeringFollowPath>();
         follow_path.path = new NavMeshPath();
-        assign = cells.GetComponent<AssignCell>();
         c_agent = (GameObject)Instantiate(agent_prefab, new Vector3(0, 0, 0), Quaternion.identity);
         c_agent.GetComponent<Move>().target = gameObject;
         c_agent.transform.position = transform.position + Vector3.back * 3;
@@ -60,6 +59,7 @@ public class CriminalBehavior : MonoBehaviour {
 
     void AssignCell()
     {
+        assign = cells.GetComponent<AssignCell>();
         for (int i = 0; i < assign.cells.Count; ++i)
         {
             Cell c_cell = assign.cells[i].gameObject.GetComponent<Cell>();

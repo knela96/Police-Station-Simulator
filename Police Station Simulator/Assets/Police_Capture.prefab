@@ -1403,7 +1403,10 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
-  m_WarningMessage: 
+  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
+    are already bound by a Humanoid avatar. These transforms can only be changed by
+    Humanoid clips.\n\tTransform 'Hat_jnt'\n\tTransform 'Hat_jnt'\n\tTransform 'Hat_jnt'\n\tFrom
+    animation clip 'Idle'\n\tFrom animation clip 'Walk'\n\tFrom animation clip 'Run'"
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -1467,15 +1470,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pivot: {fileID: 4335567584487704194}
-  patrol1: {fileID: 0}
-  patrol2: {fileID: 0}
-  path_prefab: {fileID: 0}
   patrol1: {fileID: 1928359113399005341, guid: 103ded9016d5e7b4fbde637c440a971f, type: 3}
   patrol2: {fileID: 6859221328063016794, guid: 960565075af7d544abec069cb891b82c, type: 3}
   path_prefab: {fileID: 1928359113399005341, guid: ba6663f40bdcf6e48a598db5e4d54c9e,
     type: 3}
-
   patroling: 0
+  go: {fileID: 0}
   ratio_increment: 0.1
   min_distance: 1
 --- !u!114 &4517777404830906712

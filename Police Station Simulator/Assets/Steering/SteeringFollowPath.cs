@@ -31,6 +31,7 @@ public class SteeringFollowPath : MonoBehaviour {
 		seek = GetComponent<SteeringSeek>();
         arrive = GetComponent<SteeringArrive>();
         face_heading = GetComponent<SteeringFaceHeading>();
+        path = new NavMeshPath();
         cur_node = 0;
         move.move = true;
     }
@@ -142,9 +143,9 @@ public class SteeringFollowPath : MonoBehaviour {
     {
         GameObject go;
         if (patrol == 1)
-            go = (GameObject)Instantiate<GameObject>(patrol1);
+            go = Instantiate(patrol1);
         else
-            go = (GameObject)Instantiate<GameObject>(patrol2);
+            go = Instantiate(patrol2);
 
         curve = go.GetComponent<BGCurve>();
         curve_path = go.GetComponent<BGCcMath>();

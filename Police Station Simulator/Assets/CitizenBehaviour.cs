@@ -11,42 +11,36 @@ public class CitizenBehaviour : MonoBehaviour {
     public Transform pivot;
     public NavMeshPath path;
     SteeringFollowPath follow_path;
-    Animator anim;
     LevelLoop level;
-
+    Animator anim;
 
 
     // Use this for initialization
     void Awake () {
         move = GetComponent<Move>();
+        move.move = true;
         arrive = GetComponent<SteeringArrive>();
         action = false;
         follow_path = gameObject.GetComponent<SteeringFollowPath>();
         follow_path.path = new NavMeshPath();
         move.target = GameObject.Find("Reception_Point");
         follow_path.calcPath(move.target.transform);
-        move.move = true;
-
-        anim = GetComponent<Animator>();
-      
-
         level = GameObject.Find("Level").GetComponent<LevelLoop>();
-
+        anim = GetComponent<Animator>();
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-       
+
         Vector3 distance = move.target.transform.position - transform.position;
-       
+
         if (distance.magnitude <= arrive.min_distance + 0.2 && !action && move.current_velocity == Vector3.zero)
         {
-            anim.SetBool("moving", false);
             move.target = GameObject.Find("Exit");
             follow_path.calcPath(move.target.transform);
             action = true;
-            Instantiate(level.citizens[Random.Range(0, level.citizens.Length - 1)], GameObject.Find("Entrance").transform.position,Quaternion.Euler(0,90,0));
+            //Instantiate(level.citizens[Random.Range(0, level.citizens.Length - 1)], GameObject.Find("Entrance").transform.position,Quaternion.Euler(0,90,0));
             return;
         }
 
@@ -67,16 +61,14 @@ public class CitizenBehaviour : MonoBehaviour {
     private void OnDestroy()
     {
         follow_path.deleteCurve();
+        level.citizens.Remove(gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-      
         if (other == GameObject.Find("Exit").GetComponent<Collider>() && action)
         {
             Destroy(gameObject);
         }
     }
 }
-
-

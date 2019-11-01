@@ -2094,7 +2094,6 @@ GameObject:
   - component: {fileID: 114034430329603066}
   - component: {fileID: 114707097134893142}
   - component: {fileID: 114873469969095944}
-  - component: {fileID: 5149406945430226677}
   m_Layer: 8
   m_Name: Police_Ivestigator
   m_TagString: Untagged
@@ -2142,14 +2141,17 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1824732585295654}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: c72c97e952bf7834b85e6164373d310d, type: 3}
-  m_Controller: {fileID: 9100000, guid: 3f5573dc78b11aa42ba174834d8c67fb, type: 2}
+  m_Controller: {fileID: 9100000, guid: 95036903bd2d7044cb85e54cc43b3c13, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
-  m_WarningMessage: 
+  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
+    are already bound by a Humanoid avatar. These transforms can only be changed by
+    Humanoid clips.\n\tTransform 'Hat_jnt'\n\tTransform 'Hat_jnt'\n\tTransform 'Hat_jnt'\n\tFrom
+    animation clip 'Idle'\n\tFrom animation clip 'Walk'\n\tFrom animation clip 'Run'"
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -2197,7 +2199,7 @@ MonoBehaviour:
   desks: {fileID: 0}
   desk: {fileID: 0}
   cur_time: 25
-  behaviour: 1
+  behaviour: 0
   slider_task: {fileID: 114919835079371076}
   align: {fileID: 0}
 --- !u!114 &114315233033603784
@@ -2218,6 +2220,7 @@ MonoBehaviour:
   path_prefab: {fileID: 1928359113399005341, guid: ba6663f40bdcf6e48a598db5e4d54c9e,
     type: 3}
   patroling: 0
+  go: {fileID: 0}
   ratio_increment: 0.1
   min_distance: 1
 --- !u!114 &186623636977223028
@@ -2277,13 +2280,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   avoid_distance: 3
-  rays:
+  l_rays:
   - length: 2
-    direction: {x: -10, y: 0, z: 10}
+    direction: {x: -10, y: 0, z: 20}
   - length: 3
     direction: {x: 0, y: 0, z: 20}
   - length: 2
-    direction: {x: 10, y: 0, z: 10}
+    direction: {x: 10, y: 0, z: 20}
 --- !u!114 &766774281140992727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2419,19 +2422,6 @@ MonoBehaviour:
   current_velocity: {x: 0, y: 0, z: 0}
   current_rotation_speed: 0
   orientation: 0
---- !u!114 &5149406945430226677
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1824732585295654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e00aba7cc561b495a9a1faa0fad585dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  max_seconds_prediction: 2
 --- !u!1 &1834386528239832
 GameObject:
   m_ObjectHideFlags: 0

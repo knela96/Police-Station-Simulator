@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1098515730362876752}
   - component: {fileID: 986794828652134838}
   - component: {fileID: 987256773908997788}
+  - component: {fileID: 1236758986}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -99,6 +100,24 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &1236758986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873735075186177126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75759181c51234c48b0081df2bad1135, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  desks: {fileID: 0}
+  desk: {fileID: 0}
+  cur_time: 0
+  behaviour: 0
+  slider_task: {fileID: 0}
+  align: {fileID: 0}
 --- !u!1 &873774129899213994
 GameObject:
   m_ObjectHideFlags: 0
@@ -1675,12 +1694,15 @@ Animator:
   m_GameObject: {fileID: 874470827446112286}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: c72c97e952bf7834b85e6164373d310d, type: 3}
-  m_Controller: {fileID: 9100000, guid: 3f5573dc78b11aa42ba174834d8c67fb, type: 2}
+  m_Controller: {fileID: 9100000, guid: 95036903bd2d7044cb85e54cc43b3c13, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
-  m_WarningMessage: 
+  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
+    are already bound by a Humanoid avatar. These transforms can only be changed by
+    Humanoid clips.\n\tTransform 'Hat_jnt'\n\tTransform 'Hat_jnt'\n\tTransform 'Hat_jnt'\n\tFrom
+    animation clip 'Idle'\n\tFrom animation clip 'Walk'\n\tFrom animation clip 'Run'"
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -1837,7 +1859,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a968724c3b6f64198b9b015470e4f6f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  move: 0
+  move: 1
   movement_velocity:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -1913,9 +1935,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pivot: {fileID: 876681405588149654}
-
-  anim: {fileID: 0}
-
 --- !u!1 &874486538209572558
 GameObject:
   m_ObjectHideFlags: 0

@@ -408,12 +408,15 @@ Animator:
   m_GameObject: {fileID: 2211395604222094370}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: c72c97e952bf7834b85e6164373d310d, type: 3}
-  m_Controller: {fileID: 9100000, guid: 3f5573dc78b11aa42ba174834d8c67fb, type: 2}
+  m_Controller: {fileID: 9100000, guid: 95036903bd2d7044cb85e54cc43b3c13, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
-  m_WarningMessage: 
+  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
+    are already bound by a Humanoid avatar. These transforms can only be changed by
+    Humanoid clips.\n\tTransform 'Hat_jnt'\n\tTransform 'Hat_jnt'\n\tTransform 'Hat_jnt'\n\tFrom
+    animation clip 'Idle'\n\tFrom animation clip 'Walk'\n\tFrom animation clip 'Run'"
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -570,7 +573,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a968724c3b6f64198b9b015470e4f6f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  move: 0
+  move: 1
   movement_velocity:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -604,9 +607,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bcde8ecd8fc19148956648b34329a42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cells: {fileID: 0}
+  cells: {fileID: 6237165343999410401, guid: d0ce55fe93ec524409cb0e9d753eeb99, type: 3}
   cell: {fileID: 0}
-  agent_prefab: {fileID: 1081430085675008, guid: 609ef4ca53f6662479f64e42d456b0a2,
+  agent_prefab: {fileID: 4333342713363366666, guid: 609ef4ca53f6662479f64e42d456b0a2,
     type: 3}
 --- !u!1 &2211397267833217604
 GameObject:
