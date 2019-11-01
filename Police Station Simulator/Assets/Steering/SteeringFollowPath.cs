@@ -19,7 +19,7 @@ public class SteeringFollowPath : MonoBehaviour {
     BGCurve curve = null;
     BGCcMath curve_path;
     public bool patroling;
-    GameObject go;
+    public GameObject go;
 
     public float ratio_increment = 0.01f;
     public float min_distance = 1.0f;
@@ -109,11 +109,12 @@ public class SteeringFollowPath : MonoBehaviour {
         curve = null;
         curve_path = null;
         current_ratio = 0;
-        Destroy(go);
+        Destroy(go.gameObject);
     }
 
     public void calcPath(Transform target)
     {
+        deleteCurve();
         NavMesh.CalculatePath(pivot.transform.position, target.transform.position, NavMesh.AllAreas, path);
 
         //Debug.Log(path.corners.Length);
@@ -134,9 +135,9 @@ public class SteeringFollowPath : MonoBehaviour {
     {
         GameObject go;
         if (patrol == 1)
-            go = Instantiate(patrol1);
+            go = (GameObject)Instantiate<GameObject>(patrol1);
         else
-            go = Instantiate(patrol2);
+            go = (GameObject)Instantiate<GameObject>(patrol2);
 
         curve = go.GetComponent<BGCurve>();
         curve_path = go.GetComponent<BGCcMath>();

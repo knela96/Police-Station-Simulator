@@ -11,7 +11,7 @@ public class CitizenBehaviour : MonoBehaviour {
     public Transform pivot;
     public NavMeshPath path;
     SteeringFollowPath follow_path;
-    public GameObject[] citizens;
+    LevelLoop level;
 
 
     // Use this for initialization
@@ -24,6 +24,7 @@ public class CitizenBehaviour : MonoBehaviour {
         move.target = GameObject.Find("Reception_Point");
         follow_path.calcPath(move.target.transform);
         move.move = true;
+        level = GameObject.Find("Level").GetComponent<LevelLoop>();
     }
 	
 	// Update is called once per frame
@@ -35,12 +36,16 @@ public class CitizenBehaviour : MonoBehaviour {
         if (distance.magnitude <= arrive.min_distance + 0.2 && !action && move.current_velocity == Vector3.zero)
         {
             move.target = GameObject.Find("Exit");
-            follow_path.deleteCurve();
             follow_path.calcPath(move.target.transform);
             action = true;
-            Instantiate(citizens[Random.Range(0, citizens.Length - 1)], move.target.transform.position,Quaternion.Euler(0,90,0)).name = "Citizen";
+            Instantiate(level.citizens[Random.Range(0, level.citizens.Length - 1)], move.target.transform.position,Quaternion.Euler(0,90,0));
             return;
         }
+    }
+
+    private void OnDestroy()
+    {
+        follow_path.deleteCurve();
     }
 
     private void OnTriggerEnter(Collider other)

@@ -8,7 +8,7 @@ public class SteeringFaceHeading : MonoBehaviour
     SteeringAlign align;
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         move = GetComponent<Move>();
         align = GetComponent<SteeringAlign>();

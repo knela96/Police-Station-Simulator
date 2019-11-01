@@ -9,7 +9,7 @@ public class SteeringPursue : MonoBehaviour {
 	SteeringArrive arrive;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		move = GetComponent<Move>();
 		arrive = GetComponent<SteeringArrive>();
 	}

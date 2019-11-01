@@ -27,7 +27,6 @@ public class Move : MonoBehaviour {
 
 	public void AccelerateMovement (Vector3 acceleration, int priority)
     {
-        Debug.Log(priority);
         movement_velocity[priority] = acceleration;
         //current_velocity += acceleration;
 	}
@@ -85,7 +84,6 @@ public class Move : MonoBehaviour {
         //Reset movement_velocity to 0
         for (int i = 0; i < movement_velocity.Length; ++i)
         {
-            Debug.Log(movement_velocity[i]);
             movement_velocity[i] = Vector3.zero;
         }
 

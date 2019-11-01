@@ -18,7 +18,7 @@ public class SteeringObstacleAvoidance : SteeringAbstract {
     SteeringSeek seek;
 
     // Use this for initialization
-    void Start () {
+    void Awake () {
         move = GetComponent<Move>(); 
         seek = GetComponent<SteeringSeek>();
     }
