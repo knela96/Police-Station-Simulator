@@ -18733,6 +18733,30 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1233417668}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1236758981 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 873735075186177126, guid: 1c9079ae66fec3f45b3282931d5767ae,
+    type: 3}
+  m_PrefabInstance: {fileID: 7127115477389615768}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1236758986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236758981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75759181c51234c48b0081df2bad1135, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  desks: {fileID: 0}
+  desk: {fileID: 0}
+  cur_time: 0
+  behaviour: 0
+  slider_task: {fileID: 0}
+  align: {fileID: 0}
 --- !u!1001 &1242593305
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31557,6 +31581,35 @@ PrefabInstance:
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2298080538283544966, guid: fa005b37829190e49a597a6d9531b8ae,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 95036903bd2d7044cb85e54cc43b3c13, type: 2}
+    - target: {fileID: 2298080538283544966, guid: fa005b37829190e49a597a6d9531b8ae,
+        type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed by
+        Humanoid clips.\n\tTransform 'Hat_jnt'\n\tTransform 'Hat_jnt'\n\tTransform
+        'Hat_jnt'\n\tFrom animation clip 'Idle'\n\tFrom animation clip 'Walk'\n\tFrom
+        animation clip 'Run'"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2298080538283544966, guid: fa005b37829190e49a597a6d9531b8ae,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2242843299463862732, guid: fa005b37829190e49a597a6d9531b8ae,
+        type: 3}
+      propertyPath: path_prefab
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2246755047064276492, guid: fa005b37829190e49a597a6d9531b8ae,
+        type: 3}
+      propertyPath: move
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa005b37829190e49a597a6d9531b8ae, type: 3}
 --- !u!1001 &7127115477389615768
@@ -31636,6 +31689,11 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 179914586}
+    - target: {fileID: 989905504523235888, guid: 1c9079ae66fec3f45b3282931d5767ae,
+        type: 3}
+      propertyPath: move
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1097292209109375702, guid: 1c9079ae66fec3f45b3282931d5767ae,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -31650,6 +31708,35 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AngularDrag
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 970145368643448250, guid: 1c9079ae66fec3f45b3282931d5767ae,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 95036903bd2d7044cb85e54cc43b3c13, type: 2}
+    - target: {fileID: 970145368643448250, guid: 1c9079ae66fec3f45b3282931d5767ae,
+        type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed by
+        Humanoid clips.\n\tTransform 'Hat_jnt'\n\tTransform 'Hat_jnt'\n\tTransform
+        'Hat_jnt'\n\tFrom animation clip 'Idle'\n\tFrom animation clip 'Walk'\n\tFrom
+        animation clip 'Run'"
+      objectReference: {fileID: 0}
+    - target: {fileID: 970145368643448250, guid: 1c9079ae66fec3f45b3282931d5767ae,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 987102066464925168, guid: 1c9079ae66fec3f45b3282931d5767ae,
+        type: 3}
+      propertyPath: path_prefab
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 385533040427082495, guid: 1c9079ae66fec3f45b3282931d5767ae,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c9079ae66fec3f45b3282931d5767ae, type: 3}

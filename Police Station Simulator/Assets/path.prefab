@@ -99,7 +99,7 @@ MonoBehaviour:
     showControlPositions: 0
     labelControlColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
     showTransformField: 0
-    existing: 0
+    existing: 1
   mode2D: 0
   closed: 0
   points: []

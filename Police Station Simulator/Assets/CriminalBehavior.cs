@@ -15,6 +15,7 @@ public class CriminalBehavior : MonoBehaviour {
     AssignCell assign;
     public GameObject agent_prefab;
     GameObject c_agent;
+    Animator anim;
 
     // Use this for initialization
     void Awake()
@@ -30,6 +31,7 @@ public class CriminalBehavior : MonoBehaviour {
         c_agent.transform.position = transform.position + Vector3.back * 3;
         c_agent.gameObject.layer = 0;
         c_agent.GetComponent<PoliceBehaviour>().behaviour = PoliceBehaviour.TypeAction.Capture;
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -42,6 +44,18 @@ public class CriminalBehavior : MonoBehaviour {
             follow_path.calcPath(cell.getPoint());
         }
 
+        if (move.move == true)
+        {
+            anim.SetBool("moving", true);
+            /*if (move.current_velocity.magnitude <= 12)
+            {
+                anim.SetBool("running", true);
+            }*/
+        }
+        else if (move.move == false)
+        {
+            anim.SetBool("moving", false);
+        }
     }
 
     void AssignCell()
@@ -71,6 +85,9 @@ public class CriminalBehavior : MonoBehaviour {
 
     public void doAction()
     {
+        move.move = false;
+        anim.SetBool("moving", false);
+        anim.SetBool("sitting", true);
         c_agent.GetComponent<Move>().target = null;
         c_agent.GetComponent<SteeringPursue>().enabled = false;
         c_agent.GetComponent<SteeringObstacleAvoidance>().enabled = true;
