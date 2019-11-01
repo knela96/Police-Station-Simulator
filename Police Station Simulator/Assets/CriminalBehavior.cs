@@ -114,6 +114,7 @@ public class CriminalBehavior : MonoBehaviour {
         if (c_agent == null && to_cell == true)
         {
             move.move = true;
+            anim.SetBool("sitting", false);
             anim.SetBool("moving", true);
             move.target = GameObject.Find("Exit");
             follow_path.calcPath(move.target.transform);

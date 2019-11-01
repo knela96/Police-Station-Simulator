@@ -9,10 +9,12 @@ public class PoliceBehaviour : MonoBehaviour {
 
     public enum TypeAction
     {
+        None,
         Investigate,
         Patrol,
         Search,
-        Capture
+        Capture,
+        Exit
     }
 
     public GameObject desks;
@@ -49,7 +51,8 @@ public class PoliceBehaviour : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
 
         if (move.move)
             animator.SetBool("moving", true);
@@ -77,7 +80,7 @@ public class PoliceBehaviour : MonoBehaviour {
                 move.move = false;
                 follow_path.deleteCurve();
                 cur_time += Time.deltaTime;
-                slider_task.value = cur_time/time_task;
+                slider_task.value = cur_time / time_task;
             }
             if (cur_time >= time_task)
             {
@@ -86,7 +89,8 @@ public class PoliceBehaviour : MonoBehaviour {
                 follow_path.calcPath(move.target.transform);
                 cur_time = 0;
             }
-        }else if (behaviour == TypeAction.Patrol)
+        }
+        else if (behaviour == TypeAction.Patrol)
         {
         }
         else if (behaviour == TypeAction.Capture)
@@ -95,10 +99,10 @@ public class PoliceBehaviour : MonoBehaviour {
             {
                 if (level.day)
                     behaviour = TypeAction.Investigate;
-                else if(!to_cell)
+                else if (!to_cell)
                     Night(patrol);
             }
-            if(move.target != null)
+            if (move.target != null)
                 pursue.Steer(move.target.transform.position, move.target.GetComponent<Move>().current_velocity);
         }
     }
@@ -184,9 +188,13 @@ public class PoliceBehaviour : MonoBehaviour {
             {
                 behaviour = TypeAction.Patrol;
                 follow_path.createPatrol(patrol);
+                move.move = true;
             }
             else
+            {
+                behaviour = TypeAction.None;
                 follow_path.calcPath(GameObject.Find("Exit").transform);
+            }
         }
         else
         {

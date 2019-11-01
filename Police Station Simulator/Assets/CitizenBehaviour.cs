@@ -71,6 +71,8 @@ public class CitizenBehaviour : MonoBehaviour {
 
     public void Night()
     {
+        action = true;
+        follow_path.deleteCurve();
         follow_path.calcPath(GameObject.Find("Exit").transform);
     }
 }
