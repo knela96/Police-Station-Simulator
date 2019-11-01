@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1098515730362876752}
   - component: {fileID: 986794828652134838}
   - component: {fileID: 987256773908997788}
-  - component: {fileID: 1236758986}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -100,24 +99,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &1236758986
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 873735075186177126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75759181c51234c48b0081df2bad1135, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  desks: {fileID: 0}
-  desk: {fileID: 0}
-  cur_time: 0
-  behaviour: 0
-  slider_task: {fileID: 0}
-  align: {fileID: 0}
 --- !u!1 &873774129899213994
 GameObject:
   m_ObjectHideFlags: 0
@@ -1017,6 +998,7 @@ Transform:
   - {fileID: 876681405588149654}
   - {fileID: 877029143080873008}
   - {fileID: 1097352134950628164}
+  - {fileID: 879458556920718044}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -1300,7 +1282,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 876694989269614472}
-  m_RootOrder: 8
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &994389279756682546
 SkinnedMeshRenderer:

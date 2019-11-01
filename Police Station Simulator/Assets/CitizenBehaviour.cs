@@ -35,7 +35,7 @@ public class CitizenBehaviour : MonoBehaviour {
 
         Vector3 distance = move.target.transform.position - transform.position;
 
-        if (distance.magnitude <= arrive.min_distance + 0.2 && !action && move.current_velocity == Vector3.zero)
+        if (follow_path.arrived && !action && move.current_velocity == Vector3.zero) //create timer
         {
             move.target = GameObject.Find("Exit");
             follow_path.calcPath(move.target.transform);
@@ -47,15 +47,12 @@ public class CitizenBehaviour : MonoBehaviour {
         if (move.move == true)
         {
             anim.SetBool("moving", true);
-            /*if (move.current_velocity.magnitude <= 12)
-            {
-                anim.SetBool("running", true);
-            }*/
         }
         else if (move.move == false)
         {
             anim.SetBool("moving", false);
         }
+
     }
 
     private void OnDestroy()
@@ -70,5 +67,10 @@ public class CitizenBehaviour : MonoBehaviour {
         {
             Destroy(gameObject);
         }
+    }
+
+    public void Night()
+    {
+        follow_path.calcPath(GameObject.Find("Exit").transform);
     }
 }

@@ -16,10 +16,13 @@ public class CriminalBehavior : MonoBehaviour {
     public GameObject agent_prefab;
     GameObject c_agent;
     Animator anim;
+    bool to_cell = false;
+    LevelLoop level;
 
     // Use this for initialization
     void Awake()
     {
+        level = GameObject.Find("Level").GetComponent<LevelLoop>();
         move = GetComponent<Move>();
         arrive = GetComponent<SteeringArrive>();
         action = false;
@@ -29,9 +32,16 @@ public class CriminalBehavior : MonoBehaviour {
         c_agent.GetComponent<Move>().target = gameObject;
         c_agent.transform.position = transform.position + Vector3.back * 3;
         c_agent.gameObject.layer = 0;
+
+        c_agent.GetComponent<SteeringPursue>().enabled = true;
+        c_agent.GetComponent<SteeringObstacleAvoidance>().enabled = false;
+        c_agent.GetComponent<SteeringCollisionAvoidance>().enabled = false;
         c_agent.GetComponent<PoliceBehaviour>().behaviour = PoliceBehaviour.TypeAction.Capture;
+        c_agent.GetComponent<PoliceBehaviour>().to_cell = true;
         anim = GetComponent<Animator>();
         cells = GameObject.Find("Cell");
+
+        level.policemen.Add(c_agent);
     }
 
     // Update is called once per frame
@@ -47,15 +57,14 @@ public class CriminalBehavior : MonoBehaviour {
         if (move.move == true)
         {
             anim.SetBool("moving", true);
-            /*if (move.current_velocity.magnitude <= 12)
-            {
-                anim.SetBool("running", true);
-            }*/
         }
         else if (move.move == false)
         {
             anim.SetBool("moving", false);
         }
+        if (to_cell)
+            Night();
+        
     }
 
     void AssignCell()
@@ -80,11 +89,11 @@ public class CriminalBehavior : MonoBehaviour {
         }
         else if (other == move.target.gameObject.GetComponent<Collider>())
         {
-            doAction();
+            arrive_cell();
         }
     }
 
-    public void doAction()
+    public void arrive_cell()
     {
         follow_path.deleteCurve();
         move.move = false;
@@ -94,16 +103,25 @@ public class CriminalBehavior : MonoBehaviour {
         c_agent.GetComponent<SteeringPursue>().enabled = false;
         c_agent.GetComponent<SteeringObstacleAvoidance>().enabled = true;
         c_agent.GetComponent<SteeringCollisionAvoidance>().enabled = true;
+        c_agent.GetComponent<PoliceBehaviour>().to_cell = false;
         c_agent.gameObject.layer = 8;
+        c_agent = null;
+
     }
 
-    private void scape(Collider other)
+    public void Night()
     {
-        move.target = GameObject.Find("Exit");
-        follow_path.calcPath(move.target.transform);
-        if (other == GameObject.Find("Exit").GetComponent<Collider>())
+        if (c_agent == null && to_cell == true)
         {
-            Destroy(gameObject);
+            move.move = true;
+            anim.SetBool("moving", true);
+            move.target = GameObject.Find("Exit");
+            follow_path.calcPath(move.target.transform);
+            to_cell = false;
+        }
+        else
+        {
+            to_cell = true;
         }
     }
 }

@@ -24,6 +24,8 @@ public class SteeringFollowPath : MonoBehaviour {
     public float ratio_increment = 0.01f;
     public float min_distance = 1.0f;
     float current_ratio = 0.0f;
+    public bool arrived = false;
+    public bool going = false;
 
 	// Use this for initialization
 	void Awake () {
@@ -39,8 +41,6 @@ public class SteeringFollowPath : MonoBehaviour {
     // Update is called once per frame
     void Update () 
 	{
-        // TODO 2: Check if the tank is close enough to the desired point
-        // If so, create a new point further ahead in the path
         if(curve != null)
         {
             if (patroling)
@@ -51,9 +51,11 @@ public class SteeringFollowPath : MonoBehaviour {
             else
             {
                 if (current_ratio >= 1)
+                {
                     move.move = false;
+                    arrived = true;
+                }
             }
-
 
             Vector3 target = curve_path.CalcPositionByDistanceRatio(current_ratio);
 
@@ -78,43 +80,6 @@ public class SteeringFollowPath : MonoBehaviour {
 
             face_heading.Steer(target);
         }
-        //else if (path != null)
-        //{
-        //    if (path.corners.Length != 0)
-        //    {
-        //        Vector3[] corners = path.corners;
-        //        float distance = (corners[cur_node] - pivot.position).magnitude;
-
-        //        if (distance < min_distance)
-        //        {
-        //            if (cur_node < corners.Length - 1)
-        //                cur_node++; //aim direction to path
-        //            else if (cur_node == corners.Length - 1 && move.current_velocity == Vector3.zero)
-        //            {
-        //                path.ClearCorners();
-                        
-        //                cur_node = 0;
-        //                return;
-        //            }
-        //        }
-
-        //        if (cur_node < corners.Length - 1)
-        //        {
-        //            seek.Steer(corners[cur_node],seek.priority);
-        //        }
-        //        else if (cur_node == corners.Length - 1)
-        //        {
-        //            arrive.Steer(corners[cur_node]);
-        //        }
-
-
-        //        face_heading.Steer(corners[cur_node]);
-
-
-        //        for (int i = 0; i < path.corners.Length - 1; i++)
-        //            Debug.DrawLine(path.corners[i], path.corners[i + 1], Color.red);
-        //    }
-        //}
     }
 
 
@@ -135,7 +100,9 @@ public class SteeringFollowPath : MonoBehaviour {
     {
         deleteCurve();
         NavMesh.CalculatePath(pivot.transform.position, target.transform.position, NavMesh.AllAreas, path);
-
+        arrived = false;
+        going = true;
+        move = GetComponent<Move>();
         move.move = true;
         //Debug.Log(path.corners.Length);
 

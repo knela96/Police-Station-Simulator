@@ -184,6 +184,7 @@ MonoBehaviour:
   behaviour: 1
   slider_task: {fileID: 1638844329714507717}
   align: {fileID: 0}
+  to_cell: 0
 --- !u!114 &1634876888526945353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,6 +206,8 @@ MonoBehaviour:
   go: {fileID: 0}
   ratio_increment: 0.1
   min_distance: 1
+  arrived: 0
+  going: 0
 --- !u!114 &1563061274252588021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,11 +267,11 @@ MonoBehaviour:
   avoid_distance: 3
   l_rays:
   - length: 2
-    direction: {x: -10, y: 0, z: 20}
+    direction: {x: 10, y: 0, z: 10}
   - length: 3
-    direction: {x: 0, y: 0, z: 20}
+    direction: {x: 0, y: 0, z: 10}
   - length: 2
-    direction: {x: 10, y: 0, z: 20}
+    direction: {x: -10, y: 0, z: 10}
 --- !u!114 &2126332215629892694
 MonoBehaviour:
   m_ObjectHideFlags: 0

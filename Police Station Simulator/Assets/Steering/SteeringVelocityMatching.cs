@@ -11,7 +11,8 @@ public class SteeringVelocityMatching : SteeringAbstract {
 	// Use this for initialization
 	void Awake () {
 		move = GetComponent<Move>();
-		target_move = move.target.GetComponent<Move>();
+        if(move.target != null)
+		    target_move = move.target.GetComponent<Move>();
 	}
 	
 	// Update is called once per frame

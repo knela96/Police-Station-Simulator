@@ -27,16 +27,22 @@ public class PoliceBehaviour : MonoBehaviour {
     public SteeringAlign align;
     Move move;
     SteeringPursue pursue;
+    LevelLoop level;
+    Animator animator;
+    int patrol = -1;
+    public bool to_cell = false;
 
     // Use this for initialization
     void Awake()
     {
+        level = GameObject.Find("Level").GetComponent<LevelLoop>();
         desks = GameObject.Find("Desks");
-        move = gameObject.GetComponent<Move>();
-        align = gameObject.GetComponent<SteeringAlign>();
-        follow_path = gameObject.GetComponent<SteeringFollowPath>();
+        move = GetComponent<Move>();
+        align = GetComponent<SteeringAlign>();
+        follow_path = GetComponent<SteeringFollowPath>();
         assign = desks.GetComponent<AssignDesk>();
         pursue = gameObject.GetComponent<SteeringPursue>();
+        animator = GetComponent<Animator>();
         start = false;
         move.move = true;
         cur_time = 0;
@@ -45,17 +51,29 @@ public class PoliceBehaviour : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
+        if (move.move)
+            animator.SetBool("moving", true);
+        else
+            animator.SetBool("moving", false);
+
+        if (to_cell)
+            Night(patrol);
+
         if (behaviour == TypeAction.Investigate)
         {
             if (desk == null)
             {
                 AssignDesk();
-                move.target = desk.getPoint().gameObject;
-                follow_path.calcPath(desk.getPoint());
+                if (desk != null)
+                {
+                    move.target = desk.getPoint().gameObject;
+                    follow_path.calcPath(desk.getPoint());
+                }
             }
 
             if (start && move.current_velocity == Vector3.zero)
             {
+                animator.SetBool("moving", false);
                 move.move = false;
                 follow_path.deleteCurve();
                 cur_time += Time.deltaTime;
@@ -70,13 +88,16 @@ public class PoliceBehaviour : MonoBehaviour {
             }
         }else if (behaviour == TypeAction.Patrol)
         {
-            if(!follow_path.patroling)
-                follow_path.createPatrol(1);
         }
         else if (behaviour == TypeAction.Capture)
         {
             if (move.target == null)
-                behaviour = TypeAction.Investigate;
+            {
+                if (level.day)
+                    behaviour = TypeAction.Investigate;
+                else if(!to_cell)
+                    Night(patrol);
+            }
             if(move.target != null)
                 pursue.Steer(move.target.transform.position, move.target.GetComponent<Move>().current_velocity);
         }
@@ -153,5 +174,25 @@ public class PoliceBehaviour : MonoBehaviour {
         }
     }
 
-    
+    public void Night(int assign_patrol)
+    {
+        patrol = assign_patrol;
+
+        if (!to_cell)
+        {
+            if (patrol < 2 && patrol >= 0)
+            {
+                behaviour = TypeAction.Patrol;
+                follow_path.createPatrol(patrol);
+            }
+            else
+                follow_path.calcPath(GameObject.Find("Exit").transform);
+        }
+        else
+        {
+            to_cell = true;
+        }
+    }
+
+
 }
