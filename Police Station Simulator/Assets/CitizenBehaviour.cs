@@ -71,4 +71,15 @@ public class CitizenBehaviour : MonoBehaviour {
             Destroy(gameObject);
         }
     }
+
+    private void scape(Collider other)
+    {
+        move.target = GameObject.Find("Exit");
+        follow_path.calcPath(move.target.transform);
+        if (other == GameObject.Find("Exit").GetComponent<Collider>())
+        {
+            Destroy(gameObject);
+        }
+    }
+}
 }
