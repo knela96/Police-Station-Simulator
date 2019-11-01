@@ -62,6 +62,9 @@ public class SteeringCollisionAvoidance : SteeringAbstract
             target_distance = distance;
             target_relative_pos = relative_pos;
             target_relative_vel = relative_vel;
+
+            //target_relative_pos.Set(target_relative_pos.x, 0, target_relative_pos.z);
+            //target_relative_vel.y = 0;
         }
 
         //if we have a target, avoid collision
@@ -73,8 +76,10 @@ public class SteeringCollisionAvoidance : SteeringAbstract
             else
                 escape_pos = target_relative_pos + target_relative_vel * target_shortest_time;
 
+            escape_pos.y = 0;
             move.AccelerateMovement(-(escape_pos.normalized * move.max_mov_acceleration), priority);
         }
+        move.resetTransform();
     }
 
     void OnDrawGizmosSelected()

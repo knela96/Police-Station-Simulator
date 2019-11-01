@@ -43,8 +43,9 @@ public class Move : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () 
-	{
+	void Update ()
+    {
+        resetTransform();
         if (move)
         {
             for (int i = 0; i < movement_velocity.Length; ++i)
@@ -95,6 +96,6 @@ public class Move : MonoBehaviour {
     public void resetTransform()
     {
         transform.position.Set(transform.position.x, 0, transform.position.z);
-        transform.rotation.Set(0, transform.rotation.y, 0, transform.rotation.w);
+        transform.rotation.Set(0, transform.rotation.y, 0, 0);
     }
 }
