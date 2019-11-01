@@ -17554,9 +17554,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   citizens:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 874470827446112286, guid: 1c9079ae66fec3f45b3282931d5767ae, type: 3}
+  - {fileID: 874470827446112286, guid: 1c9079ae66fec3f45b3282931d5767ae, type: 3}
+  - {fileID: 874470827446112286, guid: 1c9079ae66fec3f45b3282931d5767ae, type: 3}
   policemen:
   - {fileID: 0}
   - {fileID: 0}
@@ -24691,6 +24691,51 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2693230948829684448, guid: daca8dbc261075d4b9fa405a8d988627,
+        type: 3}
+      propertyPath: l_rays.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2693230948829684448, guid: daca8dbc261075d4b9fa405a8d988627,
+        type: 3}
+      propertyPath: l_rays.Array.data[0].length
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2693230948829684448, guid: daca8dbc261075d4b9fa405a8d988627,
+        type: 3}
+      propertyPath: l_rays.Array.data[1].length
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2693230948829684448, guid: daca8dbc261075d4b9fa405a8d988627,
+        type: 3}
+      propertyPath: l_rays.Array.data[2].length
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2693230948829684448, guid: daca8dbc261075d4b9fa405a8d988627,
+        type: 3}
+      propertyPath: l_rays.Array.data[0].direction.x
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2693230948829684448, guid: daca8dbc261075d4b9fa405a8d988627,
+        type: 3}
+      propertyPath: l_rays.Array.data[0].direction.z
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2693230948829684448, guid: daca8dbc261075d4b9fa405a8d988627,
+        type: 3}
+      propertyPath: l_rays.Array.data[2].direction.z
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2693230948829684448, guid: daca8dbc261075d4b9fa405a8d988627,
+        type: 3}
+      propertyPath: l_rays.Array.data[2].direction.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2693230948829684448, guid: daca8dbc261075d4b9fa405a8d988627,
+        type: 3}
+      propertyPath: l_rays.Array.data[1].direction.z
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: daca8dbc261075d4b9fa405a8d988627, type: 3}
 --- !u!1001 &1825646181
@@ -31525,6 +31570,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Citizen
+      objectReference: {fileID: 0}
+    - target: {fileID: 874470827446112286, guid: 1c9079ae66fec3f45b3282931d5767ae,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 876694989269614472, guid: 1c9079ae66fec3f45b3282931d5767ae,
         type: 3}
