@@ -9,7 +9,7 @@ public class SteeringVelocityMatching : SteeringAbstract {
 	Move target_move;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		move = GetComponent<Move>();
 		target_move = move.target.GetComponent<Move>();
 	}

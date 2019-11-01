@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1098515730362876752}
   - component: {fileID: 986794828652134838}
   - component: {fileID: 987256773908997788}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 1097292209109375702}
   - component: {fileID: 1094881974409973520}
   - component: {fileID: 986724283876349718}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -293,7 +293,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1097236128196144170}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -616,7 +616,7 @@ GameObject:
   - component: {fileID: 1097041413454256642}
   - component: {fileID: 1094983422804924002}
   - component: {fileID: 987128443995893022}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1119,7 +1119,7 @@ GameObject:
   - component: {fileID: 1097612617836171438}
   - component: {fileID: 1094406922239264382}
   - component: {fileID: 986999711901873222}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1273,7 +1273,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1096855436586427148}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1549,7 +1549,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 877029143080873008}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Aim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1695,7 +1695,7 @@ Rigidbody:
   m_Mass: 100000
   m_Drag: 10
   m_AngularDrag: 10
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
@@ -1731,6 +1731,7 @@ MonoBehaviour:
   path_prefab: {fileID: 1928359113399005341, guid: ba6663f40bdcf6e48a598db5e4d54c9e,
     type: 3}
   patroling: 0
+  go: {fileID: 0}
   ratio_increment: 0.1
   min_distance: 1
 --- !u!114 &1059401674204408396
@@ -1777,13 +1778,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   avoid_distance: 3
-  rays:
-  - length: 2
-    direction: {x: -10, y: 0, z: 10}
-  - length: 3
-    direction: {x: 0, y: 0, z: 20}
-  - length: 2
-    direction: {x: 10, y: 0, z: 10}
+  l_rays: []
 --- !u!114 &468625210413684207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1800,7 +1795,7 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 256
-  search_radius: 3
+  search_radius: 5
 --- !u!114 &986821263607835842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1880,7 +1875,7 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 256
-  search_radius: 1.38
+  search_radius: 1
   falloff:
     serializedVersion: 2
     m_Curve:
@@ -1918,11 +1913,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pivot: {fileID: 876681405588149654}
-  citizens:
-  - {fileID: 874470827446112286}
-  - {fileID: 874470827446112286}
-  - {fileID: 874470827446112286}
+
   anim: {fileID: 0}
+
 --- !u!1 &874486538209572558
 GameObject:
   m_ObjectHideFlags: 0
@@ -2486,7 +2479,7 @@ GameObject:
   - component: {fileID: 1097205192931207560}
   - component: {fileID: 989811132684109436}
   - component: {fileID: 987228222199080736}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2652,7 +2645,7 @@ GameObject:
   - component: {fileID: 1097874957656168216}
   - component: {fileID: 986617725402721784}
   - component: {fileID: 987163719478291528}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2749,7 +2742,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1096781861169189086}
   - component: {fileID: 987003827377503522}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: AimSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

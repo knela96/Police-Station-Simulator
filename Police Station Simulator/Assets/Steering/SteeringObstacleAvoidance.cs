@@ -2,7 +2,7 @@
 using System.Collections;
 
 [System.Serializable]
-public class my_ray
+public class rays
 {
     public float length = 2.0f;
     public Vector3 direction = Vector3.forward;
@@ -12,13 +12,13 @@ public class SteeringObstacleAvoidance : SteeringAbstract {
 
     public LayerMask mask;
     public float avoid_distance = 5.0f;
-    public my_ray[] rays;
+    public rays[] l_rays;
 
     Move move;
     SteeringSeek seek;
 
     // Use this for initialization
-    void Start () {
+    void Awake () {
         move = GetComponent<Move>(); 
         seek = GetComponent<SteeringSeek>();
     }
@@ -29,8 +29,9 @@ public class SteeringObstacleAvoidance : SteeringAbstract {
         float angle = Mathf.Atan2(move.current_velocity.x, move.current_velocity.z);
         Quaternion q = Quaternion.AngleAxis(Mathf.Rad2Deg * angle, Vector3.up);
 
-        foreach(my_ray ray in rays)
+        for(int i = 0; i < l_rays.Length; ++i)
         {
+            rays ray = l_rays[i];
             RaycastHit hit;
 
             if(Physics.Raycast(new Vector3(transform.position.x, 1.0f, transform.position.z), q * ray.direction.normalized, out hit, ray.length, mask) == true)
@@ -47,8 +48,11 @@ public class SteeringObstacleAvoidance : SteeringAbstract {
             float angle = Mathf.Atan2(move.current_velocity.x, move.current_velocity.z);
             Quaternion q = Quaternion.AngleAxis(Mathf.Rad2Deg * angle, Vector3.up);
 
-            foreach(my_ray ray in rays)
+            for (int i = 0; i < l_rays.Length; ++i)
+            {
+                rays ray = l_rays[i];
                 Gizmos.DrawLine(transform.position, transform.position + (q * ray.direction.normalized) * ray.length);
+            }
         }
     }
 }

@@ -464,6 +464,7 @@ MonoBehaviour:
   path_prefab: {fileID: 1928359113399005341, guid: ba6663f40bdcf6e48a598db5e4d54c9e,
     type: 3}
   patroling: 0
+  go: {fileID: 0}
   ratio_increment: 0.1
   min_distance: 1
 --- !u!114 &2026912533443696240
@@ -510,13 +511,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   avoid_distance: 3
-  rays:
-  - length: 2
-    direction: {x: -10, y: 0, z: 10}
-  - length: 3
-    direction: {x: 0, y: 0, z: 20}
-  - length: 2
-    direction: {x: 10, y: 0, z: 10}
+  l_rays: []
 --- !u!114 &1446269167397939667
 MonoBehaviour:
   m_ObjectHideFlags: 0

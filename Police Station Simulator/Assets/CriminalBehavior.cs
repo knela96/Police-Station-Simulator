@@ -93,6 +93,5 @@ public class CriminalBehavior : MonoBehaviour {
         c_agent.GetComponent<SteeringObstacleAvoidance>().enabled = true;
         c_agent.GetComponent<SteeringCollisionAvoidance>().enabled = true;
         c_agent.gameObject.layer = 8;
-        c_agent.GetComponent<SteeringFollowPath>().calcPath(GameObject.Find("Exit").transform);
     }
 }

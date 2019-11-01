@@ -11,7 +11,7 @@ public class SteeringSeparation : SteeringAbstract
     Move move;
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         move = GetComponent<Move>();
     }
