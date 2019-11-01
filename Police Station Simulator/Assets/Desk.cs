@@ -9,7 +9,7 @@ public class Desk : MonoBehaviour {
     Transform point;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
         point = transform;
         available = true;
     }

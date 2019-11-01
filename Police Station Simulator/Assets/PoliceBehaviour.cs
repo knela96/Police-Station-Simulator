@@ -56,6 +56,8 @@ public class PoliceBehaviour : MonoBehaviour {
 
             if (start && move.current_velocity == Vector3.zero)
             {
+                move.move = false;
+                follow_path.deleteCurve();
                 cur_time += Time.deltaTime;
                 slider_task.value = cur_time/time_task;
             }
@@ -96,14 +98,12 @@ public class PoliceBehaviour : MonoBehaviour {
     public void startTask()
     {
         start = true;
-        move.move = false;
         slider_task.gameObject.SetActive(true);
         cur_time = 0;
     }
     public void resumeTask()
     {
         start = true;
-        move.move = false;
         slider_task.gameObject.SetActive(true);
     }
     public void stopTask()

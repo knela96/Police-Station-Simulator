@@ -584,7 +584,6 @@ GameObject:
   - component: {fileID: 42328623380722311}
   - component: {fileID: 41875322030045483}
   - component: {fileID: 43730681022016629}
-  - component: {fileID: 5076997453371799432}
   m_Layer: 8
   m_Name: Police_Investigator_Black
   m_TagString: Untagged
@@ -599,7 +598,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 73530427545734747}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 28.54, y: 0, z: -10.61}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -677,7 +676,7 @@ MonoBehaviour:
   desks: {fileID: 0}
   desk: {fileID: 0}
   cur_time: 25
-  behaviour: 1
+  behaviour: 0
   slider_task: {fileID: 43636207443826745}
   align: {fileID: 0}
 --- !u!114 &42046441990388661
@@ -900,19 +899,6 @@ MonoBehaviour:
   current_velocity: {x: 0, y: 0, z: 0}
   current_rotation_speed: 0
   orientation: 0
---- !u!114 &5076997453371799432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 73530427545734747}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e00aba7cc561b495a9a1faa0fad585dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  max_seconds_prediction: 2
 --- !u!1 &73580027069187317
 GameObject:
   m_ObjectHideFlags: 0

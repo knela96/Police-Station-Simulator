@@ -7,7 +7,7 @@ public class AssignCell : MonoBehaviour
 
     public List<GameObject> cells;
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         foreach (Transform child in gameObject.transform)
         {

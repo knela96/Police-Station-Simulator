@@ -10,7 +10,7 @@ public class Cell : MonoBehaviour
     Transform point;
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         point = transform;
         available = true;
@@ -25,7 +25,7 @@ public class Cell : MonoBehaviour
     public Cell setAgent(GameObject agent)
     {
         assigned = agent.GetComponent<PoliceBehaviour>();
-        available = false;
+        //available = false;
         return this;
     }
 

@@ -31,6 +31,7 @@ public class CriminalBehavior : MonoBehaviour {
         c_agent.gameObject.layer = 0;
         c_agent.GetComponent<PoliceBehaviour>().behaviour = PoliceBehaviour.TypeAction.Capture;
         anim = GetComponent<Animator>();
+        cells = GameObject.Find("Cell");
     }
 
     // Update is called once per frame
@@ -85,6 +86,7 @@ public class CriminalBehavior : MonoBehaviour {
 
     public void doAction()
     {
+        follow_path.deleteCurve();
         move.move = false;
         anim.SetBool("moving", false);
         anim.SetBool("sitting", true);

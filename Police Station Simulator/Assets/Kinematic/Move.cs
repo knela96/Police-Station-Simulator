@@ -56,6 +56,8 @@ public class Move : MonoBehaviour {
                 }
             }
         }
+        else
+            current_velocity = Vector3.zero;
 
         // cap velocity
         if (current_velocity.magnitude > max_mov_speed)

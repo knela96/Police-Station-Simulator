@@ -6,7 +6,7 @@ public class AssignDesk : MonoBehaviour {
 
     public List<GameObject> desks;
 	// Use this for initialization
-	void Start () {
+	void Awake () {
         foreach (Transform child in gameObject.transform)
         {
             Transform c = child.Find("AI_Prop_ComputerChair").transform.Find("Point");

@@ -48,6 +48,11 @@ public class SteeringFollowPath : MonoBehaviour {
                 if (current_ratio >= 1)
                     current_ratio = 0;
             }
+            else
+            {
+                if (current_ratio >= 1)
+                    move.move = false;
+            }
 
 
             Vector3 target = curve_path.CalcPositionByDistanceRatio(current_ratio);
@@ -112,6 +117,12 @@ public class SteeringFollowPath : MonoBehaviour {
         //}
     }
 
+
+    private void OnDestroy()
+    {
+        deleteCurve();
+    }
+
     public void deleteCurve()
     {
         curve = null;
@@ -125,6 +136,7 @@ public class SteeringFollowPath : MonoBehaviour {
         deleteCurve();
         NavMesh.CalculatePath(pivot.transform.position, target.transform.position, NavMesh.AllAreas, path);
 
+        move.move = true;
         //Debug.Log(path.corners.Length);
 
         go = Instantiate(path_prefab);
