@@ -12,7 +12,7 @@ public class CitizenBehaviour : MonoBehaviour {
     public NavMeshPath path;
     SteeringFollowPath follow_path;
     public GameObject[] citizens;
-
+    Animator anim;
 
     // Use this for initialization
     void Awake () {
@@ -24,29 +24,48 @@ public class CitizenBehaviour : MonoBehaviour {
         move.target = GameObject.Find("Reception_Point");
         follow_path.calcPath(move.target.transform);
         move.move = true;
+        anim = GetComponent<Animator>();
+      
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-
+       
         Vector3 distance = move.target.transform.position - transform.position;
-
+       
         if (distance.magnitude <= arrive.min_distance + 0.2 && !action && move.current_velocity == Vector3.zero)
         {
+            anim.SetBool("moving", false);
             move.target = GameObject.Find("Exit");
             follow_path.calcPath(move.target.transform);
             action = true;
             Instantiate(citizens[Random.Range(0, citizens.Length - 1)], move.target.transform.position,Quaternion.Euler(0,90,0)).name = "Citizen";
             return;
         }
+
+        if (move.move == true)
+        {
+            anim.SetBool("moving", true);
+            /*if (move.current_velocity.magnitude <= 12)
+            {
+                anim.SetBool("running", true);
+            }*/
+        }
+        else if (move.move == false)
+        {
+            anim.SetBool("moving", false);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
+      
         if (other == GameObject.Find("Exit").GetComponent<Collider>() && action)
         {
             Destroy(gameObject);
         }
     }
 }
+
+

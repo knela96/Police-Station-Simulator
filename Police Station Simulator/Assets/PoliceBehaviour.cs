@@ -16,6 +16,7 @@ public class PoliceBehaviour : MonoBehaviour {
     }
 
     public GameObject desks;
+    Animator anim;
     AssignDesk assign;
     public Desk desk;
     float time_task = 30;
@@ -27,6 +28,9 @@ public class PoliceBehaviour : MonoBehaviour {
     public SteeringAlign align;
     Move move;
     SteeringPursue pursue;
+    
+  
+
 
     // Use this for initialization
     void Awake()
@@ -38,14 +42,16 @@ public class PoliceBehaviour : MonoBehaviour {
         assign = desks.GetComponent<AssignDesk>();
         pursue = gameObject.GetComponent<SteeringPursue>();
         follow_path.path = new NavMeshPath();
+        anim = GetComponent<Animator>();
         start = false;
         move.move = true;
         cur_time = 0;
+
     }
 
     // Update is called once per frame
     void Update () {
-
+        
         if (behaviour == TypeAction.Investigate)
         {
             if (desk == null)
@@ -59,6 +65,7 @@ public class PoliceBehaviour : MonoBehaviour {
             {
                 cur_time += Time.deltaTime;
                 slider_task.value = cur_time/time_task;
+                anim.SetBool("moving", false);
             }
             if (cur_time >= time_task)
             {
@@ -79,6 +86,20 @@ public class PoliceBehaviour : MonoBehaviour {
             if(move.target != null)
                 pursue.Steer(move.target.transform.position, move.target.GetComponent<Move>().current_velocity);
         }
+
+        if (move.move == true) {
+            anim.SetBool("moving", true);
+            /*if (move.current_velocity.magnitude <= 12)
+            {
+                anim.SetBool("running", true);
+            }*/
+        } else if (move.move == false) {
+            anim.SetBool("moving", false);
+        }
+        
+
+
+
     }
 
     void AssignDesk()
