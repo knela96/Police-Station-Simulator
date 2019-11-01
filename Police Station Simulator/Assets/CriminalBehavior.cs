@@ -94,4 +94,14 @@ public class CriminalBehavior : MonoBehaviour {
         c_agent.GetComponent<SteeringCollisionAvoidance>().enabled = true;
         c_agent.gameObject.layer = 8;
     }
+
+    private void scape(Collider other)
+    {
+        move.target = GameObject.Find("Exit");
+        follow_path.calcPath(move.target.transform);
+        if (other == GameObject.Find("Exit").GetComponent<Collider>())
+        {
+            Destroy(gameObject);
+        }
+    }
 }
