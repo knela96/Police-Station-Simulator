@@ -24,19 +24,15 @@ public class LevelLoop : MonoBehaviour
     int patrol = 0;
 
     public bool day = true;
-    bool actions = false;
+    bool actions = true;
     Vector3 vec;
 
     // Start is called before the first frame update
     void Awake()
     {
-        //citizens.Add(Instantiate(citizens_prebab[Random.Range(0, citizens_prebab.Length - 1)], GameObject.Find("Entrance").transform.position, Quaternion.Euler(0, 90, 0)));
-        //policemen.Add(Instantiate(policemen_prebab[Random.Range(0, policemen_prebab.Length - 1)], GameObject.Find("Point").transform.position, Quaternion.Euler(0, 90, 0)));
-
-        policemen.Add(Instantiate(policemen_prebab[Random.Range(0, policemen_prebab.Length - 1)], GameObject.Find("Entrance").transform.position, Quaternion.Euler(0, 90, 0)));
-        policemen[0].GetComponent<PoliceBehaviour>().behaviour = PoliceBehaviour.TypeAction.Receptionist;
-        //criminals.Add(Instantiate(criminals_prebab[c3], GameObject.Find("Entrance").transform.position, Quaternion.Euler(0, 90, 0)));
-        vec = GameObject.Find("Entrance").transform.position;
+       vec = GameObject.Find("Entrance").transform.position;
+       policemen.Add(Instantiate(policemen_prebab[Random.Range(0, policemen_prebab.Length - 1)], GameObject.Find("Entrance").transform.position, Quaternion.Euler(0, 90, 0)));
+       policemen[0].GetComponent<PoliceBehaviour>().behaviour = PoliceBehaviour.TypeAction.Receptionist;
     }
 
     // Update is called once per frame
@@ -59,10 +55,41 @@ public class LevelLoop : MonoBehaviour
                 timer3 = cycle;
                 addCriminal(vec);
             }
+            if (!actions)
+            {
+                //foreach (GameObject go in citizens)
+                //{
+                //    if (go != null)
+                //        go.GetComponent<CitizenBehaviour>().Day();
+                //}
+                foreach (GameObject go in policemen)
+                {
+                    if (go != null)
+                        go.GetComponent<PoliceBehaviour>().Day();
+                }
+
+                GameObject ob = Instantiate(policemen_prebab[Random.Range(0, policemen_prebab.Length - 1)], GameObject.Find("Entrance").transform.position, Quaternion.Euler(0, 90, 0));
+                ob.GetComponent<PoliceBehaviour>().behaviour = PoliceBehaviour.TypeAction.Receptionist;
+                policemen.Add(ob);
+                //foreach (GameObject go in criminals)
+                //{
+                //    if (go != null)
+                //        go.GetComponent<CriminalBehavior>().Day();
+                //}
+
+                timer1 = 0;
+                timer2 = -15;
+                timer3 = 0;
+
+                actions = true;
+            }
+
         }
         else if(!actions && !day)
         {
-            foreach(GameObject go in citizens)
+            patrol = 0;
+
+            foreach (GameObject go in citizens)
             {
                 if (go != null)
                     go.GetComponent<CitizenBehaviour>().Night();
@@ -93,6 +120,7 @@ public class LevelLoop : MonoBehaviour
         {
             day = !day;
             cycle = 0;
+            actions = false;
         }
     }
 

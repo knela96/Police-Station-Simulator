@@ -147,7 +147,6 @@ public class SteeringCollisionAvoidance : SteeringAbstract
             if (time_to_collision > target_shortest_time)
                 continue;
 
-            Debug.Log("Avoiding " + go.name);
             target = go;
             target_shortest_time = time_to_collision;
             target_min_separation = min_separation;

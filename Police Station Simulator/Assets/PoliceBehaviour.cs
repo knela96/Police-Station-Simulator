@@ -65,10 +65,6 @@ public class PoliceBehaviour : MonoBehaviour {
             animator.SetBool("moving", false);
             animator.SetBool("running", false);
         }
-          
-
-        //if (to_cell)
-        //    Night(patrol);
 
         if (behaviour == TypeAction.Investigate)
         {
@@ -183,6 +179,8 @@ public class PoliceBehaviour : MonoBehaviour {
         start = false;
         move.move = true;
         slider_task.gameObject.SetActive(false);
+        if (desk != null)
+            desk.Release();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -243,6 +241,8 @@ public class PoliceBehaviour : MonoBehaviour {
     {
         patrol = assign_patrol;
         light.SetActive(true);
+        if(desk != null)
+            desk.Release();
 
         if (!to_cell)
         {
@@ -265,4 +265,20 @@ public class PoliceBehaviour : MonoBehaviour {
     }
 
 
+    public void Day()
+    {
+        light.SetActive(false);
+        if (follow_path.patroling)
+        {
+            behaviour = TypeAction.Exit;
+            move.target = GameObject.Find("Exit");
+            follow_path.calcPath(move.target.transform);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if(desk != null)
+            desk.Release();
+    }
 }

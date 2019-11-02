@@ -82,10 +82,13 @@ public class SteeringFollowPath : MonoBehaviour {
                 }
             }
 
-            if((curve.Points[curve.PointsCount-1].PositionWorld - transform.position).magnitude < min_distance && current_ratio > 0.9)
-                arrive.Steer(curve.Points[curve.PointsCount - 1].PositionWorld);
+            if (curve.PointsCount != 0)
+            {
+                if ((curve.Points[curve.PointsCount - 1].PositionWorld - transform.position).magnitude < min_distance && current_ratio > 0.9)
+                    arrive.Steer(curve.Points[curve.PointsCount - 1].PositionWorld);
             else
-                seek.Steer(target,seek.priority);
+                seek.Steer(target, seek.priority);
+            }
 
             face_heading.Steer(target);
         }

@@ -15,6 +15,5 @@ public class sun : MonoBehaviour
     void Update()
     {
         transform.RotateAround(Vector3.zero, Vector3.right, 4.5f * Time.deltaTime);
-        Debug.Log(level.getCycle());
     }
 }
