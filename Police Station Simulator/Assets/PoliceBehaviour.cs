@@ -58,7 +58,11 @@ public class PoliceBehaviour : MonoBehaviour {
         if (move.move)
             animator.SetBool("moving", true);
         else
+        {
             animator.SetBool("moving", false);
+            anim.SetBool("running", false);
+        }
+          
 
         if (to_cell)
             Night(patrol);

@@ -61,6 +61,7 @@ public class CriminalBehavior : MonoBehaviour {
         else if (move.move == false)
         {
             anim.SetBool("moving", false);
+            anim.SetBool("running", false);
         }
         if (to_cell)
             Night();
@@ -115,6 +116,7 @@ public class CriminalBehavior : MonoBehaviour {
         follow_path.deleteCurve();
         move.move = false;
         anim.SetBool("moving", false);
+        anim.SetBool("running", false);
         anim.SetBool("sitting", true);
         c_agent.GetComponent<Move>().target = null;
         c_agent.GetComponent<SteeringPursue>().enabled = false;
@@ -130,9 +132,11 @@ public class CriminalBehavior : MonoBehaviour {
     {
         if (c_agent == null && to_cell == true)
         {
+            //Meter Timer here
             move.move = true;
             anim.SetBool("sitting", false);
             anim.SetBool("moving", true);
+            anim.SetBool("running", true);
             move.target = GameObject.Find("Exit");
             follow_path.calcPath(move.target.transform);
             to_cell = false;
