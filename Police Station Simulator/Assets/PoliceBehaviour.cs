@@ -60,7 +60,7 @@ public class PoliceBehaviour : MonoBehaviour {
         else
         {
             animator.SetBool("moving", false);
-            anim.SetBool("running", false);
+            animator.SetBool("running", false);
         }
           
 

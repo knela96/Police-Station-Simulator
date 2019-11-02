@@ -18,7 +18,8 @@ public class CriminalBehavior : MonoBehaviour {
     Animator anim;
     bool to_cell = false;
     LevelLoop level;
-
+    float timer = 30.0f;
+    
     // Use this for initialization
     void Awake()
     {
@@ -130,16 +131,23 @@ public class CriminalBehavior : MonoBehaviour {
 
     public void Night()
     {
+
         if (c_agent == null && to_cell == true)
         {
-            //Meter Timer here
-            move.move = true;
-            anim.SetBool("sitting", false);
-            anim.SetBool("moving", true);
-            anim.SetBool("running", true);
-            move.target = GameObject.Find("Exit");
-            follow_path.calcPath(move.target.transform);
-            to_cell = false;
+
+            timer -= Time.deltaTime; //timer
+            if (timer < 0)
+            {
+                            
+                move.move = true;
+                anim.SetBool("sitting", false);
+                anim.SetBool("moving", true);
+                anim.SetBool("running", true);
+                move.target = GameObject.Find("Exit");
+                follow_path.calcPath(move.target.transform);
+                to_cell = false;
+            }
+          
         }
         else
         {

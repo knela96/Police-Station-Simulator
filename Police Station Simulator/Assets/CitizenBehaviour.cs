@@ -13,7 +13,7 @@ public class CitizenBehaviour : MonoBehaviour {
     SteeringFollowPath follow_path;
     LevelLoop level;
     Animator anim;
-
+    float timer = 3.0f;
 
     // Use this for initialization
     void Awake () {
@@ -37,10 +37,16 @@ public class CitizenBehaviour : MonoBehaviour {
 
         if (follow_path.arrived && !action && move.current_velocity == Vector3.zero) //create timer
         {
-            move.target = GameObject.Find("Exit");
-            follow_path.calcPath(move.target.transform);
-            action = true;
-            //Instantiate(level.citizens[Random.Range(0, level.citizens.Length - 1)], GameObject.Find("Entrance").transform.position,Quaternion.Euler(0,90,0));
+            anim.SetBool("moving", false);
+            timer -= Time.deltaTime; //timer
+            if (timer < 0) {
+             
+                move.target = GameObject.Find("Exit");
+                follow_path.calcPath(move.target.transform);
+                action = true;
+                //Instantiate(level.citizens[Random.Range(0, level.citizens.Length - 1)], GameObject.Find("Entrance").transform.position,Quaternion.Euler(0,90,0));
+            }
+          
             return;
         }
 
