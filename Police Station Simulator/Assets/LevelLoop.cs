@@ -32,7 +32,10 @@ public class LevelLoop : MonoBehaviour
     {
         //citizens.Add(Instantiate(citizens_prebab[Random.Range(0, citizens_prebab.Length - 1)], GameObject.Find("Entrance").transform.position, Quaternion.Euler(0, 90, 0)));
         //policemen.Add(Instantiate(policemen_prebab[Random.Range(0, policemen_prebab.Length - 1)], GameObject.Find("Point").transform.position, Quaternion.Euler(0, 90, 0)));
-        criminals.Add(Instantiate(criminals_prebab[c3], GameObject.Find("Entrance").transform.position, Quaternion.Euler(0, 90, 0)));
+
+        policemen.Add(Instantiate(policemen_prebab[Random.Range(0, policemen_prebab.Length - 1)], GameObject.Find("Entrance").transform.position, Quaternion.Euler(0, 90, 0)));
+        policemen[0].GetComponent<PoliceBehaviour>().behaviour = PoliceBehaviour.TypeAction.Receptionist;
+        //criminals.Add(Instantiate(criminals_prebab[c3], GameObject.Find("Entrance").transform.position, Quaternion.Euler(0, 90, 0)));
         vec = GameObject.Find("Entrance").transform.position;
     }
 

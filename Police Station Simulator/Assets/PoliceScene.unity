@@ -8619,6 +8619,11 @@ PrefabInstance:
       propertyPath: m_NavMeshLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5523665279368522175, guid: 8230aaf0327571f4d99d88ca30206866,
+        type: 3}
+      propertyPath: m_Name
+      value: Reception_Point_Stand
+      objectReference: {fileID: 0}
     - target: {fileID: 488642, guid: 8230aaf0327571f4d99d88ca30206866, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12.08848

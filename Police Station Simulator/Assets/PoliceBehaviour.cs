@@ -13,6 +13,7 @@ public class PoliceBehaviour : MonoBehaviour {
         Investigate,
         Patrol,
         Search,
+        Receptionist,
         Capture,
         Exit
     }
@@ -66,7 +67,7 @@ public class PoliceBehaviour : MonoBehaviour {
         {
             if (desk == null)
             {
-                AssignDesk();
+                AssignDesk(behaviour);
                 if (desk != null)
                 {
                     move.target = desk.getPoint().gameObject;
@@ -105,17 +106,55 @@ public class PoliceBehaviour : MonoBehaviour {
             if (move.target != null)
                 pursue.Steer(move.target.transform.position, move.target.GetComponent<Move>().current_velocity);
         }
+        else if(behaviour == TypeAction.Receptionist)
+        {
+            if (desk == null)
+            {
+                AssignDesk(behaviour);
+                if (desk != null)
+                {
+                    move.target = desk.getPoint().gameObject;
+                    follow_path.calcPath(desk.getPoint());
+                }
+            }
+
+            if (start && move.current_velocity == Vector3.zero)
+            {
+                animator.SetBool("moving", false);
+                move.move = false;
+                follow_path.deleteCurve();
+            }
+            if (!level.day)
+            {
+                stopTask();
+                move.target = GameObject.Find("Exit");
+                follow_path.calcPath(move.target.transform);
+                cur_time = 0;
+            }
+        }
     }
 
-    void AssignDesk()
+    void AssignDesk(TypeAction type)
     {
-        for (int i = 0; i < assign.desks.Count; ++i)
+        if (TypeAction.Receptionist == type)
         {
-            Desk c_desk = assign.desks[i].gameObject.GetComponent<Desk>();
+            Desk c_desk = GameObject.Find("Reception_Point_Stand").GetComponent<Desk>();
             if (c_desk.isAvailable())
             {
                 desk = c_desk.setAgent(this.gameObject);
                 return;
+            }
+        }
+        else if (TypeAction.Investigate == type)
+        {
+            for (int i = 0; i < assign.desks.Count; ++i)
+            {
+                Desk c_desk = assign.desks[i].gameObject.GetComponent<Desk>();
+                if (c_desk.isAvailable())
+                {
+                    desk = c_desk.setAgent(this.gameObject);
+                    return;
+                }
             }
         }
     }
@@ -145,10 +184,13 @@ public class PoliceBehaviour : MonoBehaviour {
             if (other == desk.getPoint().GetComponent<Collider>())
             {
                 align.Steering(desk.getPoint());
-                if (cur_time < time_task && cur_time > 0)
-                    resumeTask();
-                else
-                    startTask();
+                if (behaviour == TypeAction.Investigate)
+                {
+                    if (cur_time < time_task && cur_time > 0)
+                        resumeTask();
+                    else
+                        startTask();
+                }
             }
         }
 
