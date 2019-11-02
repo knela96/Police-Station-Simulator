@@ -57,6 +57,7 @@ public class CitizenBehaviour : MonoBehaviour {
         else if (move.move == false)
         {
             anim.SetBool("running", false);
+            move.run = false;
             anim.SetBool("moving", false);
         }
 
@@ -95,6 +96,7 @@ public class CitizenBehaviour : MonoBehaviour {
     {
         action = true;
         anim.SetBool("running", true);
+        move.run = true;
         follow_path.deleteCurve();
         follow_path.calcPath(GameObject.Find("Exit").transform);
     }

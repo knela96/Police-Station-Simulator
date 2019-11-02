@@ -75,7 +75,7 @@ public class SteeringFollowPath : MonoBehaviour {
                 if (distance.magnitude < min_distance)
                 {
                     if (move.current_velocity.magnitude != 0)
-                        current_ratio += ratio_increment * move.current_velocity.magnitude * Time.deltaTime;
+                        current_ratio += (ratio_increment * move.current_velocity.magnitude * Time.deltaTime) * move.cur_run_multiplier;
                     else
                         current_ratio += ratio_increment * Time.deltaTime;
 

@@ -39,8 +39,8 @@ public class SteeringArrive : SteeringAbstract {
         Vector3 target_vel = direction.normalized * target_speed;
         Vector3 accel = (target_vel - move.current_velocity) / time_to_target;
 
-        if (accel.magnitude > move.max_mov_acceleration)
-            accel = accel.normalized * move.max_mov_acceleration;
+        if (accel.magnitude > move.max_mov_acceleration * move.cur_run_multiplier)
+            accel = accel.normalized * move.max_mov_acceleration * move.cur_run_multiplier;
 
         move.AccelerateMovement(accel,priority);
     }

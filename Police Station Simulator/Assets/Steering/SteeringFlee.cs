@@ -18,7 +18,7 @@ public class SteeringFlee : SteeringAbstract {
 
 	public void Steer(Vector3 target)
 	{
-        Vector3 distance = (transform.position - target).normalized * move.max_mov_acceleration;
+        Vector3 distance = (transform.position - target).normalized * move.max_mov_acceleration * move.cur_run_multiplier;
 
         move.AccelerateMovement(distance,priority);
     }

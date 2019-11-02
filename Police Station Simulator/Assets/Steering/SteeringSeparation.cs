@@ -35,15 +35,15 @@ public class SteeringSeparation : SteeringAbstract
 
             if (distance < search_radius)
             {
-                acceleration = (1.0f - falloff.Evaluate(distance / search_radius)) * move.max_mov_acceleration;
+                acceleration = (1.0f - falloff.Evaluate(distance / search_radius)) * move.max_mov_acceleration * move.cur_run_multiplier;
                 accel += direction.normalized * acceleration;
             }
         }
 
         if (accel.magnitude > 0.0f)
         {
-            if (accel.magnitude > move.max_mov_acceleration)
-                accel = accel.normalized * move.max_mov_acceleration;
+            if (accel.magnitude > move.max_mov_acceleration * move.cur_run_multiplier)
+                accel = accel.normalized * move.max_mov_acceleration * move.cur_run_multiplier;
             move.AccelerateMovement(accel,priority);
         }
     }

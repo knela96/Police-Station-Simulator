@@ -5,6 +5,9 @@ using System.Collections;
 public class Move : MonoBehaviour {
 
     public bool move = true;
+    public bool run = false;
+    public float run_multiplier = 2.0f;
+    public float cur_run_multiplier = 1.0f;
     public Vector3[] movement_velocity = new Vector3[10];
     public GameObject target;
 	public GameObject aim;
@@ -59,11 +62,17 @@ public class Move : MonoBehaviour {
         else
             current_velocity = Vector3.zero;
 
+        if (run)
+            cur_run_multiplier = run_multiplier;
+        else
+            cur_run_multiplier = 1.0f;
+
+
         // cap velocity
-        if (current_velocity.magnitude > max_mov_speed)
-		{
-            current_velocity = current_velocity.normalized * max_mov_speed;
-		}
+        if (current_velocity.magnitude > max_mov_speed * cur_run_multiplier)
+        {
+            current_velocity = current_velocity.normalized * max_mov_speed * cur_run_multiplier;
+        }
 
         // cap rotation
         current_rotation_speed = Mathf.Clamp(current_rotation_speed, -max_rot_speed, max_rot_speed);

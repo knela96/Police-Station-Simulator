@@ -22,9 +22,9 @@ public class SteeringVelocityMatching : SteeringAbstract {
 		{
 			Vector3 acceleration = (target_move.current_velocity - move.current_velocity) / time_to_target;
             
-            if (acceleration.magnitude > move.max_mov_acceleration)
+            if (acceleration.magnitude > move.max_mov_acceleration * move.cur_run_multiplier)
 			{
-                acceleration = acceleration.normalized * move.max_mov_acceleration;
+                acceleration = acceleration.normalized * move.max_mov_acceleration * move.cur_run_multiplier;
 			}
 
 			move.AccelerateMovement(acceleration,priority);

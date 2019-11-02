@@ -64,6 +64,7 @@ public class PoliceBehaviour : MonoBehaviour {
         {
             animator.SetBool("moving", false);
             animator.SetBool("running", false);
+            move.run = false;
         }
 
         if (behaviour == TypeAction.Investigate)

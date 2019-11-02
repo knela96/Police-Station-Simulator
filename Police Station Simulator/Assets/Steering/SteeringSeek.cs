@@ -18,7 +18,7 @@ public class SteeringSeek : SteeringAbstract {
 
 	public void Steer(Vector3 target,int priority)
 	{
-		Vector3 distance = (target - transform.position).normalized * move.max_mov_acceleration;
+		Vector3 distance = (target - transform.position).normalized * move.max_mov_acceleration * move.cur_run_multiplier;
 
 		move.AccelerateMovement(distance,priority);
 	}

@@ -50,8 +50,11 @@ public class CriminalBehavior : MonoBehaviour {
         if (cell == null)
         {
             AssignCell();
-            move.target = cell.getPoint().gameObject;
-            follow_path.calcPath(cell.getPoint());
+            if (cell != null)
+            {
+                move.target = cell.getPoint().gameObject;
+                follow_path.calcPath(cell.getPoint());
+            }
         }
 
         if (move.move == true)
@@ -62,6 +65,7 @@ public class CriminalBehavior : MonoBehaviour {
         {
             anim.SetBool("moving", false);
             anim.SetBool("running", false);
+            move.run = false;
         }
         if (to_cell)
             Night();
@@ -117,6 +121,7 @@ public class CriminalBehavior : MonoBehaviour {
         move.move = false;
         anim.SetBool("moving", false);
         anim.SetBool("running", false);
+        move.run = false;
         anim.SetBool("sitting", true);
         if (c_agent != null)
         {
@@ -145,9 +150,13 @@ public class CriminalBehavior : MonoBehaviour {
                 anim.SetBool("sitting", false);
                 anim.SetBool("moving", true);
                 anim.SetBool("running", true);
+                move.run = true;
                 move.target = GameObject.Find("Exit");
                 follow_path.calcPath(move.target.transform);
                 to_cell = false;
+
+                if (cell != null)
+                    cell.Release();
             }
           
         }
