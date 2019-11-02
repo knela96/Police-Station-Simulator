@@ -91,7 +91,10 @@ public class LevelLoop : MonoBehaviour
             c3 = 0;
 
         if (cycle >= 30)
-            day = false;
+        {
+            day = !day;
+            cycle = 0;
+        }
     }
 
     public void addPolicemen(Vector3 pos)
