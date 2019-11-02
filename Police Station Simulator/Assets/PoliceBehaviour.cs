@@ -93,6 +93,7 @@ public class PoliceBehaviour : MonoBehaviour {
         }
         else if (behaviour == TypeAction.Patrol)
         {
+
         }
         else if (behaviour == TypeAction.Capture)
         {
@@ -197,6 +198,7 @@ public class PoliceBehaviour : MonoBehaviour {
         if (other == GameObject.Find("Entrance").GetComponent<Collider>())
         {
             gameObject.GetComponent<SteeringCollisionAvoidance>().enabled = false;
+            gameObject.GetComponent<SteeringSeparation>().enabled = false;
         }
 
         if (other == GameObject.Find("Exit").GetComponent<Collider>())
@@ -226,6 +228,7 @@ public class PoliceBehaviour : MonoBehaviour {
         if (other == GameObject.Find("Entrance").GetComponent<Collider>())
         {
             gameObject.GetComponent<SteeringCollisionAvoidance>().enabled = true;
+            gameObject.GetComponent<SteeringSeparation>().enabled = true;
         }
     }
 
@@ -238,7 +241,7 @@ public class PoliceBehaviour : MonoBehaviour {
             if (patrol < 2 && patrol >= 0)
             {
                 behaviour = TypeAction.Patrol;
-                follow_path.createPatrol(patrol);
+                follow_path.createPatrol(patrol,false);
                 move.move = true;
             }
             else
