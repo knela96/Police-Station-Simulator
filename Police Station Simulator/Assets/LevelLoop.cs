@@ -42,7 +42,6 @@ public class LevelLoop : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(cycle);
         if (day)
         {
             if (cycle - timer1 > 10)
@@ -55,7 +54,7 @@ public class LevelLoop : MonoBehaviour
                 timer2 = cycle;
                 addPolicemen(vec);
             }
-            if (cycle - timer3 > 30)
+            if (cycle - timer3 > 10)
             {
                 timer3 = cycle;
                 addCriminal(vec);
@@ -90,7 +89,7 @@ public class LevelLoop : MonoBehaviour
         if (c3 == 2)
             c3 = 0;
 
-        if (cycle >= 30)
+        if (cycle >= 40)
         {
             day = !day;
             cycle = 0;
@@ -111,5 +110,10 @@ public class LevelLoop : MonoBehaviour
     {
         criminals.Add(Instantiate(criminals_prebab[c3], pos, Quaternion.Euler(0, 90, 0)));
         c3++;
+    }
+
+    public float getCycle()
+    {
+        return cycle;
     }
 }

@@ -1104,6 +1104,8 @@ MonoBehaviour:
   go: {fileID: 0}
   ratio_increment: 0.1
   min_distance: 1
+  arrived: 0
+  going: 0
 --- !u!114 &2626385887010969596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1192,7 +1194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priority: 4
-  min_distance: 0.5
+  min_distance: 0.1
   slow_distance: 3
   time_to_target: 0.1
 --- !u!114 &2845665796288712576

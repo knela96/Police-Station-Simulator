@@ -25,7 +25,7 @@ public class Cell : MonoBehaviour
     public Cell setAgent(GameObject agent)
     {
         assigned = agent.GetComponent<PoliceBehaviour>();
-        //available = false;
+        available = false;
         return this;
     }
 

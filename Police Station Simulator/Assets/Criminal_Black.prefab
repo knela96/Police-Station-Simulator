@@ -598,7 +598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priority: 4
-  min_distance: 0.5
+  min_distance: 0.1
   slow_distance: 3
   time_to_target: 0.1
 --- !u!114 &252903769616476669
@@ -649,8 +649,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cells: {fileID: 0}
   cell: {fileID: 0}
-  agent_prefab: {fileID: 4333342713363366666, guid: 609ef4ca53f6662479f64e42d456b0a2,
-    type: 3}
 --- !u!1 &152026680871486901
 GameObject:
   m_ObjectHideFlags: 0

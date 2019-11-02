@@ -13,7 +13,6 @@ public class CriminalBehavior : MonoBehaviour {
     SteeringFollowPath follow_path;
     public Cell cell;
     AssignCell assign;
-    public GameObject agent_prefab;
     GameObject c_agent;
     Animator anim;
     bool to_cell = false;
@@ -29,7 +28,7 @@ public class CriminalBehavior : MonoBehaviour {
         action = false;
         follow_path = gameObject.GetComponent<SteeringFollowPath>();
         follow_path.path = new NavMeshPath();
-        c_agent = (GameObject)Instantiate(agent_prefab, new Vector3(0, 0, 0), Quaternion.identity);
+        c_agent = Instantiate(level.policemen_prebab[Random.Range(0, 2)], new Vector3(0, 0, 0), Quaternion.identity);
         c_agent.GetComponent<Move>().target = gameObject;
         c_agent.transform.position = transform.position + Vector3.back * 3;
         c_agent.gameObject.layer = 0;
@@ -119,13 +118,16 @@ public class CriminalBehavior : MonoBehaviour {
         anim.SetBool("moving", false);
         anim.SetBool("running", false);
         anim.SetBool("sitting", true);
-        c_agent.GetComponent<Move>().target = null;
-        c_agent.GetComponent<SteeringPursue>().enabled = false;
-        c_agent.GetComponent<SteeringObstacleAvoidance>().enabled = true;
-        c_agent.GetComponent<SteeringCollisionAvoidance>().enabled = true;
-        c_agent.GetComponent<PoliceBehaviour>().to_cell = false;
-        c_agent.gameObject.layer = 8;
-        c_agent = null;
+        if (c_agent != null)
+        {
+            c_agent.GetComponent<Move>().target = null;
+            c_agent.GetComponent<SteeringPursue>().enabled = false;
+            c_agent.GetComponent<SteeringObstacleAvoidance>().enabled = true;
+            c_agent.GetComponent<SteeringCollisionAvoidance>().enabled = true;
+            c_agent.GetComponent<PoliceBehaviour>().to_cell = false;
+            c_agent.gameObject.layer = 8;
+            c_agent = null;
+        }
 
     }
 
@@ -136,7 +138,7 @@ public class CriminalBehavior : MonoBehaviour {
         {
 
             timer -= Time.deltaTime; //timer
-            if (timer < 0)
+            if (timer < 0 && level.day == false)
             {
                             
                 move.move = true;

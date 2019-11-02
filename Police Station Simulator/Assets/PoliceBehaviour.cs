@@ -34,6 +34,7 @@ public class PoliceBehaviour : MonoBehaviour {
     Animator animator;
     int patrol = -1;
     public bool to_cell = false;
+    public GameObject light;
 
     // Use this for initialization
     void Awake()
@@ -49,6 +50,8 @@ public class PoliceBehaviour : MonoBehaviour {
         start = false;
         move.move = true;
         cur_time = 0;
+        light = transform.Find("Light").gameObject;
+        light.SetActive(false);
     }
 
     // Update is called once per frame
@@ -64,8 +67,8 @@ public class PoliceBehaviour : MonoBehaviour {
         }
           
 
-        if (to_cell)
-            Night(patrol);
+        //if (to_cell)
+        //    Night(patrol);
 
         if (behaviour == TypeAction.Investigate)
         {
@@ -239,6 +242,7 @@ public class PoliceBehaviour : MonoBehaviour {
     public void Night(int assign_patrol)
     {
         patrol = assign_patrol;
+        light.SetActive(true);
 
         if (!to_cell)
         {
