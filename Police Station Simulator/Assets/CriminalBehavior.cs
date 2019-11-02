@@ -87,9 +87,26 @@ public class CriminalBehavior : MonoBehaviour {
         {
             Destroy(gameObject);
         }
-        else if (other == move.target.gameObject.GetComponent<Collider>())
+        else if (other == GameObject.Find("Entrance").GetComponent<Collider>())
         {
-            arrive_cell();
+            gameObject.GetComponent<SteeringCollisionAvoidance>().enabled = false;
+            //gameObject.GetComponent<SteeringSeparation>().enabled = false;
+        }
+        else if (move.target != null)
+        {
+            if (other == move.target.gameObject.GetComponent<Collider>())
+            {
+                arrive_cell();
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other == GameObject.Find("Entrance").GetComponent<Collider>())
+        {
+            gameObject.GetComponent<SteeringCollisionAvoidance>().enabled = true;
+            //gameObject.GetComponent<SteeringSeparation>().enabled = true;
         }
     }
 

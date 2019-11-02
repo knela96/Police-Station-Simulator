@@ -67,6 +67,21 @@ public class CitizenBehaviour : MonoBehaviour {
         {
             Destroy(gameObject);
         }
+
+        if (other == GameObject.Find("Entrance").GetComponent<Collider>())
+        {
+            gameObject.GetComponent<SteeringCollisionAvoidance>().enabled = false;
+            gameObject.GetComponent<SteeringSeparation>().enabled = false;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other == GameObject.Find("Entrance").GetComponent<Collider>())
+        {
+            gameObject.GetComponent<SteeringCollisionAvoidance>().enabled = true;
+            gameObject.GetComponent<SteeringSeparation>().enabled = true;
+        }
     }
 
     public void Night()

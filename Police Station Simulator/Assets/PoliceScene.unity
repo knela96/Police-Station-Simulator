@@ -291,6 +291,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 45317759}
+  - component: {fileID: 45317760}
   m_Layer: 0
   m_Name: Entrance
   m_TagString: Untagged
@@ -312,6 +313,19 @@ Transform:
   m_Father: {fileID: 1178038956}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &45317760
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 45317758}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.054699, y: 3.121399, z: 3.0957127}
+  m_Center: {x: 0.027349472, y: 1.0606995, z: -0.25531673}
 --- !u!1001 &49800531
 PrefabInstance:
   m_ObjectHideFlags: 0

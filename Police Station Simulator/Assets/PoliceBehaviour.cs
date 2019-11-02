@@ -9,7 +9,7 @@ public class PoliceBehaviour : MonoBehaviour {
 
     public enum TypeAction
     {
-        None,
+        None = -1,
         Investigate,
         Patrol,
         Search,
@@ -194,6 +194,11 @@ public class PoliceBehaviour : MonoBehaviour {
             }
         }
 
+        if (other == GameObject.Find("Entrance").GetComponent<Collider>())
+        {
+            gameObject.GetComponent<SteeringCollisionAvoidance>().enabled = false;
+        }
+
         if (other == GameObject.Find("Exit").GetComponent<Collider>())
         {
             Destroy(gameObject);
@@ -217,6 +222,10 @@ public class PoliceBehaviour : MonoBehaviour {
         {
             if (other == desk.getPoint().GetComponent<Collider>())
                 stopTask();
+        }
+        if (other == GameObject.Find("Entrance").GetComponent<Collider>())
+        {
+            gameObject.GetComponent<SteeringCollisionAvoidance>().enabled = true;
         }
     }
 

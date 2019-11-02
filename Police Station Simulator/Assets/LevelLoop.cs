@@ -13,7 +13,7 @@ public class LevelLoop : MonoBehaviour
     public List<GameObject> criminals;
 
     float timer1 = 0;
-    float timer2 = 0;
+    float timer2 = -15;
     float timer3 = 0;
     float cycle = 0;
 
