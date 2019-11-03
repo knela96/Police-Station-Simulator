@@ -57,7 +57,7 @@ As the police captain your job is to assign different workers to different tasks
  - Satisfaction
  
 # Gameloop:
-## DAY
+## DAY (2 minutes)
 - Citizen enters the police station
 - Citizen gives you notification
 - The player asigns a police to the case
@@ -75,11 +75,11 @@ As the police captain your job is to assign different workers to different tasks
 - If the satisfaction reaches 0 or if you have negative money it will be game over.
 
 
-## NIGHT
+## NIGHT (2 minutes)
 
 - Citizen leave the station
 - Policemen have to be assigned to random emergency cases
-- 2 Policemen in the police station make rounds around keeping watch for scaped criminals
+- 2 Policemen in the police station light up their torchlights and make rounds around keeping watch for scaped criminals
 - Criminals scape. If the number of policemen are enough to capture the criminal after a short period of time the crimnal will go back to the cell, if the criminal arrives at the door and opens it (Opening the door lasts a short period of time) it will scape.
 
 
