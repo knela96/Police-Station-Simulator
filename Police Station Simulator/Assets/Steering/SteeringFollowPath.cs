@@ -12,7 +12,7 @@ public class SteeringFollowPath : MonoBehaviour {
     SteeringFaceHeading face_heading;
     public NavMeshPath path;
     public Transform pivot;
-    int cur_node;
+    int cur_node = 0;
     public GameObject patrol1;
     public GameObject patrol2;
     public GameObject path_prefab;
@@ -111,7 +111,8 @@ public class SteeringFollowPath : MonoBehaviour {
         curve = null;
         curve_path = null;
         current_ratio = 0;
-        Destroy(go.gameObject);
+        if(go != null)
+            Destroy(go.gameObject);
     }
 
     public void calcPath(Transform target)

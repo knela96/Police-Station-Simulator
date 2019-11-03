@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UI2Camera : MonoBehaviour {
 
-    public Camera camera;
+    public Camera camera = null;
     // Use this for initialization
     void Start () {
         camera = GameObject.Find("Main Camera").GetComponent<Camera>();

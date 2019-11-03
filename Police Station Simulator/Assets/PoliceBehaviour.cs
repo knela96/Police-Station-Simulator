@@ -18,23 +18,23 @@ public class PoliceBehaviour : MonoBehaviour {
         Exit
     }
 
-    public GameObject desks;
-    AssignDesk assign;
-    public Desk desk;
+    public GameObject desks = null;
+    AssignDesk assign = null;
+    public Desk desk = null;
     float time_task = 30;
-    public float cur_time;
-    bool start;
+    public float cur_time = 0;
+    bool start = false;
     public TypeAction behaviour;
     public Slider slider_task;
     SteeringFollowPath follow_path;
     public SteeringAlign align;
-    Move move;
+    Move move = null;
     SteeringPursue pursue;
     LevelLoop level;
     Animator animator;
     int patrol = -1;
+    GameObject light = null;
     public bool to_cell = false;
-    public GameObject light;
     SteeringObstacleAvoidance obstacle;
 
     // Use this for initialization

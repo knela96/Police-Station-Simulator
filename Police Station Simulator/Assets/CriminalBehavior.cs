@@ -8,7 +8,7 @@ public class CriminalBehavior : MonoBehaviour {
     public GameObject cells;
     Move move;
     SteeringArrive arrive;
-    bool action;
+    bool action = false;
     public NavMeshPath path;
     SteeringFollowPath follow_path;
     public Cell cell;
