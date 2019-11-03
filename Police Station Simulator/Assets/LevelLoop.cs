@@ -45,12 +45,12 @@ public class LevelLoop : MonoBehaviour
                 timer1 = cycle;
                 addCitizen(vec);
             }
-            if (cycle - timer2 > 20)
+            if (cycle - timer2 > 21)
             {
                 timer2 = cycle;
                 addPolicemen(vec);
             }
-            if (cycle - timer3 > 35)
+            if (cycle - timer3 > 31)
             {
                 timer3 = cycle;
                addCriminal(vec);
