@@ -1,3 +1,33 @@
+#Authors
+Eric Canela & Ferran Barnes
+
+#Github link
+https://github.com/knela96/Police-Station-Simulator
+
+#License
+
+MIT License
+
+Copyright (c) 2019 Eric Canela & Ferran Barnes
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
 # Police-Station-Simulator
 In this GOD style game, you are a new police captain and your duty is to lead this police station to maximum efficency.
 
@@ -43,11 +73,11 @@ As the police captain your job is to assign different workers to different tasks
 - If the satisfaction reaches 0 or if you have negative money it will be game over.
 
 
-## EMERGENCY STATUS
+## NIGHT
 
-- Citizen try to refuge
+- Citizen leave the station
 - Policemen have to be assigned to random emergency cases
-- Policemen in the police station has to keep check on the criminals
+- 2 Policemen in the police station make rounds around keeping watch for scaped criminals
 - Criminals scape. If the number of policemen are enough to capture the criminal after a short period of time the crimnal will go back to the cell, if the criminal arrives at the door and opens it (Opening the door lasts a short period of time) it will scape.
 
 
