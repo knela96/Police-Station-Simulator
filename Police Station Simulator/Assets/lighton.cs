@@ -14,13 +14,10 @@ public class lighton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(level.day);
         if (level.day) {
             gameObject.GetComponent<Light>().enabled = false;
-            Debug.Log("DAY DEACTIVATE");
         } else if (!level.day){
             gameObject.GetComponent<Light>().enabled = true;
-            Debug.Log("Night ACTIVATE");
         }
     }
 }

@@ -51,6 +51,7 @@ public class PoliceBehaviour : MonoBehaviour {
         animator = GetComponent<Animator>();
         start = false;
         move.move = true;
+        desk = null;
         cur_time = 0;
         light = transform.Find("Light").gameObject;
         light.SetActive(false);
@@ -106,7 +107,10 @@ public class PoliceBehaviour : MonoBehaviour {
             if (move.target == null)
             {
                 if (level.day)
+                {
                     behaviour = TypeAction.Investigate;
+                    desk = null;
+                }
                 else if (!to_cell)
                     Night(patrol);
             }
@@ -159,6 +163,7 @@ public class PoliceBehaviour : MonoBehaviour {
                 Desk c_desk = assign.desks[i].gameObject.GetComponent<Desk>();
                 if (c_desk.isAvailable())
                 {
+                    Debug.Log("Assigned:" + i);
                     desk = c_desk.setAgent(this.gameObject);
                     return;
                 }
@@ -182,8 +187,9 @@ public class PoliceBehaviour : MonoBehaviour {
         start = false;
         move.move = true;
         slider_task.gameObject.SetActive(false);
-        if (desk != null)
-            desk.Release();
+        behaviour = TypeAction.None;
+        desk.Release();
+        desk = null;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -231,11 +237,7 @@ public class PoliceBehaviour : MonoBehaviour {
 
     private void OnTriggerExit(Collider other)
     {
-        if (desk != null)
-        {
-            if (other == desk.getPoint().GetComponent<Collider>())
-                stopTask();
-        }
+
         if (other == GameObject.Find("Entrance").GetComponent<Collider>())
         {
             gameObject.GetComponent<SteeringCollisionAvoidance>().enabled = true;
@@ -246,8 +248,10 @@ public class PoliceBehaviour : MonoBehaviour {
     public void Night(int assign_patrol)
     {
         patrol = assign_patrol;
-        if(desk != null)
-            desk.Release();
+        if (desk != null)
+        {
+            stopTask();
+        }
 
         if (!to_cell)
         {
@@ -276,7 +280,7 @@ public class PoliceBehaviour : MonoBehaviour {
         light.SetActive(false);
         if (follow_path.patroling)
         {
-            behaviour = TypeAction.Exit;
+            behaviour = TypeAction.None;
             move.target = GameObject.Find("Exit");
             follow_path.calcPath(move.target.transform);
         }

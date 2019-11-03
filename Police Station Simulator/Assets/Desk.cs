@@ -5,13 +5,12 @@ using UnityEngine;
 public class Desk : MonoBehaviour {
 
     bool available;
-    PoliceBehaviour assigned;
+    public PoliceBehaviour assigned;
     Transform point;
 
 	// Use this for initialization
 	void Awake () {
         point = transform;
-        available = true;
     }
 	
 	// Update is called once per frame
@@ -22,19 +21,17 @@ public class Desk : MonoBehaviour {
     public Desk setAgent(GameObject agent)
     {
         assigned = agent.GetComponent<PoliceBehaviour>();
-        available = false;
         return this;
     }
 
     public void Release()
     {
         assigned = null;
-        available = true;
     }
 
    public bool isAvailable()
     {
-        return available;
+        return assigned == null;
     }
 
     public Transform getPoint()

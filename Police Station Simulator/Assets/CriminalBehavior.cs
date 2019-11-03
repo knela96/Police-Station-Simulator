@@ -115,6 +115,11 @@ public class CriminalBehavior : MonoBehaviour {
         }
     }
 
+    private void OnDestroy()
+    {
+        cell = null;
+    }
+
     public void arrive_cell()
     {
         follow_path.deleteCurve();
