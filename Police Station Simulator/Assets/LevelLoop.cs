@@ -40,12 +40,12 @@ public class LevelLoop : MonoBehaviour
     {
         if (day)
         {
-            if (cycle - timer1 > 10)
+            if (cycle - timer1 > 15)
             {
                 timer1 = cycle;
                 addCitizen(vec);
             }
-            if (cycle - timer2 > 22)
+            if (cycle - timer2 > 20)
             {
                 timer2 = cycle;
                 addPolicemen(vec);
