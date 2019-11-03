@@ -17,7 +17,7 @@ public class CriminalBehavior : MonoBehaviour {
     Animator anim;
     bool to_cell = false;
     LevelLoop level;
-    float timer = 30.0f;
+    float timer = 60.0f;
     
     // Use this for initialization
     void Awake()
@@ -30,11 +30,11 @@ public class CriminalBehavior : MonoBehaviour {
         follow_path.path = new NavMeshPath();
         c_agent = Instantiate(level.policemen_prebab[Random.Range(0, 2)], new Vector3(0, 0, 0), Quaternion.identity);
         c_agent.GetComponent<Move>().target = gameObject;
-        c_agent.transform.position = transform.position + Vector3.back * 3;
+        c_agent.transform.position = transform.position + Vector3.back;
         c_agent.gameObject.layer = 0;
 
         c_agent.GetComponent<SteeringPursue>().enabled = true;
-        c_agent.GetComponent<SteeringObstacleAvoidance>().enabled = false;
+        c_agent.GetComponent<SteeringObstacleAvoidance>().enabled = true;
         c_agent.GetComponent<SteeringCollisionAvoidance>().enabled = false;
         c_agent.GetComponent<PoliceBehaviour>().behaviour = PoliceBehaviour.TypeAction.Capture;
         c_agent.GetComponent<PoliceBehaviour>().to_cell = true;
@@ -141,22 +141,23 @@ public class CriminalBehavior : MonoBehaviour {
 
         if (c_agent == null && to_cell == true)
         {
-
-            timer -= Time.deltaTime; //timer
-            if (timer < 0 && level.day == false)
+            if (level.day == false)
             {
-                            
-                move.move = true;
-                anim.SetBool("sitting", false);
-                anim.SetBool("moving", true);
-                anim.SetBool("running", true);
-                move.run = true;
-                move.target = GameObject.Find("Exit");
-                follow_path.calcPath(move.target.transform);
-                to_cell = false;
+                timer -= Time.deltaTime; //timer
+                if (timer < 0)
+                {
+                    move.move = true;
+                    anim.SetBool("sitting", false);
+                    anim.SetBool("moving", true);
+                    anim.SetBool("running", true);
+                    move.run = true;
+                    move.target = GameObject.Find("Exit");
+                    follow_path.calcPath(move.target.transform);
+                    to_cell = false;
 
-                if (cell != null)
-                    cell.Release();
+                    if (cell != null)
+                        cell.Release();
+                }
             }
           
         }

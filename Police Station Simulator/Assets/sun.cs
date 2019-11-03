@@ -16,8 +16,8 @@ public class sun : MonoBehaviour
 
         day.a = 255f/255f;
         day.r = 255f/255f;
-        day.b = 196f/255f;
-        day.g = 239f/255f;
+        day.b = 255f/255f;
+        day.g = 255f/255f;
 
         night.a = 255f/255f;
         night.r = 165f/255f;

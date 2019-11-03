@@ -246,7 +246,6 @@ public class PoliceBehaviour : MonoBehaviour {
     public void Night(int assign_patrol)
     {
         patrol = assign_patrol;
-        light.SetActive(true);
         if(desk != null)
             desk.Release();
 
@@ -257,6 +256,7 @@ public class PoliceBehaviour : MonoBehaviour {
                 behaviour = TypeAction.Patrol;
                 follow_path.createPatrol(patrol,false);
                 move.move = true;
+                light.SetActive(true);
             }
             else
             {
