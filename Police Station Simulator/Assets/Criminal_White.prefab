@@ -212,7 +212,7 @@ MonoBehaviour:
   patroling: 0
   go: {fileID: 0}
   ratio_increment: 0.1
-  min_distance: 1
+  min_distance: 0.5
   arrived: 0
   going: 0
 --- !u!114 &2026912533443696240
@@ -260,11 +260,11 @@ MonoBehaviour:
     m_Bits: 512
   avoid_distance: 3
   l_rays:
-  - length: 2
+  - length: 1
     direction: {x: 10, y: 0, z: 10}
-  - length: 3
+  - length: 1.5
     direction: {x: 0, y: 0, z: 10}
-  - length: 2
+  - length: 1
     direction: {x: -10, y: 0, z: 10}
 --- !u!114 &1446269167397939667
 MonoBehaviour:
@@ -325,6 +325,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   move: 1
+  run: 0
+  run_multiplier: 2
+  cur_run_multiplier: 1
   movement_velocity:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}

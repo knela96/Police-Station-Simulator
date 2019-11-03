@@ -23,7 +23,7 @@ public class SteeringFollowPath : MonoBehaviour {
     int cur_patrol = -1;
 
     public float ratio_increment = 0.01f;
-    public float min_distance = 1.0f;
+    public float min_distance = 0.1f;
     float current_ratio = 0.0f;
     public bool arrived = false;
     public bool going = false;
@@ -49,6 +49,7 @@ public class SteeringFollowPath : MonoBehaviour {
                 if (current_ratio >= 1)
                 {
                     current_ratio = 0;
+                    going = true;
                 }
             }
             else
@@ -56,6 +57,7 @@ public class SteeringFollowPath : MonoBehaviour {
                 if (current_ratio >= 1)
                 {
                     arrived = true;
+                    going = false;
                     if (patroling)
                     {
                         createPatrol(cur_patrol,true);
@@ -73,25 +75,29 @@ public class SteeringFollowPath : MonoBehaviour {
             if (current_ratio <= 1.0f)
             {
                 if (distance.magnitude < min_distance)
-                {
-                    if (move.current_velocity.magnitude != 0)
-                        current_ratio += (ratio_increment * move.current_velocity.magnitude * Time.deltaTime) * move.cur_run_multiplier;
-                    else
-                        current_ratio += ratio_increment * Time.deltaTime;
-
-                }
+                    IncreaseRatio();
             }
 
             if (curve.PointsCount != 0)
             {
-                if ((curve.Points[curve.PointsCount - 1].PositionWorld - transform.position).magnitude < min_distance && current_ratio > 0.9)
+                if ((curve.Points[curve.PointsCount - 1].PositionWorld - transform.position).magnitude < min_distance && !patroling)
+                {
                     arrive.Steer(curve.Points[curve.PointsCount - 1].PositionWorld);
-            else
-                seek.Steer(target, seek.priority);
+                }
+                else
+                    seek.Steer(target, seek.priority);
             }
 
             face_heading.Steer(target);
         }
+    }
+
+    public void IncreaseRatio()
+    {
+        if (move.current_velocity.magnitude != 0)
+            current_ratio += (ratio_increment * move.current_velocity.magnitude * Time.deltaTime) * move.cur_run_multiplier;
+        else
+            current_ratio += ratio_increment * Time.deltaTime;
     }
 
 

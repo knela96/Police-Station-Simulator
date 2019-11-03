@@ -55,6 +55,10 @@ public class Move : MonoBehaviour {
                 if (movement_velocity[i].magnitude > 0.0f)
                 {
                     current_velocity += movement_velocity[i];
+
+                    //if (i < 4)
+                    //    GetComponent<SteeringFollowPath>().IncreaseRatio();
+
                     break;
                 }
             }
@@ -97,7 +101,6 @@ public class Move : MonoBehaviour {
         {
             movement_velocity[i] = Vector3.zero;
         }
-
         
         resetTransform();
     }

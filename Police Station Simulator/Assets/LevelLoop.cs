@@ -40,7 +40,7 @@ public class LevelLoop : MonoBehaviour
     {
         if (day)
         {
-            if (cycle - timer1 > 10)
+            if (cycle - timer1 > 12)
             {
                 timer1 = cycle;
                 addCitizen(vec);
@@ -50,10 +50,10 @@ public class LevelLoop : MonoBehaviour
                 timer2 = cycle;
                 addPolicemen(vec);
             }
-            if (cycle - timer3 > 10)
+            if (cycle - timer3 > 17)
             {
                 timer3 = cycle;
-                addCriminal(vec);
+               addCriminal(vec);
             }
             if (!actions)
             {
@@ -116,7 +116,7 @@ public class LevelLoop : MonoBehaviour
         if (c3 == 2)
             c3 = 0;
 
-        if (cycle >= 40)
+        if (cycle >= 90)
         {
             day = !day;
             cycle = 0;

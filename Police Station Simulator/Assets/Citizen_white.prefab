@@ -1073,7 +1073,7 @@ MonoBehaviour:
   patroling: 0
   go: {fileID: 0}
   ratio_increment: 0.1
-  min_distance: 1
+  min_distance: 0.5
   arrived: 0
   going: 0
 --- !u!114 &1059401674204408396
@@ -1110,7 +1110,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 874470827446112286}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80e3618e1707546a19fff3fb11d7c9eb, type: 3}
   m_Name: 
@@ -1120,7 +1120,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   avoid_distance: 3
-  l_rays: []
+  l_rays:
+  - length: 1
+    direction: {x: 10, y: 0, z: 10}
+  - length: 1.5
+    direction: {x: 0, y: 0, z: 10}
+  - length: 1
+    direction: {x: -10, y: 0, z: 10}
 --- !u!114 &468625210413684207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1137,7 +1143,7 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 256
-  search_radius: 5
+  search_radius: 3
 --- !u!114 &986821263607835842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1180,6 +1186,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   move: 1
+  run: 0
+  run_multiplier: 2
+  cur_run_multiplier: 1
   movement_velocity:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}

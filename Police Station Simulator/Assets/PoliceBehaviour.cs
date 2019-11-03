@@ -35,6 +35,7 @@ public class PoliceBehaviour : MonoBehaviour {
     int patrol = -1;
     public bool to_cell = false;
     public GameObject light;
+    SteeringObstacleAvoidance obstacle;
 
     // Use this for initialization
     void Awake()
@@ -46,6 +47,7 @@ public class PoliceBehaviour : MonoBehaviour {
         follow_path = GetComponent<SteeringFollowPath>();
         assign = desks.GetComponent<AssignDesk>();
         pursue = gameObject.GetComponent<SteeringPursue>();
+        obstacle = gameObject.GetComponent<SteeringObstacleAvoidance>();
         animator = GetComponent<Animator>();
         start = false;
         move.move = true;
@@ -219,7 +221,10 @@ public class PoliceBehaviour : MonoBehaviour {
         {
             if (other == desk.getPoint().GetComponent<Collider>())
             {
-                align.Steering(desk.getPoint());
+                if (follow_path.arrived)
+                {
+                    align.Steering(desk.getPoint());
+                }
             }
         }
     }
