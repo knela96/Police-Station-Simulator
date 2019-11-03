@@ -28,17 +28,19 @@ public class CriminalBehavior : MonoBehaviour {
         action = false;
         follow_path = gameObject.GetComponent<SteeringFollowPath>();
         follow_path.path = new NavMeshPath();
+
+        //Agent created to scort him to the cell, creates one each time a new criminal appears.
         c_agent = Instantiate(level.policemen_prebab[Random.Range(0, 2)], new Vector3(0, 0, 0), Quaternion.identity);
         c_agent.GetComponent<Move>().target = gameObject;
         c_agent.transform.position = transform.position + Vector3.back;
         c_agent.gameObject.layer = 0;
-
         c_agent.GetComponent<SteeringPursue>().enabled = true;
         c_agent.GetComponent<SteeringObstacleAvoidance>().enabled = true;
         c_agent.GetComponent<SteeringCollisionAvoidance>().enabled = true;
         c_agent.GetComponent<SteeringVelocityMatching>().enabled = true;
         c_agent.GetComponent<PoliceBehaviour>().behaviour = PoliceBehaviour.TypeAction.Capture;
         c_agent.GetComponent<PoliceBehaviour>().to_cell = true;
+
         anim = GetComponent<Animator>();
         cells = GameObject.Find("Cell");
 
@@ -57,7 +59,8 @@ public class CriminalBehavior : MonoBehaviour {
                 follow_path.calcPath(cell.getPoint());
             }
         }
-
+        
+        // Changes the Animtor booleans
         if (move.move == true)
         {
             anim.SetBool("moving", true);
@@ -73,6 +76,7 @@ public class CriminalBehavior : MonoBehaviour {
         
     }
 
+    //Assign each criminal a point to stand on the cell
     void AssignCell()
     {
         assign = cells.GetComponent<AssignCell>();
@@ -87,6 +91,7 @@ public class CriminalBehavior : MonoBehaviour {
         }
     }
 
+    //Triggers the steering behaviours
     private void OnTriggerEnter(Collider other)
     {
         if (other == GameObject.Find("Exit").GetComponent<Collider>())
@@ -121,6 +126,7 @@ public class CriminalBehavior : MonoBehaviour {
         cell = null;
     }
 
+    //Makes the criminal sit on the cell and disables the steering behaviours and changes the agent into an investigator .
     public void arrive_cell()
     {
         follow_path.deleteCurve();
@@ -143,6 +149,7 @@ public class CriminalBehavior : MonoBehaviour {
 
     }
 
+    //Set up night mode
     public void Night()
     {
 
@@ -150,7 +157,7 @@ public class CriminalBehavior : MonoBehaviour {
         {
             if (level.day == false)
             {
-                timer -= Time.deltaTime; //timer
+                timer -= Time.deltaTime; //timer to make the criminal wait before scaping
                 if (timer < 0)
                 {
                     move.move = true;

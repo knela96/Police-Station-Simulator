@@ -35,12 +35,13 @@ public class CitizenBehaviour : MonoBehaviour {
 
         Vector3 distance = move.target.transform.position - transform.position;
 
-        if (follow_path.arrived && !action && move.current_velocity == Vector3.zero) //create timer
+        if (follow_path.arrived && !action && move.current_velocity == Vector3.zero) 
         {
             anim.SetBool("moving", false);
-            timer -= Time.deltaTime; //timer
-            if (timer < 0) {
-             
+            timer -= Time.deltaTime;  
+
+            if (timer < 0) { // timer to make the citizen wait on the desk
+                        
                 move.target = GameObject.Find("Exit");
                 follow_path.calcPath(move.target.transform);
                 action = true;
@@ -50,6 +51,7 @@ public class CitizenBehaviour : MonoBehaviour {
             return;
         }
 
+        //Changes the Animator booleans 
         if (move.move == true)
         {
             anim.SetBool("moving", true);
@@ -69,6 +71,7 @@ public class CitizenBehaviour : MonoBehaviour {
         level.citizens.Remove(gameObject);
     }
 
+    //Triggers steering behaviours
     private void OnTriggerEnter(Collider other)
     {
         if (other == GameObject.Find("Exit").GetComponent<Collider>() && action)
@@ -92,6 +95,8 @@ public class CitizenBehaviour : MonoBehaviour {
         }
     }
 
+
+    //Set up for night mode
     public void Night()
     {
         action = true;
