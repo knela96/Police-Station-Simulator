@@ -1,108 +1,16 @@
-﻿//using UnityEngine;
-//using System.Collections;
-
-//public class SteeringCollisionAvoidance : SteeringAbstract
-//{
-
-//    public LayerMask mask;
-//    public float search_radius = 5.0f;
-
-//    Move move;
-
-//    // Use this for initialization
-//    void Awake()
-//    {
-//        move = GetComponent<Move>();
-//    }
-
-//    // Update is called once per frame
-//    void Update()
-//    {
-//        Collider[] colliders = Physics.OverlapSphere(transform.position, search_radius, mask);
-
-//        // collision data
-//        GameObject target = null;
-//        float target_shortest_time = float.PositiveInfinity;
-//        float target_min_separation = 0.0f;
-//        float target_distance = 0.0f;
-//        Vector3 target_relative_pos = Vector3.zero;
-//        Vector3 target_relative_vel = Vector3.zero;
-
-//        foreach (Collider col in colliders)
-//        {
-//            GameObject go = col.gameObject;
-
-//            if (go == gameObject)
-//                continue;
-
-//            Move target_move = go.GetComponent<Move>();
-
-//            if (target_move == null)
-//                continue;
-
-//            // calculate time to collision
-//            Vector3 relative_pos = go.transform.position - transform.position;
-//            Vector3 relative_vel = target_move.current_velocity - move.current_velocity;
-//            float relative_speed = relative_vel.magnitude;
-//            float time_to_collision = Vector3.Dot(relative_pos, relative_vel) / (relative_speed * relative_speed);
-
-//            // make sure there is a collision at all
-//            float distance = relative_pos.magnitude;
-//            float min_separation = distance - (relative_speed * time_to_collision);//CHANGE
-
-//            Debug.Log(min_separation);
-//            if (min_separation <= 2.0f * search_radius)
-//            {
-//                if ((time_to_collision > 0) && (time_to_collision < target_shortest_time))
-//                {
-//                    Debug.Log("Avoiding" + go.name + time_to_collision);
-//                    target = go;
-//                    target_shortest_time = time_to_collision;
-//                    target_min_separation = min_separation;
-//                    target_distance = distance;
-//                    target_relative_pos = relative_pos;
-//                    target_relative_vel = relative_vel;
-//                }
-//            }
-//        }
-
-//        //if we have a target, avoid collision
-//        if (target != null)
-//        {
-//            Vector3 escape_pos;
-//            if (target_min_separation <= 0.0 || target_distance <= search_radius * 2.0f)
-//                escape_pos = target.transform.position - transform.position;
-//            else
-//                escape_pos = target_relative_pos + (target_relative_vel * target_shortest_time);
-
-//            escape_pos.y = 0;
-//            move.AccelerateMovement(-(escape_pos.normalized * move.max_mov_acceleration), priority);
-//            move.resetTransform();
-//        }
-//    }
-
-//    void OnDrawGizmosSelected()
-//    {
-//        // Display the explosion radius when selected
-//        Gizmos.color = Color.yellow;
-//        Gizmos.DrawWireSphere(transform.position, search_radius);
-//    }
-//}
-
-
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class SteeringCollisionAvoidance : SteeringAbstract
 {
 
     public LayerMask mask;
-    public float search_radius = 5.0f;
+    public float radius = 2.0f;
 
     Move move;
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         move = GetComponent<Move>();
     }
@@ -110,61 +18,62 @@ public class SteeringCollisionAvoidance : SteeringAbstract
     // Update is called once per frame
     void Update()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, search_radius, mask);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, radius, mask);
 
         // collision data
-        GameObject target = null;
-        float target_shortest_time = float.PositiveInfinity;
-        float target_min_separation = 0.0f;
-        float target_distance = 0.0f;
-        Vector3 target_relative_pos = Vector3.zero;
-        Vector3 target_relative_vel = Vector3.zero;
+        GameObject aux_target = null;
+        float aux_separation = 0.0f;
+        float aux_distance = 0.0f;
+        Vector3 aux_position = Vector3.zero;
+        Vector3 aux_velocity = Vector3.zero;
 
-        foreach (Collider col in colliders)
+        float shortestTime = float.PositiveInfinity;
+
+        for (int i = 0; i < colliders.Length; ++i)
         {
-            GameObject go = col.gameObject;
+            GameObject target = colliders[i].gameObject;
 
-            if (go == gameObject)
+            if (target == gameObject)
                 continue;
 
-            Move target_move = go.GetComponent<Move>();
+            Move move_target = target.GetComponent<Move>();
 
-            if (target_move == null)
-                continue;
+            if(move_target != null) {
+                Vector3 position = target.transform.position - transform.position;
+                Vector3 velocity = move_target.current_velocity - move.current_velocity;
+                float speed = velocity.magnitude;
+                float time = Vector3.Dot(position, velocity) / (speed * speed);
 
-            // calculate time to collision
-            Vector3 relative_pos = go.transform.position - transform.position;
-            Vector3 relative_vel = target_move.current_velocity - move.current_velocity;
-            float relative_speed = relative_vel.magnitude;
-            float time_to_collision = Vector3.Dot(relative_pos, relative_vel) / relative_speed * relative_speed;
-
-            // make sure there is a collision at all
-            float distance = relative_pos.magnitude;
-            float min_separation = distance - relative_speed * time_to_collision;
-            if (min_separation > 2.0f * search_radius)
-                continue;
-
-            if (time_to_collision > target_shortest_time)
-                continue;
-
-            target = go;
-            target_shortest_time = time_to_collision;
-            target_min_separation = min_separation;
-            target_distance = distance;
-            target_relative_pos = relative_pos;
-            target_relative_vel = relative_vel;
+                float distance = position.magnitude;
+                float separation = distance - speed * time;
+                if(separation <= 2 * radius)
+                {
+                    if((time > 0) && (time < shortestTime))
+                    {
+                        shortestTime = time;
+                        aux_target = target;
+                        aux_separation = separation;
+                        aux_distance = distance;
+                        aux_position = position;
+                        aux_velocity = velocity;
+                    }
+                }
+            }
         }
 
         //if we have a target, avoid collision
-        if (target != null)
+        if (aux_target != null)
         {
-            Vector3 escape_pos;
-            if (target_min_separation <= 0.0f || target_distance < search_radius * 2.0f)
-                escape_pos = target.transform.position - transform.position;
+            Vector3 pos;
+            if (aux_separation <= 0.0f || aux_distance <= radius * 2.0f)
+                pos = aux_target.transform.position - transform.position;
             else
-                escape_pos = target_relative_pos + target_relative_vel * target_shortest_time;
+                pos = aux_position + (aux_velocity * shortestTime);
 
-            move.AccelerateMovement(-(escape_pos.normalized * move.max_mov_acceleration * 0.1f), priority);
+            pos.y = 0;
+            pos.Normalize();
+            move.AccelerateMovement((pos * -move.max_mov_acceleration), priority);
+            move.resetTransform();
         }
     }
 
@@ -172,7 +81,6 @@ public class SteeringCollisionAvoidance : SteeringAbstract
     {
         // Display the explosion radius when selected
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, search_radius);
+        Gizmos.DrawWireSphere(transform.position, radius);
     }
 }
-

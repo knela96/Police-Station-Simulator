@@ -88,7 +88,7 @@ public class CitizenBehaviour : MonoBehaviour {
         if (other == GameObject.Find("Entrance").GetComponent<Collider>())
         {
             gameObject.GetComponent<SteeringCollisionAvoidance>().enabled = true;
-            gameObject.GetComponent<SteeringSeparation>().enabled = true;
+            gameObject.GetComponent<SteeringSeparation>().enabled = false;
         }
     }
 

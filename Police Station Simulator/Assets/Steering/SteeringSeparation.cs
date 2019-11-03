@@ -23,21 +23,18 @@ public class SteeringSeparation : SteeringAbstract
         Vector3 accel = Vector3.zero;
         float acceleration = 0;
 
-        foreach (Collider col in colliders)
+        for(int i = 0; i < colliders.Length; ++i)
         {
-            GameObject entity = col.gameObject;
+            GameObject entity = colliders[i].gameObject;
 
             if (entity == gameObject)
                 continue;
 
             Vector3 direction = transform.position - entity.transform.position;
             float distance = direction.magnitude;
-
-            if (distance < search_radius)
-            {
-                acceleration = (1.0f - falloff.Evaluate(distance / search_radius)) * move.max_mov_acceleration;
-                accel += direction.normalized * acceleration;
-            }
+            
+            acceleration = (1.0f - falloff.Evaluate(distance / search_radius)) * move.max_mov_acceleration;
+            accel += direction.normalized * acceleration;
         }
 
         if (accel.magnitude > 0.0f)

@@ -644,13 +644,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   avoid_distance: 3
-  l_rays:
-  - length: 1
-    direction: {x: 10, y: 0, z: 10}
-  - length: 1.5
-    direction: {x: 0, y: 0, z: 10}
-  - length: 1
-    direction: {x: -10, y: 0, z: 10}
+  rays:
+  - direction: {x: -5, y: 0, z: 10}
+    length: 1.5
+  - direction: {x: 0, y: 0, z: 10}
+    length: 2
+  - direction: {x: 5, y: 0, z: 10}
+    length: 1.5
 --- !u!114 &4071082818492933115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -667,7 +667,7 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 256
-  search_radius: 3
+  radius: 2
 --- !u!114 &3697003190157449942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -741,7 +741,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3665154873280275978}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 782558cc3a6d845a990f61f72475c82d, type: 3}
   m_Name: 

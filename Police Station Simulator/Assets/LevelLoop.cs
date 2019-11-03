@@ -109,11 +109,11 @@ public class LevelLoop : MonoBehaviour
 
         cycle += Time.deltaTime;
 
-        if (c1 == 2)
+        if (c1 == citizens_prebab.Length)
             c1 = 0;
-        if (c2 == 2)
+        if (c2 == policemen_prebab.Length)
             c2 = 0;
-        if (c3 == 2)
+        if (c3 == criminals_prebab.Length)
             c3 = 0;
 
         if (cycle >= 120)
@@ -124,14 +124,14 @@ public class LevelLoop : MonoBehaviour
         }
     }
 
-    public void addPolicemen(Vector3 pos)
-    {
-        policemen.Add(Instantiate(policemen_prebab[c1], pos, Quaternion.Euler(0, 90, 0)));
-        c1++;
-    }
     public void addCitizen(Vector3 pos)
     {
-        citizens.Add(Instantiate(citizens_prebab[c2], pos, Quaternion.Euler(0, 90, 0)));
+        citizens.Add(Instantiate(citizens_prebab[c1], pos, Quaternion.Euler(0, 90, 0)));
+        c1++;
+    }
+    public void addPolicemen(Vector3 pos)
+    {
+        policemen.Add(Instantiate(policemen_prebab[c2], pos, Quaternion.Euler(0, 90, 0)));
         c2++;
     }
     public void addCriminal(Vector3 pos)

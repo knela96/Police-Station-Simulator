@@ -1361,7 +1361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e00aba7cc561b495a9a1faa0fad585dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  max_seconds_prediction: 2
+  max_seconds_prediction: 0.01
 --- !u!114 &2693230948829684448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1379,13 +1379,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   avoid_distance: 3
-  l_rays:
-  - length: 1
-    direction: {x: 10, y: 0, z: 10}
-  - length: 1.5
-    direction: {x: 0, y: 0, z: 10}
-  - length: 1
-    direction: {x: -10, y: 0, z: 10}
+  rays:
+  - direction: {x: -5, y: 0, z: 10}
+    length: 1.5
+  - direction: {x: 0, y: 0, z: 10}
+    length: 2
+  - direction: {x: 5, y: 0, z: 10}
+    length: 1.5
 --- !u!114 &766774281140992727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1402,7 +1402,7 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 256
-  search_radius: 3
+  radius: 2
 --- !u!114 &8906008413441049469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1415,7 +1415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 782558cc3a6d845a990f61f72475c82d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  priority: 1
+  priority: 2
   mask:
     serializedVersion: 2
     m_Bits: 256
