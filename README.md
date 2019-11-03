@@ -1,3 +1,6 @@
+# Police-Station-Simulator
+In this GOD style game, you are a new police captain and your duty is to lead this police station to maximum efficency.
+
 # Authors
 Eric Canela & Ferran Barnes
 
@@ -28,8 +31,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-# Police-Station-Simulator
-In this GOD style game, you are a new police captain and your duty is to lead this police station to maximum efficency.
+
 
 # Mechanics:
 
