@@ -1,10 +1,10 @@
-#Authors
+# Authors
 Eric Canela & Ferran Barnes
 
-#Github link
+# Github link
 https://github.com/knela96/Police-Station-Simulator
 
-#License
+# License
 
 MIT License
 
