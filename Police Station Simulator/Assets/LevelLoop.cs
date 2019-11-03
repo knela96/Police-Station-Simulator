@@ -116,7 +116,7 @@ public class LevelLoop : MonoBehaviour
         if (c3 == 2)
             c3 = 0;
 
-        if (cycle >= 90)
+        if (cycle >= 120)
         {
             day = !day;
             cycle = 0;

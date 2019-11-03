@@ -138,20 +138,6 @@ MonoBehaviour:
     pointTransform: {fileID: 0}
     curve: {fileID: 9128178669154348754}
     fieldsValues: []
-  - controlType: 0
-    positionLocal: {x: 0.27231264, y: 0, z: 33.509884}
-    controlFirstLocal: {x: -0.007254839, y: -0, z: -2.5613708}
-    controlSecondLocal: {x: 0.007254839, y: 0, z: 2.5613708}
-    pointTransform: {fileID: 0}
-    curve: {fileID: 9128178669154348754}
-    fieldsValues: []
-  - controlType: 1
-    positionLocal: {x: -0.17367458, y: 0, z: 21.3769}
-    controlFirstLocal: {x: 0.24321103, y: -0, z: 1.0458965}
-    controlSecondLocal: {x: -0.24321103, y: 0, z: -1.0458965}
-    pointTransform: {fileID: 0}
-    curve: {fileID: 9128178669154348754}
-    fieldsValues: []
   - controlType: 1
     positionLocal: {x: -10.358981, y: 0, z: 20.938377}
     controlFirstLocal: {x: 1.1358433, y: -0, z: 0.52178764}
