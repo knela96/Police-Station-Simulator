@@ -136,7 +136,7 @@ MonoBehaviour:
   ccName: 
   fields: 1
   mathType: 0
-  sectionParts: 30
+  sectionParts: 6
   optimizeStraightLines: 0
   tolerance: 0.2
   usePositionToCalculateTangents: 0

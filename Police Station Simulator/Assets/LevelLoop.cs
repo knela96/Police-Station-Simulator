@@ -94,8 +94,9 @@ public class LevelLoop : MonoBehaviour
                 if (go != null)
                     go.GetComponent<CitizenBehaviour>().Night();
             }
-            foreach (GameObject go in policemen)
+            for (int i = policemen.Count - 1 ; i >= 0; --i)
             {
+                GameObject go = policemen[i];
                 if(go != null)
                     go.GetComponent<PoliceBehaviour>().Night(patrol++);
             }

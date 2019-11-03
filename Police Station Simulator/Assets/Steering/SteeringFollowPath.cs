@@ -122,12 +122,17 @@ public class SteeringFollowPath : MonoBehaviour {
         going = true;
         move = GetComponent<Move>();
         move.move = true;
-        //Debug.Log(path.corners.Length);
+        current_ratio = 0;
+         //Debug.Log(path.corners.Length);
+
 
         go = Instantiate(path_prefab);
 
         curve = go.GetComponent<BGCurve>();
         curve_path = go.GetComponent<BGCcMath>();
+
+        if ((pivot.transform.position - target.transform.position).magnitude <= 10)
+            curve_path.SectionParts = 1; //set number of nodes between each Point
 
         for (int i = 0; i < path.corners.Length; ++i)
         {
@@ -166,7 +171,7 @@ public class SteeringFollowPath : MonoBehaviour {
             if (cur_patrol != -1)
             {
                 patroling = true;
-
+                move.target = null;
                 GameObject ob = new GameObject();
                 ob.transform.position = curve.Points[0].PositionWorld;
 

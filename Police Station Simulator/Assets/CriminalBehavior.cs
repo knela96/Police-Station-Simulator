@@ -35,7 +35,7 @@ public class CriminalBehavior : MonoBehaviour {
 
         c_agent.GetComponent<SteeringPursue>().enabled = true;
         c_agent.GetComponent<SteeringObstacleAvoidance>().enabled = true;
-        c_agent.GetComponent<SteeringCollisionAvoidance>().enabled = false;
+        c_agent.GetComponent<SteeringCollisionAvoidance>().enabled = true;
         c_agent.GetComponent<SteeringVelocityMatching>().enabled = true;
         c_agent.GetComponent<PoliceBehaviour>().behaviour = PoliceBehaviour.TypeAction.Capture;
         c_agent.GetComponent<PoliceBehaviour>().to_cell = true;

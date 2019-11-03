@@ -1319,7 +1319,7 @@ MonoBehaviour:
   patroling: 0
   go: {fileID: 0}
   ratio_increment: 0.1
-  min_distance: 0.5
+  min_distance: 1
   arrived: 0
   going: 0
 --- !u!114 &186623636977223028
