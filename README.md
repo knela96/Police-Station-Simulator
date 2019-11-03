@@ -41,8 +41,8 @@ As the police captain your job is to assign different workers to different tasks
 
 - Citizen: Brings crime notifications to the police station
 - Police: Works outside the police station and brings criminals to the containment cell.
-	*-Police(Guard): Patrols the police station to ensure security
-	*-Detective: It investigates the crimes brought by the citizens and sends the police.
+	- Police(Guard): Patrols the police station to ensure security
+	- Detective: It investigates the crimes brought by the citizens and sends the police.
 - Criminal: Tries to scape the containment cell.
 
 # Different Police station Rooms:
