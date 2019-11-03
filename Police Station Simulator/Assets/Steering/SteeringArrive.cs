@@ -30,6 +30,7 @@ public class SteeringArrive : SteeringAbstract {
             return;
         }
 
+        //Calculates desired speed
         float target_speed;
         if (distance < slow_distance)
             target_speed = move.max_mov_speed * (distance / slow_distance);
@@ -39,6 +40,7 @@ public class SteeringArrive : SteeringAbstract {
         Vector3 target_vel = direction.normalized * target_speed;
         Vector3 accel = (target_vel - move.current_velocity) / time_to_target;
 
+        //Clamps Acceleration
         if (accel.magnitude > move.max_mov_acceleration * move.cur_run_multiplier)
             accel = accel.normalized * move.max_mov_acceleration * move.cur_run_multiplier;
 

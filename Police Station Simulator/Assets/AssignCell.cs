@@ -11,7 +11,7 @@ public class AssignCell : MonoBehaviour
     {
         foreach (Transform child in gameObject.transform)
         {
-            cells.Add(child.gameObject);
+            cells.Add(child.gameObject); //Stores all cells
         }
 
     }

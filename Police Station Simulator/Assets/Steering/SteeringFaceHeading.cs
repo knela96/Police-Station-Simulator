@@ -26,7 +26,8 @@ public class SteeringFaceHeading : MonoBehaviour
             return;
 
         Vector3 direction = (target - transform.position).normalized;
-        
+
+        //Rotation to the current direction
         Quaternion lookRotation = Quaternion.LookRotation(direction);
 
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5);

@@ -20,7 +20,7 @@ public class SteeringCollisionAvoidance : SteeringAbstract
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, radius, mask);
 
-        // collision data
+        // Auxiliar data
         GameObject aux_target = null;
         float aux_separation = 0.0f;
         float aux_distance = 0.0f;
@@ -29,6 +29,7 @@ public class SteeringCollisionAvoidance : SteeringAbstract
 
         float shortestTime = float.PositiveInfinity;
 
+        //Checks all gameobjects in the radius of collision
         for (int i = 0; i < colliders.Length; ++i)
         {
             GameObject target = colliders[i].gameObject;
@@ -38,6 +39,7 @@ public class SteeringCollisionAvoidance : SteeringAbstract
 
             Move move_target = target.GetComponent<Move>();
 
+            //Store the current target going to collide
             if(move_target != null) {
                 Vector3 position = target.transform.position - transform.position;
                 Vector3 velocity = move_target.current_velocity - move.current_velocity;
@@ -61,7 +63,7 @@ public class SteeringCollisionAvoidance : SteeringAbstract
             }
         }
 
-        //if we have a target, avoid collision
+        //Avoid Collision if there is a target
         if (aux_target != null)
         {
             Vector3 pos;

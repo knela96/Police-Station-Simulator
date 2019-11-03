@@ -26,6 +26,7 @@ public class SteeringObstacleAvoidance : SteeringAbstract {
     // Update is called once per frame
     void Update () 
     {
+        //Get the angle and rotation of the movement
         float angle = Mathf.Atan2(move.current_velocity.x, move.current_velocity.z);
         Quaternion rotation = Quaternion.AngleAxis(Mathf.Rad2Deg * angle, Vector3.up);
 
@@ -33,7 +34,7 @@ public class SteeringObstacleAvoidance : SteeringAbstract {
         {
             O_Ray ray = rays[i];
             RaycastHit ray_hit;
-
+            //Check if the Raycast has hitten any Collider and go to the normal found
             if (Physics.Raycast(transform.position, rotation * ray.direction.normalized, out ray_hit, ray.length, mask) == true)
             {
                 Vector3 target = new Vector3(ray_hit.point.x, 0, ray_hit.point.z);

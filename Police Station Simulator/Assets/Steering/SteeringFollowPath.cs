@@ -44,7 +44,7 @@ public class SteeringFollowPath : MonoBehaviour {
 	{
         if(curve != null)
         {
-            if (patroling && arrived)
+            if (patroling && arrived) //if is patrolling and arrives at the end of the path, start again
             {
                 if (current_ratio >= 1)
                 {
@@ -54,7 +54,7 @@ public class SteeringFollowPath : MonoBehaviour {
             }
             else
             {
-                if (current_ratio >= 1)
+                if (current_ratio >= 1)//if it is doing a path when it arrives at the end create a patrol if is in Patrol Behaviour, or stop moving
                 {
                     arrived = true;
                     going = false;
@@ -72,6 +72,7 @@ public class SteeringFollowPath : MonoBehaviour {
 
             Vector3 distance = transform.position - target;
 
+            //Move the agent while has not reached the end
             if (current_ratio <= 1.0f)
             {
                 if (distance.magnitude < min_distance)
@@ -88,6 +89,7 @@ public class SteeringFollowPath : MonoBehaviour {
                     seek.Steer(target, seek.priority);
             }
 
+            //ALign the agent to the movement motion
             face_heading.Steer(target);
         }
     }
@@ -108,6 +110,7 @@ public class SteeringFollowPath : MonoBehaviour {
 
     public void deleteCurve()
     {
+        //Resets the path and deletes it
         curve = null;
         curve_path = null;
         current_ratio = 0;
@@ -118,7 +121,7 @@ public class SteeringFollowPath : MonoBehaviour {
     public void calcPath(Transform target)
     {
         deleteCurve();
-        NavMesh.CalculatePath(pivot.transform.position, target.transform.position, NavMesh.AllAreas, path);
+        NavMesh.CalculatePath(pivot.transform.position, target.transform.position, NavMesh.AllAreas, path); //Get the NavMesh path
         arrived = false;
         going = true;
         move = GetComponent<Move>();
@@ -127,14 +130,17 @@ public class SteeringFollowPath : MonoBehaviour {
          //Debug.Log(path.corners.Length);
 
 
-        go = Instantiate(path_prefab);
+        go = Instantiate(path_prefab); //Instantiate a path prefab with a curve component
 
+        //Load the curve component
         curve = go.GetComponent<BGCurve>();
         curve_path = go.GetComponent<BGCcMath>();
 
+        //If the destiny and origin are to close, change the ammount of nodes from one point to another
         if ((pivot.transform.position - target.transform.position).magnitude <= 10)
             curve_path.SectionParts = 1; //set number of nodes between each Point
 
+        //Create the points of the curve with the NavMesh loaded
         for (int i = 0; i < path.corners.Length; ++i)
         {
             curve.AddPoint(new BGCurvePoint(curve, new Vector3(path.corners[i].x,0, path.corners[i].z), BGCurvePoint.ControlTypeEnum.Absent, path.corners[i], path.corners[i], true));
@@ -144,6 +150,7 @@ public class SteeringFollowPath : MonoBehaviour {
 
     public void createPatrol(int patrol,bool position)
     {
+        //If the agent has arrived at the beggining of the Patrol path, create it to start patrolling
         if (position)
         {
             deleteCurve();
@@ -159,6 +166,7 @@ public class SteeringFollowPath : MonoBehaviour {
         }
         else
         {
+            //If not, the agent has to move to the beggining of the Patrol path from the current location
             deleteCurve();
             cur_patrol = patrol;
             if (patrol == 1)
@@ -181,11 +189,6 @@ public class SteeringFollowPath : MonoBehaviour {
                 Destroy(ob);
             }
         }
-
-        //for (int i = 0; i < path.corners.Length; ++i)
-        //{
-        //    curve.AddPoint(new BGCurvePoint(curve, path.corners[i], BGCurvePoint.ControlTypeEnum.BezierSymmetrical, path.corners[i], path.corners[i], true));
-        //}
     }
 
     void OnDrawGizmosSelected() 

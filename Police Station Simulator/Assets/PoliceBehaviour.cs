@@ -74,6 +74,7 @@ public class PoliceBehaviour : MonoBehaviour {
         {
             if (desk == null)
             {
+                //Assign desk Available and create path
                 AssignDesk(behaviour);
                 if (desk != null)
                 {
@@ -84,23 +85,21 @@ public class PoliceBehaviour : MonoBehaviour {
 
             if (start && move.current_velocity == Vector3.zero)
             {
+                //if the Entity has arrived to the desk, start the Routine of "Investigating"
                 animator.SetBool("moving", false);
                 move.move = false;
                 follow_path.deleteCurve();
                 cur_time += Time.deltaTime;
-                slider_task.value = cur_time / time_task;
+                slider_task.value = cur_time / time_task; //task completion
             }
             if (cur_time >= time_task)
             {
+                //Ends the task and create a path to the Exit
                 stopTask();
                 move.target = GameObject.Find("Exit");
                 follow_path.calcPath(move.target.transform);
                 cur_time = 0;
             }
-        }
-        else if (behaviour == TypeAction.Patrol)
-        {
-
         }
         else if (behaviour == TypeAction.Capture)
         {
@@ -115,10 +114,11 @@ public class PoliceBehaviour : MonoBehaviour {
                     Night(patrol);
             }
             if (move.target != null)
-                pursue.Steer(move.target.transform.position, move.target.GetComponent<Move>().current_velocity);
+                pursue.Steer(move.target.transform.position, move.target.GetComponent<Move>().current_velocity); //Will pursue the Criminal until it arrives to the cell
         }
         else if(behaviour == TypeAction.Receptionist)
         {
+            //Assign the entity to the reception desk
             if (desk == null)
             {
                 AssignDesk(behaviour);
@@ -173,7 +173,7 @@ public class PoliceBehaviour : MonoBehaviour {
     public void startTask()
     {
         start = true;
-        slider_task.gameObject.SetActive(true);
+        slider_task.gameObject.SetActive(true); //active the progress bar UI
         cur_time = 0;
     }
     public void resumeTask()
@@ -197,7 +197,7 @@ public class PoliceBehaviour : MonoBehaviour {
         {
             if (other == desk.getPoint().GetComponent<Collider>())
             {
-                align.Steering(desk.getPoint());
+                align.Steering(desk.getPoint()); //Align the entity to the direction of the desk when it arrives
                 if (behaviour == TypeAction.Investigate)
                 {
                     if (cur_time < time_task && cur_time > 0)
@@ -246,20 +246,21 @@ public class PoliceBehaviour : MonoBehaviour {
 
     public void Night(int assign_patrol)
     {
+        //Assign the routine on the Night Cycle
         patrol = assign_patrol;
         if (desk != null)
         {
             stopTask();
         }
 
-        if (!to_cell)
+        if (!to_cell) //if is not escorting any criminal assign the patrol depending on its availability
         {
             if (patrol < 2 && patrol >= 0)
             {
                 behaviour = TypeAction.Patrol;
-                follow_path.createPatrol(patrol,false);
+                follow_path.createPatrol(patrol,false); //Create a path to the start of the patrol path
                 move.move = true;
-                light.SetActive(true);
+                light.SetActive(true); //If is patrolling activate a Torchlight
             }
             else
             {
@@ -276,7 +277,7 @@ public class PoliceBehaviour : MonoBehaviour {
 
     public void Day()
     {
-        light.SetActive(false);
+        light.SetActive(false); //Turn off Torchlight
         if (follow_path.patroling)
         {
             behaviour = TypeAction.None;

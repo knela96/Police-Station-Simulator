@@ -27,14 +27,15 @@ public class SteeringSeparation : SteeringAbstract
         {
             GameObject entity = colliders[i].gameObject;
 
-            if (entity == gameObject)
-                continue;
+            //Accelerate the target with the curve form
+            if (entity != gameObject)
+            {
+                Vector3 direction = transform.position - entity.transform.position;
+                float distance = direction.magnitude;
 
-            Vector3 direction = transform.position - entity.transform.position;
-            float distance = direction.magnitude;
-            
-            acceleration = (1.0f - falloff.Evaluate(distance / search_radius)) * move.max_mov_acceleration;
-            accel += direction.normalized * acceleration;
+                acceleration = (1.0f - falloff.Evaluate(distance / search_radius)) * move.max_mov_acceleration;
+                accel += direction.normalized * acceleration;
+            }
         }
 
         if (accel.magnitude > 0.0f)

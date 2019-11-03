@@ -24,9 +24,11 @@ public class SteeringAlign : MonoBehaviour
 
     public void Steering(Transform target)
     {
+
         float rotation = Vector3.SignedAngle(transform.forward, move.target.transform.forward, Vector3.up);
         float rotationSize = Mathf.Abs(rotation);
 
+        //check if angle is minimum and stop rotating
         if (rotationSize < min_angle)
         {
             move.SetRotationVelocity(0.0f);

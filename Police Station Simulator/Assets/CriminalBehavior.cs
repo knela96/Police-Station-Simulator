@@ -32,7 +32,6 @@ public class CriminalBehavior : MonoBehaviour {
         c_agent.GetComponent<Move>().target = gameObject;
         c_agent.transform.position = transform.position + Vector3.back;
         c_agent.gameObject.layer = 0;
-
         c_agent.GetComponent<SteeringPursue>().enabled = true;
         c_agent.GetComponent<SteeringObstacleAvoidance>().enabled = true;
         c_agent.GetComponent<SteeringCollisionAvoidance>().enabled = true;
