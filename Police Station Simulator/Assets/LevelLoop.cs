@@ -40,6 +40,7 @@ public class LevelLoop : MonoBehaviour
     {
         if (day)
         {
+            //Spawn Entites evey x time
             if (cycle - timer1 > 15)
             {
                 timer1 = cycle;
@@ -57,11 +58,7 @@ public class LevelLoop : MonoBehaviour
             }
             if (!actions)
             {
-                //foreach (GameObject go in citizens)
-                //{
-                //    if (go != null)
-                //        go.GetComponent<CitizenBehaviour>().Day();
-                //}
+                //Change the behaviour to Day
                 foreach (GameObject go in policemen)
                 {
                     if (go != null)
@@ -71,11 +68,6 @@ public class LevelLoop : MonoBehaviour
                 GameObject ob = Instantiate(policemen_prebab[Random.Range(0, policemen_prebab.Length - 1)], GameObject.Find("Entrance").transform.position, Quaternion.Euler(0, 90, 0));
                 ob.GetComponent<PoliceBehaviour>().behaviour = PoliceBehaviour.TypeAction.Receptionist;
                 policemen.Add(ob);
-                //foreach (GameObject go in criminals)
-                //{
-                //    if (go != null)
-                //        go.GetComponent<CriminalBehavior>().Day();
-                //}
 
                 timer1 = 0;
                 timer2 = -15;
@@ -88,7 +80,7 @@ public class LevelLoop : MonoBehaviour
         else if(!actions && !day)
         {
             patrol = 0;
-
+            //Change the behavior of all entities to Night
             foreach (GameObject go in citizens)
             {
                 if (go != null)
@@ -110,6 +102,7 @@ public class LevelLoop : MonoBehaviour
 
         cycle += Time.deltaTime;
 
+        //Resets the counter to show all possible agents
         if (c1 == citizens_prebab.Length)
             c1 = 0;
         if (c2 == policemen_prebab.Length)
@@ -117,6 +110,7 @@ public class LevelLoop : MonoBehaviour
         if (c3 == criminals_prebab.Length)
             c3 = 0;
 
+        //Changes the cycle of day and night
         if (cycle >= 120)
         {
             day = !day;

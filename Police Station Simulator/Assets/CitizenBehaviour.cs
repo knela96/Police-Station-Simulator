@@ -45,7 +45,6 @@ public class CitizenBehaviour : MonoBehaviour {
                 move.target = GameObject.Find("Exit");
                 follow_path.calcPath(move.target.transform);
                 action = true;
-                //Instantiate(level.citizens[Random.Range(0, level.citizens.Length - 1)], GameObject.Find("Entrance").transform.position,Quaternion.Euler(0,90,0));
             }
           
             return;

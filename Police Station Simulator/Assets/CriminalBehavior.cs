@@ -60,7 +60,7 @@ public class CriminalBehavior : MonoBehaviour {
             }
         }
         
-        // Changes the Animtor booleans
+        // Changes the Animator booleans
         if (move.move == true)
         {
             anim.SetBool("moving", true);
