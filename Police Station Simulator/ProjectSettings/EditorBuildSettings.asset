@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/PoliceScene.unity
+    guid: 91b671483cf03f6438d97e86b32fde27
   m_configObjects: {}

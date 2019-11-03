@@ -163,7 +163,6 @@ public class PoliceBehaviour : MonoBehaviour {
                 Desk c_desk = assign.desks[i].gameObject.GetComponent<Desk>();
                 if (c_desk.isAvailable())
                 {
-                    Debug.Log("Assigned:" + i);
                     desk = c_desk.setAgent(this.gameObject);
                     return;
                 }
