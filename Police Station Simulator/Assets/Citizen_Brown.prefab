@@ -1132,7 +1132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   min_angle: 1
   slow_angle: 0.1
-  time_to_accel: 1
+  time_to_accel: 2
 --- !u!114 &253765627340107880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1149,7 +1149,7 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 512
-  avoid_distance: 3
+  avoid_distance: 0.5
   rays:
   - direction: {x: -5, y: 0, z: 10}
     length: 1.5
@@ -1235,7 +1235,7 @@ MonoBehaviour:
   arrow: {fileID: 2842764195244687506}
   max_mov_speed: 2.5
   max_mov_acceleration: 0.5
-  max_rot_speed: 50
+  max_rot_speed: 90
   max_rot_acceleration: 5
   current_velocity: {x: 0, y: 0, z: 0}
   current_rotation_speed: 0
@@ -1293,7 +1293,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb364bbf5c8a6604d9b2b6768843f28a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  point: {fileID: 0}
   pivot: {fileID: 2804499221230561318}
+  behaviour: 0
+  assign: {fileID: 0}
 --- !u!1 &2802331339290519296
 GameObject:
   m_ObjectHideFlags: 0

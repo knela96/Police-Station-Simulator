@@ -41,7 +41,7 @@ public class LevelLoop : MonoBehaviour
         if (day)
         {
             //Spawn Entites evey x time
-            if (cycle - timer1 > 15)
+            if (cycle - timer1 > 3)//15
             {
                 timer1 = cycle;
                 addCitizen(vec);

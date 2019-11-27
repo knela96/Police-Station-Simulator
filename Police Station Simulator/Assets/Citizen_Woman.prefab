@@ -1276,7 +1276,7 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 512
-  avoid_distance: 3
+  avoid_distance: 0.5
   rays:
   - direction: {x: -5, y: 0, z: 10}
     length: 1.5
@@ -1362,7 +1362,7 @@ MonoBehaviour:
   arrow: {fileID: 474918231008068413}
   max_mov_speed: 2.5
   max_mov_acceleration: 0.5
-  max_rot_speed: 50
+  max_rot_speed: 90
   max_rot_acceleration: 5
   current_velocity: {x: 0, y: 0, z: 0}
   current_rotation_speed: 0
@@ -1420,7 +1420,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb364bbf5c8a6604d9b2b6768843f28a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  point: {fileID: 0}
   pivot: {fileID: 508673983334001545}
+  behaviour: 0
+  assign: {fileID: 0}
 --- !u!1 &506407582936074863
 GameObject:
   m_ObjectHideFlags: 0
