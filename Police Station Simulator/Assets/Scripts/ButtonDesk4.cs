@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonCell7 : MonoBehaviour
+public class ButtonDesk4 : MonoBehaviour
 {
     LevelLoop level;
 
-    GameObject Cell7;
+    GameObject Desk10;
 
     // Start is called before the first frame update
     void Awake()
     {
         level = GameObject.Find("Level").GetComponent<LevelLoop>();
 
-        Cell7 = GameObject.Find("CellP 7");
+        Desk10 = GameObject.Find("desk10");
 
     }
     // Update is called once per frame
@@ -21,8 +21,8 @@ public class ButtonCell7 : MonoBehaviour
     public void Activenow()
     {
 
-        Cell7.SetActive(true);
-        gameObject.SetActive(false);
+        Desk10.SetActive(true);
 
+        gameObject.SetActive(false);
     }
 }

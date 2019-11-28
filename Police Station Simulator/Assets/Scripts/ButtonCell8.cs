@@ -22,7 +22,7 @@ public class ButtonCell8 : MonoBehaviour
     {
 
         Cell8.SetActive(true);
-
+        gameObject.SetActive(false);
 
     }
 }
