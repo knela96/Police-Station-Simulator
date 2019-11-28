@@ -976,6 +976,8 @@ GameObject:
   - component: {fileID: 989905504523235888}
   - component: {fileID: 2975830850487206248}
   - component: {fileID: 385533040427082495}
+  - component: {fileID: 1645205127521508518}
+  - component: {fileID: 1937876030603484057}
   m_Layer: 8
   m_Name: Citizen_white
   m_TagString: Untagged
@@ -1265,8 +1267,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   point: {fileID: 0}
   pivot: {fileID: 876681405588149654}
+  rP: {fileID: 0}
   behaviour: 0
   assign: {fileID: 0}
+--- !u!114 &1645205127521508518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 874470827446112286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aad115aca74ce3c4891b3f6de0b4aae8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boundGraphSerialization: 
+  boundGraphObjectReferences: []
+  enableAction: 0
+  disableAction: 0
+  _graph: {fileID: 11400000, guid: 0fcda21d776041447a6b05dc0a04fe05, type: 2}
+  _blackboard: {fileID: 1937876030603484057}
+--- !u!114 &1937876030603484057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 874470827446112286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b98a6db0b653f764eac834f85857a9dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _serializedBlackboard: '{"_variables":{"myPoint":{"_propertyPath":"CitizenBehaviour.point","_name":"myPoint","_id":"fd2ae1e5-c7dc-45ba-90f3-35062f362223","$type":"NodeCanvas.Framework.Variable`1[[Point,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Behaviour":{"_propertyPath":"CitizenBehaviour.behaviour","_name":"Behaviour","_id":"058dd05c-ffee-4e51-ae92-9da40c38d4b9","$type":"NodeCanvas.Framework.Variable`1[[CitizenBehaviour+TypeAction,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
+  _objectReferences: []
 --- !u!1 &874486538209572558
 GameObject:
   m_ObjectHideFlags: 0

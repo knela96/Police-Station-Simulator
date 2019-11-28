@@ -1134,6 +1134,8 @@ GameObject:
   - component: {fileID: 475530613274774575}
   - component: {fileID: 2479780497336500087}
   - component: {fileID: 1043714835512794336}
+  - component: {fileID: 7768925808611450753}
+  - component: {fileID: 2115459292530477484}
   m_Layer: 8
   m_Name: Citizen_Woman
   m_TagString: Untagged
@@ -1424,6 +1426,40 @@ MonoBehaviour:
   pivot: {fileID: 508673983334001545}
   behaviour: 0
   assign: {fileID: 0}
+--- !u!114 &7768925808611450753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506386439374679553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aad115aca74ce3c4891b3f6de0b4aae8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boundGraphSerialization: 
+  boundGraphObjectReferences: []
+  enableAction: 0
+  disableAction: 0
+  _graph: {fileID: 11400000, guid: 0fcda21d776041447a6b05dc0a04fe05, type: 2}
+  _blackboard: {fileID: 2115459292530477484}
+--- !u!114 &2115459292530477484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506386439374679553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b98a6db0b653f764eac834f85857a9dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _serializedBlackboard: '{"_variables":{"myPoint":{"_propertyPath":"CitizenBehaviour.point","_name":"myPoint","_id":"fd2ae1e5-c7dc-45ba-90f3-35062f362223","$type":"NodeCanvas.Framework.Variable`1[[Point,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Behaviour":{"_propertyPath":"CitizenBehaviour.behaviour","_name":"Behaviour","_id":"058dd05c-ffee-4e51-ae92-9da40c38d4b9","$type":"NodeCanvas.Framework.Variable`1[[CitizenBehaviour+TypeAction,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
+  _objectReferences: []
 --- !u!1 &506407582936074863
 GameObject:
   m_ObjectHideFlags: 0

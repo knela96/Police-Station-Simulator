@@ -21,10 +21,10 @@ public class CitizenBehaviour : MonoBehaviour {
     public Transform pivot;
     public NavMeshPath path;
     SteeringFollowPath follow_path;
-    GameObject rP;
+    public GameObject rP;
     LevelLoop level;
     Animator anim;
-    float timer = 3.0f;
+    public float timer = 3.0f;
     public TypeAction behaviour;
     public AssignPoints assign = null;
 
@@ -42,6 +42,7 @@ public class CitizenBehaviour : MonoBehaviour {
         behaviour = TypeAction.None;
         level = GameObject.Find("Level").GetComponent<LevelLoop>();
         anim = GetComponent<Animator>();
+        //AssignPoint(behaviour);
     }
 	
 	// Update is called once per frame
@@ -76,20 +77,8 @@ public class CitizenBehaviour : MonoBehaviour {
                 return;
             }
 
-            if (rP.GetComponent<Point>().isAvailable())
-            {
-                move.move = true;
-                anim.SetBool("moving", true);
-                anim.SetBool("sitting", false);
-                transform.position = new Vector3(point.transform.position.x + (1.3f * point.transform.forward.x), 0.0f, point.transform.position.z + (1.3f * point.transform.forward.z));
-                behaviour = TypeAction.Reception;
-                rP.GetComponent<Point>().setAgent(gameObject);
-                move.target = rP;
-                follow_path.calcPath(move.target.transform);
-            }
+            
         }
-
-
 
         //Changes the Animator booleans 
         if (move.move == true)
@@ -103,6 +92,22 @@ public class CitizenBehaviour : MonoBehaviour {
             anim.SetBool("moving", false);
         }
 
+    }
+
+    public void checkReceptionAvailability()
+    {
+        if (rP.GetComponent<Point>().isAvailable())
+        {
+            move.move = true;
+            anim.SetBool("moving", true);
+            anim.SetBool("sitting", false);
+            transform.position = new Vector3(point.transform.position.x + (1.3f * point.transform.forward.x), 0.0f, point.transform.position.z + (1.3f * point.transform.forward.z));
+            behaviour = TypeAction.Reception;
+            rP.GetComponent<Point>().setAgent(gameObject);
+            move.target = rP;
+            point.Release();
+            follow_path.calcPath(move.target.transform);
+        }
     }
 
     public void AssignPoint(TypeAction type)
@@ -121,7 +126,6 @@ public class CitizenBehaviour : MonoBehaviour {
             if (c_point.isAvailable() && assign.numAssigned == 0)
             {
                 point = c_point.setAgent(this.gameObject);
-                return;
             }
         }
         else if (TypeAction.Wait == type)
@@ -132,7 +136,7 @@ public class CitizenBehaviour : MonoBehaviour {
                 if (c_point.isAvailable())
                 {
                     point = c_point.setAgent(this.gameObject);
-                    return;
+                    break;
                 }
             }
         }

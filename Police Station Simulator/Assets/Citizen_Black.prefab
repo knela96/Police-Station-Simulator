@@ -823,8 +823,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b98a6db0b653f764eac834f85857a9dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _serializedBlackboard: '{"_variables":{"setPoint":{"_name":"setPoint","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
+  _serializedBlackboard: '{"_variables":{"myPoint":{"_propertyPath":"CitizenBehaviour.point","_name":"myPoint","_id":"fd2ae1e5-c7dc-45ba-90f3-35062f362223","$type":"NodeCanvas.Framework.Variable`1[[Point,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Behaviour":{"_propertyPath":"CitizenBehaviour.behaviour","_name":"Behaviour","_id":"058dd05c-ffee-4e51-ae92-9da40c38d4b9","$type":"NodeCanvas.Framework.Variable`1[[CitizenBehaviour+TypeAction,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
   _objectReferences: []
 --- !u!1 &3665206471641509028
 GameObject:
