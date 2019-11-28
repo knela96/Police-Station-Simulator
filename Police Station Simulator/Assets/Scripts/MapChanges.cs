@@ -6,33 +6,40 @@ public class MapChanges : MonoBehaviour
 {
     int countdown = 0;
     LevelLoop level;
-    GameObject Levelaugm;
-    GameObject Wall1;
-    GameObject Wall2;
+    GameObject Cell3;
+    GameObject Cell4;
+    GameObject Cell5;
+    GameObject Cell6;
+    GameObject Cell7;
+    GameObject Cell8;
+    GameObject Cell9;
     // Start is called before the first frame update
     void Awake()
     {
         level = GameObject.Find("Level").GetComponent<LevelLoop>();
-        Levelaugm = GameObject.Find("Phase2");
-        Wall1 = GameObject.Find("StWall");
-        Wall2 = GameObject.Find(" Phase2 Wall");
-       
-        Levelaugm.SetActive(false);
-        Wall1.SetActive(true);
-        Wall2.SetActive(false);
+        Cell3 = GameObject.Find("CellP 3");
+        Cell4 = GameObject.Find("CellP 4");
+        Cell5 = GameObject.Find("CellP 5");
+        Cell6 = GameObject.Find("CellP 6");
+        Cell7 = GameObject.Find("CellP 7");
+        Cell8 = GameObject.Find("CellP 8");
+        Cell9 = GameObject.Find("CellP 9");
+
+
+        Cell3.SetActive(false);
+        Cell4.SetActive(false);
+        Cell5.SetActive(false);
+        Cell6.SetActive(false);
+        Cell7.SetActive(false);
+        Cell8.SetActive(false);
+        Cell9.SetActive(false);
+
+
     }
     // Update is called once per frame
+
     void Update()
     {
-
-        if (level.getCycle() >= 119.9f) { 
-            countdown++;
-        }
-
-        if (countdown == 4) {
-            Levelaugm.SetActive(true);
-            Wall1.SetActive(false);
-        }
 
     }
 }
