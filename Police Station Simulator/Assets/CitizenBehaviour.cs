@@ -39,19 +39,7 @@ public class CitizenBehaviour : MonoBehaviour {
         follow_path.path = new NavMeshPath();
         rP = GameObject.Find("Reception_Point");
         assign = GameObject.Find("Sofas").GetComponent<AssignPoints>();
-        if (assign.numAssigned == 0)
-        {
-            rP.GetComponent<Point>().setAgent(gameObject);
-            behaviour = TypeAction.Reception;
-            move.target = rP;
-        }
-        else
-        {
-            behaviour = TypeAction.Wait;
-            AssignPoint(behaviour);
-            move.target = point.gameObject;
-        }
-        follow_path.calcPath(move.target.transform);
+        behaviour = TypeAction.None;
         level = GameObject.Find("Level").GetComponent<LevelLoop>();
         anim = GetComponent<Animator>();
     }
@@ -117,12 +105,20 @@ public class CitizenBehaviour : MonoBehaviour {
 
     }
 
-    void AssignPoint(TypeAction type)
+    public void AssignPoint(TypeAction type)
     {
+        if (type == TypeAction.None)
+        {
+            if (assign.numAssigned == 0)
+                type = TypeAction.Reception;
+            else
+                type = TypeAction.Wait;
+        }
+
         if (TypeAction.Reception == type)
         {
             Point c_point = rP.GetComponent<Point>();
-            if (c_point.isAvailable())
+            if (c_point.isAvailable() && assign.numAssigned == 0)
             {
                 point = c_point.setAgent(this.gameObject);
                 return;
@@ -140,6 +136,9 @@ public class CitizenBehaviour : MonoBehaviour {
                 }
             }
         }
+        move.target = point.gameObject;
+        follow_path.calcPath(move.target.transform);
+        behaviour = type;
     }
 
     private void OnDestroy()

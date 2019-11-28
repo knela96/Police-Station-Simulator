@@ -501,6 +501,8 @@ GameObject:
   - component: {fileID: 3693894707776586788}
   - component: {fileID: 1707926395361425276}
   - component: {fileID: 4298175826943448299}
+  - component: {fileID: -7030825637280785757}
+  - component: {fileID: -3488787836033587244}
   m_Layer: 8
   m_Name: Citizen_Black
   m_TagString: Untagged
@@ -791,6 +793,39 @@ MonoBehaviour:
   pivot: {fileID: 3662861850723361666}
   behaviour: 0
   assign: {fileID: 0}
+--- !u!114 &-7030825637280785757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3665154873280275978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aad115aca74ce3c4891b3f6de0b4aae8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boundGraphSerialization: 
+  boundGraphObjectReferences: []
+  enableAction: 0
+  disableAction: 0
+  _graph: {fileID: 11400000, guid: 0fcda21d776041447a6b05dc0a04fe05, type: 2}
+  _blackboard: {fileID: -3488787836033587244}
+--- !u!114 &-3488787836033587244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3665154873280275978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b98a6db0b653f764eac834f85857a9dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _serializedBlackboard: '{"_variables":{"setPoint":{"_name":"setPoint","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
+  _objectReferences: []
 --- !u!1 &3665206471641509028
 GameObject:
   m_ObjectHideFlags: 0
