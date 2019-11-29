@@ -350,6 +350,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BarnesScene
       objectReference: {fileID: 0}
+    - target: {fileID: 626481900634794542, guid: 20564daa26b8e8d4382b1d53bcd00f59,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5572761132607497458, guid: 20564daa26b8e8d4382b1d53bcd00f59,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -725,7 +730,7 @@ PrefabInstance:
     - target: {fileID: 8272068840340397481, guid: 812fb9173c5812d46b285aa623c4eed9,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5413027805490732302, guid: 812fb9173c5812d46b285aa623c4eed9,
         type: 3}
