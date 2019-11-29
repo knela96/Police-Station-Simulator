@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using NodeCanvas.Framework;
 
 public class CriminalBehavior : MonoBehaviour {
 
@@ -15,10 +16,11 @@ public class CriminalBehavior : MonoBehaviour {
     AssignCell assign;
     GameObject c_agent;
     Animator anim;
-    bool to_cell = false;
+    public bool to_cell = false;
     LevelLoop level;
     float timer = 60.0f;
-    
+    public bool free = false;
+    bool countdown = false;
     // Use this for initialization
     void Awake()
     {
@@ -31,6 +33,7 @@ public class CriminalBehavior : MonoBehaviour {
 
         //Agent created to scort him to the cell, creates one each time a new criminal appears.
         c_agent = Instantiate(level.policemen_prebab[Random.Range(0, 2)], new Vector3(0, 0, 0), Quaternion.identity);
+        c_agent.GetComponent<PoliceBehaviour>().to_cell = true;
         c_agent.GetComponent<Move>().target = gameObject;
         c_agent.transform.position = transform.position + Vector3.back;
         c_agent.gameObject.layer = 0;
@@ -38,9 +41,7 @@ public class CriminalBehavior : MonoBehaviour {
         c_agent.GetComponent<SteeringObstacleAvoidance>().enabled = true;
         c_agent.GetComponent<SteeringCollisionAvoidance>().enabled = true;
         c_agent.GetComponent<SteeringVelocityMatching>().enabled = true;
-        c_agent.GetComponent<PoliceBehaviour>().behaviour = PoliceBehaviour.TypeAction.Capture;
-        c_agent.GetComponent<PoliceBehaviour>().to_cell = true;
-
+        c_agent.GetComponent<GraphOwner>().enabled = true;
         anim = GetComponent<Animator>();
         cells = GameObject.Find("Cell");
 
@@ -59,7 +60,12 @@ public class CriminalBehavior : MonoBehaviour {
                 follow_path.calcPath(cell.getPoint());
             }
         }
-        
+
+        if(countdown)
+            timer -= Time.deltaTime;
+        if (timer == 0)
+            free = true;
+
         // Changes the Animator booleans
         if (move.move == true)
         {
@@ -91,7 +97,6 @@ public class CriminalBehavior : MonoBehaviour {
         }
     }
 
-    //Triggers the steering behaviours
     private void OnTriggerEnter(Collider other)
     {
         if (other == GameObject.Find("Exit").GetComponent<Collider>())
@@ -103,9 +108,29 @@ public class CriminalBehavior : MonoBehaviour {
             gameObject.GetComponent<SteeringCollisionAvoidance>().enabled = false;
             //gameObject.GetComponent<SteeringSeparation>().enabled = false;
         }
-        else if (move.target != null)
+        else if (other == move.target.gameObject.GetComponent<Collider>())
         {
-            if (other == move.target.gameObject.GetComponent<Collider>())
+            if (c_agent != null)
+            {
+                c_agent.GetComponent<Move>().target = null;
+                c_agent.GetComponent<SteeringPursue>().enabled = false;
+                c_agent.GetComponent<SteeringObstacleAvoidance>().enabled = true;
+                c_agent.GetComponent<SteeringCollisionAvoidance>().enabled = true;
+                c_agent.GetComponent<SteeringVelocityMatching>().enabled = false;
+                c_agent.GetComponent<PoliceBehaviour>().to_cell = false;
+                c_agent.GetComponent<PoliceBehaviour>().detected = false;
+                c_agent.gameObject.layer = 8;
+                countdown = true;
+                c_agent = null;
+            }
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (move.target != null)
+        {
+            if (other == move.target.gameObject.GetComponent<Collider>() && follow_path.arrived)
             {
                 arrive_cell();
             }
@@ -143,6 +168,7 @@ public class CriminalBehavior : MonoBehaviour {
             c_agent.GetComponent<SteeringCollisionAvoidance>().enabled = true;
             c_agent.GetComponent<SteeringVelocityMatching>().enabled = false;
             c_agent.GetComponent<PoliceBehaviour>().to_cell = false;
+            c_agent.GetComponent<PoliceBehaviour>().detected = false;
             c_agent.gameObject.layer = 8;
             c_agent = null;
         }
@@ -157,7 +183,6 @@ public class CriminalBehavior : MonoBehaviour {
         {
             if (level.day == false)
             {
-                timer -= Time.deltaTime; //timer to make the criminal wait before scaping
                 if (timer < 0)
                 {
                     move.move = true;

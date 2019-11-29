@@ -7,24 +7,23 @@ using ParadoxNotion.Design;
 namespace NodeCanvas.Tasks.Actions
 {
 
-    [Name("Go to Exit")]
-    [Category("Citizen")]
-    public class GotoExit : ActionTask
+    [Name("Follow")]
+    [Category("Police")]
+    public class Follow : ActionTask
     {
-        CitizenBehaviour citizen;
-        public BBParameter<bool> Night;
+        BBParameter<GameObject> target;
+        PoliceBehaviour police;
         Point point;
         Move move;
-        SteeringFollowPath follow_path;
-        public float timer;
+        SteeringPursue pursue;
         //Use for initialization. This is called only once in the lifetime of the task.
         //Return null if init was successfull. Return an error string otherwise
         protected override string OnInit()
         {
-            citizen = agent.gameObject.GetComponent<CitizenBehaviour>();
+            police = agent.gameObject.GetComponent<PoliceBehaviour>();
+            pursue = agent.gameObject.GetComponent<SteeringPursue>();
             move = agent.gameObject.GetComponent<Move>();
             move.move = true;
-            follow_path = agent.gameObject.GetComponent<SteeringFollowPath>();
             //follow_path.path = new NavMeshPath();
             return null;
         }
@@ -34,26 +33,15 @@ namespace NodeCanvas.Tasks.Actions
         //EndAction can be called from anywhere.
         protected override void OnExecute()
         {
-            if (Night.value)
-            {
-                move.run = true;
-                citizen.anim.SetBool("running", true);
-            }
-            citizen.action = true;
-            citizen.AssignPoint(null);
-            citizen.anim.SetBool("moving", true);
-            move.target = GameObject.Find("Exit");
-            follow_path.calcPath(move.target.transform);
+            police.detected = true;
+            police.animator.SetBool("moving", true);
         }
 
         //Called once per frame while the action is active.
         protected override void OnUpdate()
         {
-            if (Night.value)
-            {
-                move.run = true;
-                citizen.anim.SetBool("running", true);
-            }
+            if (move.target != null)
+                pursue.Steer(move.target.transform.position, move.target.GetComponent<Move>().current_velocity); //Will pursue the Criminal until it arrives to the cell
         }
 
         //Called when the task is disabled.

@@ -116,6 +116,8 @@ GameObject:
   - component: {fileID: 2243226367740861266}
   - component: {fileID: 2246755047064276492}
   - component: {fileID: 2181703672637670712}
+  - component: {fileID: 9121587132007228795}
+  - component: {fileID: 629860331175381749}
   m_Layer: 8
   m_Name: Criminal_White
   m_TagString: Untagged
@@ -282,7 +284,7 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 256
-  search_radius: 3
+  radius: 2
 --- !u!114 &2243688396465574142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,6 +365,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cells: {fileID: 6237165343999410401, guid: d0ce55fe93ec524409cb0e9d753eeb99, type: 3}
   cell: {fileID: 0}
+--- !u!114 &9121587132007228795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2211395604222094370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aad115aca74ce3c4891b3f6de0b4aae8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boundGraphSerialization: 
+  boundGraphObjectReferences: []
+  enableAction: 0
+  disableAction: 0
+  _graph: {fileID: 11400000, guid: 74cf5cd15bdb65c41add33296750f1a8, type: 2}
+  _blackboard: {fileID: 629860331175381749}
+--- !u!114 &629860331175381749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2211395604222094370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b98a6db0b653f764eac834f85857a9dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _serializedBlackboard: '{"_variables":{}}'
+  _objectReferences: []
 --- !u!1 &2211397267833217604
 GameObject:
   m_ObjectHideFlags: 0

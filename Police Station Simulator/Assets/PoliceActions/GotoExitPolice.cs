@@ -8,10 +8,10 @@ namespace NodeCanvas.Tasks.Actions
 {
 
     [Name("Go to Exit")]
-    [Category("Citizen")]
-    public class GotoExit : ActionTask
+    [Category("Police")]
+    public class GotoExitPolice : ActionTask
     {
-        CitizenBehaviour citizen;
+        PoliceBehaviour police;
         public BBParameter<bool> Night;
         Point point;
         Move move;
@@ -21,7 +21,7 @@ namespace NodeCanvas.Tasks.Actions
         //Return null if init was successfull. Return an error string otherwise
         protected override string OnInit()
         {
-            citizen = agent.gameObject.GetComponent<CitizenBehaviour>();
+            police = agent.gameObject.GetComponent<PoliceBehaviour>();
             move = agent.gameObject.GetComponent<Move>();
             move.move = true;
             follow_path = agent.gameObject.GetComponent<SteeringFollowPath>();
@@ -37,11 +37,8 @@ namespace NodeCanvas.Tasks.Actions
             if (Night.value)
             {
                 move.run = true;
-                citizen.anim.SetBool("running", true);
+                police.animator.SetBool("running", true);
             }
-            citizen.action = true;
-            citizen.AssignPoint(null);
-            citizen.anim.SetBool("moving", true);
             move.target = GameObject.Find("Exit");
             follow_path.calcPath(move.target.transform);
         }
@@ -52,7 +49,8 @@ namespace NodeCanvas.Tasks.Actions
             if (Night.value)
             {
                 move.run = true;
-                citizen.anim.SetBool("running", true);
+                if(!police.patrolling)
+                    police.animator.SetBool("running", true);
             }
         }
 

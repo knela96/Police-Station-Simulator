@@ -584,6 +584,8 @@ GameObject:
   - component: {fileID: 42328623380722311}
   - component: {fileID: 41875322030045483}
   - component: {fileID: 43730681022016629}
+  - component: {fileID: 6768742425142735355}
+  - component: {fileID: 7135073344167079679}
   m_Layer: 8
   m_Name: Police_Investigator_Black
   m_TagString: Untagged
@@ -676,11 +678,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   desks: {fileID: 0}
   desk: {fileID: 0}
-  cur_time: 25
-  behaviour: 0
+  start: 0
   slider_task: {fileID: 43636207443826745}
   align: {fileID: 0}
+  move: {fileID: 0}
+  animator: {fileID: 0}
+  patrol: -1
+  light: {fileID: 0}
   to_cell: 0
+  night: 0
+  receptionist: 1
+  patrolling: 0
+  detected: 0
+  numCriminals: 0
 --- !u!114 &42046441990388661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -906,6 +916,47 @@ MonoBehaviour:
   current_velocity: {x: 0, y: 0, z: 0}
   current_rotation_speed: 0
   orientation: 0
+--- !u!114 &6768742425142735355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73530427545734747}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aad115aca74ce3c4891b3f6de0b4aae8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boundGraphSerialization: 
+  boundGraphObjectReferences: []
+  enableAction: 0
+  disableAction: 0
+  _graph: {fileID: 11400000, guid: e36efcad4e8d6284f90b395d32bc0f18, type: 2}
+  _blackboard: {fileID: 7135073344167079679}
+--- !u!114 &7135073344167079679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73530427545734747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b98a6db0b653f764eac834f85857a9dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _serializedBlackboard: '{"_variables":{"target":{"_name":"target","_id":"428d8d86-b822-414e-a89a-131dd9cba1cc","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Night":{"_propertyPath":"PoliceBehaviour.night","_name":"Night","_id":"8908194c-2c8b-4b91-a813-c8b99bfd3d4a","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"to_cell":{"_propertyPath":"PoliceBehaviour.to_cell","_name":"to_cell","_id":"165b270d-0eb1-4eb6-a094-7fad7e7aebad","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"arrived":{"_propertyPath":"SteeringFollowPath.arrived","_name":"arrived","_id":"f290cc88-4cc8-4dec-b5bf-1be96b4b2542","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"receptinist":{"_propertyPath":"PoliceBehaviour.receptionist","_name":"receptinist","_id":"804efe4d-3364-45dc-af4d-d58109c7e56b","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"endedAction":{"_propertyPath":"PoliceBehaviour.start","_name":"endedAction","_id":"4d12a19a-082e-4d63-b877-9bc50c1ecaa2","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"detected":{"_propertyPath":"PoliceBehaviour.detected","_name":"detected","_id":"caa56e1b-34b8-45bf-8571-5bdc706bc9b3","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"patrol":{"_propertyPath":"PoliceBehaviour.patrolling","_name":"patrol","_id":"4621b26e-bd91-457e-bda4-6278a0f39242","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"numCriminals":{"_propertyPath":"PoliceBehaviour.numCriminals","_name":"numCriminals","_id":"36d0c198-7a71-404c-997a-f693c7901b5d","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
+  _objectReferences: []
 --- !u!1 &73580027069187317
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,31 +1,28 @@
 ﻿using UnityEngine;
-using UnityEngine.AI;
-
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
+
 
 namespace NodeCanvas.Tasks.Actions
 {
 
-    [Name("Go to Exit")]
-    [Category("Citizen")]
-    public class GotoExit : ActionTask
+    [Name("Free Criminal")]
+    [Category("Police")]
+    public class FreeCriminal : ActionTask
     {
-        CitizenBehaviour citizen;
-        public BBParameter<bool> Night;
-        Point point;
-        Move move;
+
+        PoliceBehaviour police;
+        bool receptionist;
         SteeringFollowPath follow_path;
-        public float timer;
+        LevelLoop level;
+
         //Use for initialization. This is called only once in the lifetime of the task.
         //Return null if init was successfull. Return an error string otherwise
         protected override string OnInit()
         {
-            citizen = agent.gameObject.GetComponent<CitizenBehaviour>();
-            move = agent.gameObject.GetComponent<Move>();
-            move.move = true;
+            police = agent.gameObject.GetComponent<PoliceBehaviour>();
             follow_path = agent.gameObject.GetComponent<SteeringFollowPath>();
-            //follow_path.path = new NavMeshPath();
+            level = GameObject.Find("Level").GetComponent<LevelLoop>();
             return null;
         }
 
@@ -34,32 +31,32 @@ namespace NodeCanvas.Tasks.Actions
         //EndAction can be called from anywhere.
         protected override void OnExecute()
         {
-            if (Night.value)
+            police.animator.SetBool("moving", true);
+            police.move.target = level.getCriminal();
+            if (police.move.target != null)
             {
-                move.run = true;
-                citizen.anim.SetBool("running", true);
+                follow_path.calcPath(police.move.target.transform);
             }
-            citizen.action = true;
-            citizen.AssignPoint(null);
-            citizen.anim.SetBool("moving", true);
-            move.target = GameObject.Find("Exit");
-            follow_path.calcPath(move.target.transform);
+            else
+                EndAction(false);
         }
 
         //Called once per frame while the action is active.
         protected override void OnUpdate()
         {
-            if (Night.value)
+            if (follow_path.arrived)
             {
-                move.run = true;
-                citizen.anim.SetBool("running", true);
+                //police.move.target.toExit = true;
+                EndAction(true);
             }
+    
         }
 
         //Called when the task is disabled.
         protected override void OnStop()
         {
-
+            if (follow_path.arrived)
+                police.animator.SetBool("moving", false);
         }
 
         //Called when the task is paused.

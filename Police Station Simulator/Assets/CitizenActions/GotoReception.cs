@@ -37,10 +37,12 @@ namespace NodeCanvas.Tasks.Actions{
 		//This is called once each time the task is enabled.
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
-		protected override void OnExecute(){
+		protected override void OnExecute()
+        {
             Point c_point = rP.GetComponent<Point>();
             if (c_point.isAvailable())
             {
+                agent.gameObject.layer = 8;
                 timer = 3.0f;
                 point = c_point.setAgent(agent.gameObject);
                 citizen.AssignPoint(point);

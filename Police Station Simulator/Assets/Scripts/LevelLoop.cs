@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using NodeCanvas.Framework;
 
 public class LevelLoop : MonoBehaviour
 {
@@ -27,6 +28,8 @@ public class LevelLoop : MonoBehaviour
     bool actions = true;
     Vector3 vec;
 
+    public GameObject receptionist = null;
+
     public AssignPoints assign;
 
     // Start is called before the first frame update
@@ -34,8 +37,9 @@ public class LevelLoop : MonoBehaviour
     {
        assign = GameObject.Find("Sofas").GetComponent<AssignPoints>();
        vec = GameObject.Find("Entrance").transform.position;
-       policemen.Add(Instantiate(policemen_prebab[Random.Range(0, policemen_prebab.Length - 1)], GameObject.Find("Entrance").transform.position, Quaternion.Euler(0, 90, 0)));
-       policemen[0].GetComponent<PoliceBehaviour>().behaviour = PoliceBehaviour.TypeAction.Receptionist;
+        policemen.Add(Instantiate(policemen_prebab[Random.Range(0, policemen_prebab.Length - 1)], GameObject.Find("Entrance").transform.position, Quaternion.Euler(0, 90, 0)));
+        policemen[0].GetComponent<PoliceBehaviour>().receptionist = true;
+        policemen[0].GetComponent<GraphOwner>().enabled = true;
     }
 
     // Update is called once per frame
@@ -49,19 +53,19 @@ public class LevelLoop : MonoBehaviour
                 if (assign.numAssigned <= assign.points.Count)
                 {
                     timer1 = cycle;
-                    addCitizen(vec);
+                    addCitizen();
                 }
             }
             if (cycle - timer2 > 22)
             {
                 timer2 = cycle;
-                addPolicemen(vec);
+                addPolicemen();
             }
-            if (cycle - timer3 > 31)
-            {
-                timer3 = cycle;
-               addCriminal(vec);
-            }
+            //if (cycle - timer3 > 10)//31
+            //{
+            //    timer3 = cycle;
+            //   addCriminal(vec);
+            //}
             if (!actions)
             {
                 //Change the behaviour to Day
@@ -72,7 +76,8 @@ public class LevelLoop : MonoBehaviour
                 }
 
                 GameObject ob = Instantiate(policemen_prebab[Random.Range(0, policemen_prebab.Length - 1)], GameObject.Find("Entrance").transform.position, Quaternion.Euler(0, 90, 0));
-                ob.GetComponent<PoliceBehaviour>().behaviour = PoliceBehaviour.TypeAction.Receptionist;
+                ob.GetComponent<PoliceBehaviour>().receptionist = true;
+                ob.GetComponent<GraphOwner>().enabled = true;
                 policemen.Add(ob);
 
                 timer1 = 0;
@@ -125,20 +130,36 @@ public class LevelLoop : MonoBehaviour
         }
     }
 
-    public void addCitizen(Vector3 pos)
+    public void addCitizen()
     {
-        citizens.Add(Instantiate(citizens_prebab[c1], pos, Quaternion.Euler(0, 90, 0)));
+        GameObject go = Instantiate(citizens_prebab[c1], vec, Quaternion.Euler(0, 90, 0));
+        go.GetComponent<GraphOwner>().enabled = true;
+        citizens.Add(go);
         c1++;
     }
-    public void addPolicemen(Vector3 pos)
+    public void addPolicemen()
     {
-        policemen.Add(Instantiate(policemen_prebab[c2], pos, Quaternion.Euler(0, 90, 0)));
+        GameObject go = Instantiate(policemen_prebab[c2], vec, Quaternion.Euler(0, 90, 0));
+        go.GetComponent<GraphOwner>().enabled = true;
+        policemen.Add(go);
         c2++;
     }
-    public void addCriminal(Vector3 pos)
+    public void addCriminal()
     {
-        criminals.Add(Instantiate(criminals_prebab[c3], pos, Quaternion.Euler(0, 90, 0)));
+        GameObject go = Instantiate(criminals_prebab[c3], vec, Quaternion.Euler(0, 90, 0));
+        go.GetComponent<GraphOwner>().enabled = true;
+        criminals.Add(go);
         c3++;
+    }
+
+    public GameObject getCriminal()
+    {
+        for(int i = 0;i < criminals.Count; ++i)
+        {
+            if (criminals[i] != null && criminals[i].GetComponent<CriminalBehavior>().free)
+                return criminals[i];
+        }
+        return null;
     }
 
     public float getCycle()
