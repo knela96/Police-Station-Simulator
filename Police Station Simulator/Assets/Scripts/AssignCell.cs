@@ -11,7 +11,13 @@ public class AssignCell : MonoBehaviour
     {
         foreach (Transform child in gameObject.transform)
         {
-            cells.Add(child.gameObject); //Stores all cells
+            Transform c = child.transform;
+            for (int i = 0; i < child.childCount; ++i)
+            {
+                Transform c1 = c.GetChild(i);
+                if (c1.name == "Point")
+                    cells.Add(c1.gameObject); //Stores the current desk points
+            }
         }
 
     }
