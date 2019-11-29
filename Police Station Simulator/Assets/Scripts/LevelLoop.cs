@@ -32,6 +32,7 @@ public class LevelLoop : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+       assign = GameObject.Find("Sofas").GetComponent<AssignPoints>();
        vec = GameObject.Find("Entrance").transform.position;
        policemen.Add(Instantiate(policemen_prebab[Random.Range(0, policemen_prebab.Length - 1)], GameObject.Find("Entrance").transform.position, Quaternion.Euler(0, 90, 0)));
        policemen[0].GetComponent<PoliceBehaviour>().behaviour = PoliceBehaviour.TypeAction.Receptionist;
@@ -45,7 +46,7 @@ public class LevelLoop : MonoBehaviour
             //Spawn Entites evey x time
             if (cycle - timer1 > 3)//15
             {
-                if (assign.numAssigned < assign.points.Count - 1)
+                if (assign.numAssigned <= assign.points.Count)
                 {
                     timer1 = cycle;
                     addCitizen(vec);
