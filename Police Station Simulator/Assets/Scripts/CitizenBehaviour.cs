@@ -17,20 +17,23 @@ public class CitizenBehaviour : MonoBehaviour {
     public Point point = null;
     Move move;
     SteeringArrive arrive;
-    bool action;
+    public bool action;
     public Transform pivot;
     public NavMeshPath path;
     SteeringFollowPath follow_path;
     public GameObject rP;
     LevelLoop level;
-    Animator anim;
+    public Animator anim;
     public float timer = 3.0f;
     public TypeAction behaviour;
     public AssignPoints assign = null;
+    public bool free_point = false;
+    public bool night;
 
 
     // Use this for initialization
     void Awake () {
+        night = false;
         move = GetComponent<Move>();
         move.move = true;
         arrive = GetComponent<SteeringArrive>();
@@ -38,48 +41,16 @@ public class CitizenBehaviour : MonoBehaviour {
         follow_path = gameObject.GetComponent<SteeringFollowPath>();
         follow_path.path = new NavMeshPath();
         rP = GameObject.Find("Reception_Point");
+        free_point = rP.GetComponent<Point>().isAvailable();
         assign = GameObject.Find("Sofas").GetComponent<AssignPoints>();
         behaviour = TypeAction.None;
         level = GameObject.Find("Level").GetComponent<LevelLoop>();
         anim = GetComponent<Animator>();
-        //AssignPoint(behaviour);
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        if(behaviour == TypeAction.Reception)
-        {
-            Vector3 distance = move.target.transform.position - transform.position;
-
-            if (follow_path.arrived && !action && move.current_velocity == Vector3.zero)
-            {
-                anim.SetBool("moving", false);
-                timer -= Time.deltaTime;
-
-                if (timer < 0)
-                { // timer to make the citizen wait on the desk
-                    rP.GetComponent<Point>().Release();
-                    move.target = GameObject.Find("Exit");
-                    follow_path.calcPath(move.target.transform);
-                    behaviour = TypeAction.Exit;
-                    action = true;
-                }
-                return;
-            }
-        }else if (behaviour == TypeAction.Wait)
-        {
-            Vector3 distance = move.target.transform.position - transform.position;
-
-            if (follow_path.arrived && !action && move.current_velocity == Vector3.zero)
-            {
-                anim.SetBool("moving", false);
-                return;
-            }
-
-            
-        }
-
         //Changes the Animator booleans 
         if (move.move == true)
         {
@@ -91,58 +62,11 @@ public class CitizenBehaviour : MonoBehaviour {
             move.run = false;
             anim.SetBool("moving", false);
         }
-
     }
 
-    public void checkReceptionAvailability()
+    public void AssignPoint(Point newPoint)
     {
-        if (rP.GetComponent<Point>().isAvailable())
-        {
-            move.move = true;
-            anim.SetBool("moving", true);
-            anim.SetBool("sitting", false);
-            transform.position = new Vector3(point.transform.position.x + (1.3f * point.transform.forward.x), 0.0f, point.transform.position.z + (1.3f * point.transform.forward.z));
-            behaviour = TypeAction.Reception;
-            rP.GetComponent<Point>().setAgent(gameObject);
-            move.target = rP;
-            point.Release();
-            follow_path.calcPath(move.target.transform);
-        }
-    }
-
-    public void AssignPoint(TypeAction type)
-    {
-        if (type == TypeAction.None)
-        {
-            if (assign.numAssigned == 0)
-                type = TypeAction.Reception;
-            else
-                type = TypeAction.Wait;
-        }
-
-        if (TypeAction.Reception == type)
-        {
-            Point c_point = rP.GetComponent<Point>();
-            if (c_point.isAvailable() && assign.numAssigned == 0)
-            {
-                point = c_point.setAgent(this.gameObject);
-            }
-        }
-        else if (TypeAction.Wait == type)
-        {
-            for (int i = 0; i < assign.points.Count; ++i)
-            {
-                Point c_point = assign.points[i].gameObject.GetComponent<Point>();
-                if (c_point.isAvailable())
-                {
-                    point = c_point.setAgent(this.gameObject);
-                    break;
-                }
-            }
-        }
-        move.target = point.gameObject;
-        follow_path.calcPath(move.target.transform);
-        behaviour = type;
+        point = newPoint;
     }
 
     private void OnDestroy()
@@ -158,16 +82,12 @@ public class CitizenBehaviour : MonoBehaviour {
         {
             if (other == point.getPoint().parent.gameObject.GetComponent<Collider>())
             {
-                //align.Steering(desk.getPoint()); //Align the entity to the direction of the desk when it arrives
-                if (behaviour == TypeAction.Wait)
-                {
-                    gameObject.layer = 0;
-                    follow_path.deleteCurve();
-                    transform.position = new Vector3(point.transform.position.x - (1.3f * point.transform.forward.x),point.transform.position.y + 0.73f, point.transform.position.z - (1.3f * point.transform.forward.z));
-                    anim.SetBool("sitting", true);
+                gameObject.layer = 0;
+                follow_path.deleteCurve();
+                transform.position = new Vector3(point.transform.position.x - (1.3f * point.transform.forward.x),point.transform.position.y + 0.73f, point.transform.position.z - (1.3f * point.transform.forward.z));
+                anim.SetBool("sitting", true);
 
-                    move.move = false;
-                }
+                move.move = false;
             }
         }
 
@@ -196,10 +116,11 @@ public class CitizenBehaviour : MonoBehaviour {
     //Set up for night mode
     public void Night()
     {
-        action = true;
-        anim.SetBool("running", true);
-        move.run = true;
-        follow_path.deleteCurve();
-        follow_path.calcPath(GameObject.Find("Exit").transform);
+        night = true;
+        //action = true;
+        //anim.SetBool("running", true);
+        //move.run = true;
+        //follow_path.deleteCurve();
+        //follow_path.calcPath(GameObject.Find("Exit").transform);
     }
 }

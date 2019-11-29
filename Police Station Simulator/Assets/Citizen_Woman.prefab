@@ -1423,9 +1423,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   point: {fileID: 0}
+  action: 0
   pivot: {fileID: 508673983334001545}
+  rP: {fileID: 0}
+  anim: {fileID: 0}
+  timer: 3
   behaviour: 0
   assign: {fileID: 0}
+  free_point: 0
+  night: 1
 --- !u!114 &7768925808611450753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1456,9 +1462,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b98a6db0b653f764eac834f85857a9dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _serializedBlackboard: '{"_variables":{"myPoint":{"_propertyPath":"CitizenBehaviour.point","_name":"myPoint","_id":"fd2ae1e5-c7dc-45ba-90f3-35062f362223","$type":"NodeCanvas.Framework.Variable`1[[Point,
-    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Behaviour":{"_propertyPath":"CitizenBehaviour.behaviour","_name":"Behaviour","_id":"058dd05c-ffee-4e51-ae92-9da40c38d4b9","$type":"NodeCanvas.Framework.Variable`1[[CitizenBehaviour+TypeAction,
-    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
+  _serializedBlackboard: '{"_variables":{"free":{"_propertyPath":"CitizenBehaviour.free_point","_name":"free","_id":"5867851a-c0a2-4570-94bd-bcb73da3a061","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"Night":{"_propertyPath":"CitizenBehaviour.night","_name":"Night","_id":"85ff12a7-3564-41af-8f54-6f3d34af941a","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
   _objectReferences: []
 --- !u!1 &506407582936074863
 GameObject:

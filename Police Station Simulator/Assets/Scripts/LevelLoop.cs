@@ -27,6 +27,8 @@ public class LevelLoop : MonoBehaviour
     bool actions = true;
     Vector3 vec;
 
+    public AssignPoints assign;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -43,8 +45,11 @@ public class LevelLoop : MonoBehaviour
             //Spawn Entites evey x time
             if (cycle - timer1 > 3)//15
             {
-                timer1 = cycle;
-                addCitizen(vec);
+                if (assign.numAssigned < assign.points.Count - 1)
+                {
+                    timer1 = cycle;
+                    addCitizen(vec);
+                }
             }
             if (cycle - timer2 > 22)
             {
