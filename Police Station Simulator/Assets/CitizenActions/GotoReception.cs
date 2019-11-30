@@ -29,7 +29,6 @@ namespace NodeCanvas.Tasks.Actions{
             rP = GameObject.Find("Reception_Point");
             assign = GameObject.Find("Sofas").GetComponent<AssignPoints>();
             follow_path = agent.gameObject.GetComponent<SteeringFollowPath>();
-            //follow_path.path = new NavMeshPath();
             anim = agent.gameObject.GetComponent<Animator>();
             return null;
 		}
@@ -64,6 +63,7 @@ namespace NodeCanvas.Tasks.Actions{
 
                 if (timer < 0)
                 { // timer to make the citizen wait on the desk
+                    citizen.action = true;
                     rP.GetComponent<Point>().Release();
                     EndAction(true);
                 }

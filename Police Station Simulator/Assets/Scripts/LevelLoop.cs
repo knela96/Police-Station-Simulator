@@ -48,14 +48,14 @@ public class LevelLoop : MonoBehaviour
         if (day)
         {
             //Spawn Entites evey x time
-            //if (cycle - timer1 > 3)//15
-            //{
-            //    if (assign.numAssigned <= assign.points.Count)
-            //    {
-            //        timer1 = cycle;
-            //        addCitizen();
-            //    }
-            //}
+            if (cycle - timer1 > 3)//15
+            {
+                if (assign.numAssigned <= assign.points.Count)
+                {
+                    timer1 = cycle;
+                    addCitizen();
+                }
+            }
             //if (cycle - timer2 > 22)
             //{
             //    timer2 = cycle;
@@ -122,7 +122,7 @@ public class LevelLoop : MonoBehaviour
             c3 = 0;
 
         //Changes the cycle of day and night
-        if (cycle >= 240)
+        if (cycle >= 120)
         {
             day = !day;
             cycle = 0;
@@ -158,7 +158,6 @@ public class LevelLoop : MonoBehaviour
         {
             if (criminals[i] != null && criminals[i].GetComponent<CriminalBehavior>().free && !criminals[i].GetComponent<CriminalBehavior>().toExit)
             {
-                criminals[i].GetComponent<CriminalBehavior>().toExit = true; 
                 return criminals[i];
             }
         }

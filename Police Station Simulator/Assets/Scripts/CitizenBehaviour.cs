@@ -25,7 +25,6 @@ public class CitizenBehaviour : MonoBehaviour {
     LevelLoop level;
     public Animator anim;
     public float timer = 3.0f;
-    public TypeAction behaviour;
     public AssignPoints assign = null;
     public bool free_point = false;
     public bool night;
@@ -43,7 +42,6 @@ public class CitizenBehaviour : MonoBehaviour {
         rP = GameObject.Find("Reception_Point");
         free_point = rP.GetComponent<Point>().isAvailable();
         assign = GameObject.Find("Sofas").GetComponent<AssignPoints>();
-        behaviour = TypeAction.None;
         level = GameObject.Find("Level").GetComponent<LevelLoop>();
         anim = GetComponent<Animator>();
     }
@@ -91,7 +89,7 @@ public class CitizenBehaviour : MonoBehaviour {
             }
         }
 
-        if (other == GameObject.Find("Exit").GetComponent<Collider>() && action)
+        if (other == GameObject.Find("Exit").GetComponent<Collider>())
         {
             Destroy(gameObject);
         }
@@ -117,10 +115,5 @@ public class CitizenBehaviour : MonoBehaviour {
     public void Night()
     {
         night = true;
-        //action = true;
-        //anim.SetBool("running", true);
-        //move.run = true;
-        //follow_path.deleteCurve();
-        //follow_path.calcPath(GameObject.Find("Exit").transform);
     }
 }

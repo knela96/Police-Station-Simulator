@@ -53,6 +53,7 @@ namespace NodeCanvas.Tasks.Actions
                 if (cur_time >= time_task)
                 {
                     //Ends the task and create a path to the Exit
+                    police.numCriminals = level.criminals.Count;
                     EndAction(true);
                     cur_time = 0;
                 }
@@ -65,7 +66,6 @@ namespace NodeCanvas.Tasks.Actions
             level.addCriminal();
             police.stopTask();
             police.animator.SetBool("moving", true);
-            police.numCriminals = level.criminals.Count;
         }
 
         //Called when the task is paused.

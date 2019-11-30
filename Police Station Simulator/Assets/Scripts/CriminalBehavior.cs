@@ -11,77 +11,40 @@ public class CriminalBehavior : MonoBehaviour {
     SteeringArrive arrive;
     bool action = false;
     public NavMeshPath path;
-    SteeringFollowPath follow_path;
+    public SteeringFollowPath follow_path;
     public Cell cell;
     AssignCell assign;
     public GameObject c_agent;
-    Animator anim;
+    public Animator anim;
     public bool to_cell = false;
-    LevelLoop level;
-    float timer = 60.0f;
+    public LevelLoop level;
+    public float timer = 60.0f;
     public bool free = false;
-    bool countdown = false;
+    public bool countdown = false;
     public bool toExit = false;
     public bool escape = false;
+    public bool night = false;
+    public bool detected = false;
     // Use this for initialization
     void Awake()
     {
         toExit = false;
-
+        to_cell = true;
+        countdown = false;
         level = GameObject.Find("Level").GetComponent<LevelLoop>();
         move = GetComponent<Move>();
         arrive = GetComponent<SteeringArrive>();
         action = false;
         follow_path = gameObject.GetComponent<SteeringFollowPath>();
         follow_path.path = new NavMeshPath();
-
-        //Agent created to scort him to the cell, creates one each time a new criminal appears.
-        //c_agent = Instantiate(level.policemen_prebab[Random.Range(0, 2)], new Vector3(0, 0, 0), Quaternion.identity);
-        //c_agent.GetComponent<PoliceBehaviour>().to_cell = true;
-        //c_agent.GetComponent<Move>().target = gameObject;
-        //c_agent.transform.position = transform.position + Vector3.back;
-        //c_agent.gameObject.layer = 0;
-        //c_agent.GetComponent<SteeringPursue>().enabled = true;
-        //c_agent.GetComponent<SteeringObstacleAvoidance>().enabled = true;
-        //c_agent.GetComponent<SteeringCollisionAvoidance>().enabled = true;
-        //c_agent.GetComponent<SteeringVelocityMatching>().enabled = true;
-        //c_agent.GetComponent<GraphOwner>().enabled = true;
-        anim = GetComponent<Animator>();
         cells = GameObject.Find("Cell");
-
-        level.policemen.Add(c_agent);
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if (cell == null)
-        //{
-        //    AssignCell();
-        //}
-        countdown = true;
 
-        if (countdown)
-            timer -= Time.deltaTime;
-        if (timer <= 0)
-            free = true;
-
-        // Changes the Animator booleans
-        if (move.move == true)
-        {
-            anim.SetBool("moving", true);
-        }
-        else if (move.move == false)
-        {
-            anim.SetBool("moving", false);
-            anim.SetBool("running", false);
-            move.run = false;
-        }
-        if (to_cell)
-            Night();
-
-        
-        
     }
 
     public void Exit(GameObject agent)
@@ -91,10 +54,23 @@ public class CriminalBehavior : MonoBehaviour {
         anim.SetBool("moving", true);
         anim.SetBool("running", false);
         move.move = true;
-        move.target = GameObject.Find("Exit");
-        follow_path.calcPath(move.target.transform);
-
+        toExit = true;
         setAgent(agent);
+    }
+
+    public void SpawnAgent()
+    {
+        c_agent = Instantiate(level.policemen_prebab[Random.Range(0, 2)], new Vector3(0, 0, 0), Quaternion.identity);
+        c_agent.GetComponent<PoliceBehaviour>().to_cell = true;
+        c_agent.GetComponent<Move>().target = gameObject;
+        c_agent.transform.position = transform.position + Vector3.back;
+        c_agent.gameObject.layer = 0;
+        c_agent.GetComponent<SteeringPursue>().enabled = true;
+        c_agent.GetComponent<SteeringObstacleAvoidance>().enabled = true;
+        c_agent.GetComponent<SteeringCollisionAvoidance>().enabled = true;
+        c_agent.GetComponent<SteeringVelocityMatching>().enabled = true;
+        c_agent.GetComponent<GraphOwner>().enabled = true;
+        level.policemen.Add(c_agent);
     }
 
     public void setAgent(GameObject agent)
@@ -126,6 +102,7 @@ public class CriminalBehavior : MonoBehaviour {
         {
             to_cell = true;
             escape = false;
+            toExit = false;
             move.target = cell.getPoint().gameObject;
             follow_path.calcPath(cell.getPoint());
             timer = 60;
@@ -157,20 +134,8 @@ public class CriminalBehavior : MonoBehaviour {
                     c_agent.GetComponent<SteeringVelocityMatching>().enabled = false;
                     c_agent.GetComponent<PoliceBehaviour>().to_cell = false;
                     c_agent.GetComponent<PoliceBehaviour>().detected = false;
-                    countdown = true;
                     c_agent = null;
                 }
-            }
-        }
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (move.target != null)
-        {
-            if (other == move.target.gameObject.GetComponent<Collider>() && follow_path.arrived)
-            {
-                arrive_cell();
             }
         }
     }
@@ -180,7 +145,6 @@ public class CriminalBehavior : MonoBehaviour {
         if (other == GameObject.Find("Entrance").GetComponent<Collider>())
         {
             gameObject.GetComponent<SteeringCollisionAvoidance>().enabled = true;
-            //gameObject.GetComponent<SteeringSeparation>().enabled = true;
         }
     }
 
@@ -190,58 +154,69 @@ public class CriminalBehavior : MonoBehaviour {
     }
 
     //Makes the criminal sit on the cell and disables the steering behaviours and changes the agent into an investigator .
-    public void arrive_cell()
-    {
-        follow_path.deleteCurve();
-        move.move = false;
-        anim.SetBool("moving", false);
-        anim.SetBool("running", false);
-        move.run = false;
-        anim.SetBool("sitting", true);
-        if (c_agent != null)
-        {
-            c_agent.GetComponent<Move>().target = null;
-            c_agent.GetComponent<SteeringPursue>().enabled = false;
-            c_agent.GetComponent<SteeringObstacleAvoidance>().enabled = true;
-            c_agent.GetComponent<SteeringCollisionAvoidance>().enabled = true;
-            c_agent.GetComponent<SteeringVelocityMatching>().enabled = false;
-            c_agent.GetComponent<PoliceBehaviour>().to_cell = false;
-            c_agent.GetComponent<PoliceBehaviour>().detected = false;
-            c_agent.gameObject.layer = 8;
-            c_agent = null;
-        }
-
-    }
+    //public void arrive_cell()
+    //{
+    //    follow_path.deleteCurve();
+    //    move.move = false;
+    //    anim.SetBool("moving", false);
+    //    anim.SetBool("running", false);
+    //    move.run = false;
+    //    anim.SetBool("sitting", true);
+    //    if (c_agent != null)
+    //    {
+    //        c_agent.GetComponent<Move>().target = null;
+    //        c_agent.GetComponent<SteeringPursue>().enabled = false;
+    //        c_agent.GetComponent<SteeringObstacleAvoidance>().enabled = true;
+    //        c_agent.GetComponent<SteeringCollisionAvoidance>().enabled = true;
+    //        c_agent.GetComponent<SteeringVelocityMatching>().enabled = false;
+    //        c_agent.GetComponent<PoliceBehaviour>().to_cell = false;
+    //        c_agent.GetComponent<PoliceBehaviour>().detected = false;
+    //        c_agent.gameObject.layer = 8;
+    //        c_agent = null;
+    //    }
+    //}
 
     //Set up night mode
+
     public void Night()
     {
-
-        if (c_agent == null && to_cell == true)
-        {
-            if (level.day == false)
-            {
-                if (timer < 0)
-                {
-                    escape = true;
-                    move.move = true;
-                    anim.SetBool("sitting", false);
-                    anim.SetBool("moving", true);
-                    anim.SetBool("running", true);
-                    move.run = true;
-                    move.target = GameObject.Find("Exit");
-                    follow_path.calcPath(move.target.transform);
-                    to_cell = false;
-
-                    if (cell != null)
-                        cell.Release();
-                }
-            }
-          
-        }
-        else
-        {
-            to_cell = true;
-        }
+        night = true;
     }
+
+
+    public void Day()
+    {
+        night = false;
+    }
+
+
+
+
+
+    //public void Night()
+    //{
+
+    //    if (c_agent == null && to_cell == true)
+    //    {
+    //        if (level.day == false)
+    //        {
+    //            if (timer < 0)
+    //            {
+    //                escape = true;
+    //                move.move = true;
+    //                anim.SetBool("sitting", false);
+    //                anim.SetBool("moving", true);
+    //                anim.SetBool("running", true);
+    //                move.run = true;
+    //                move.target = GameObject.Find("Exit");
+    //                follow_path.calcPath(move.target.transform);
+    //                to_cell = false;
+
+    //                if (cell != null)
+    //                    cell.Release();
+    //            }
+    //        }
+          
+    //    }
+    //}
 }

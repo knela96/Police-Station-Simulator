@@ -7,25 +7,24 @@ using ParadoxNotion.Design;
 namespace NodeCanvas.Tasks.Actions
 {
 
-    [Name("Go to Exit")]
-    [Category("Citizen")]
-    public class GotoExit : ActionTask
+    [Name("Escape")]
+    [Category("Criminal")]
+    public class Escape : ActionTask
     {
-        CitizenBehaviour citizen;
+        CriminalBehavior criminal;
         public BBParameter<bool> Night;
         Point point;
         Move move;
         SteeringFollowPath follow_path;
-        public float timer;
+        float timer;
         //Use for initialization. This is called only once in the lifetime of the task.
         //Return null if init was successfull. Return an error string otherwise
         protected override string OnInit()
         {
-            citizen = agent.gameObject.GetComponent<CitizenBehaviour>();
+            criminal = agent.gameObject.GetComponent<CriminalBehavior>();
             move = agent.gameObject.GetComponent<Move>();
             move.move = true;
             follow_path = agent.gameObject.GetComponent<SteeringFollowPath>();
-            //follow_path.path = new NavMeshPath();
             return null;
         }
 
@@ -37,11 +36,9 @@ namespace NodeCanvas.Tasks.Actions
             if (Night.value)
             {
                 move.run = true;
-                citizen.anim.SetBool("running", true);
+                criminal.anim.SetBool("running", true);
             }
-            citizen.action = true;
-            citizen.AssignPoint(null);
-            citizen.anim.SetBool("moving", true);
+            criminal.anim.SetBool("moving", true);
             move.target = GameObject.Find("Exit");
             follow_path.calcPath(move.target.transform);
         }
@@ -52,14 +49,15 @@ namespace NodeCanvas.Tasks.Actions
             if (Night.value)
             {
                 move.run = true;
-                citizen.anim.SetBool("running", true);
+                criminal.anim.SetBool("running", true);
             }
         }
 
         //Called when the task is disabled.
         protected override void OnStop()
         {
-
+            move.run = false;
+            criminal.anim.SetBool("running", false);
         }
 
         //Called when the task is paused.

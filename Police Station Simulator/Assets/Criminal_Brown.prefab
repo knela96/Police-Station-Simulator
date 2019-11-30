@@ -819,10 +819,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cells: {fileID: 0}
+  follow_path: {fileID: 0}
   cell: {fileID: 0}
+  c_agent: {fileID: 0}
+  anim: {fileID: 0}
   to_cell: 0
+  level: {fileID: 0}
+  timer: 60
   free: 0
+  countdown: 0
   toExit: 0
+  escape: 0
+  night: 0
+  detected: 0
 --- !u!114 &-3179644669509060554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -853,7 +862,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b98a6db0b653f764eac834f85857a9dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _serializedBlackboard: '{"_variables":{}}'
+  _serializedBlackboard: '{"_variables":{"to_cell":{"_propertyPath":"CriminalBehavior.to_cell","_name":"to_cell","_id":"56d2378a-7703-48ed-bc87-20335ad497bd","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"detected":{"_propertyPath":"CriminalBehavior.detected","_name":"detected","_id":"5f42e17f-4126-45b6-8b0b-7854a80985df","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"Night":{"_propertyPath":"CriminalBehavior.night","_name":"Night","_id":"3929a7d3-86f9-4769-ae95-b5d8acfd9da2","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"arrived":{"_propertyPath":"SteeringFollowPath.arrived","_name":"arrived","_id":"19316639-b6f2-4b15-b950-2cd090449f20","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"Liberate":{"_propertyPath":"CriminalBehavior.toExit","_name":"Liberate","_id":"e1d2179c-c564-4e43-8c01-6b5440e5211e","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"escape":{"_propertyPath":"CriminalBehavior.escape","_name":"escape","_id":"dccf6cc8-7481-452e-b9b7-cb53b0ac1a70","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
   _objectReferences: []
 --- !u!1 &2798023747892464902
 GameObject:

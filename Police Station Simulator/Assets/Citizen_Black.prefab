@@ -795,7 +795,6 @@ MonoBehaviour:
   rP: {fileID: 0}
   anim: {fileID: 0}
   timer: 3
-  behaviour: 0
   assign: {fileID: 0}
   free_point: 0
   night: 1
