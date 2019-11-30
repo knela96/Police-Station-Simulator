@@ -7,24 +7,23 @@ using ParadoxNotion.Design;
 namespace NodeCanvas.Tasks.Actions
 {
 
-    [Name("Escape")]
+    [Name("Attack Criminal")]
     [Category("Criminal")]
-    public class Escape : ActionTask
+    public class AttackCriminal : ActionTask
     {
         CriminalBehavior criminal;
-        public BBParameter<bool> Night;
-        Point point;
         Move move;
-        SteeringFollowPath follow_path;
-        float timer;
+        SteeringFaceHeading face_heading;
+        public LayerMask mask;
         //Use for initialization. This is called only once in the lifetime of the task.
         //Return null if init was successfull. Return an error string otherwise
         protected override string OnInit()
         {
             criminal = agent.gameObject.GetComponent<CriminalBehavior>();
             move = agent.gameObject.GetComponent<Move>();
+            face_heading = agent.GetComponent<SteeringFaceHeading>();
             move.move = true;
-            follow_path = agent.gameObject.GetComponent<SteeringFollowPath>();
+            //follow_path.path = new NavMeshPath();
             return null;
         }
 
@@ -33,32 +32,39 @@ namespace NodeCanvas.Tasks.Actions
         //EndAction can be called from anywhere.
         protected override void OnExecute()
         {
-            if (Night.value)
-            {
-                move.run = true;
-                criminal.anim.SetBool("running", true);
-            }
-            criminal.anim.SetBool("sitting", false);
-            criminal.anim.SetBool("moving", true);
-            move.target = GameObject.Find("Exit");
-            follow_path.calcPath(move.target.transform);
+            move.move = false;
+            move.run = false;
+            move.resetAccelerationRotation();
+            criminal.anim.SetBool("running", false);
+            criminal.anim.SetBool("moving", false);
+            criminal.GetComponent<SteeringAlign>().enabled = false;
         }
 
         //Called once per frame while the action is active.
         protected override void OnUpdate()
         {
-            if (Night.value)
+
+            Collider[] colliders = Physics.OverlapSphere(agent.transform.position, 2, mask);
+
+            for (int i = 0; i < colliders.Length; ++i)
             {
-                move.run = true;
-                criminal.anim.SetBool("running", true);
+                GameObject entity = colliders[i].gameObject;
+
+                //Accelerate the target with the curve form
+                if (entity != agent.gameObject)
+                {
+                    criminal.anim.SetBool("attack", true);
+                    face_heading.Steer(entity.transform.position);
+                }
             }
         }
+
 
         //Called when the task is disabled.
         protected override void OnStop()
         {
-            move.run = false;
-            criminal.anim.SetBool("running", false);
+            criminal.anim.SetBool("attack", false);
+            criminal.GetComponent<SteeringAlign>().enabled = false;
         }
 
         //Called when the task is paused.

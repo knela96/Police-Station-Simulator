@@ -56,16 +56,16 @@ public class LevelLoop : MonoBehaviour
                     addCitizen();
                 }
             }
-            //if (cycle - timer2 > 22)
-            //{
-            //    timer2 = cycle;
-            //    addPolicemen();
-            //}
-            if (cycle - timer3 > 10)//31
+            if (cycle - timer2 > 22)
             {
-                timer3 = cycle;
-                addCriminal();
+                timer2 = cycle;
+                addPolicemen();
             }
+            //if (cycle - timer3 > 10)//31
+            //{
+            //    timer3 = cycle;
+            //    addCriminal();
+            //}
             if (!actions)
             {
                 //Change the behaviour to Day

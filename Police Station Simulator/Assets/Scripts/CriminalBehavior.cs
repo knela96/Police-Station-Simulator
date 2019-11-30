@@ -152,29 +152,7 @@ public class CriminalBehavior : MonoBehaviour {
     {
         cell = null;
     }
-
-    //Makes the criminal sit on the cell and disables the steering behaviours and changes the agent into an investigator .
-    //public void arrive_cell()
-    //{
-    //    follow_path.deleteCurve();
-    //    move.move = false;
-    //    anim.SetBool("moving", false);
-    //    anim.SetBool("running", false);
-    //    move.run = false;
-    //    anim.SetBool("sitting", true);
-    //    if (c_agent != null)
-    //    {
-    //        c_agent.GetComponent<Move>().target = null;
-    //        c_agent.GetComponent<SteeringPursue>().enabled = false;
-    //        c_agent.GetComponent<SteeringObstacleAvoidance>().enabled = true;
-    //        c_agent.GetComponent<SteeringCollisionAvoidance>().enabled = true;
-    //        c_agent.GetComponent<SteeringVelocityMatching>().enabled = false;
-    //        c_agent.GetComponent<PoliceBehaviour>().to_cell = false;
-    //        c_agent.GetComponent<PoliceBehaviour>().detected = false;
-    //        c_agent.gameObject.layer = 8;
-    //        c_agent = null;
-    //    }
-    //}
+    
 
     //Set up night mode
 
@@ -189,34 +167,10 @@ public class CriminalBehavior : MonoBehaviour {
         night = false;
     }
 
-
-
-
-
-    //public void Night()
-    //{
-
-    //    if (c_agent == null && to_cell == true)
-    //    {
-    //        if (level.day == false)
-    //        {
-    //            if (timer < 0)
-    //            {
-    //                escape = true;
-    //                move.move = true;
-    //                anim.SetBool("sitting", false);
-    //                anim.SetBool("moving", true);
-    //                anim.SetBool("running", true);
-    //                move.run = true;
-    //                move.target = GameObject.Find("Exit");
-    //                follow_path.calcPath(move.target.transform);
-    //                to_cell = false;
-
-    //                if (cell != null)
-    //                    cell.Release();
-    //            }
-    //        }
-          
-    //    }
-    //}
+    public void AttackTarget(int message)
+    {
+        Debug.Log("Received Damage");
+        anim.SetBool("attack", false);
+        to_cell = true;
+    }
 }

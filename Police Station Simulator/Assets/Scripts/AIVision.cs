@@ -48,11 +48,15 @@ public class AIVision : MonoBehaviour {
             	{
                     if (hit.collider.gameObject.CompareTag("DetectEntity"))
                     {
-                        if (col.gameObject.GetComponent<CriminalBehavior>().escape && !gameObject.GetComponent<PoliceBehaviour>().to_cell)
+                        if (col.gameObject.GetComponent<CriminalBehavior>() != null)
                         {
-                            col.gameObject.GetComponent<CriminalBehavior>().escape = false;
-                            col.gameObject.GetComponent<CriminalBehavior>().detected = true;
-                            detected_now.Add(col.gameObject);
+                            if (col.gameObject.GetComponent<CriminalBehavior>().escape && !gameObject.GetComponent<PoliceBehaviour>().to_cell)
+                            {
+                                col.gameObject.GetComponent<CriminalBehavior>().escape = false;
+                                col.gameObject.GetComponent<CriminalBehavior>().detected = true;
+                                detected_now.Add(col.gameObject);
+                                break;
+                            }
                         }
                     }
             	}

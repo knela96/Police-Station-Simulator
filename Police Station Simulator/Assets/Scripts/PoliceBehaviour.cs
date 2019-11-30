@@ -81,11 +81,13 @@ public class PoliceBehaviour : MonoBehaviour {
         if (move.target != null)
         {
             CriminalBehavior criminal = move.target.GetComponent<CriminalBehavior>();
+            criminal.detected = false;
             criminal.AssignCell();
             criminal.setAgent(gameObject);
             animator.SetBool("attack", false);
-            to_cell = true;
         }
+        to_cell = true;
+        detected = false;
     }
 
     public bool ArrivedDesk()

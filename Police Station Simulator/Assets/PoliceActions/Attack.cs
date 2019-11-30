@@ -45,11 +45,18 @@ namespace NodeCanvas.Tasks.Actions
             police.detected = true;
             police.animator.SetBool("moving", true);
             move.target = target.value;
+            move.resetAccelerationRotation();
         }
 
         //Called once per frame while the action is active.
         protected override void OnUpdate()
         {
+            if (!police.detected)
+            {
+                EndAction(false);
+                return;
+            }
+
 
             Collider[] colliders = Physics.OverlapSphere(agent.transform.position, 2, mask);
 
