@@ -59,7 +59,7 @@ public class MoneyBar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-     
+        SetBar(50);
     }
 
     // Update is called once per frame
