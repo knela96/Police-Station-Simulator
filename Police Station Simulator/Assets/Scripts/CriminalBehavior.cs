@@ -14,7 +14,7 @@ public class CriminalBehavior : MonoBehaviour {
     SteeringFollowPath follow_path;
     public Cell cell;
     AssignCell assign;
-    GameObject c_agent;
+    public GameObject c_agent;
     Animator anim;
     public bool to_cell = false;
     LevelLoop level;
@@ -82,7 +82,28 @@ public class CriminalBehavior : MonoBehaviour {
         }
         if (to_cell)
             Night();
+
         
+        
+    }
+
+    public void Exit(GameObject agent)
+    {
+
+        anim.SetBool("sitting", false);
+        anim.SetBool("moving", true);
+        anim.SetBool("running", false);
+        move.move = true;
+        move.target = GameObject.Find("Exit");
+        follow_path.calcPath(move.target.transform);
+
+        c_agent = agent;
+        c_agent.GetComponent<Move>().target = gameObject;
+        c_agent.gameObject.layer = 0;
+        c_agent.GetComponent<SteeringPursue>().enabled = true;
+        c_agent.GetComponent<SteeringObstacleAvoidance>().enabled = true;
+        c_agent.GetComponent<SteeringCollisionAvoidance>().enabled = true;
+        c_agent.GetComponent<SteeringVelocityMatching>().enabled = true;
     }
 
     //Assign each criminal a point to stand on the cell

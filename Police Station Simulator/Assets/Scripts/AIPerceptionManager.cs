@@ -3,6 +3,7 @@ using System.Collections;
 
 public class AIPerceptionManager : MonoBehaviour {
 
+    public GameObject target = null;
 	public bool player_detected = false;
 
 	// Update is called once per frame
@@ -10,11 +11,13 @@ public class AIPerceptionManager : MonoBehaviour {
 
 		if(ev.type == global::PerceptionEvent.types.NEW)
 		{
+            target = ev.go;
 			player_detected = true;
 		}
 		else
-		{
-			player_detected = false;
+        {
+            target = null;
+            player_detected = false;
 		}
 	}
 }

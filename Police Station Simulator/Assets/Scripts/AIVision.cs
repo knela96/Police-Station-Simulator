@@ -49,7 +49,6 @@ public class AIVision : MonoBehaviour {
                     if (hit.collider.gameObject.CompareTag("DetectEntity"))
                     {
                         detected_now.Add(col.gameObject);
-                        Debug.Log(col.gameObject.name);
                     }
             	}
 			}

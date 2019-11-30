@@ -156,8 +156,11 @@ public class LevelLoop : MonoBehaviour
     {
         for(int i = 0;i < criminals.Count; ++i)
         {
-            if (criminals[i] != null && criminals[i].GetComponent<CriminalBehavior>().free)
+            if (criminals[i] != null && criminals[i].GetComponent<CriminalBehavior>().free && !criminals[i].GetComponent<CriminalBehavior>().toExit)
+            {
+                criminals[i].GetComponent<CriminalBehavior>().toExit = true; 
                 return criminals[i];
+            }
         }
         return null;
     }

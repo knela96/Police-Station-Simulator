@@ -46,7 +46,8 @@ namespace NodeCanvas.Tasks.Actions
         {
             if (follow_path.arrived)
             {
-                police.move.target.GetComponent<CriminalBehavior>().toExit = true;
+                police.move.target.GetComponent<CriminalBehavior>().Exit(agent.gameObject);
+                follow_path.deleteCurve();
                 EndAction(true);
             }
     
