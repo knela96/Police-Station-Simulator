@@ -22,6 +22,7 @@ public class CriminalBehavior : MonoBehaviour {
     public bool free = false;
     bool countdown = false;
     public bool toExit = false;
+    public bool escape = false;
     // Use this for initialization
     void Awake()
     {
@@ -35,16 +36,16 @@ public class CriminalBehavior : MonoBehaviour {
         follow_path.path = new NavMeshPath();
 
         //Agent created to scort him to the cell, creates one each time a new criminal appears.
-        c_agent = Instantiate(level.policemen_prebab[Random.Range(0, 2)], new Vector3(0, 0, 0), Quaternion.identity);
-        c_agent.GetComponent<PoliceBehaviour>().to_cell = true;
-        c_agent.GetComponent<Move>().target = gameObject;
-        c_agent.transform.position = transform.position + Vector3.back;
-        c_agent.gameObject.layer = 0;
-        c_agent.GetComponent<SteeringPursue>().enabled = true;
-        c_agent.GetComponent<SteeringObstacleAvoidance>().enabled = true;
-        c_agent.GetComponent<SteeringCollisionAvoidance>().enabled = true;
-        c_agent.GetComponent<SteeringVelocityMatching>().enabled = true;
-        c_agent.GetComponent<GraphOwner>().enabled = true;
+        //c_agent = Instantiate(level.policemen_prebab[Random.Range(0, 2)], new Vector3(0, 0, 0), Quaternion.identity);
+        //c_agent.GetComponent<PoliceBehaviour>().to_cell = true;
+        //c_agent.GetComponent<Move>().target = gameObject;
+        //c_agent.transform.position = transform.position + Vector3.back;
+        //c_agent.gameObject.layer = 0;
+        //c_agent.GetComponent<SteeringPursue>().enabled = true;
+        //c_agent.GetComponent<SteeringObstacleAvoidance>().enabled = true;
+        //c_agent.GetComponent<SteeringCollisionAvoidance>().enabled = true;
+        //c_agent.GetComponent<SteeringVelocityMatching>().enabled = true;
+        //c_agent.GetComponent<GraphOwner>().enabled = true;
         anim = GetComponent<Animator>();
         cells = GameObject.Find("Cell");
 
@@ -54,17 +55,13 @@ public class CriminalBehavior : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (cell == null)
-        {
-            AssignCell();
-            if (cell != null)
-            {
-                move.target = cell.getPoint().gameObject;
-                follow_path.calcPath(cell.getPoint());
-            }
-        }
+        //if (cell == null)
+        //{
+        //    AssignCell();
+        //}
+        countdown = true;
 
-        if(countdown)
+        if (countdown)
             timer -= Time.deltaTime;
         if (timer <= 0)
             free = true;
@@ -97,6 +94,11 @@ public class CriminalBehavior : MonoBehaviour {
         move.target = GameObject.Find("Exit");
         follow_path.calcPath(move.target.transform);
 
+        setAgent(agent);
+    }
+
+    public void setAgent(GameObject agent)
+    {
         c_agent = agent;
         c_agent.GetComponent<Move>().target = gameObject;
         c_agent.gameObject.layer = 0;
@@ -107,7 +109,7 @@ public class CriminalBehavior : MonoBehaviour {
     }
 
     //Assign each criminal a point to stand on the cell
-    void AssignCell()
+    public void AssignCell()
     {
         assign = cells.GetComponent<AssignCell>();
         for (int i = 0; i < assign.cells.Count; ++i)
@@ -116,8 +118,17 @@ public class CriminalBehavior : MonoBehaviour {
             if (c_cell.isAvailable())
             {
                 cell = c_cell.setAgent(gameObject);
-                return;
+                break;
             }
+        }
+
+        if (cell != null)
+        {
+            to_cell = true;
+            escape = false;
+            move.target = cell.getPoint().gameObject;
+            follow_path.calcPath(cell.getPoint());
+            timer = 60;
         }
     }
 
@@ -132,20 +143,23 @@ public class CriminalBehavior : MonoBehaviour {
             gameObject.GetComponent<SteeringCollisionAvoidance>().enabled = false;
             //gameObject.GetComponent<SteeringSeparation>().enabled = false;
         }
-        else if (other == move.target.gameObject.GetComponent<Collider>())
+        else if (move.target != null)
         {
-            if (c_agent != null)
+            if (other == move.target.gameObject.GetComponent<Collider>())
             {
-                c_agent.gameObject.layer = 8;
-                c_agent.GetComponent<Move>().target = null;
-                c_agent.GetComponent<SteeringPursue>().enabled = false;
-                c_agent.GetComponent<SteeringObstacleAvoidance>().enabled = true;
-                c_agent.GetComponent<SteeringCollisionAvoidance>().enabled = true;
-                c_agent.GetComponent<SteeringVelocityMatching>().enabled = false;
-                c_agent.GetComponent<PoliceBehaviour>().to_cell = false;
-                c_agent.GetComponent<PoliceBehaviour>().detected = false;
-                countdown = true;
-                c_agent = null;
+                if (c_agent != null)
+                {
+                    c_agent.gameObject.layer = 8;
+                    c_agent.GetComponent<Move>().target = null;
+                    c_agent.GetComponent<SteeringPursue>().enabled = false;
+                    c_agent.GetComponent<SteeringObstacleAvoidance>().enabled = true;
+                    c_agent.GetComponent<SteeringCollisionAvoidance>().enabled = true;
+                    c_agent.GetComponent<SteeringVelocityMatching>().enabled = false;
+                    c_agent.GetComponent<PoliceBehaviour>().to_cell = false;
+                    c_agent.GetComponent<PoliceBehaviour>().detected = false;
+                    countdown = true;
+                    c_agent = null;
+                }
             }
         }
     }
@@ -209,6 +223,7 @@ public class CriminalBehavior : MonoBehaviour {
             {
                 if (timer < 0)
                 {
+                    escape = true;
                     move.move = true;
                     anim.SetBool("sitting", false);
                     anim.SetBool("moving", true);

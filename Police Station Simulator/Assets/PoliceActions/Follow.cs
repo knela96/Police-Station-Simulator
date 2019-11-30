@@ -23,7 +23,6 @@ namespace NodeCanvas.Tasks.Actions
             police = agent.gameObject.GetComponent<PoliceBehaviour>();
             pursue = agent.gameObject.GetComponent<SteeringPursue>();
             move = agent.gameObject.GetComponent<Move>();
-            move.move = true;
             //follow_path.path = new NavMeshPath();
             return null;
         }
@@ -33,6 +32,7 @@ namespace NodeCanvas.Tasks.Actions
         //EndAction can be called from anywhere.
         protected override void OnExecute()
         {
+            move.move = true;
             police.detected = true;
             police.animator.SetBool("moving", true);
         }
@@ -42,12 +42,14 @@ namespace NodeCanvas.Tasks.Actions
         {
             if (move.target != null)
                 pursue.Steer(move.target.transform.position, move.target.GetComponent<Move>().current_velocity); //Will pursue the Criminal until it arrives to the cell
+            else
+                EndAction(false);
         }
 
         //Called when the task is disabled.
         protected override void OnStop()
         {
-
+            move.resetAccelerationRotation();
         }
 
         //Called when the task is paused.

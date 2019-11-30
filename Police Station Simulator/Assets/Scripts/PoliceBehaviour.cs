@@ -60,7 +60,7 @@ public class PoliceBehaviour : MonoBehaviour {
         night = !level.day;
         //cur_time = 0;
         light = transform.Find("Light").gameObject;
-        //light.SetActive(false);
+        light.SetActive(false);
         if (level.receptionist == null)
         {
             receptionist = true;
@@ -74,6 +74,19 @@ public class PoliceBehaviour : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {}
+
+    public void AttackTarget(int message)
+    {
+        Debug.Log("Received Damage");
+        if (move.target != null)
+        {
+            CriminalBehavior criminal = move.target.GetComponent<CriminalBehavior>();
+            criminal.AssignCell();
+            criminal.setAgent(gameObject);
+            animator.SetBool("attack", false);
+            to_cell = true;
+        }
+    }
 
     public bool ArrivedDesk()
     {

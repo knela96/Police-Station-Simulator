@@ -689,7 +689,7 @@ MonoBehaviour:
   light: {fileID: 0}
   to_cell: 0
   night: 0
-  receptionist: 1
+  receptionist: 0
   patrolling: 0
   detected: 0
   numCriminals: 0

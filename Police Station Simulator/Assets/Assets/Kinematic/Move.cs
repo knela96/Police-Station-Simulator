@@ -43,6 +43,11 @@ public class Move : MonoBehaviour {
 	{
         current_rotation_speed += rotation_acceleration;
 	}
+
+    public void resetAccelerationRotation()
+    {
+        current_rotation_speed = 0;
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -101,6 +106,8 @@ public class Move : MonoBehaviour {
         {
             movement_velocity[i] = Vector3.zero;
         }
+
+
         
         resetTransform();
     }

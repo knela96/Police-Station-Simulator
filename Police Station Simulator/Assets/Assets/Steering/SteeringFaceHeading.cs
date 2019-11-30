@@ -25,11 +25,11 @@ public class SteeringFaceHeading : MonoBehaviour
         if (move.current_velocity.magnitude == 0)
             return;
 
-        Vector3 direction = (target - transform.position).normalized;
+        Vector3 direction = target - transform.position;
 
         //Rotation to the current direction
         Quaternion lookRotation = Quaternion.LookRotation(direction);
-
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5);
+        
+        transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * 5);
     }
 }

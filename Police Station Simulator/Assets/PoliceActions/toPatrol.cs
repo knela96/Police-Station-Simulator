@@ -48,7 +48,7 @@ namespace NodeCanvas.Tasks.Actions
         //Called when the task is disabled.
         protected override void OnStop()
         {
-
+            follow_path.deleteCurve();
         }
 
         //Called when the task is paused.

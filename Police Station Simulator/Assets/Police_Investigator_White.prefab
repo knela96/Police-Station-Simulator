@@ -1306,7 +1306,7 @@ MonoBehaviour:
   light: {fileID: 0}
   to_cell: 0
   night: 0
-  receptionist: 1
+  receptionist: 0
   patrolling: 0
   detected: 0
   numCriminals: 0
@@ -1565,13 +1565,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b98a6db0b653f764eac834f85857a9dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _serializedBlackboard: '{"_variables":{"target":{"_name":"target","_id":"428d8d86-b822-414e-a89a-131dd9cba1cc","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
+  _serializedBlackboard: '{"_variables":{"target":{"_propertyPath":"AIPerceptionManager.target","_name":"target","_id":"428d8d86-b822-414e-a89a-131dd9cba1cc","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Night":{"_propertyPath":"PoliceBehaviour.night","_name":"Night","_id":"8908194c-2c8b-4b91-a813-c8b99bfd3d4a","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"to_cell":{"_propertyPath":"PoliceBehaviour.to_cell","_name":"to_cell","_id":"165b270d-0eb1-4eb6-a094-7fad7e7aebad","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"arrived":{"_propertyPath":"SteeringFollowPath.arrived","_name":"arrived","_id":"f290cc88-4cc8-4dec-b5bf-1be96b4b2542","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"receptinist":{"_propertyPath":"PoliceBehaviour.receptionist","_name":"receptinist","_id":"804efe4d-3364-45dc-af4d-d58109c7e56b","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"endedAction":{"_propertyPath":"PoliceBehaviour.start","_name":"endedAction","_id":"4d12a19a-082e-4d63-b877-9bc50c1ecaa2","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"detected":{"_propertyPath":"PoliceBehaviour.detected","_name":"detected","_id":"caa56e1b-34b8-45bf-8571-5bdc706bc9b3","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"detected":{"_propertyPath":"AIPerceptionManager.player_detected","_name":"detected","_id":"caa56e1b-34b8-45bf-8571-5bdc706bc9b3","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"patrol":{"_propertyPath":"PoliceBehaviour.patrolling","_name":"patrol","_id":"4621b26e-bd91-457e-bda4-6278a0f39242","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"numCriminals":{"_propertyPath":"PoliceBehaviour.numCriminals","_name":"numCriminals","_id":"36d0c198-7a71-404c-997a-f693c7901b5d","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
@@ -1607,6 +1607,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f62f0b831d48471b983034fb87b745c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
   player_detected: 0
 --- !u!1 &1834386528239832
 GameObject:

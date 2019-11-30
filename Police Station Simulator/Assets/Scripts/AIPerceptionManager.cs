@@ -11,13 +11,19 @@ public class AIPerceptionManager : MonoBehaviour {
 
 		if(ev.type == global::PerceptionEvent.types.NEW)
 		{
-            target = ev.go;
-			player_detected = true;
+            if (target == null)
+            {
+                target = ev.go;
+                player_detected = true;
+            }
 		}
 		else
         {
-            target = null;
-            player_detected = false;
+            //if (ev.go == target)
+            //{
+            //    target = null;
+            //    player_detected = false;
+            //}
 		}
 	}
 }

@@ -16,7 +16,9 @@ namespace NodeCanvas.Tasks.Actions
         Point point;
         Move move;
         SteeringFollowPath follow_path;
+        SteeringSeek seek;
         public float timer;
+        bool _seek = false;
         //Use for initialization. This is called only once in the lifetime of the task.
         //Return null if init was successfull. Return an error string otherwise
         protected override string OnInit()
@@ -25,6 +27,7 @@ namespace NodeCanvas.Tasks.Actions
             move = agent.gameObject.GetComponent<Move>();
             move.move = true;
             follow_path = agent.gameObject.GetComponent<SteeringFollowPath>();
+            seek = agent.gameObject.GetComponent<SteeringSeek>();
             //follow_path.path = new NavMeshPath();
             return null;
         }
@@ -41,7 +44,15 @@ namespace NodeCanvas.Tasks.Actions
             }
             police.animator.SetBool("moving", true);
             move.target = GameObject.Find("Exit");
-            follow_path.calcPath(move.target.transform);
+            if ((move.target.transform.position - agent.transform.position).magnitude <= 10)
+            {
+                _seek = true;
+            }
+            else
+            {
+                _seek = false;
+                follow_path.calcPath(move.target.transform);
+            }
         }
 
         //Called once per frame while the action is active.
@@ -53,6 +64,8 @@ namespace NodeCanvas.Tasks.Actions
                 if(!police.patrolling)
                     police.animator.SetBool("running", true);
             }
+            if (_seek)
+                seek.Steer(move.target.transform.position, 5); //Will pursue the Criminal until it arrives to the cell
         }
 
         //Called when the task is disabled.
