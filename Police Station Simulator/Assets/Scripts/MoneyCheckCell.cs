@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoneyCheck : MonoBehaviour
+public class MoneyCheckCell : MonoBehaviour
 {
     // Start is called before the first frame update
     LevelLoop level;
@@ -14,12 +14,13 @@ public class MoneyCheck : MonoBehaviour
     {
         level = GameObject.Find("Level").GetComponent<LevelLoop>();
         money = GameObject.Find("Money").GetComponent<MoneyBar>();
-      
+
     }
 
     void Update()
     {
-        if (money.CurrentValue <= cost) {
+        if (money.CurrentValue <= cost)
+        {
 
             gameObject.SetActive(false);
 

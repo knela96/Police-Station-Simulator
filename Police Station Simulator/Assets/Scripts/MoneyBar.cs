@@ -19,7 +19,7 @@ public class MoneyBar : MonoBehaviour
         if (health != mCurrent)
         {
 
-            if (Max - Min == 0 || health == 0)
+            if (Max - Min == 0 || health <= 0 )
             {
 
                 mCurrent = 0;

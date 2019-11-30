@@ -5,14 +5,16 @@ using UnityEngine;
 public class ButtonCell9 : MonoBehaviour
 {
     LevelLoop level;
-
+    MoneyBar money;
+    float auxm;
+    public float cost;
     GameObject Cell9;
 
     // Start is called before the first frame update
     void Awake()
     {
         level = GameObject.Find("Level").GetComponent<LevelLoop>();
-
+        money = GameObject.Find("Money").GetComponent<MoneyBar>();
         Cell9 = GameObject.Find("CellP 9");
 
     }
@@ -23,6 +25,8 @@ public class ButtonCell9 : MonoBehaviour
 
         Cell9.SetActive(true);
         gameObject.SetActive(false);
-
+        auxm = money.CurrentValue;
+        auxm = auxm - cost;
+        money.SetBar((int)auxm);
     }
 }
