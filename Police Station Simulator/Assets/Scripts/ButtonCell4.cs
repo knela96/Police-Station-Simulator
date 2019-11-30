@@ -6,14 +6,16 @@ public class ButtonCell4 : MonoBehaviour
 {
 
     LevelLoop level;
-
+    MoneyBar money;
+    float auxm;
+    public float cost;
     GameObject Cell4;
 
     // Start is called before the first frame update
     void Awake()
     {
         level = GameObject.Find("Level").GetComponent<LevelLoop>();
-
+        money = GameObject.Find("Money").GetComponent<MoneyBar>();
         Cell4 = GameObject.Find("CellP 3");
 
     }
@@ -24,6 +26,8 @@ public class ButtonCell4 : MonoBehaviour
 
         Cell4.SetActive(true);
         gameObject.SetActive(false);
-
+        auxm = money.CurrentValue;
+        auxm = auxm - cost;
+        money.SetBar((int)auxm);
     }
 }
