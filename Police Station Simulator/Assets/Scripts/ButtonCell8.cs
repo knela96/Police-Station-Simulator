@@ -9,14 +9,14 @@ public class ButtonCell8 : MonoBehaviour
     float auxm;
     public float cost;
     GameObject Cell8;
-
+    GameObject FCell8;
     // Start is called before the first frame update
     void Awake()
     {
         level = GameObject.Find("Level").GetComponent<LevelLoop>();
         money = GameObject.Find("Money").GetComponent<MoneyBar>();
         Cell8 = GameObject.Find("CellP 8");
-
+        FCell8 = GameObject.Find("fCellP 8");
     }
     // Update is called once per frame
 
@@ -24,6 +24,7 @@ public class ButtonCell8 : MonoBehaviour
     {
 
         Cell8.SetActive(true);
+        FCell8.SetActive(false);
         gameObject.SetActive(false);
         auxm = money.CurrentValue;
         auxm = auxm - cost;

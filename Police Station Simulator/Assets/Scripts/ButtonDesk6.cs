@@ -9,14 +9,14 @@ public class ButtonDesk6 : MonoBehaviour
     float auxm;
     public float cost;
     GameObject Desk12;
-
+    GameObject FDesk12;
     // Start is called before the first frame update
     void Awake()
     {
         level = GameObject.Find("Level").GetComponent<LevelLoop>();
         money = GameObject.Find("Money").GetComponent<MoneyBar>();
         Desk12 = GameObject.Find("desk12");
-
+        FDesk12 = GameObject.Find("fdesk12");
     }
     // Update is called once per frame
 
@@ -24,6 +24,7 @@ public class ButtonDesk6 : MonoBehaviour
     {
 
         Desk12.SetActive(true);
+        FDesk12.SetActive(false);
         gameObject.SetActive(false);
         auxm = money.CurrentValue;
         auxm = auxm - cost;
