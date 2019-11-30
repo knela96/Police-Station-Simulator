@@ -46,7 +46,7 @@ namespace NodeCanvas.Tasks.Actions
         {
             if (follow_path.arrived)
             {
-                //police.move.target.toExit = true;
+                police.move.target.GetComponent<CriminalBehavior>().toExit = true;
                 EndAction(true);
             }
     

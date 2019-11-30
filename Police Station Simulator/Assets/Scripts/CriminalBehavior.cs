@@ -21,9 +21,12 @@ public class CriminalBehavior : MonoBehaviour {
     float timer = 60.0f;
     public bool free = false;
     bool countdown = false;
+    public bool toExit = false;
     // Use this for initialization
     void Awake()
     {
+        toExit = false;
+
         level = GameObject.Find("Level").GetComponent<LevelLoop>();
         move = GetComponent<Move>();
         arrive = GetComponent<SteeringArrive>();
@@ -63,7 +66,7 @@ public class CriminalBehavior : MonoBehaviour {
 
         if(countdown)
             timer -= Time.deltaTime;
-        if (timer == 0)
+        if (timer <= 0)
             free = true;
 
         // Changes the Animator booleans
@@ -112,6 +115,7 @@ public class CriminalBehavior : MonoBehaviour {
         {
             if (c_agent != null)
             {
+                c_agent.gameObject.layer = 8;
                 c_agent.GetComponent<Move>().target = null;
                 c_agent.GetComponent<SteeringPursue>().enabled = false;
                 c_agent.GetComponent<SteeringObstacleAvoidance>().enabled = true;
@@ -119,7 +123,6 @@ public class CriminalBehavior : MonoBehaviour {
                 c_agent.GetComponent<SteeringVelocityMatching>().enabled = false;
                 c_agent.GetComponent<PoliceBehaviour>().to_cell = false;
                 c_agent.GetComponent<PoliceBehaviour>().detected = false;
-                c_agent.gameObject.layer = 8;
                 countdown = true;
                 c_agent = null;
             }

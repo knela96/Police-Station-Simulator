@@ -48,24 +48,24 @@ public class LevelLoop : MonoBehaviour
         if (day)
         {
             //Spawn Entites evey x time
-            if (cycle - timer1 > 3)//15
-            {
-                if (assign.numAssigned <= assign.points.Count)
-                {
-                    timer1 = cycle;
-                    addCitizen();
-                }
-            }
-            if (cycle - timer2 > 22)
-            {
-                timer2 = cycle;
-                addPolicemen();
-            }
-            //if (cycle - timer3 > 10)//31
+            //if (cycle - timer1 > 3)//15
             //{
-            //    timer3 = cycle;
-            //   addCriminal(vec);
+            //    if (assign.numAssigned <= assign.points.Count)
+            //    {
+            //        timer1 = cycle;
+            //        addCitizen();
+            //    }
             //}
+            //if (cycle - timer2 > 22)
+            //{
+            //    timer2 = cycle;
+            //    addPolicemen();
+            //}
+            if (cycle - timer3 > 10)//31
+            {
+                timer3 = cycle;
+                addCriminal();
+            }
             if (!actions)
             {
                 //Change the behaviour to Day
@@ -122,7 +122,7 @@ public class LevelLoop : MonoBehaviour
             c3 = 0;
 
         //Changes the cycle of day and night
-        if (cycle >= 120)
+        if (cycle >= 240)
         {
             day = !day;
             cycle = 0;

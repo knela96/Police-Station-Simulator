@@ -53,7 +53,7 @@ namespace NodeCanvas.Tasks.Actions
                 if (cur_time >= time_task)
                 {
                     //Ends the task and create a path to the Exit
-                    police.stopTask();
+                    EndAction(true);
                     cur_time = 0;
                 }
             }

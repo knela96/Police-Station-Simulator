@@ -41,13 +41,16 @@ public class AIVision : MonoBehaviour {
 			{
 				RaycastHit hit;
 				ray.origin = transform.position;
-				ray.direction = (col.transform.position - transform.position).normalized;
+				ray.direction = (col.transform.position - transform.position + new Vector3(0f,0.5f,0f)).normalized;
 				ray.origin = ray.GetPoint(frustum.nearClipPlane);
 
             	if(Physics.Raycast(ray, out hit, frustum.farClipPlane, ray_mask))
             	{
-					if(hit.collider.gameObject.CompareTag("Visual Emitter"))
-            			detected_now.Add(col.gameObject);
+                    if (hit.collider.gameObject.CompareTag("DetectEntity"))
+                    {
+                        detected_now.Add(col.gameObject);
+                        Debug.Log(col.gameObject.name);
+                    }
             	}
 			}
 		}

@@ -44,7 +44,6 @@ public class PoliceBehaviour : MonoBehaviour {
     // Use this for initialization
     void Awake()
     {
-        night = false;
         detected = false;
         level = GameObject.Find("Level").GetComponent<LevelLoop>();
         desks = GameObject.Find("Desks");
@@ -58,9 +57,10 @@ public class PoliceBehaviour : MonoBehaviour {
         start = false;
         move.move = true;
         desk = null;
+        night = !level.day;
         //cur_time = 0;
         light = transform.Find("Light").gameObject;
-        light.SetActive(false);
+        //light.SetActive(false);
         if (level.receptionist == null)
         {
             receptionist = true;
@@ -127,7 +127,8 @@ public class PoliceBehaviour : MonoBehaviour {
         start = false;
         move.move = true;
         slider_task.gameObject.SetActive(false);
-        desk.Release();
+        if(desk!=null)
+            desk.Release();
         desk = null;
     }
 
