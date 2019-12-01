@@ -172,7 +172,6 @@ public class LevelLoop : MonoBehaviour
             GameObject go = Instantiate(criminals_prebab[c3], vec, Quaternion.Euler(0, 90, 0));
             go.GetComponent<GraphOwner>().enabled = true;
             criminals.Add(go);
-            cells.cellsav--;
             c3++;
             if (c3 == criminals_prebab.Length)
                 c3 = 0;

@@ -15,7 +15,7 @@ public class AssignCell : MonoBehaviour
         {
             Transform c = child.transform.Find("Point");
             cells.Add(c.gameObject); //Stores the current desk points
-            if (c.gameObject.active == true)
+            //if (c.gameObject.active == true)
                 cellsav++;
         }
 

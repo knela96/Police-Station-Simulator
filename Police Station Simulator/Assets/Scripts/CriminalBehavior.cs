@@ -51,7 +51,6 @@ public class CriminalBehavior : MonoBehaviour {
 
     public void Exit(GameObject agent)
     {
-
         anim.SetBool("sitting", false);
         anim.SetBool("moving", true);
         anim.SetBool("running", false);
@@ -93,7 +92,7 @@ public class CriminalBehavior : MonoBehaviour {
         for (int i = 0; i < assign.cells.Count; ++i)
         {
             Cell c_cell = assign.cells[i].gameObject.GetComponent<Cell>();
-            if (c_cell.isAvailable())
+            if (c_cell.isAvailable() && c_cell.gameObject.active)
             {
                 cell = c_cell.setAgent(gameObject);
                 break;

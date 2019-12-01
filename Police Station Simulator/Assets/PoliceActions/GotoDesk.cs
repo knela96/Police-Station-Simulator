@@ -48,8 +48,11 @@ namespace NodeCanvas.Tasks.Actions{
                 police.move.target = desk.getPoint().gameObject;
                 follow_path.calcPath(desk.getPoint());
             }
-            if (follow_path.path == null)
+            if (!follow_path.followingPath())
+            {
+                follow_path.deleteCurve();
                 follow_path.calcPath(desk.getPoint());
+            }
         }
 
 		//Called when the task is disabled.

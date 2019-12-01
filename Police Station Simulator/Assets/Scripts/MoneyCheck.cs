@@ -8,21 +8,31 @@ public class MoneyCheck : MonoBehaviour
     LevelLoop level;
     MoneyBar money;
     public int cost;
+    public bool update = false;
     // Update is called once per frame
 
     void Awake()
     {
         level = GameObject.Find("Level").GetComponent<LevelLoop>();
         money = GameObject.Find("Money").GetComponent<MoneyBar>();
-      
     }
 
     void Update()
     {
-        if (money.CurrentValue <= cost) {
-
-            gameObject.SetActive(false);
-
+        if (money.CurrentValue < cost && update == false) {
+            foreach (Transform child in gameObject.transform)
+            {
+                child.gameObject.SetActive(false);
+            }
+            update = true;
+        }
+        else if(money.CurrentValue >= cost && update == true)
+        {
+            foreach (Transform child in gameObject.transform)
+            {
+                child.gameObject.SetActive(true);
+            }
+            update = false;
         }
 
     }

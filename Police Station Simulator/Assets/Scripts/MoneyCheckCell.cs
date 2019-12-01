@@ -8,6 +8,7 @@ public class MoneyCheckCell : MonoBehaviour
     LevelLoop level;
     MoneyBar money;
     public int cost;
+    public bool update = false;
     // Update is called once per frame
 
     void Awake()
@@ -19,12 +20,23 @@ public class MoneyCheckCell : MonoBehaviour
 
     void Update()
     {
-        if (money.CurrentValue <= cost)
+        if (money.CurrentValue < cost && update == false)
         {
-
-            gameObject.SetActive(false);
-
+            foreach (Transform child in gameObject.transform)
+            {
+                child.gameObject.SetActive(false);
+            }
+            update = true;
         }
+        else if (money.CurrentValue >= cost && update == true)
+        {
+            foreach (Transform child in gameObject.transform)
+            {
+                child.gameObject.SetActive(true);
+            }
+            update = false;
+        }
+
 
     }
 }

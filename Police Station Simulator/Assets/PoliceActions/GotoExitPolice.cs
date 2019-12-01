@@ -68,8 +68,11 @@ namespace NodeCanvas.Tasks.Actions
             }
             if (_seek)
                 seek.Steer(move.target.transform.position, 5); //Will pursue the Criminal until it arrives to the cell
-            else if(follow_path.path == null)
+            else if (!follow_path.followingPath())
+            {
+                follow_path.deleteCurve();
                 follow_path.calcPath(move.target.transform);
+            }
 
         }
 

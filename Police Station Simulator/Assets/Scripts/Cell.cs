@@ -6,7 +6,7 @@ public class Cell : MonoBehaviour
 {
 
     bool available;
-    PoliceBehaviour assigned;
+    CriminalBehavior assigned;
     Transform point;
 
     // Use this for initialization
@@ -24,7 +24,7 @@ public class Cell : MonoBehaviour
 
     public Cell setAgent(GameObject agent)
     {
-        assigned = agent.GetComponent<PoliceBehaviour>();
+        assigned = agent.GetComponent<CriminalBehavior>();
         available = false;
         return this;
     }

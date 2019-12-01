@@ -214,7 +214,7 @@ MonoBehaviour:
   patroling: 0
   go: {fileID: 0}
   ratio_increment: 0.1
-  min_distance: 0.5
+  min_distance: 0.4
   arrived: 0
   going: 0
 --- !u!114 &2026912533443696240
@@ -377,6 +377,7 @@ MonoBehaviour:
   escape: 0
   night: 0
   detected: 0
+  assigned: 0
 --- !u!114 &9121587132007228795
 MonoBehaviour:
   m_ObjectHideFlags: 0

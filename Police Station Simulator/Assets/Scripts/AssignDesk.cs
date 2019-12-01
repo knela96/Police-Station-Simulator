@@ -17,7 +17,7 @@ public class AssignDesk : MonoBehaviour {
                 {
                     Transform c = child2.transform.Find("Point");
                     desks.Add(c.gameObject); //Stores the current desk points
-                    if (c.gameObject.active == true)
+                    //if (c.gameObject.active == true)
                         desksav++;
                 }
             }

@@ -148,6 +148,14 @@ public class SteeringFollowPath : MonoBehaviour {
 
     }
 
+    public bool followingPath()
+    {
+        if (curve.PointsCount > 0)
+            return true;
+        else
+            return false;
+    }
+
     public void createPatrol(int patrol,bool position)
     {
         //If the agent has arrived at the beggining of the Patrol path, create it to start patrolling
