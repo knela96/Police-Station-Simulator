@@ -9,12 +9,6 @@ public class AssignDesk : MonoBehaviour {
 	// Use this for initialization
     
 	void Awake () {
-        //foreach (Transform child in gameObject.transform)
-        //{
-        //    Transform c = child.Find("AI_Prop_ComputerChair").transform.Find("Point");
-        //    desks.Add(c.gameObject); //Stores the current desk points
-
-        //}
         foreach (Transform child in gameObject.transform)
         {
             foreach (Transform child2 in child.transform)
@@ -23,7 +17,7 @@ public class AssignDesk : MonoBehaviour {
                 {
                     Transform c = child2.transform.Find("Point");
                     desks.Add(c.gameObject); //Stores the current desk points
-                    if (c.gameObject.activeInHierarchy)
+                    if (c.gameObject.active == true)
                         desksav++;
                 }
             }
@@ -34,7 +28,7 @@ public class AssignDesk : MonoBehaviour {
     {
         for (int i = 0; i < desks.Count; ++i)
         {
-            if (desks[i].GetComponent<Desk>().isAvailable() && desks[i].activeInHierarchy)
+            if (desks[i].GetComponent<Desk>().isAvailable() && desks[i].active)
                 return true;
         }
         return false;

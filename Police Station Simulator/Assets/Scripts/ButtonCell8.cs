@@ -27,7 +27,6 @@ public class ButtonCell8 : MonoBehaviour
 
         Cell8.SetActive(true);
         FCell8.SetActive(false);
-        cells.cellsav++;
         gameObject.SetActive(false);
         auxm = money.CurrentValue;
         auxm = auxm - cost;

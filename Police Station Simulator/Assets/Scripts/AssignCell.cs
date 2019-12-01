@@ -7,6 +7,7 @@ public class AssignCell : MonoBehaviour
 
     public List<GameObject> cells;
     public int cellsav = 0;
+
     // Use this for initialization
     void Awake()
     {
@@ -14,7 +15,7 @@ public class AssignCell : MonoBehaviour
         {
             Transform c = child.transform.Find("Point");
             cells.Add(c.gameObject); //Stores the current desk points
-            if (c.gameObject.activeInHierarchy)
+            if (c.gameObject.active == true)
                 cellsav++;
         }
 
@@ -24,7 +25,7 @@ public class AssignCell : MonoBehaviour
     {
         for (int i = 0; i < cells.Count; ++i)
         {
-            if (cells[i].GetComponent<Cell>().isAvailable() && cells[i].activeInHierarchy)
+            if (cells[i].GetComponent<Cell>().isAvailable() && cells[i].active)
                 return true;
         }
         return false;

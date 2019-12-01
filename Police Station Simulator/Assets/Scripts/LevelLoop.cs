@@ -66,7 +66,7 @@ public class LevelLoop : MonoBehaviour
             if (cycle - timer2 > 8)
             {
                 timer2 = cycle;
-                if (spawnagents > 0)//GET CURRENT DEKS FERRAN
+                if (spawnagents > 0)
                 {
                     addPolicemen();
                     spawnagents--;
@@ -79,6 +79,7 @@ public class LevelLoop : MonoBehaviour
             //}
             if (!actions)
             {
+                spawnagents = desks.desksav;
                 //Change the behaviour to Day
                 foreach (GameObject go in policemen)
                 {

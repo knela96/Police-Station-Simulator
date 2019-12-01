@@ -28,7 +28,6 @@ public class ButtonDesk3 : MonoBehaviour
 
         Desk9.SetActive(true);
         FDesk9.SetActive(false);
-        desks.desksav++;
         gameObject.SetActive(false);
         auxm = money.CurrentValue;
         auxm = auxm - cost;
