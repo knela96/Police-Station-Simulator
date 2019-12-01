@@ -88,6 +88,8 @@ As the police captain your job is to assign different workers to different tasks
 - If he is detected he will try to attack the police
 - He will return to the Cell if he doesn't succeeds on the attack
 
+**You can check its Behaviour Trees here:** [Entities Behaviour Trees](https://github.com/knela96/Police-Station-Simulator/wiki/Entities-Behaviours)
+
 # Gameloop:
 
 ## DAY (2 minutes)
