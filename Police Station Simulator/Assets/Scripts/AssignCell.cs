@@ -23,6 +23,17 @@ public class AssignCell : MonoBehaviour
 
     }
 
+    public bool FreeCells()
+    {
+        foreach (Transform child in gameObject.transform)
+        {
+            Transform c = child.transform;
+            if (c.GetComponent<Cell>().isAvailable())
+                return true;
+        }
+        return false;
+    }
+
     // Update is called once per frame
     void Update()
     {

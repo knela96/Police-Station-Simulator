@@ -48,7 +48,7 @@ public class LevelLoop : MonoBehaviour
         if (day)
         {
             //Spawn Entites evey x time
-            if (cycle - timer1 > 3)//15
+            if (cycle - timer1 > 5)//15
             {
                 if (assign.numAssigned <= assign.points.Count)
                 {
@@ -56,10 +56,13 @@ public class LevelLoop : MonoBehaviour
                     addCitizen();
                 }
             }
-            if (cycle - timer2 > 22)
+            if (cycle - timer2 > 2)
             {
                 timer2 = cycle;
-                addPolicemen();
+                if (policemen.Count < 8)//GET CURRENT DEKS FERRAN
+                {
+                    addPolicemen();
+                }
             }
             //if (cycle - timer3 > 10)//31
             //{
@@ -150,12 +153,15 @@ public class LevelLoop : MonoBehaviour
     }
     public void addCriminal()
     {
-        GameObject go = Instantiate(criminals_prebab[c3], vec, Quaternion.Euler(0, 90, 0));
-        go.GetComponent<GraphOwner>().enabled = true;
-        criminals.Add(go);
-        c3++;
-        if (c3 == criminals_prebab.Length)
-            c3 = 0;
+        if (GameObject.Find("Cells"))//GET FREE CELLS FERRAN
+        {
+            GameObject go = Instantiate(criminals_prebab[c3], vec, Quaternion.Euler(0, 90, 0));
+            go.GetComponent<GraphOwner>().enabled = true;
+            criminals.Add(go);
+            c3++;
+            if (c3 == criminals_prebab.Length)
+                c3 = 0;
+        }
     }
 
     public GameObject getCriminal()

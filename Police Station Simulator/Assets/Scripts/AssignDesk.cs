@@ -6,6 +6,7 @@ public class AssignDesk : MonoBehaviour {
 
     public List<GameObject> desks;
 	// Use this for initialization
+    
 	void Awake () {
         foreach (Transform child in gameObject.transform)
         {
@@ -14,9 +15,23 @@ public class AssignDesk : MonoBehaviour {
         }
         
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    //public bool numAgents(int count)
+    //{
+    //    int num = 0;
+    //    foreach (Transform child in gameObject.transform)
+    //    {
+    //        if (!child.GetComponent<Desk>().isAvailable())
+    //            num++;
+    //    }
+    //    if (count < num)
+    //        return true;
+    //    else
+    //        return false;
+    //}
+
+    // Update is called once per frame
+    void Update () {
 		
 	}
 }

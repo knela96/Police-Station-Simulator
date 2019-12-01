@@ -36,6 +36,7 @@ namespace NodeCanvas.Tasks.Actions
         protected override void OnExecute()
         {
             cur_time = 0;
+            police.move.move = false;
         }
 
         //Called once per frame while the action is active.
@@ -57,6 +58,7 @@ namespace NodeCanvas.Tasks.Actions
                     //Ends the task and create a path to the Exit
                     police.numCriminals = level.criminals.Count;
                     auxm = money.CurrentValue;
+                    level.addCriminal();
                     auxm = auxm + 7;
                     money.SetBar((int)auxm);
                     EndAction(true);
@@ -68,7 +70,7 @@ namespace NodeCanvas.Tasks.Actions
         //Called when the task is disabled.
         protected override void OnStop()
         {
-            level.addCriminal();
+            police.move.move = true;
             police.stopTask();
             police.animator.SetBool("moving", true);
         }
