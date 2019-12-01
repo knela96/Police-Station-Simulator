@@ -39,7 +39,7 @@ public class CriminalBehavior : MonoBehaviour {
         action = false;
         follow_path = gameObject.GetComponent<SteeringFollowPath>();
         follow_path.path = new NavMeshPath();
-        cells = GameObject.Find("Cell");
+        cells = GameObject.Find("Cells");
         anim = GetComponent<Animator>();
     }
 
