@@ -6,30 +6,25 @@ public class AssignCell : MonoBehaviour
 {
 
     public List<GameObject> cells;
-    public int cellsav = 2;
+    public int cellsav = 0;
     // Use this for initialization
     void Awake()
     {
         foreach (Transform child in gameObject.transform)
         {
-            Transform c = child.transform;
-            cells.Add(c.gameObject);
-            //for (int i = 0; i < child.childCount; ++i)
-            //{
-            //    Transform c1 = c.GetChild(i);
-            //    if (c1.name == "Point")
-            //        cells.Add(c1.gameObject); //Stores the current desk points
-            //}
+            Transform c = child.transform.Find("Point");
+            cells.Add(c.gameObject); //Stores the current desk points
+            if (c.gameObject.activeInHierarchy)
+                cellsav++;
         }
 
     }
 
     public bool FreeCells()
     {
-        foreach (Transform child in gameObject.transform)
+        for (int i = 0; i < cells.Count; ++i)
         {
-            Transform c = child.transform;
-            if (c.GetComponent<Cell>().isAvailable())
+            if (cells[i].GetComponent<Cell>().isAvailable() && cells[i].activeInHierarchy)
                 return true;
         }
         return false;

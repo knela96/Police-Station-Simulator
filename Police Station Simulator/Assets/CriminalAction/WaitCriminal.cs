@@ -37,7 +37,11 @@ namespace NodeCanvas.Tasks.Actions
             criminal.night = Night.value;
             if (criminal.timer <= 0)
             {
+                if (criminal.night)
+                    criminal.escape = true;
+
                 criminal.free = true;
+
 
                 EndAction(true);
             }

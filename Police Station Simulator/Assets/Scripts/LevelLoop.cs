@@ -33,6 +33,9 @@ public class LevelLoop : MonoBehaviour
     public AssignPoints assign;
     public AssignDesk desks;
     public AssignCell cells;
+
+    public int spawnagents;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -43,6 +46,7 @@ public class LevelLoop : MonoBehaviour
         policemen.Add(Instantiate(policemen_prebab[Random.Range(0, policemen_prebab.Length - 1)], GameObject.Find("Entrance").transform.position, Quaternion.Euler(0, 90, 0)));
         policemen[0].GetComponent<PoliceBehaviour>().receptionist = true;
         policemen[0].GetComponent<GraphOwner>().enabled = true;
+        spawnagents = desks.desksav;
     }
 
     // Update is called once per frame
@@ -59,13 +63,13 @@ public class LevelLoop : MonoBehaviour
                     addCitizen();
                 }
             }
-            if (cycle - timer2 > 2)
+            if (cycle - timer2 > 8)
             {
                 timer2 = cycle;
-                if (policemen.Count < desks.desksav)//GET CURRENT DEKS FERRAN
+                if (spawnagents > 0)//GET CURRENT DEKS FERRAN
                 {
                     addPolicemen();
-                    desks.desksav--;
+                    spawnagents--;
                 }
             }
             //if (cycle - timer3 > 10)//31
@@ -146,18 +150,23 @@ public class LevelLoop : MonoBehaviour
         if (c1 == citizens_prebab.Length)
             c1 = 0;
     }
-    public void addPolicemen()
+    public bool addPolicemen()
     {
-        GameObject go = Instantiate(policemen_prebab[c2], vec, Quaternion.Euler(0, 90, 0));
-        go.GetComponent<GraphOwner>().enabled = true;
-        policemen.Add(go);
-        c2++;
-        if (c2 == policemen_prebab.Length)
-            c2 = 0;
+        if (desks.FreeDesks())
+        {
+            GameObject go = Instantiate(policemen_prebab[c2], vec, Quaternion.Euler(0, 90, 0));
+            go.GetComponent<GraphOwner>().enabled = true;
+            policemen.Add(go);
+            c2++;
+            if (c2 == policemen_prebab.Length)
+                c2 = 0;
+            return true;
+        }
+        return false;
     }
-    public void addCriminal()
+    public bool addCriminal()
     {
-        if (criminals.Count < cells.cellsav)//GET FREE CELLS FERRAN
+        if (cells.FreeCells())
         {
             GameObject go = Instantiate(criminals_prebab[c3], vec, Quaternion.Euler(0, 90, 0));
             go.GetComponent<GraphOwner>().enabled = true;
@@ -166,7 +175,9 @@ public class LevelLoop : MonoBehaviour
             c3++;
             if (c3 == criminals_prebab.Length)
                 c3 = 0;
+            return true;
         }
+        return false;
     }
 
     public GameObject getCriminal()

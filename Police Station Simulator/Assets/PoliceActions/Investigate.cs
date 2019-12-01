@@ -58,7 +58,8 @@ namespace NodeCanvas.Tasks.Actions
                     //Ends the task and create a path to the Exit
                     police.numCriminals = level.criminals.Count;
                     auxm = money.CurrentValue;
-                    level.addCriminal();
+                    if (!level.addCriminal())
+                        level.addPolicemen();
                     auxm = auxm + 7;
                     money.SetBar((int)auxm);
                     EndAction(true);
