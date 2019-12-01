@@ -34,15 +34,14 @@ SOFTWARE.
 
 
 # Mechanics:
-
+"UI graphics not final"
 As the police captain your job is to assign different workers to different tasks and try to make the city as safe as possible.
 
 # Different npc's roles:
 
 - Citizen: Brings crime notifications to the police station
 - Police: Works outside the police station and brings criminals to the containment cell.
-	- Police(Guard): Patrols the police station to ensure security
-	- Detective: It investigates the crimes brought by the citizens and sends the police.
+- Police(Guard): Patrols the police station to ensure security
 - Criminal: Tries to scape the containment cell.
 
 # Different Police station Rooms:
@@ -52,11 +51,41 @@ As the police captain your job is to assign different workers to different tasks
 - Office: Where the policemen spent most of the time.
 
 # Resources:
+
  - Money
  - Police availability
  - Satisfaction
+
+ # Behaviour trees
+ ## Citizen
  
+- Citizen Will Go to the Reception
+- If other Citizen is currently on the Reception he will go and Wait on the Waiting Room
+- When it is his turn it will go to the Reception
+- When he has finished giving the task to the Police he will leave the Building
+ 
+ ## Police
+ 
+- Will go to the Desk to start Investigating a case
+- When it has finished, it will check if there is any criminal to liberate
+- If not, it will exit the building to chase the criminal
+- If the policeman has arrested a Criminal he will escort him to a Cell
+- At night if he doesn't need to patrol, will go Home
+- While Patrolling if he finds a criminal escaping, he will fight him (Also if it is the morning and a criminal was escaping the night before)
+- If the attack is a success, will escort the criminal to the Cell
+- If he was patrolling, the next morning it will go Home to sleep
+
+ ## Criminals
+ 
+- If the Criminal is arrested, it will be escorted to the Cell
+- He will wait in the cell for an ammount of time
+- If it is the Morning, he will wait until a police liberates and escort him to the Exit
+- If it is Night and has Waited enough time, he will escape the cell
+- If he is detected he will try to attack the police
+- He will return to the Cell if he doesn't succeeds on the attack
+
 # Gameloop:
+
 ## DAY (2 minutes)
 - Citizen enters the police station
 - Citizen gives you notification
