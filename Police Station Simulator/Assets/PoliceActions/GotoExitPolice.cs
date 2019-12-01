@@ -37,11 +37,11 @@ namespace NodeCanvas.Tasks.Actions
         //EndAction can be called from anywhere.
         protected override void OnExecute()
         {
-            if (Night.value)
-            {
-                move.run = true;
-                police.animator.SetBool("running", true);
-            }
+            //if (Night.value)
+            //{
+            //    move.run = true;
+            //    police.animator.SetBool("running", true);
+            //}
             police.animator.SetBool("moving", true);
             move.target = GameObject.Find("Exit");
             if ((move.target.transform.position - agent.transform.position).magnitude <= 10)
@@ -58,14 +58,12 @@ namespace NodeCanvas.Tasks.Actions
         //Called once per frame while the action is active.
         protected override void OnUpdate()
         {
-
-
-            if (Night.value)
-            {
-                move.run = true;
-                if(!police.patrolling)
-                    police.animator.SetBool("running", true);
-            }
+        //    if (Night.value)
+        //    {
+        //        move.run = true;
+        //        if(!police.patrolling)
+        //            police.animator.SetBool("running", true);
+        //    }
             if (_seek)
                 seek.Steer(move.target.transform.position, 5); //Will pursue the Criminal until it arrives to the cell
             else if (!follow_path.followingPath())

@@ -14,7 +14,7 @@ public class LevelLoop : MonoBehaviour
     public List<GameObject> criminals;
 
     float timer1 = 0;
-    float timer2 = -15;
+    float timer2 = 0;
     float timer3 = 0;
     float cycle = 0;
 
@@ -43,6 +43,10 @@ public class LevelLoop : MonoBehaviour
         vec = GameObject.Find("Entrance").transform.position;
         desks = GameObject.Find("Desks").GetComponent<AssignDesk>();
         cells = GameObject.Find("Cells").GetComponent<AssignCell>();
+    }
+
+    private void Start()
+    {
         policemen.Add(Instantiate(policemen_prebab[Random.Range(0, policemen_prebab.Length - 1)], GameObject.Find("Entrance").transform.position, Quaternion.Euler(0, 90, 0)));
         policemen[0].GetComponent<PoliceBehaviour>().receptionist = true;
         policemen[0].GetComponent<GraphOwner>().enabled = true;
@@ -87,7 +91,7 @@ public class LevelLoop : MonoBehaviour
                         go.GetComponent<PoliceBehaviour>().Day();
                 }
 
-                foreach (GameObject go in policemen)
+                foreach (GameObject go in criminals)
                 {
                     if (go != null)
                         go.GetComponent<CriminalBehavior>().Day();
@@ -98,9 +102,9 @@ public class LevelLoop : MonoBehaviour
                 ob.GetComponent<GraphOwner>().enabled = true;
                 policemen.Add(ob);
 
-                timer1 = 0;
-                timer2 = -15;
-                timer3 = 0;
+                timer1 = cycle;
+                timer2 = cycle;
+                timer3 = cycle;
 
                 actions = true;
             }

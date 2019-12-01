@@ -41,7 +41,12 @@ namespace NodeCanvas.Tasks.Actions
         protected override void OnUpdate()
         {
             if (move.target != null)
+            {
+                if (move.target.GetComponent<CriminalBehavior>().anim.GetBool("Sitting"))
+                    EndAction(true);
+
                 pursue.Steer(move.target.transform.position, move.target.GetComponent<Move>().current_velocity); //Will pursue the Criminal until it arrives to the cell
+            }
             else
                 EndAction(false);
         }

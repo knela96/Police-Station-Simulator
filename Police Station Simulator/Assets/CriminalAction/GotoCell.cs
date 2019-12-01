@@ -24,6 +24,7 @@ namespace NodeCanvas.Tasks.Actions
             move = agent.gameObject.GetComponent<Move>();
             follow_path = agent.gameObject.GetComponent<SteeringFollowPath>();
             criminal.SpawnAgent();
+            move.move = true;
             return null;
         }
 

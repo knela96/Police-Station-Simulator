@@ -7,14 +7,13 @@ using NodeCanvas.Framework;
 public class CriminalBehavior : MonoBehaviour {
 
     public GameObject cells;
-    Move move;
+    public Move move;
     SteeringArrive arrive;
     bool action = false;
     public NavMeshPath path;
     public SteeringFollowPath follow_path;
     public Cell cell;
     AssignCell assign;
-    HealthBar popul;
     public GameObject c_agent;
     public Animator anim;
     public bool to_cell = false;
@@ -27,10 +26,10 @@ public class CriminalBehavior : MonoBehaviour {
     public bool night = false;
     public bool detected = false;
     public bool assigned = false;
+    HealthBar popul;
     public float popularityloss;
     float auxm;
     // Use this for initialization
-
     void Awake()
     {
         toExit = false;
@@ -46,6 +45,7 @@ public class CriminalBehavior : MonoBehaviour {
         cells = GameObject.Find("Cells");
         anim = GetComponent<Animator>();
         popul = GameObject.Find("Healthbar").GetComponent<HealthBar>();
+        move.move = true;
     }
 
     // Update is called once per frame
@@ -123,7 +123,6 @@ public class CriminalBehavior : MonoBehaviour {
             auxm = auxm - popularityloss;
             popul.SetBar((int)auxm);
             Destroy(gameObject);
-
         }
         else if (other == GameObject.Find("Entrance").GetComponent<Collider>())
         {
@@ -148,6 +147,19 @@ public class CriminalBehavior : MonoBehaviour {
                 }
             }
         }
+    }
+
+    public void ReleaseAgent()
+    {
+        c_agent.gameObject.layer = 8;
+        c_agent.GetComponent<Move>().target = null;
+        c_agent.GetComponent<SteeringPursue>().enabled = false;
+        c_agent.GetComponent<SteeringObstacleAvoidance>().enabled = true;
+        c_agent.GetComponent<SteeringCollisionAvoidance>().enabled = true;
+        c_agent.GetComponent<SteeringVelocityMatching>().enabled = false;
+        c_agent.GetComponent<PoliceBehaviour>().to_cell = false;
+        c_agent.GetComponent<PoliceBehaviour>().detected = false;
+        c_agent = null;
     }
 
     private void OnTriggerExit(Collider other)

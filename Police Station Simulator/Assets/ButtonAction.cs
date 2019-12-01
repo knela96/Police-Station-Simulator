@@ -1,32 +1,38 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class ButtonDesk6 : MonoBehaviour
+public class ButtonAction : MonoBehaviour
 {
     LevelLoop level;
     MoneyBar money;
     AssignDesk desks;
+    Button policeButton;
+    public GameObject FDesk;
+    public GameObject Desk;
     float auxm;
-    public float cost;
-    GameObject Desk12;
-    GameObject FDesk12;
-    // Start is called before the first frame update
-    void Awake()
+    public float cost = 10;
+
+    void Start()
     {
+        policeButton = gameObject.GetComponent<Button>();
         level = GameObject.Find("Level").GetComponent<LevelLoop>();
         money = GameObject.Find("Money").GetComponent<MoneyBar>();
         desks = GameObject.Find("Desks").GetComponent<AssignDesk>();
-        Desk12 = desks.transform.Find("desk12").gameObject;
-        FDesk12 = GameObject.Find("FalseDesks").transform.Find("fdesk12").gameObject;
+        policeButton.onClick.AddListener(TaskOnClick);
     }
-    // Update is called once per frame
 
-    public void Activenow()
+    // Update is called once per frame
+    void Update()
     {
 
-        Desk12.SetActive(true);
-        FDesk12.SetActive(false);
+    }
+
+    void TaskOnClick()
+    {
+        Desk.SetActive(true);
+        FDesk.SetActive(false);
         gameObject.SetActive(false);
         auxm = money.CurrentValue;
         auxm = auxm - cost;

@@ -25,11 +25,11 @@ public class HealthBar : MonoBehaviour
             }
             else {
 
-                mCurrent = health;
-
-                mCurrentPer = (float)mCurrent / (float)(Max - Min);
-
-
+                if (mCurrent + health <= Max)
+                {
+                    mCurrent = health;
+                    mCurrentPer = (float)mCurrent / (float)(Max - Min);
+                }
             }
 
             HlthBar.fillAmount = mCurrentPer;

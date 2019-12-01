@@ -13,6 +13,7 @@ public class timeonstage : MonoBehaviour
     int min;
     string minutes;
     string seconds;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,11 +25,9 @@ public class timeonstage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float t =  Time.time - startTime;
-        minutes =  ( (9 + (int)t / 10)%24).ToString();
-        seconds = (t*6 % 60).ToString("f0");
-        
-
+        float t = Time.time - startTime;
+        minutes = ((9 + (int)t / 10) % 24).ToString();
+        seconds = (t * 6 % 60).ToString("f0");
 
         timertxt.text = minutes + ":" + seconds;
 

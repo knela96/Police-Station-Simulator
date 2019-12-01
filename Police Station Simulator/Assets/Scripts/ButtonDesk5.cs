@@ -17,8 +17,8 @@ public class ButtonDesk5 : MonoBehaviour
         level = GameObject.Find("Level").GetComponent<LevelLoop>();
         money = GameObject.Find("Money").GetComponent<MoneyBar>();
         desks = GameObject.Find("Desks").GetComponent<AssignDesk>();
-        Desk11 = GameObject.Find("desk11");
-        FDesk11 = GameObject.Find("fdesk11");
+        Desk11 = desks.transform.Find("desk11").gameObject;
+        FDesk11 = GameObject.Find("FalseDesks").transform.Find("fdesk11").gameObject;
     }
     // Update is called once per frame
 

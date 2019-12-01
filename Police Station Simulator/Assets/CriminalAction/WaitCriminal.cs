@@ -12,12 +12,14 @@ namespace NodeCanvas.Tasks.Actions
     {
         public BBParameter<bool> Night;
         CriminalBehavior criminal;
+        Move move;
 
         //Use for initialization. This is called only once in the lifetime of the task.
         //Return null if init was successfull. Return an error string otherwise
         protected override string OnInit()
         {
             criminal = agent.gameObject.GetComponent<CriminalBehavior>();
+            move = criminal.GetComponent<Move>();
             return null;
         }
 
@@ -27,6 +29,7 @@ namespace NodeCanvas.Tasks.Actions
         protected override void OnExecute()
         {
             criminal.to_cell = true;
+            move.move = false;
         }
 
         //Called once per frame while the action is active.
@@ -45,6 +48,12 @@ namespace NodeCanvas.Tasks.Actions
 
                 EndAction(true);
             }
+
+            if(criminal.c_agent != null)
+            {
+                criminal.ReleaseAgent();
+            }
+
         }
 
         //Called when the task is disabled.

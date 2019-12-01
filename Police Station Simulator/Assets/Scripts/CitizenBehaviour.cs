@@ -89,7 +89,7 @@ public class CitizenBehaviour : MonoBehaviour {
             }
         }
 
-        if (other == GameObject.Find("Exit").GetComponent<Collider>())
+        if (other == GameObject.Find("Exit").GetComponent<Collider>() && action)
         {
             Destroy(gameObject);
         }

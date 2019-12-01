@@ -18,6 +18,7 @@ namespace NodeCanvas.Tasks.Actions
         public float popularitywin;
         float auxm;
         HealthBar popul;
+
         //Use for initialization. This is called only once in the lifetime of the task.
         //Return null if init was successfull. Return an error string otherwise
         protected override string OnInit()
@@ -25,6 +26,7 @@ namespace NodeCanvas.Tasks.Actions
             police = agent.gameObject.GetComponent<PoliceBehaviour>();
             follow_path = agent.gameObject.GetComponent<SteeringFollowPath>();
             level = GameObject.Find("Level").GetComponent<LevelLoop>();
+            popul = GameObject.Find("Healthbar").GetComponent<HealthBar>();
             return null;
         }
 
@@ -63,7 +65,6 @@ namespace NodeCanvas.Tasks.Actions
                 police.move.target.GetComponent<CriminalBehavior>().assigned = false;
             if (follow_path.arrived)
                 police.animator.SetBool("moving", false);
-
             auxm = popul.CurrentValue;
             auxm = auxm + popularitywin;
             popul.SetBar((int)auxm);

@@ -85,6 +85,7 @@ public class PoliceBehaviour : MonoBehaviour {
             criminal.AssignCell();
             criminal.setAgent(gameObject);
             animator.SetBool("attack", false);
+            criminal.move.move = true;
         }
         to_cell = true;
         detected = false;

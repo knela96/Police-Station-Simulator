@@ -9,8 +9,10 @@ public class Desk : MonoBehaviour {
     Transform point;
 
 	// Use this for initialization
-	void Awake () {
+	void Awake ()
+    {
         point = transform;
+        available = true;
     }
 	
 	// Update is called once per frame
@@ -21,17 +23,19 @@ public class Desk : MonoBehaviour {
     public Desk setAgent(GameObject agent)
     {
         assigned = agent.GetComponent<PoliceBehaviour>();
+        available = false;
         return this;
     }
 
     public void Release()
     {
         assigned = null;
+        available = true;
     }
 
-   public bool isAvailable()
+    public bool isAvailable()
     {
-        return assigned == null;
+        return available;
     }
 
     public Transform getPoint()
