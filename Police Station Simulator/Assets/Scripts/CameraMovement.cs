@@ -5,7 +5,7 @@ public class CameraMovement : MonoBehaviour
 {
     float Speed = 50.0f;   
     private float dps = 1.0f;
-    public float MouseSpeed = 4.0f;    
+    public float MouseSpeed = 200.0f;    
     private Vector3 MousePos;
     bool buttonDown;
 
