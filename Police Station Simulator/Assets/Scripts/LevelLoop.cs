@@ -75,6 +75,12 @@ public class LevelLoop : MonoBehaviour
                         go.GetComponent<PoliceBehaviour>().Day();
                 }
 
+                foreach (GameObject go in policemen)
+                {
+                    if (go != null)
+                        go.GetComponent<CriminalBehavior>().Day();
+                }
+
                 GameObject ob = Instantiate(policemen_prebab[Random.Range(0, policemen_prebab.Length - 1)], GameObject.Find("Entrance").transform.position, Quaternion.Euler(0, 90, 0));
                 ob.GetComponent<PoliceBehaviour>().receptionist = true;
                 ob.GetComponent<GraphOwner>().enabled = true;
@@ -114,15 +120,9 @@ public class LevelLoop : MonoBehaviour
         cycle += Time.deltaTime;
 
         //Resets the counter to show all possible agents
-        if (c1 == citizens_prebab.Length)
-            c1 = 0;
-        if (c2 == policemen_prebab.Length)
-            c2 = 0;
-        if (c3 == criminals_prebab.Length)
-            c3 = 0;
 
         //Changes the cycle of day and night
-        if (cycle >= 120)
+        if (cycle >= 240)
         {
             day = !day;
             cycle = 0;
@@ -136,6 +136,8 @@ public class LevelLoop : MonoBehaviour
         go.GetComponent<GraphOwner>().enabled = true;
         citizens.Add(go);
         c1++;
+        if (c1 == citizens_prebab.Length)
+            c1 = 0;
     }
     public void addPolicemen()
     {
@@ -143,6 +145,8 @@ public class LevelLoop : MonoBehaviour
         go.GetComponent<GraphOwner>().enabled = true;
         policemen.Add(go);
         c2++;
+        if (c2 == policemen_prebab.Length)
+            c2 = 0;
     }
     public void addCriminal()
     {
@@ -150,14 +154,17 @@ public class LevelLoop : MonoBehaviour
         go.GetComponent<GraphOwner>().enabled = true;
         criminals.Add(go);
         c3++;
+        if (c3 == criminals_prebab.Length)
+            c3 = 0;
     }
 
     public GameObject getCriminal()
     {
         for(int i = 0;i < criminals.Count; ++i)
         {
-            if (criminals[i] != null && criminals[i].GetComponent<CriminalBehavior>().free && !criminals[i].GetComponent<CriminalBehavior>().toExit)
+            if (criminals[i] != null && criminals[i].GetComponent<CriminalBehavior>().free && !criminals[i].GetComponent<CriminalBehavior>().toExit && !criminals[i].GetComponent<CriminalBehavior>().assigned)
             {
+                criminals[i].GetComponent<CriminalBehavior>().assigned = true;
                 return criminals[i];
             }
         }

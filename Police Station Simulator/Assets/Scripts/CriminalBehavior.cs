@@ -25,12 +25,14 @@ public class CriminalBehavior : MonoBehaviour {
     public bool escape = false;
     public bool night = false;
     public bool detected = false;
+    public bool assigned = false;
     // Use this for initialization
     void Awake()
     {
         toExit = false;
         to_cell = true;
         countdown = false;
+        assigned = false;
         level = GameObject.Find("Level").GetComponent<LevelLoop>();
         move = GetComponent<Move>();
         arrive = GetComponent<SteeringArrive>();
@@ -159,12 +161,15 @@ public class CriminalBehavior : MonoBehaviour {
     public void Night()
     {
         night = true;
+        if(!free && !c_agent)
+            escape = true;
     }
 
 
     public void Day()
     {
         night = false;
+        escape = false;
     }
 
     public void AttackTarget(int message)

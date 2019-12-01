@@ -57,6 +57,8 @@ namespace NodeCanvas.Tasks.Actions
         //Called when the task is disabled.
         protected override void OnStop()
         {
+            if(police.move.target != null)
+                police.move.target.GetComponent<CriminalBehavior>().assigned = false;
             if (follow_path.arrived)
                 police.animator.SetBool("moving", false);
         }

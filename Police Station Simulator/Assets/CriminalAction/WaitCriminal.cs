@@ -34,11 +34,9 @@ namespace NodeCanvas.Tasks.Actions
         {
             if(criminal.countdown)
                 criminal.timer -= Time.deltaTime;
-
+            criminal.night = Night.value;
             if (criminal.timer <= 0)
             {
-                
-                criminal.escape = true;
                 criminal.free = true;
 
                 EndAction(true);
@@ -48,6 +46,8 @@ namespace NodeCanvas.Tasks.Actions
         //Called when the task is disabled.
         protected override void OnStop()
         {
+            criminal.cell.Release();
+            criminal.cell = null;
             criminal.to_cell = false;
         }
 

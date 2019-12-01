@@ -43,8 +43,14 @@ namespace NodeCanvas.Tasks.Actions{
 
 		//Called once per frame while the action is active.
 		protected override void OnUpdate(){
-			
-		}
+            if (police.move.target == null)
+            {
+                police.move.target = desk.getPoint().gameObject;
+                follow_path.calcPath(desk.getPoint());
+            }
+            if (follow_path.path == null)
+                follow_path.calcPath(desk.getPoint());
+        }
 
 		//Called when the task is disabled.
 		protected override void OnStop(){

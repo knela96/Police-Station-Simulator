@@ -58,6 +58,8 @@ namespace NodeCanvas.Tasks.Actions
         //Called once per frame while the action is active.
         protected override void OnUpdate()
         {
+
+
             if (Night.value)
             {
                 move.run = true;
@@ -66,6 +68,9 @@ namespace NodeCanvas.Tasks.Actions
             }
             if (_seek)
                 seek.Steer(move.target.transform.position, 5); //Will pursue the Criminal until it arrives to the cell
+            else if(follow_path.path == null)
+                follow_path.calcPath(move.target.transform);
+
         }
 
         //Called when the task is disabled.
