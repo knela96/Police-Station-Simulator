@@ -53,11 +53,11 @@ public class CameraMovement : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.A))
         {
-            WASDSpeed += new Vector3(-1, 0, 0.6f);
+            WASDSpeed += new Vector3(-1, 0, 0.0f);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            WASDSpeed += new Vector3(1, 0, 0.6f);
+            WASDSpeed += new Vector3(1, 0, 0.0f);
         }
         return WASDSpeed;
     }
