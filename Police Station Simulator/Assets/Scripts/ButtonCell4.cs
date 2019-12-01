@@ -9,6 +9,7 @@ public class ButtonCell4 : MonoBehaviour
     MoneyBar money;
     float auxm;
     public float cost;
+    AssignCell cells;
     GameObject Cell4;
     GameObject FCell4;
     // Start is called before the first frame update
@@ -16,6 +17,7 @@ public class ButtonCell4 : MonoBehaviour
     {
         level = GameObject.Find("Level").GetComponent<LevelLoop>();
         money = GameObject.Find("Money").GetComponent<MoneyBar>();
+        cells = GameObject.Find("Cells").GetComponent<AssignCell>();
         Cell4 = GameObject.Find("CellP 3");
         FCell4 = GameObject.Find("fCellP 3");
     }
@@ -26,6 +28,7 @@ public class ButtonCell4 : MonoBehaviour
 
         Cell4.SetActive(true);
         FCell4.SetActive(false);
+        cells.cellsav++;
         gameObject.SetActive(false);
         auxm = money.CurrentValue;
         auxm = auxm - cost;

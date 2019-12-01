@@ -31,12 +31,15 @@ public class LevelLoop : MonoBehaviour
     public GameObject receptionist = null;
 
     public AssignPoints assign;
-
+    public AssignDesk desks;
+    public AssignCell cells;
     // Start is called before the first frame update
     void Awake()
     {
-       assign = GameObject.Find("Sofas").GetComponent<AssignPoints>();
-       vec = GameObject.Find("Entrance").transform.position;
+        assign = GameObject.Find("Sofas").GetComponent<AssignPoints>();
+        vec = GameObject.Find("Entrance").transform.position;
+        desks = GameObject.Find("Desks").GetComponent<AssignDesk>();
+        cells = GameObject.Find("Cells").GetComponent<AssignCell>();
         policemen.Add(Instantiate(policemen_prebab[Random.Range(0, policemen_prebab.Length - 1)], GameObject.Find("Entrance").transform.position, Quaternion.Euler(0, 90, 0)));
         policemen[0].GetComponent<PoliceBehaviour>().receptionist = true;
         policemen[0].GetComponent<GraphOwner>().enabled = true;
@@ -59,9 +62,10 @@ public class LevelLoop : MonoBehaviour
             if (cycle - timer2 > 2)
             {
                 timer2 = cycle;
-                if (policemen.Count < 8)//GET CURRENT DEKS FERRAN
+                if (policemen.Count < desks.desksav)//GET CURRENT DEKS FERRAN
                 {
                     addPolicemen();
+                    desks.desksav--;
                 }
             }
             //if (cycle - timer3 > 10)//31
@@ -153,11 +157,12 @@ public class LevelLoop : MonoBehaviour
     }
     public void addCriminal()
     {
-        if (GameObject.Find("Cells"))//GET FREE CELLS FERRAN
+        if (criminals.Count < cells.cellsav)//GET FREE CELLS FERRAN
         {
             GameObject go = Instantiate(criminals_prebab[c3], vec, Quaternion.Euler(0, 90, 0));
             go.GetComponent<GraphOwner>().enabled = true;
             criminals.Add(go);
+            cells.cellsav--;
             c3++;
             if (c3 == criminals_prebab.Length)
                 c3 = 0;

@@ -6,6 +6,7 @@ public class ButtonDesk7 : MonoBehaviour
 {
     LevelLoop level;
     MoneyBar money;
+    AssignDesk desks;
     float auxm;
     public float cost;
     GameObject Desk13;
@@ -15,6 +16,7 @@ public class ButtonDesk7 : MonoBehaviour
     {
         level = GameObject.Find("Level").GetComponent<LevelLoop>();
         money = GameObject.Find("Money").GetComponent<MoneyBar>();
+        desks = GameObject.Find("Desks").GetComponent<AssignDesk>();
         Desk13 = GameObject.Find("desk13");
         FDesk13 = GameObject.Find("fdesk13");
     }
@@ -25,6 +27,7 @@ public class ButtonDesk7 : MonoBehaviour
 
         Desk13.SetActive(true);
         FDesk13.SetActive(false);
+        desks.desksav++;
         gameObject.SetActive(false);
         auxm = money.CurrentValue;
         auxm = auxm - cost;

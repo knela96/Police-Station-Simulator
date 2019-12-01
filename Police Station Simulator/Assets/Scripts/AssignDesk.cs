@@ -5,6 +5,7 @@ using UnityEngine;
 public class AssignDesk : MonoBehaviour {
 
     public List<GameObject> desks;
+    public int desksav = 6; 
 	// Use this for initialization
     
 	void Awake () {
@@ -12,6 +13,7 @@ public class AssignDesk : MonoBehaviour {
         {
             Transform c = child.Find("AI_Prop_ComputerChair").transform.Find("Point");
             desks.Add(c.gameObject); //Stores the current desk points
+
         }
         
 	}

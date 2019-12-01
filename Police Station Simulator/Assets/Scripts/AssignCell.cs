@@ -6,6 +6,7 @@ public class AssignCell : MonoBehaviour
 {
 
     public List<GameObject> cells;
+    public int cellsav = 2;
     // Use this for initialization
     void Awake()
     {
