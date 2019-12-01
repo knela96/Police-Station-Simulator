@@ -667,6 +667,7 @@ MonoBehaviour:
   night: 0
   detected: 0
   assigned: 0
+  popularityloss: 10
 --- !u!114 &-573333109009374394
 MonoBehaviour:
   m_ObjectHideFlags: 0

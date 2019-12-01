@@ -14,6 +14,7 @@ public class CriminalBehavior : MonoBehaviour {
     public SteeringFollowPath follow_path;
     public Cell cell;
     AssignCell assign;
+    HealthBar popul;
     public GameObject c_agent;
     public Animator anim;
     public bool to_cell = false;
@@ -26,7 +27,10 @@ public class CriminalBehavior : MonoBehaviour {
     public bool night = false;
     public bool detected = false;
     public bool assigned = false;
+    public float popularityloss;
+    float auxm;
     // Use this for initialization
+
     void Awake()
     {
         toExit = false;
@@ -41,6 +45,7 @@ public class CriminalBehavior : MonoBehaviour {
         follow_path.path = new NavMeshPath();
         cells = GameObject.Find("Cells");
         anim = GetComponent<Animator>();
+        popul = GameObject.Find("Healthbar").GetComponent<HealthBar>();
     }
 
     // Update is called once per frame
@@ -114,7 +119,11 @@ public class CriminalBehavior : MonoBehaviour {
     {
         if (other == GameObject.Find("Exit").GetComponent<Collider>())
         {
+            auxm = popul.CurrentValue;
+            auxm = auxm - popularityloss;
+            popul.SetBar((int)auxm);
             Destroy(gameObject);
+
         }
         else if (other == GameObject.Find("Entrance").GetComponent<Collider>())
         {
