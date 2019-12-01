@@ -613,10 +613,10 @@ MonoBehaviour:
   frustum: {fileID: 956927120967896039}
   ray_mask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 260
   mask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 260
 --- !u!114 &-3906386542296140853
 MonoBehaviour:
   m_ObjectHideFlags: 0
