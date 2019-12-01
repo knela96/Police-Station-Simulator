@@ -20,6 +20,7 @@ namespace NodeCanvas.Tasks.Actions
         bool inside = false;
         SteeringFaceHeading face_heading;
         SteeringFollowPath follow_path;
+
         //Use for initialization. This is called only once in the lifetime of the task.
         //Return null if init was successfull. Return an error string otherwise
         protected override string OnInit()

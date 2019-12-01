@@ -19,6 +19,7 @@ public class MoneyCheck : MonoBehaviour
 
     void Update()
     {
+        //Deactivates the Icons / Activates the Icons
         if (money.CurrentValue < cost && update == false) {
             foreach (Transform child in gameObject.transform)
             {
@@ -34,6 +35,5 @@ public class MoneyCheck : MonoBehaviour
             }
             update = false;
         }
-
     }
 }
