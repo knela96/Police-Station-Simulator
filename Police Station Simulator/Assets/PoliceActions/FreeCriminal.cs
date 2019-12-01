@@ -15,7 +15,9 @@ namespace NodeCanvas.Tasks.Actions
         bool receptionist;
         SteeringFollowPath follow_path;
         LevelLoop level;
-
+        public float popularitywin;
+        float auxm;
+        HealthBar popul;
         //Use for initialization. This is called only once in the lifetime of the task.
         //Return null if init was successfull. Return an error string otherwise
         protected override string OnInit()
@@ -61,6 +63,10 @@ namespace NodeCanvas.Tasks.Actions
                 police.move.target.GetComponent<CriminalBehavior>().assigned = false;
             if (follow_path.arrived)
                 police.animator.SetBool("moving", false);
+
+            auxm = popul.CurrentValue;
+            auxm = auxm + popularitywin;
+            popul.SetBar((int)auxm);
         }
 
         //Called when the task is paused.

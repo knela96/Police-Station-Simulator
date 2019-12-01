@@ -134,7 +134,7 @@ public class LevelLoop : MonoBehaviour
         //Resets the counter to show all possible agents
 
         //Changes the cycle of day and night
-        if (cycle >= 240)
+        if (cycle >= 120)
         {
             day = !day;
             cycle = 0;
