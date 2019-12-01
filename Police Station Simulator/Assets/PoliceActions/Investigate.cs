@@ -17,7 +17,8 @@ namespace NodeCanvas.Tasks.Actions
         float time_task = 30;
         public float cur_time = 0;
         LevelLoop level;
-
+        MoneyBar money;
+        float auxm;
         //Use for initialization. This is called only once in the lifetime of the task.
         //Return null if init was successfull. Return an error string otherwise
         protected override string OnInit()
@@ -25,6 +26,7 @@ namespace NodeCanvas.Tasks.Actions
             police = agent.gameObject.GetComponent<PoliceBehaviour>();
             follow_path = agent.gameObject.GetComponent<SteeringFollowPath>();
             level = GameObject.Find("Level").GetComponent<LevelLoop>();
+            money = GameObject.Find("Money").GetComponent<MoneyBar>();
             return null;
         }
 
@@ -54,6 +56,9 @@ namespace NodeCanvas.Tasks.Actions
                 {
                     //Ends the task and create a path to the Exit
                     police.numCriminals = level.criminals.Count;
+                    auxm = money.CurrentValue;
+                    auxm = auxm + 7;
+                    money.SetBar((int)auxm);
                     EndAction(true);
                     cur_time = 0;
                 }
