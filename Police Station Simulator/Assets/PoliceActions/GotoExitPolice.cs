@@ -37,11 +37,8 @@ namespace NodeCanvas.Tasks.Actions
         //EndAction can be called from anywhere.
         protected override void OnExecute()
         {
-            //if (Night.value)
-            //{
-            //    move.run = true;
-            //    police.animator.SetBool("running", true);
-            //}
+            move.move = true;
+            move.run = false;
             police.animator.SetBool("running", false);
             police.animator.SetBool("moving", true);
             move.target = GameObject.Find("Exit");

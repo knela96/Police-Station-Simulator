@@ -34,10 +34,11 @@ namespace NodeCanvas.Tasks.Actions
         //EndAction can be called from anywhere.
         protected override void OnExecute()
         {
-            police.animator.SetBool("running", false);
-            follow_path.createPatrol(police.patrol, false); //Create a path to the start of the patrol path
             move.move = true;
             move.run = false;
+            police.animator.SetBool("running", false);
+            police.animator.SetBool("moving", true);
+            follow_path.createPatrol(police.patrol, false); //Create a path to the start of the patrol path
             police.light.SetActive(true); //If is patrolling activate a Torchlight
         }
 

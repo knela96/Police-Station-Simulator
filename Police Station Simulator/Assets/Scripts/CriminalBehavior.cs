@@ -252,8 +252,10 @@ public class CriminalBehavior : MonoBehaviour {
 
     public void ButtonAttack()
     {
-        if(Time.time - attack_timer >= 1 && Time.time - attack_timer < 1.5)
+        if(Time.time - attack_timer >= 1 && Time.time - attack_timer < 1.5 && !action)
             captured = true;
+        else
+            action = true;
     }
     
 }
