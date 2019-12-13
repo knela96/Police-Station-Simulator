@@ -7,8 +7,10 @@ Eric Canela & Ferran Barnes
 # Github link
 https://github.com/knela96/Police-Station-Simulator
 
-# License
+# Wiki Link
+https://github.com/knela96/Police-Station-Simulator/wiki
 
+# License
 MIT License
 
 Copyright (c) 2019 Eric Canela & Ferran Barnes
