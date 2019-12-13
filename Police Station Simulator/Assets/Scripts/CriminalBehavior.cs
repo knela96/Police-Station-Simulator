@@ -35,8 +35,11 @@ public class CriminalBehavior : MonoBehaviour {
     public bool assigned = false;
     HealthBar popul;
     public float popularityloss;
+    public bool to_exit = false;
     float auxm;
     float attack_timer;
+    public int life = 5;
+    int clicks = 3;
 
     // Use this for initialization
     void Awake()
@@ -191,10 +194,16 @@ public class CriminalBehavior : MonoBehaviour {
     public void Night()
     {
         timer = Random.Range(40.0f, 70.0f);
-        captured = false;
         night = true;
-        if(timer <= 0)
+        if (!to_exit)
+        {
+            captured = false;
+            assigned = false;
             escape = true;
+            countdown = true;
+            to_cell = true;
+            follow_path.arrived = true;
+        }
     }
 
 
@@ -207,8 +216,9 @@ public class CriminalBehavior : MonoBehaviour {
 
     public void AttackTarget(int message)
     {
-        Debug.Log("Received Damage");
-        
+        PoliceBehaviour police = c_agent.GetComponent<PoliceBehaviour>();
+        police.life--;
+
         //anim.SetBool("attack", false);
         //to_cell = true;
     }
@@ -222,41 +232,75 @@ public class CriminalBehavior : MonoBehaviour {
 
     IEnumerator Attack()
     {
-        while (Time.time - attack_timer <= 2)
+        PoliceBehaviour police = c_agent.GetComponent<PoliceBehaviour>();
+        while (!action && !to_cell)//Time.time - attack_timer <= 2
         {
-            if (Time.time - attack_timer >= 1.2 || action)
+            //if (Time.time - attack_timer >= 1.2 || action)
+            //{
+            //    attack_icon.GetComponent<Image>().sprite = sprite3;
+            //    action = true;
+            //}
+            //else if (Time.time - attack_timer >= 1.0)
+            //{
+            //    attack_icon.GetComponent<Image>().sprite = sprite1;
+
+            //    if (captured)
+            //    {
+            //        attack_icon.GetComponent<Image>().sprite = sprite2;
+            //        anim.SetBool("attack", false);
+            //        to_cell = true;
+            //        yield return new WaitForSeconds(1);
+            //    }
+
+            //}
+            //else if (Time.time - attack_timer >= 0)
+            //{
+            //    attack_icon.GetComponent<Image>().sprite = sprite0;
+            //}
+
+            if(police.life <= 0)
             {
-                attack_icon.GetComponent<Image>().sprite = sprite3;
                 action = true;
             }
-            else if (Time.time - attack_timer >= 1.0)
+            if (life <= 0)
             {
-                attack_icon.GetComponent<Image>().sprite = sprite1;
-
-                if (captured)
-                {
-                    attack_icon.GetComponent<Image>().sprite = sprite2;
-                    anim.SetBool("attack", false);
-                    to_cell = true;
-                    yield return new WaitForSeconds(1);
-                }
-
+                to_cell = true;
             }
-            else if (Time.time - attack_timer >= 0)
-            {
-                attack_icon.GetComponent<Image>().sprite = sprite0;
-            }
+
             yield return null;
         }
         attack_icon.gameObject.SetActive(false);
     }
 
+    IEnumerator Stun()
+    {
+        captured = true;
+        move.move = false;
+        move.run = false;
+        anim.SetBool("sitting", true);
+        anim.SetBool("running", false);
+        anim.SetBool("moving", false);
+        attack_icon.GetComponent<Image>().sprite = sprite0;
+        yield return new WaitForSeconds(10);
+        if (!detected)
+        {
+            anim.SetBool("sitting", false);
+            anim.SetBool("running", true);
+            anim.SetBool("moving", true);
+            move.move = true;
+            move.run = true;
+        }
+        attack_icon.GetComponent<Image>().sprite = sprite1;
+        captured = false;
+        clicks = 3;
+    }
+
     public void ButtonAttack()
     {
-        if(Time.time - attack_timer >= 1.0 && Time.time - attack_timer < 1.2 && !action)
-            captured = true;
-        else
-            action = true;
+        if (--clicks <= 0 && !detected)
+        {
+            StartCoroutine("Stun");
+        }
     }
     
 }

@@ -34,8 +34,11 @@ namespace NodeCanvas.Tasks.Actions
         //EndAction can be called from anywhere.
         protected override void OnExecute()
         {
+            criminal.cell.Release();
+            criminal.cell = null;
             criminal.anim.SetBool("moving", true);
             move.target = GameObject.Find("Exit");
+            criminal.to_exit = true;
             follow_path.calcPath(move.target.transform);
         }
 

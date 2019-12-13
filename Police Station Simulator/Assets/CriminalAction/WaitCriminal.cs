@@ -30,6 +30,7 @@ namespace NodeCanvas.Tasks.Actions
         {
             criminal.timer = Random.Range(5.0f, 60.0f);
             criminal.free = false;
+            criminal.assigned = false;
             criminal.to_cell = true;
             move.move = false;
         }
@@ -61,8 +62,6 @@ namespace NodeCanvas.Tasks.Actions
         //Called when the task is disabled.
         protected override void OnStop()
         {
-            criminal.cell.Release();
-            criminal.cell = null;
             criminal.to_cell = false;
         }
 

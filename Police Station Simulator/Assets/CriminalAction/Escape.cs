@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
@@ -33,6 +34,8 @@ namespace NodeCanvas.Tasks.Actions
         //EndAction can be called from anywhere.
         protected override void OnExecute()
         {
+            criminal.cell.Release();
+            criminal.cell = null;
             if (Night.value)
             {
                 move.run = true;
@@ -42,16 +45,15 @@ namespace NodeCanvas.Tasks.Actions
             criminal.anim.SetBool("moving", true);
             move.target = GameObject.Find("Exit");
             follow_path.calcPath(move.target.transform);
+            criminal.attack_icon.gameObject.SetActive(true);
+            criminal.attack_icon.GetComponent<Image>().sprite = criminal.sprite1;
         }
 
         //Called once per frame while the action is active.
         protected override void OnUpdate()
         {
-            if (Night.value)
-            {
-                move.run = true;
-                criminal.anim.SetBool("running", true);
-            }
+            
+
         }
 
         //Called when the task is disabled.

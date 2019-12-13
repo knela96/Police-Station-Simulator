@@ -34,6 +34,7 @@ namespace NodeCanvas.Tasks.Actions
         protected override void OnExecute()
         {
             //Agent created to scort him to the cell, creates one each time a new criminal appears.
+            follow_path.deleteCurve();
             criminal.AssignCell();
             criminal.to_cell = true;
             move.move = true;

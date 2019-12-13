@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
@@ -41,6 +42,7 @@ namespace NodeCanvas.Tasks.Actions
             move.resetAccelerationRotation();
             criminal.anim.SetBool("running", false);
             criminal.anim.SetBool("moving", false);
+            criminal.anim.SetBool("sitting", false);
             criminal.GetComponent<SteeringAlign>().enabled = false;
         }
 
@@ -62,8 +64,8 @@ namespace NodeCanvas.Tasks.Actions
                     {
                         criminal.action = false;
                         criminal.to_cell = false;
+                        criminal.c_agent = entity;
                         criminal.StartAttack();
-                        police_GO = entity;
                     }
                     inside = true;
                 }
@@ -73,6 +75,7 @@ namespace NodeCanvas.Tasks.Actions
             {
                 criminal.detected = false;
                 criminal.escape = true;
+                criminal.c_agent = null;
                 if (police_GO != null)
                 {
                     PoliceBehaviour police = police_GO.GetComponent<PoliceBehaviour>();
@@ -82,7 +85,9 @@ namespace NodeCanvas.Tasks.Actions
             }
             if (criminal.to_cell)
             {
-                police_GO.GetComponent<PoliceBehaviour>().criminal2Cell();
+                criminal.attack_icon.GetComponent<Image>().sprite = criminal.sprite2;
+                criminal.captured = true;
+                criminal.c_agent.GetComponent<PoliceBehaviour>().criminal2Cell();
                 EndAction(true);
             }
         }

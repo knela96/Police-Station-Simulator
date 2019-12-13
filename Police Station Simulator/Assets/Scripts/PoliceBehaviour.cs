@@ -47,6 +47,7 @@ public class PoliceBehaviour : MonoBehaviour {
     HealthBar popul;
     public bool stun = false;
     public bool to_exit = false;
+    public int life = 5;
 
     // Use this for initialization
     void Awake()
@@ -105,8 +106,13 @@ public class PoliceBehaviour : MonoBehaviour {
 
     public void AttackTarget(int message)
     {
-        //Debug.Log("Received Damage");
-
+        Debug.Log("Received Damage");
+        if (move.target != null)
+        {
+            CriminalBehavior criminal = move.target.GetComponent<CriminalBehavior>();
+            if (criminal != null)
+                criminal.life--;
+        }
 
     }
 
@@ -183,6 +189,7 @@ public class PoliceBehaviour : MonoBehaviour {
         animator.SetBool("sitting", true);
         move.move = false;
         yield return new WaitForSeconds(4);
+        life = 2;
         animator.SetBool("sitting", false);
         move.move = true;
         stun = false;
