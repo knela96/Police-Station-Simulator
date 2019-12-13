@@ -223,7 +223,7 @@ public class CriminalBehavior : MonoBehaviour {
     {
         while (Time.time - attack_timer <= 2)
         {
-            if (Time.time - attack_timer >= 1.5)
+            if (Time.time - attack_timer >= 1.5 || action)
             {
                 attack_icon.GetComponent<Image>().sprite = sprite3;
                 action = true;
