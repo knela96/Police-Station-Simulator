@@ -608,6 +608,7 @@ MonoBehaviour:
   pivot: {fileID: 75747600880389075}
   patrol1: {fileID: 1928359113399005341, guid: 103ded9016d5e7b4fbde637c440a971f, type: 3}
   patrol2: {fileID: 6859221328063016794, guid: 960565075af7d544abec069cb891b82c, type: 3}
+  patrol3: {fileID: 5541302334988751836, guid: 00ab468243ff68c488b5a5b42e99c0dc, type: 3}
   path_prefab: {fileID: 1928359113399005341, guid: ba6663f40bdcf6e48a598db5e4d54c9e,
     type: 3}
   patroling: 0

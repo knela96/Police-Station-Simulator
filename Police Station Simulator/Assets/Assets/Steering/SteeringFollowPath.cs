@@ -15,6 +15,7 @@ public class SteeringFollowPath : MonoBehaviour {
     int cur_node = 0;
     public GameObject patrol1;
     public GameObject patrol2;
+    public GameObject patrol3;
     public GameObject path_prefab;
     BGCurve curve = null;
     BGCcMath curve_path;
@@ -166,8 +167,10 @@ public class SteeringFollowPath : MonoBehaviour {
             deleteCurve();
             if (patrol == 1)
                 go = Instantiate(patrol1);
-            else
+            else if(patrol == 2)
                 go = Instantiate(patrol2);
+            else
+                go = Instantiate(patrol3);
 
             curve = go.GetComponent<BGCurve>();
             curve_path = go.GetComponent<BGCcMath>();
@@ -181,8 +184,10 @@ public class SteeringFollowPath : MonoBehaviour {
             cur_patrol = patrol;
             if (patrol == 1)
                 go = Instantiate(patrol1);
-            else
+            else if (patrol == 2)
                 go = Instantiate(patrol2);
+            else
+                go = Instantiate(patrol3);
 
             curve = go.GetComponent<BGCurve>();
             curve_path = go.GetComponent<BGCcMath>();

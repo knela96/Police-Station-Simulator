@@ -266,7 +266,7 @@ public class PoliceBehaviour : MonoBehaviour {
             stopTask();
         }
         
-        if (patrol < 2 && patrol != -1)
+        if (patrol < 3 && patrol != -1)
         {
             patrolling = true;
         }

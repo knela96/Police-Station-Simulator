@@ -133,27 +133,6 @@ MonoBehaviour:
     curve: {fileID: 1919524055274849060}
     fieldsValues: []
   - controlType: 1
-    positionLocal: {x: -12.621157, y: 0, z: 8.771885}
-    controlFirstLocal: {x: 2.0118008, y: -0, z: -1.246131}
-    controlSecondLocal: {x: -2.0118008, y: 0, z: 1.246131}
-    pointTransform: {fileID: 0}
-    curve: {fileID: 1919524055274849060}
-    fieldsValues: []
-  - controlType: 1
-    positionLocal: {x: -18.85143, y: 0, z: 10.678611}
-    controlFirstLocal: {x: 1.6155434, y: -0, z: 1.6313038}
-    controlSecondLocal: {x: -1.6155434, y: 0, z: -1.6313038}
-    pointTransform: {fileID: 0}
-    curve: {fileID: 1919524055274849060}
-    fieldsValues: []
-  - controlType: 1
-    positionLocal: {x: -16.416172, y: 0, z: 6.428108}
-    controlFirstLocal: {x: -1.0008011, y: 0, z: 0.33716965}
-    controlSecondLocal: {x: 1.0008011, y: -0, z: -0.33716965}
-    pointTransform: {fileID: 0}
-    curve: {fileID: 1919524055274849060}
-    fieldsValues: []
-  - controlType: 1
     positionLocal: {x: -9.516872, y: 0, z: 4.250433}
     controlFirstLocal: {x: -1.4652578, y: -0, z: 0.16508447}
     controlSecondLocal: {x: 1.4652578, y: 0, z: -0.16508447}
@@ -199,10 +178,10 @@ MonoBehaviour:
   parent: {fileID: 0}
   ccName: 
   fields: 1
-  mathType: 0
+  mathType: 1
   sectionParts: 6
   optimizeStraightLines: 0
-  tolerance: 0.2
+  tolerance: 0.327
   usePositionToCalculateTangents: 0
   updateMode: 0
   rendererForUpdateCheck: {fileID: 0}

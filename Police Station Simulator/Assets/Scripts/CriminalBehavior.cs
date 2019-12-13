@@ -190,6 +190,7 @@ public class CriminalBehavior : MonoBehaviour {
 
     public void Night()
     {
+        timer = Random.Range(40.0f, 70.0f);
         captured = false;
         night = true;
         if(timer <= 0)
@@ -223,12 +224,12 @@ public class CriminalBehavior : MonoBehaviour {
     {
         while (Time.time - attack_timer <= 2)
         {
-            if (Time.time - attack_timer >= 1.5 || action)
+            if (Time.time - attack_timer >= 1.2 || action)
             {
                 attack_icon.GetComponent<Image>().sprite = sprite3;
                 action = true;
             }
-            else if (Time.time - attack_timer >= 1)
+            else if (Time.time - attack_timer >= 1.0)
             {
                 attack_icon.GetComponent<Image>().sprite = sprite1;
 
@@ -252,7 +253,7 @@ public class CriminalBehavior : MonoBehaviour {
 
     public void ButtonAttack()
     {
-        if(Time.time - attack_timer >= 1 && Time.time - attack_timer < 1.5 && !action)
+        if(Time.time - attack_timer >= 1.0 && Time.time - attack_timer < 1.2 && !action)
             captured = true;
         else
             action = true;

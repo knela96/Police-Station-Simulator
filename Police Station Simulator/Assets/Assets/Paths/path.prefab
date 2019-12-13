@@ -135,7 +135,7 @@ MonoBehaviour:
   parent: {fileID: 0}
   ccName: 
   fields: 1
-  mathType: 0
+  mathType: 1
   sectionParts: 6
   optimizeStraightLines: 0
   tolerance: 0.2

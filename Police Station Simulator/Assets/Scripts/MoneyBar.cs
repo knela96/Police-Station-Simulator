@@ -15,7 +15,7 @@ public class MoneyBar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        updateMoney(1500);
+        updateMoney(100);
     }
 
     public void updateMoney(int value)

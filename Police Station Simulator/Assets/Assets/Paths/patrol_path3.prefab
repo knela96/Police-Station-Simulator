@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6859221328063016794
+--- !u!1 &5541302334988751836
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,37 +8,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3329479006667884766}
-  - component: {fileID: 9128178669154348754}
-  - component: {fileID: 7385327789113186775}
+  - component: {fileID: 4459372793128678488}
+  - component: {fileID: 7889108403711677012}
+  - component: {fileID: 8479015958497666385}
   m_Layer: 0
-  m_Name: patrol_path2
+  m_Name: patrol_path3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3329479006667884766
+--- !u!4 &4459372793128678488
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6859221328063016794}
+  m_GameObject: {fileID: 5541302334988751836}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.7367516, y: 0, z: -20.18}
+  m_LocalPosition: {x: -3.89, y: 0, z: 20.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9128178669154348754
+--- !u!114 &7889108403711677012
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6859221328063016794}
+  m_GameObject: {fileID: 5541302334988751836}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e70f079e2a6bf364e8185b765fbe61c0, type: 3}
@@ -103,40 +103,33 @@ MonoBehaviour:
   mode2D: 0
   closed: 1
   points:
-  - controlType: 1
-    positionLocal: {x: 7.8516307, y: 0, z: 0.3194847}
-    controlFirstLocal: {x: -1.0720887, y: -0, z: -1.1934967}
-    controlSecondLocal: {x: 1.0720887, y: 0, z: 1.1934967}
+  - controlType: 0
+    positionLocal: {x: 0.14197135, y: 0, z: 0.1093483}
+    controlFirstLocal: {x: 1, y: 0, z: 0}
+    controlSecondLocal: {x: -1, y: -0, z: -0}
     pointTransform: {fileID: 0}
-    curve: {fileID: 9128178669154348754}
+    curve: {fileID: 7889108403711677012}
     fieldsValues: []
-  - controlType: 1
-    positionLocal: {x: 8.544365, y: 0, z: 9.176005}
-    controlFirstLocal: {x: -0.13963062, y: -0, z: -2.403446}
-    controlSecondLocal: {x: 0.13963062, y: 0, z: 2.403446}
+  - controlType: 0
+    positionLocal: {x: 0.8424728, y: 0, z: 41.574844}
+    controlFirstLocal: {x: -7.9695354, y: -0, z: -0}
+    controlSecondLocal: {x: 7.9695354, y: 0, z: 0}
     pointTransform: {fileID: 0}
-    curve: {fileID: 9128178669154348754}
+    curve: {fileID: 7889108403711677012}
     fieldsValues: []
-  - controlType: 1
-    positionLocal: {x: 7.8780627, y: 0, z: 21.282806}
-    controlFirstLocal: {x: 3.2599955, y: -0, z: 0.063424684}
-    controlSecondLocal: {x: -3.2599955, y: 0, z: -0.063424684}
+  - controlType: 0
+    positionLocal: {x: 2.2449121, y: 0, z: 41.40737}
+    controlFirstLocal: {x: 0.22388056, y: 0.04025212, z: 0.6392999}
+    controlSecondLocal: {x: -0.22388056, y: -0.04025212, z: -0.6392999}
     pointTransform: {fileID: 0}
-    curve: {fileID: 9128178669154348754}
+    curve: {fileID: 7889108403711677012}
     fieldsValues: []
-  - controlType: 1
-    positionLocal: {x: -10.358981, y: 0, z: 20.938377}
-    controlFirstLocal: {x: 1.1358433, y: -0, z: 0.52178764}
-    controlSecondLocal: {x: -1.1358433, y: 0, z: -0.52178764}
+  - controlType: 0
+    positionLocal: {x: 2.120672, y: 0, z: -0.023485184}
+    controlFirstLocal: {x: 0.20640108, y: -0, z: 0.74776}
+    controlSecondLocal: {x: -0.20640108, y: 0, z: -0.74776}
     pointTransform: {fileID: 0}
-    curve: {fileID: 9128178669154348754}
-    fieldsValues: []
-  - controlType: 1
-    positionLocal: {x: -10.607576, y: 0, z: 0.803442}
-    controlFirstLocal: {x: -0.062113762, y: -0, z: 1.9361534}
-    controlSecondLocal: {x: 0.062113762, y: 0, z: -1.9361534}
-    pointTransform: {fileID: 0}
-    curve: {fileID: 9128178669154348754}
+    curve: {fileID: 7889108403711677012}
     fieldsValues: []
   pointsComponents: []
   pointsGameObjects: []
@@ -153,13 +146,13 @@ MonoBehaviour:
   eventMode: 0
   pointsMode: 0
   forceChangedEventMode: 0
---- !u!114 &7385327789113186775
+--- !u!114 &8479015958497666385
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6859221328063016794}
+  m_GameObject: {fileID: 5541302334988751836}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6d20671ad38ded4fa2362df353b9a31, type: 3}
@@ -171,9 +164,9 @@ MonoBehaviour:
   ccName: 
   fields: 1
   mathType: 1
-  sectionParts: 30
+  sectionParts: 13
   optimizeStraightLines: 0
-  tolerance: 0.162
+  tolerance: 0.344
   usePositionToCalculateTangents: 0
   updateMode: 0
   rendererForUpdateCheck: {fileID: 0}
