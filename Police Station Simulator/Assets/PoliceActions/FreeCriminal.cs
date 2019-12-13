@@ -37,7 +37,7 @@ namespace NodeCanvas.Tasks.Actions
         {
             police.animator.SetBool("moving", true);
             police.move.target = level.getCriminal();
-            if (police.move.target != null)
+            if (police.move.target != null && level.day)
             {
                 follow_path.calcPath(police.move.target.transform);
             }
@@ -62,12 +62,14 @@ namespace NodeCanvas.Tasks.Actions
         protected override void OnStop()
         {
             if(police.move.target != null)
-                police.move.target.GetComponent<CriminalBehavior>().assigned = false;
+                if  (police.move.target.GetComponent<CriminalBehavior>() != null)
+                    police.move.target.GetComponent<CriminalBehavior>().assigned = false;//FIX
             if (follow_path.arrived)
                 police.animator.SetBool("moving", false);
             auxm = popul.CurrentValue;
             auxm = auxm + popularitywin;
             popul.SetBar((int)auxm);
+            police.to_exit = true;
         }
 
         //Called when the task is paused.

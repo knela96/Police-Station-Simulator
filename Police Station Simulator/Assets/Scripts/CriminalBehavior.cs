@@ -2,14 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 using NodeCanvas.Framework;
 
 public class CriminalBehavior : MonoBehaviour {
 
+    public Sprite sprite0;
+    public Sprite sprite1;
+    public Sprite sprite2;
+    public Sprite sprite3;
     public GameObject cells;
     public Move move;
     SteeringArrive arrive;
-    bool action = false;
+    public Button attack_icon;
+    public bool captured = false;
+    public bool action = false;
     public NavMeshPath path;
     public SteeringFollowPath follow_path;
     public Cell cell;
@@ -18,7 +25,7 @@ public class CriminalBehavior : MonoBehaviour {
     public Animator anim;
     public bool to_cell = false;
     public LevelLoop level;
-    public float timer = 60.0f;
+    public float timer;
     public bool free = false;
     public bool countdown = false;
     public bool toExit = false;
@@ -29,6 +36,8 @@ public class CriminalBehavior : MonoBehaviour {
     HealthBar popul;
     public float popularityloss;
     float auxm;
+    float attack_timer;
+
     // Use this for initialization
     void Awake()
     {
@@ -81,6 +90,7 @@ public class CriminalBehavior : MonoBehaviour {
 
     public void setAgent(GameObject agent)
     {
+        captured = true;
         c_agent = agent;
         c_agent.GetComponent<Move>().target = gameObject;
         c_agent.gameObject.layer = 0;
@@ -180,8 +190,9 @@ public class CriminalBehavior : MonoBehaviour {
 
     public void Night()
     {
+        captured = false;
         night = true;
-        if(!free && !c_agent)
+        if(timer <= 0)
             escape = true;
     }
 
@@ -190,12 +201,59 @@ public class CriminalBehavior : MonoBehaviour {
     {
         night = false;
         escape = false;
+        captured = false;
     }
 
     public void AttackTarget(int message)
     {
         Debug.Log("Received Damage");
-        anim.SetBool("attack", false);
-        to_cell = true;
+        
+        //anim.SetBool("attack", false);
+        //to_cell = true;
     }
+
+    public void StartAttack()
+    {
+        attack_timer = Time.time;
+        attack_icon.gameObject.active = true;
+        StartCoroutine("Attack");
+    }
+
+    IEnumerator Attack()
+    {
+        while (Time.time - attack_timer <= 2)
+        {
+            if (Time.time - attack_timer >= 1.5)
+            {
+                attack_icon.GetComponent<Image>().sprite = sprite3;
+                action = true;
+            }
+            else if (Time.time - attack_timer >= 1)
+            {
+                attack_icon.GetComponent<Image>().sprite = sprite1;
+
+                if (captured)
+                {
+                    attack_icon.GetComponent<Image>().sprite = sprite2;
+                    anim.SetBool("attack", false);
+                    to_cell = true;
+                    yield return new WaitForSeconds(1);
+                }
+
+            }
+            else if (Time.time - attack_timer >= 0)
+            {
+                attack_icon.GetComponent<Image>().sprite = sprite0;
+            }
+            yield return null;
+        }
+        attack_icon.gameObject.SetActive(false);
+    }
+
+    public void ButtonAttack()
+    {
+        if(Time.time - attack_timer >= 1 && Time.time - attack_timer < 1.5)
+            captured = true;
+    }
+    
 }

@@ -36,6 +36,7 @@ namespace NodeCanvas.Tasks.Actions
         protected override void OnExecute()
         {
             cur_time = 0;
+            police.gameObject.layer = 0;
             police.move.move = false;
         }
 
@@ -57,13 +58,13 @@ namespace NodeCanvas.Tasks.Actions
                 {
                     //Ends the task and create a path to the Exit
                     police.numCriminals = level.criminals.Count;
-                    auxm = money.CurrentValue;
                     if (!level.addCriminal())
                         level.addPolicemen();
-                    auxm = auxm + 7;
-                    money.SetBar((int)auxm);
+                    police.updateMoney(20);//adds 7
                     EndAction(true);
                     cur_time = 0;
+                    if(police.numCriminals == 0)
+                        police.to_exit = true;
                 }
             }
         }
@@ -71,6 +72,7 @@ namespace NodeCanvas.Tasks.Actions
         //Called when the task is disabled.
         protected override void OnStop()
         {
+            police.gameObject.layer = 8;
             police.move.move = true;
             police.stopTask();
             police.animator.SetBool("moving", true);

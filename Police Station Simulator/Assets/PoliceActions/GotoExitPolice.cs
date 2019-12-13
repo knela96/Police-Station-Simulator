@@ -42,6 +42,7 @@ namespace NodeCanvas.Tasks.Actions
             //    move.run = true;
             //    police.animator.SetBool("running", true);
             //}
+            police.animator.SetBool("running", false);
             police.animator.SetBool("moving", true);
             move.target = GameObject.Find("Exit");
             if ((move.target.transform.position - agent.transform.position).magnitude <= 10)

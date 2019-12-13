@@ -150,10 +150,12 @@ public class SteeringFollowPath : MonoBehaviour {
 
     public bool followingPath()
     {
-        if (curve.PointsCount > 0)
-            return true;
-        else
-            return false;
+        if (curve != null)
+        {
+            if (curve.PointsCount > 0)
+                return true;
+        }
+        return false;
     }
 
     public void createPatrol(int patrol,bool position)

@@ -34,6 +34,8 @@ public class LevelLoop : MonoBehaviour
     public AssignDesk desks;
     public AssignCell cells;
 
+    MoneyBar money;
+    HealthBar popul;
     public int spawnagents;
 
     // Start is called before the first frame update
@@ -43,6 +45,8 @@ public class LevelLoop : MonoBehaviour
         vec = GameObject.Find("Entrance").transform.position;
         desks = GameObject.Find("Desks").GetComponent<AssignDesk>();
         cells = GameObject.Find("Cells").GetComponent<AssignCell>();
+        popul = GameObject.Find("Healthbar").GetComponent<HealthBar>();
+        money = GameObject.Find("Money").GetComponent<MoneyBar>();
     }
 
     private void Start()
@@ -67,7 +71,7 @@ public class LevelLoop : MonoBehaviour
                     addCitizen();
                 }
             }
-            if (cycle - timer2 > 8)
+            if (cycle - timer2 > 1.5)
             {
                 timer2 = cycle;
                 if (spawnagents > 0)
@@ -113,6 +117,9 @@ public class LevelLoop : MonoBehaviour
         else if(!actions && !day)
         {
             patrol = 0;
+
+            money.updateMoney(desks.num_active * -10);
+
             //Change the behavior of all entities to Night
             foreach (GameObject go in citizens)
             {
@@ -145,6 +152,8 @@ public class LevelLoop : MonoBehaviour
             actions = false;
         }
     }
+
+    
 
     public void addCitizen()
     {
@@ -201,4 +210,6 @@ public class LevelLoop : MonoBehaviour
     {
         return cycle;
     }
+
+    
 }

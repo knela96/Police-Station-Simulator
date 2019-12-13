@@ -25,6 +25,8 @@ public class PoliceBehaviour : MonoBehaviour {
     //public float cur_time = 0;
     public bool start = false;
     public Slider slider_task;
+    public Image icon;
+    public Text text;
     SteeringFollowPath follow_path;
     public SteeringAlign align;
     public Move move = null;
@@ -40,6 +42,11 @@ public class PoliceBehaviour : MonoBehaviour {
     public bool patrolling = false;
     public bool detected = false;
     public int numCriminals = 0;
+    bool money_anim = false;
+    MoneyBar money;
+    HealthBar popul;
+    public bool stun = false;
+    public bool to_exit = false;
 
     // Use this for initialization
     void Awake()
@@ -47,6 +54,8 @@ public class PoliceBehaviour : MonoBehaviour {
         detected = false;
         level = GameObject.Find("Level").GetComponent<LevelLoop>();
         desks = GameObject.Find("Desks");
+        popul = GameObject.Find("Healthbar").GetComponent<HealthBar>();
+        money = GameObject.Find("Money").GetComponent<MoneyBar>();
         move = GetComponent<Move>();
         align = GetComponent<SteeringAlign>();
         follow_path = GetComponent<SteeringFollowPath>();
@@ -73,22 +82,55 @@ public class PoliceBehaviour : MonoBehaviour {
 
     // Update is called once per frame
     void Update()
-    {}
+    {
+    }
+
+    IEnumerator MoneyAnimation()
+    {
+        for (float ft = 1f; ft >= 0; ft -= 0.1f)
+        {
+            yield return new WaitForSeconds(.1f);
+        }
+        text.gameObject.SetActive(false);
+    }
+
+    public void updateMoney(int value)
+    {
+        money_anim = true;
+        money.updateMoney(value);
+        text.text = string.Format("+ {0}$", value);
+        text.gameObject.SetActive(true);
+        StartCoroutine("MoneyAnimation");
+    }
 
     public void AttackTarget(int message)
     {
-        Debug.Log("Received Damage");
+        //Debug.Log("Received Damage");
+
+
+    }
+
+    public void criminal2Cell()
+    {
         if (move.target != null)
         {
             CriminalBehavior criminal = move.target.GetComponent<CriminalBehavior>();
-            criminal.detected = false;
-            criminal.AssignCell();
-            criminal.setAgent(gameObject);
-            animator.SetBool("attack", false);
-            criminal.move.move = true;
+            if (criminal != null)
+            {
+                if (criminal.captured)
+                {
+                    criminal.detected = false;
+                    criminal.AssignCell();
+                    criminal.setAgent(gameObject);
+                    animator.SetBool("attack", false);
+                    criminal.move.move = true;
+                    to_cell = true;
+                    GetComponent<AIPerceptionManager>().player_detected = false;
+                    detected = false;
+                    move.move = true;
+                }
+            }
         }
-        to_cell = true;
-        detected = false;
     }
 
     public bool ArrivedDesk()
@@ -119,13 +161,32 @@ public class PoliceBehaviour : MonoBehaviour {
             for (int i = 0; i < assign.desks.Count; ++i)
             {
                 Desk c_desk = assign.desks[i].gameObject.GetComponent<Desk>();
-                if (c_desk.isAvailable())
+                if (c_desk.isAvailable() && c_desk.gameObject.active)
                 {
                     desk = c_desk.setAgent(this.gameObject);
                     return;
                 }
             }
         }
+    }
+
+    public void StunPolice()
+    {
+        StartCoroutine("StartStunPolice");
+    }
+
+    public IEnumerator StartStunPolice()
+    {
+        stun = true;
+        to_cell = false;
+        animator.SetBool("attack", false);
+        animator.SetBool("sitting", true);
+        move.move = false;
+        yield return new WaitForSeconds(4);
+        animator.SetBool("sitting", false);
+        move.move = true;
+        stun = false;
+        detected = false;
     }
 
     public void startTask()
@@ -213,7 +274,8 @@ public class PoliceBehaviour : MonoBehaviour {
         {
             patrolling = false;
             //behaviour = TypeAction.None;
-            follow_path.calcPath(GameObject.Find("Exit").transform);
+            //follow_path.calcPath(GameObject.Find("Exit").transform);
+            to_exit = true;
         }
     }
 
@@ -222,6 +284,8 @@ public class PoliceBehaviour : MonoBehaviour {
     {
         night = false;
         light.SetActive(false); //Turn off Torchlight
+        if (patrolling)
+            to_exit = true;
     }
 
     private void OnDestroy()

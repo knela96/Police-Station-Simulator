@@ -43,15 +43,20 @@ namespace NodeCanvas.Tasks.Actions{
 
 		//Called once per frame while the action is active.
 		protected override void OnUpdate(){
-            if (police.move.target == null)
+            if (desk == null)
+                police.to_exit = true;
+            else
             {
-                police.move.target = desk.getPoint().gameObject;
-                follow_path.calcPath(desk.getPoint());
-            }
-            if (!follow_path.followingPath())
-            {
-                follow_path.deleteCurve();
-                follow_path.calcPath(desk.getPoint());
+                if (police.move.target == null)
+                {
+                    police.move.target = desk.getPoint().gameObject;
+                    follow_path.calcPath(desk.getPoint());
+                }
+                if (!follow_path.followingPath())
+                {
+                    follow_path.deleteCurve();
+                    follow_path.calcPath(desk.getPoint());
+                }
             }
         }
 

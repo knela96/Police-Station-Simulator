@@ -12,7 +12,7 @@ public class ButtonAction : MonoBehaviour
     public GameObject FDesk;
     public GameObject Desk;
     float auxm;
-    public float cost = 10;
+    public int cost;
 
     void Start()
     {
@@ -34,8 +34,9 @@ public class ButtonAction : MonoBehaviour
         Desk.SetActive(true);
         FDesk.SetActive(false);
         gameObject.SetActive(false);
-        auxm = money.CurrentValue;
-        auxm = auxm - cost;
+        money.updateMoney(-cost);
+        desks.num_active++;
+        level.addPolicemen();
         money.SetBar((int)auxm);
     }
 }

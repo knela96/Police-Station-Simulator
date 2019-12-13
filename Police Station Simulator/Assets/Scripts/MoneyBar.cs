@@ -10,39 +10,23 @@ public class MoneyBar : MonoBehaviour
     public Text txt;
     public int Max;
     public int Min;
-    private int mCurrent;
-    private float mCurrentPer;
+    private int mCurrent = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        SetBar(50);
+        updateMoney(1500);
     }
 
-    public void SetBar(int health)
+    public void updateMoney(int value)
     {
-
-        if (health != mCurrent)
-        {
-            if (Max - Min == 0 || health <= 0 )
-            {
-                mCurrent = 0;
-                mCurrentPer = 0;
-            }
-            else
-            {
-                mCurrent = health;
-                mCurrentPer = (float)mCurrent / (float)(Max - Min);
-            }
-
-            HlthBar.fillAmount = mCurrentPer;
-            txt.text = string.Format("{0}", Mathf.RoundToInt(mCurrentPer*10000));
-        }
+        mCurrent = mCurrent + value;
+        SetBar((int)mCurrent);
     }
 
-    public float CurrentPercent
+    public void SetBar(int value)
     {
-        get { return mCurrentPer; }
+        txt.text = string.Format("{0}$", mCurrent);
     }
 
     public float CurrentValue

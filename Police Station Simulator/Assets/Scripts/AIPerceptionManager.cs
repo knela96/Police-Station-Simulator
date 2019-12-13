@@ -24,6 +24,6 @@ public class AIPerceptionManager : MonoBehaviour {
             //    target = null;
             //    player_detected = false;
             //}
-		}
+        }
 	}
 }

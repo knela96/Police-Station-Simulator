@@ -45,6 +45,9 @@ namespace NodeCanvas.Tasks.Actions
             police.GetComponent<SteeringAlign>().enabled = false;
             police.detected = true;
             police.animator.SetBool("moving", true);
+            police.animator.SetBool("attack", false);
+            police.animator.SetBool("running", false);
+            move.run = false;
             move.target = target.value;
             move.resetAccelerationRotation();
         }
@@ -52,21 +55,19 @@ namespace NodeCanvas.Tasks.Actions
         //Called once per frame while the action is active.
         protected override void OnUpdate()
         {
-            if (!police.detected)
-            {
-                EndAction(false);
+            if ((!police.detected && !police.stun) || police.to_cell)
+                EndAction(true);
+            else if (police.stun)
                 return;
-            }
-
 
             Collider[] colliders = Physics.OverlapSphere(agent.transform.position, 2, mask);
-
+            inside = false;
             for (int i = 0; i < colliders.Length; ++i)
             {
                 GameObject entity = colliders[i].gameObject;
 
                 //Accelerate the target with the curve form
-                if (entity != agent.gameObject && entity == target.value)
+                if (entity != agent.gameObject && entity == move.target && !inside)
                 {
                     move.move = false;
                     police.animator.SetBool("running", false);
@@ -76,9 +77,9 @@ namespace NodeCanvas.Tasks.Actions
                 }
             }
 
-            if (move.target != null && !inside)
+            if (move.target != null && !inside && !police.stun)
             {
-                pursue.Steer(move.target.transform.position, move.target.GetComponent<Move>().current_velocity); //Will pursue the Criminal until it arrives to the cell
+                pursue.Steer(move.target.transform.position, move.target.GetComponent<Move>().current_velocity); //Will pursue the Criminal to where he is
                 move.move = true;
                 move.run = true;
                 police.animator.SetBool("running", true);
@@ -91,10 +92,15 @@ namespace NodeCanvas.Tasks.Actions
         protected override void OnStop()
         {
             police.GetComponent<AIPerceptionManager>().target = null;
-            police.GetComponent<AIPerceptionManager>().player_detected = false;
+            if (!police.stun)
+            {
+                police.GetComponent<AIPerceptionManager>().player_detected = false;
+                police.detected = false;
+            }
             police.GetComponent<SteeringAlign>().enabled = true;
             move.run = false;
             inside = false;
+            police.animator.SetBool("attack", false);
             police.animator.SetBool("running", false);
             police.animator.SetBool("moving", true);
         }

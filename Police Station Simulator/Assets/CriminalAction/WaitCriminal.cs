@@ -28,6 +28,8 @@ namespace NodeCanvas.Tasks.Actions
         //EndAction can be called from anywhere.
         protected override void OnExecute()
         {
+            criminal.timer = Random.Range(5.0f, 40.0f);
+            criminal.free = false;
             criminal.to_cell = true;
             move.move = false;
         }
@@ -40,7 +42,7 @@ namespace NodeCanvas.Tasks.Actions
             criminal.night = Night.value;
             if (criminal.timer <= 0)
             {
-                if (criminal.night)
+                if (criminal.night && !criminal.captured)
                     criminal.escape = true;
 
                 criminal.free = true;
