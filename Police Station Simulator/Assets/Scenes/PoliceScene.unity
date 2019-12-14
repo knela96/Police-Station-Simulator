@@ -319,21 +319,6 @@ PrefabInstance:
       propertyPath: asource
       value: 
       objectReference: {fileID: 692599951}
-    - target: {fileID: 219895885563433683, guid: 20564daa26b8e8d4382b1d53bcd00f59,
-        type: 3}
-      propertyPath: buy
-      value: 
-      objectReference: {fileID: 8300000, guid: 04ad5012b57ce1b46a3ed972cbd35967, type: 3}
-    - target: {fileID: 219895885563433683, guid: 20564daa26b8e8d4382b1d53bcd00f59,
-        type: 3}
-      propertyPath: sallaries
-      value: 
-      objectReference: {fileID: 8300000, guid: d0734a5f17e864c4ca328ff03f24204f, type: 3}
-    - target: {fileID: 3187591438291262410, guid: 20564daa26b8e8d4382b1d53bcd00f59,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3187591438291262410, guid: 20564daa26b8e8d4382b1d53bcd00f59,
         type: 3}
       propertyPath: office_lt
@@ -344,24 +329,6 @@ PrefabInstance:
       propertyPath: cell_lt
       value: 
       objectReference: {fileID: 1902411384}
-    - target: {fileID: 3187591438291262410, guid: 20564daa26b8e8d4382b1d53bcd00f59,
-        type: 3}
-      propertyPath: office_day
-      value: 
-      objectReference: {fileID: 8300000, guid: 4d296843419cfd84fa8c1ac947a66078, type: 3}
-    - target: {fileID: 3187591438291262410, guid: 20564daa26b8e8d4382b1d53bcd00f59,
-        type: 3}
-      propertyPath: office_night
-      value: 
-      objectReference: {fileID: 8300000, guid: 6f6702187a15a7045a4040f67c08b876, type: 3}
-    - target: {fileID: 592266528, guid: 20564daa26b8e8d4382b1d53bcd00f59, type: 3}
-      propertyPath: m_Text
-      value: 'Liberate 5 Criminals without letting escape more than 2:'
-      objectReference: {fileID: 0}
-    - target: {fileID: 1657136917, guid: 20564daa26b8e8d4382b1d53bcd00f59, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20564daa26b8e8d4382b1d53bcd00f59, type: 3}
 --- !u!1 &1382113907
