@@ -222,22 +222,25 @@ public class LevelLoop : MonoBehaviour
 
     public void UpdateObj1()
     {
-        obj1.text = string.Format("Liberated: ({0}/5)",num_liberated);
-        if(num_liberated == 5)
+        obj1.text = string.Format("Liberated: ({0}/3)",num_liberated);
+        GameObject go = GameObject.Find("Mission");
+        if (num_liberated == 3 && go != null)
         {
             popul.updatePopul(30);
+            //WIN CONDITION
             GameObject.Find("Mission").SetActive(false);
         }
 
     }
     public void UpdateObj2()
     {
-        obj2.text = string.Format("Escaped: ({0}/3)",num_escaped);
-        if (num_escaped == 3)
+        obj2.text = string.Format("Escaped: ({0}/2)",num_escaped);
+        GameObject go = GameObject.Find("Mission");
+        if (num_escaped == 3 && go != null)
         {
             popul.updatePopul(-30);
             GameObject.Find("Mission").SetActive(false);
-            //END GAME
+            //LOSE CONDITION
         }
     }
 

@@ -215,6 +215,7 @@ public class CriminalBehavior : MonoBehaviour {
         timer = Random.Range(40.0f, 70.0f);
         night = true;
         to_cell = true;
+        detected = false;
         if (countdown && !to_exit)
         {
             captured = false;
