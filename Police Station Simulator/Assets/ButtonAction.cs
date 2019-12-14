@@ -35,7 +35,7 @@ public class ButtonAction : MonoBehaviour
         FDesk.SetActive(false);
         gameObject.SetActive(false);
         money.updateMoney(-cost);
-        money.StartAnim(-cost);
+        money.StartAnim(-cost,0);
         desks.num_active++;
         level.addPolicemen();
         money.SetBar((int)auxm);

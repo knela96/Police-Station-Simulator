@@ -19,6 +19,12 @@ public class LevelLoop : MonoBehaviour
     public int num_liberated;
     public int num_escaped;
 
+    public AudioSource office_lt;
+    public AudioSource cell_lt;
+
+    public AudioClip office_day;
+    public AudioClip office_night;
+
     float timer1 = 0;
     float timer2 = 0;
     float timer3 = 0;
@@ -33,6 +39,7 @@ public class LevelLoop : MonoBehaviour
     public bool day = true;
     bool actions = true;
     Vector3 vec;
+    float timer;
 
     public GameObject receptionist = null;
 
@@ -61,11 +68,17 @@ public class LevelLoop : MonoBehaviour
         policemen[0].GetComponent<PoliceBehaviour>().receptionist = true;
         policemen[0].GetComponent<GraphOwner>().enabled = true;
         spawnagents = desks.desksav;
+        office_lt.PlayDelayed(12);
+        office_lt.volume = 0;
+        timer = Time.time;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (office_lt.volume < 0.15 && office_lt.isPlaying && Time.time - timer < 17)
+            office_lt.volume = office_lt.volume + 0.01f * Time.deltaTime;
+
         if (day)
         {
             //Spawn Entites evey x time
@@ -86,14 +99,11 @@ public class LevelLoop : MonoBehaviour
                     spawnagents--;
                 }
             }
-            //if (cycle - timer3 > 10)//31
-            //{
-            //    timer3 = cycle;
-            //    addCriminal();
-            //}
             if (!actions)
             {
                 spawnagents = desks.desksav;
+                office_lt.spatialBlend = 1;
+                office_lt.clip = office_day;
                 //Change the behaviour to Day
                 foreach (GameObject go in policemen)
                 {
@@ -123,8 +133,11 @@ public class LevelLoop : MonoBehaviour
         else if(!actions && !day)
         {
             patrol = 0;
-
+            office_lt.volume = 0;
+            office_lt.spatialBlend = 0;
+            office_lt.clip = office_night;
             money.updateMoney(desks.num_active * -10);
+            money.StartAnim(desks.num_active * -10,1);
 
             //Change the behavior of all entities to Night
             foreach (GameObject go in citizens)
@@ -146,6 +159,12 @@ public class LevelLoop : MonoBehaviour
             actions = true;
         }
 
+        if (!day)
+        {
+            if (office_lt.volume > 0.0f)
+                office_lt.volume = office_lt.volume - 0.1f * Time.deltaTime;
+        }
+
         cycle += Time.deltaTime;
 
         //Resets the counter to show all possible agents
@@ -153,6 +172,7 @@ public class LevelLoop : MonoBehaviour
         //Changes the cycle of day and night
         if (cycle >= 120)
         {
+            timer = Time.time;
             day = !day;
             cycle = 0;
             actions = false;

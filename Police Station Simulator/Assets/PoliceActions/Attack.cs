@@ -50,6 +50,7 @@ namespace NodeCanvas.Tasks.Actions
             move.run = false;
             move.target = target.value;
             move.resetAccelerationRotation();
+            police.audioSource.PlayOneShot(police.hey);
         }
 
         //Called once per frame while the action is active.

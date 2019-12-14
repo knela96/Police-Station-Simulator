@@ -41,6 +41,13 @@ public class CriminalBehavior : MonoBehaviour {
     public int life = 5;
     int clicks = 3;
 
+    public AudioClip shit;
+    public AudioClip punch;
+    public AudioClip ahhh;
+    public AudioClip ohhh;
+
+    public AudioSource audioSource;
+
     // Use this for initialization
     void Awake()
     {
@@ -55,6 +62,7 @@ public class CriminalBehavior : MonoBehaviour {
         follow_path = gameObject.GetComponent<SteeringFollowPath>();
         follow_path.path = new NavMeshPath();
         cells = GameObject.Find("Cells");
+        audioSource = transform.Find("Audio Source").GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
         move.move = true;
     }
@@ -231,7 +239,6 @@ public class CriminalBehavior : MonoBehaviour {
     public void Day()
     {
         night = false;
-        escape = false;
         captured = false;
     }
 
@@ -242,6 +249,11 @@ public class CriminalBehavior : MonoBehaviour {
 
         //anim.SetBool("attack", false);
         //to_cell = true;
+    }
+
+    public void AttackSound()
+    {
+        audioSource.PlayOneShot(punch);
     }
 
     public void StartAttack()
@@ -286,6 +298,13 @@ public class CriminalBehavior : MonoBehaviour {
             if (life <= 0)
             {
                 to_cell = true;
+                int c = (int)Random.Range(1, 3);
+                if(c == 1)
+                    audioSource.PlayOneShot(ahhh);
+                else if(c == 2)
+                    audioSource.PlayOneShot(ohhh);
+                else
+                    audioSource.PlayOneShot(shit);
             }
 
             yield return null;
@@ -294,6 +313,7 @@ public class CriminalBehavior : MonoBehaviour {
 
     IEnumerator Stun()
     {
+        audioSource.PlayOneShot(ahhh);
         captured = true;
         move.move = false;
         move.run = false;
@@ -317,7 +337,7 @@ public class CriminalBehavior : MonoBehaviour {
 
     public void ButtonAttack()
     {
-        if (--clicks <= 0 && !detected)
+        if (--clicks == 0 && !detected)
         {
             StartCoroutine("Stun");
         }

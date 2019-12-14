@@ -18,6 +18,13 @@ public class PoliceBehaviour : MonoBehaviour {
         Exit
     }
 
+    public AudioClip walkyetalkie;
+    public AudioClip punch;
+    public AudioClip ahhh;
+    public AudioClip hey;
+
+    public AudioSource audioSource;
+
     public GameObject desks = null;
     AssignDesk assign = null;
     public Desk desk = null;
@@ -58,6 +65,7 @@ public class PoliceBehaviour : MonoBehaviour {
         desks = GameObject.Find("Desks");
         popul = GameObject.Find("Healthbar").GetComponent<HealthBar>();
         money = GameObject.Find("Money").GetComponent<MoneyBar>();
+        audioSource = transform.Find("Audio Source").GetComponent<AudioSource>();
         move = GetComponent<Move>();
         align = GetComponent<SteeringAlign>();
         follow_path = GetComponent<SteeringFollowPath>();
@@ -114,7 +122,11 @@ public class PoliceBehaviour : MonoBehaviour {
             if (criminal != null)
                 criminal.life--;
         }
+    }
 
+    public void AttackSound()
+    {
+        audioSource.PlayOneShot(punch);
     }
 
     public void criminal2Cell()
@@ -135,6 +147,7 @@ public class PoliceBehaviour : MonoBehaviour {
                 move.move = true;
             }
         }
+        audioSource.PlayOneShot(walkyetalkie);
     }
 
     public bool ArrivedDesk()
@@ -176,6 +189,7 @@ public class PoliceBehaviour : MonoBehaviour {
 
     public void StunPolice()
     {
+        audioSource.PlayOneShot(ahhh);
         StartCoroutine("StartStunPolice");
     }
 
@@ -277,6 +291,7 @@ public class PoliceBehaviour : MonoBehaviour {
         if (patrol < 3 && patrol != -1)
         {
             patrolling = true;
+            audioSource.PlayOneShot(walkyetalkie);
         }
         else
         {
@@ -290,6 +305,7 @@ public class PoliceBehaviour : MonoBehaviour {
 
     public void Day()
     {
+        audioSource.PlayOneShot(walkyetalkie);
         night = false;
         light.SetActive(false); //Turn off Torchlight
         if (patrolling)
