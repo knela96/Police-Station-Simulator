@@ -60,7 +60,7 @@ namespace NodeCanvas.Tasks.Actions
                     police.numCriminals = level.criminals.Count;
                     if (!level.addCriminal())
                         level.addPolicemen();
-                    police.updateMoney(20);//adds 7
+                    police.updateMoney(40);//adds 7
                     EndAction(true);
                     cur_time = 0;
                     if(police.numCriminals == 0)

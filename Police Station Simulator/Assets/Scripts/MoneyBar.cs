@@ -13,6 +13,10 @@ public class MoneyBar : MonoBehaviour
     public int Min;
     private int mCurrent = 0;
     int value = 0;
+    public AudioSource asource;
+
+    public AudioClip buy;
+    public AudioClip sallaries;
 
     // Start is called before the first frame update
     void Start()
@@ -37,8 +41,13 @@ public class MoneyBar : MonoBehaviour
         get { return mCurrent; }
     }
 
-    public void StartAnim(int _value)
+    public void StartAnim(int _value,int audio)
     {
+        if(audio == 0)
+            asource.PlayOneShot(buy);
+        else
+            asource.PlayOneShot(sallaries);
+
         value = _value;
         StartCoroutine("MoneyAnimation");
     }
@@ -47,12 +56,12 @@ public class MoneyBar : MonoBehaviour
     {
         if (value > 0)
         {
-            txt_anim.color = new Color(0.0f, 156.0f, 15.0f);
+            txt_anim.color = new Color(0.0f, 0.61f, 0.05f);
             txt_anim.text = string.Format("+{0}$", value);
         }
         else
         {
-            txt_anim.color = new Color(255.0f, 0.0f, 0.0f);
+            txt_anim.color = new Color(1.0f, 0.0f, 0.0f);
             txt_anim.text = string.Format("{0}$", value);
         }
         txt_anim.gameObject.SetActive(true);
