@@ -298,6 +298,7 @@ MonoBehaviour:
   pivot: {fileID: 2213610577427638698}
   patrol1: {fileID: 0}
   patrol2: {fileID: 0}
+  patrol3: {fileID: 0}
   path_prefab: {fileID: 1928359113399005341, guid: ba6663f40bdcf6e48a598db5e4d54c9e,
     type: 3}
   patroling: 0
@@ -460,6 +461,7 @@ MonoBehaviour:
   move: {fileID: 0}
   attack_icon: {fileID: 7371082707105760634}
   captured: 0
+  action: 0
   follow_path: {fileID: 0}
   cell: {fileID: 0}
   c_agent: {fileID: 0}
@@ -474,7 +476,9 @@ MonoBehaviour:
   night: 0
   detected: 0
   assigned: 0
-  popularityloss: 10
+  popularityloss: 15
+  to_exit: 0
+  life: 5
 --- !u!114 &9121587132007228795
 MonoBehaviour:
   m_ObjectHideFlags: 0

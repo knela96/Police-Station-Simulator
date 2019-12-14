@@ -28,15 +28,18 @@ namespace NodeCanvas.Tasks.Actions{
 		protected override void OnExecute()
         {
             police.animator.SetBool("moving", true);
-            if (desk == null)
+            if (!police.night)
             {
-                //Assign desk Available and create path
-                police.AssignDesk();
-                if (police.desk != null)
+                if (desk == null)
                 {
-                    desk = police.desk;
-                    police.move.target = desk.getPoint().gameObject;
-                    follow_path.calcPath(desk.getPoint());
+                    //Assign desk Available and create path
+                    police.AssignDesk();
+                    if (police.desk != null)
+                    {
+                        desk = police.desk;
+                        police.move.target = desk.getPoint().gameObject;
+                        follow_path.calcPath(desk.getPoint());
+                    }
                 }
             }
 		}

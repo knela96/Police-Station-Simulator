@@ -75,13 +75,18 @@ namespace NodeCanvas.Tasks.Actions
             police.gameObject.layer = 8;
             police.move.move = true;
             police.stopTask();
+            if (desk != null)
+                desk.Release();
+            desk = null;
             police.animator.SetBool("moving", true);
         }
 
         //Called when the task is paused.
         protected override void OnPause()
         {
-
+            if (desk != null)
+                desk.Release();
+            desk = null;
         }
     }
 }

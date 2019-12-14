@@ -75,12 +75,13 @@ namespace NodeCanvas.Tasks.Actions
             {
                 criminal.detected = false;
                 criminal.escape = true;
-                criminal.c_agent = null;
-                if (police_GO != null)
+                if (criminal.c_agent != null)
                 {
-                    PoliceBehaviour police = police_GO.GetComponent<PoliceBehaviour>();
+                    PoliceBehaviour police = criminal.c_agent.GetComponent<PoliceBehaviour>();
                     police.StunPolice();
                 }
+                criminal.c_agent = null;
+                criminal.attack_icon.GetComponent<Image>().sprite = criminal.sprite1;
                 EndAction(true);
             }
             if (criminal.to_cell)
@@ -88,6 +89,7 @@ namespace NodeCanvas.Tasks.Actions
                 criminal.attack_icon.GetComponent<Image>().sprite = criminal.sprite2;
                 criminal.captured = true;
                 criminal.c_agent.GetComponent<PoliceBehaviour>().criminal2Cell();
+                criminal.attack_icon.GetComponent<Image>().sprite = criminal.sprite2;
                 EndAction(true);
             }
         }

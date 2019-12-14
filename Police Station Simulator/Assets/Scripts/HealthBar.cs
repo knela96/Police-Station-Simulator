@@ -16,26 +16,31 @@ public class HealthBar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SetBar(75);
+        SetBar(50);
     }
 
     public void SetBar(int health) {
-
-        if (health != mCurrent || health == 0) {
-            if (Max - Min == 0)
-            {
-                mCurrent = 0;
-                mCurrentPer = 0;
-            }
-            else {
-                if (mCurrent + health <= Max)
-                {
-                    mCurrent = health;
-                    mCurrentPer = (float)mCurrent / (float)(Max - Min);
-                }
-            }
-            HlthBar.fillAmount = mCurrentPer;
+        
+        if (Max - Min == 0)
+        {
+            mCurrent = 0;
+            mCurrentPer = 0;
         }
+        else {
+            mCurrent = health;
+            mCurrentPer = (float)mCurrent / (float)(Max - Min);
+        }
+        HlthBar.fillAmount = mCurrentPer;
+    }
+
+    public void updatePopul(int value)
+    {
+        mCurrent = mCurrent + value;
+        if (mCurrent > Max)
+            mCurrent = Max;
+        if (mCurrent < Min)
+            mCurrent = Min;
+        SetBar(mCurrent);
     }
 
     public float CurrentPercent

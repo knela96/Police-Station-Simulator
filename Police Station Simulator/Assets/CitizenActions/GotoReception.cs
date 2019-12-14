@@ -74,6 +74,8 @@ namespace NodeCanvas.Tasks.Actions{
 		//Called when the task is disabled.
 		protected override void OnStop(){
             follow_path.deleteCurve();
+            rP.GetComponent<Point>().Release();
+
         }
 
 		//Called when the task is paused.

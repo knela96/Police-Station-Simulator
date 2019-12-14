@@ -68,7 +68,6 @@ namespace NodeCanvas.Tasks.Actions
                 police.animator.SetBool("moving", false);
             auxm = popul.CurrentValue;
             auxm = auxm + popularitywin;
-            popul.SetBar((int)auxm);
             police.to_exit = true;
         }
 

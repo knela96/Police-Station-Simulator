@@ -33,6 +33,8 @@ namespace NodeCanvas.Tasks.Actions
             criminal.assigned = false;
             criminal.to_cell = true;
             move.move = false;
+            criminal.countdown = true;
+            criminal.follow_path.arrived = true;
         }
 
         //Called once per frame while the action is active.
@@ -62,6 +64,7 @@ namespace NodeCanvas.Tasks.Actions
         //Called when the task is disabled.
         protected override void OnStop()
         {
+            criminal.countdown = false;
             criminal.to_cell = false;
         }
 

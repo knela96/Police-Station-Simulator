@@ -114,6 +114,7 @@ public class CitizenBehaviour : MonoBehaviour {
     //Set up for night mode
     public void Night()
     {
+
         night = true;
     }
 }

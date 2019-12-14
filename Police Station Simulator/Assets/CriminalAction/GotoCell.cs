@@ -49,8 +49,13 @@ namespace NodeCanvas.Tasks.Actions
                 criminal.countdown = true;
                 EndAction(true);
             }
-            if(!follow_path.followingPath())
+            if (!follow_path.followingPath())
+            {
+                follow_path.deleteCurve();
+                criminal.AssignCell();
+                if(criminal.cell != null)
                 follow_path.calcPath(criminal.cell.getPoint());
+            }
 
 
         }

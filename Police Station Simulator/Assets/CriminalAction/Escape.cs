@@ -34,8 +34,11 @@ namespace NodeCanvas.Tasks.Actions
         //EndAction can be called from anywhere.
         protected override void OnExecute()
         {
-            criminal.cell.Release();
-            criminal.cell = null;
+            if (criminal.cell != null)
+            {
+                criminal.cell.Release();
+                criminal.cell = null;
+            }
             if (Night.value)
             {
                 move.run = true;

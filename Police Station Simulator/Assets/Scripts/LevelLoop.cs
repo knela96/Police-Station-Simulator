@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using NodeCanvas.Framework;
 
 public class LevelLoop : MonoBehaviour
@@ -12,6 +13,11 @@ public class LevelLoop : MonoBehaviour
     public List<GameObject> citizens;
     public List<GameObject> policemen;
     public List<GameObject> criminals;
+
+    public Text obj1;
+    public Text obj2;
+    public int num_liberated;
+    public int num_escaped;
 
     float timer1 = 0;
     float timer2 = 0;
@@ -34,8 +40,8 @@ public class LevelLoop : MonoBehaviour
     public AssignDesk desks;
     public AssignCell cells;
 
-    MoneyBar money;
-    HealthBar popul;
+    public MoneyBar money;
+    public HealthBar popul;
     public int spawnagents;
 
     // Start is called before the first frame update
@@ -151,6 +157,9 @@ public class LevelLoop : MonoBehaviour
             cycle = 0;
             actions = false;
         }
+
+        UpdateObj1();
+        UpdateObj2();
     }
 
     
@@ -211,5 +220,22 @@ public class LevelLoop : MonoBehaviour
         return cycle;
     }
 
-    
+    public void UpdateObj1()
+    {
+        obj1.text = string.Format("Liberated: ({0}/10)",num_liberated);
+        if(num_liberated == 10)
+        {
+            //WIN GAME
+        }
+
+    }
+    public void UpdateObj2()
+    {
+        obj2.text = string.Format("Escaped: ({0}/3)",num_escaped);
+        if (num_escaped == 3)
+        {
+            //END GAME
+        }
+    }
+
 }

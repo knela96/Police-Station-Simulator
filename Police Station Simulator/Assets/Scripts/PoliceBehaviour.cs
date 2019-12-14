@@ -48,6 +48,7 @@ public class PoliceBehaviour : MonoBehaviour {
     public bool stun = false;
     public bool to_exit = false;
     public int life = 5;
+    public Sprite InvIcon;
 
     // Use this for initialization
     void Awake()
@@ -123,18 +124,15 @@ public class PoliceBehaviour : MonoBehaviour {
             CriminalBehavior criminal = move.target.GetComponent<CriminalBehavior>();
             if (criminal != null)
             {
-                if (criminal.captured)
-                {
-                    criminal.detected = false;
-                    criminal.AssignCell();
-                    criminal.setAgent(gameObject);
-                    animator.SetBool("attack", false);
-                    criminal.move.move = true;
-                    to_cell = true;
-                    GetComponent<AIPerceptionManager>().player_detected = false;
-                    detected = false;
-                    move.move = true;
-                }
+                criminal.detected = false;
+                criminal.AssignCell();
+                criminal.setAgent(gameObject);
+                animator.SetBool("attack", false);
+                criminal.move.move = true;
+                to_cell = true;
+                GetComponent<AIPerceptionManager>().player_detected = false;
+                detected = false;
+                move.move = true;
             }
         }
     }
@@ -200,6 +198,8 @@ public class PoliceBehaviour : MonoBehaviour {
     {
         start = true;
         slider_task.gameObject.SetActive(true); //active the progress bar UI
+        icon.GetComponent<Image>().sprite = InvIcon;
+        icon.gameObject.SetActive(true);
     }
     public void resumeTask()
     {
@@ -211,7 +211,8 @@ public class PoliceBehaviour : MonoBehaviour {
         start = false;
         move.move = true;
         slider_task.gameObject.SetActive(false);
-        if(desk!=null)
+        icon.gameObject.SetActive(false);
+        if (desk!=null)
             desk.Release();
         desk = null;
     }

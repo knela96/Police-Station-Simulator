@@ -34,7 +34,7 @@ public class CriminalBehavior : MonoBehaviour {
     public bool detected = false;
     public bool assigned = false;
     HealthBar popul;
-    public float popularityloss;
+    public int popularityloss;
     public bool to_exit = false;
     float auxm;
     float attack_timer;
@@ -56,7 +56,6 @@ public class CriminalBehavior : MonoBehaviour {
         follow_path.path = new NavMeshPath();
         cells = GameObject.Find("Cells");
         anim = GetComponent<Animator>();
-        popul = GameObject.Find("Healthbar").GetComponent<HealthBar>();
         move.move = true;
     }
 
@@ -107,6 +106,11 @@ public class CriminalBehavior : MonoBehaviour {
     public void AssignCell()
     {
         assign = cells.GetComponent<AssignCell>();
+        if (cell != null)
+        {
+            cell.Release();
+            cell = null;
+        }
         for (int i = 0; i < assign.cells.Count; ++i)
         {
             Cell c_cell = assign.cells[i].gameObject.GetComponent<Cell>();
@@ -126,15 +130,28 @@ public class CriminalBehavior : MonoBehaviour {
             follow_path.calcPath(cell.getPoint());
             timer = 60;
         }
+        else
+        {
+            to_exit = true;
+            escape = false;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other == GameObject.Find("Exit").GetComponent<Collider>())
         {
-            auxm = popul.CurrentValue;
-            auxm = auxm - popularityloss;
-            popul.SetBar((int)auxm);
+            auxm = level.popul.CurrentValue;
+            if (escape)
+            {
+                level.popul.updatePopul(-popularityloss);
+                level.num_escaped++;
+            }
+            else
+            {
+                level.popul.updatePopul(popularityloss);
+                level.num_liberated++;
+            }
             Destroy(gameObject);
         }
         else if (other == GameObject.Find("Entrance").GetComponent<Collider>())
@@ -195,7 +212,8 @@ public class CriminalBehavior : MonoBehaviour {
     {
         timer = Random.Range(40.0f, 70.0f);
         night = true;
-        if (!to_exit)
+        to_cell = true;
+        if (countdown && !to_exit)
         {
             captured = false;
             assigned = false;
@@ -269,7 +287,6 @@ public class CriminalBehavior : MonoBehaviour {
 
             yield return null;
         }
-        attack_icon.gameObject.SetActive(false);
     }
 
     IEnumerator Stun()
