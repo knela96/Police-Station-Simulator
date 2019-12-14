@@ -298,10 +298,8 @@ public class CriminalBehavior : MonoBehaviour {
             if (life <= 0)
             {
                 to_cell = true;
-                int c = (int)Random.Range(1, 3);
+                int c = (int)Random.Range(1, 2);
                 if(c == 1)
-                    audioSource.PlayOneShot(ahhh);
-                else if(c == 2)
                     audioSource.PlayOneShot(ohhh);
                 else
                     audioSource.PlayOneShot(shit);

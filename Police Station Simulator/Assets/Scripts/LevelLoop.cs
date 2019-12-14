@@ -242,9 +242,9 @@ public class LevelLoop : MonoBehaviour
 
     public void UpdateObj1()
     {
-        obj1.text = string.Format("Liberated: ({0}/3)",num_liberated);
+        obj1.text = string.Format("Liberated: ({0}/5)",num_liberated);
         GameObject go = GameObject.Find("Mission");
-        if (num_liberated == 3 && go != null)
+        if (num_liberated == 5 && go != null)
         {
             popul.updatePopul(30);
             //WIN CONDITION

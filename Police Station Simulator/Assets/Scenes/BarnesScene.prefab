@@ -78,7 +78,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Liberate 3 Criminals without letting escape more than 3:'
+  m_Text: 'Liberate 5 Criminals without letting escape more than 2:'
 --- !u!1 &593877945
 GameObject:
   m_ObjectHideFlags: 0
@@ -5556,7 +5556,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3187591438291262420}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad7753d8edb3c7c47a53b81d476ba420, type: 3}
   m_Name: 
@@ -5581,6 +5581,10 @@ MonoBehaviour:
   obj2: {fileID: 938889589}
   num_liberated: 0
   num_escaped: 0
+  office_lt: {fileID: 0}
+  cell_lt: {fileID: 0}
+  office_day: {fileID: 8300000, guid: 4d296843419cfd84fa8c1ac947a66078, type: 3}
+  office_night: {fileID: 8300000, guid: 6f6702187a15a7045a4040f67c08b876, type: 3}
   day: 1
   receptionist: {fileID: 0}
   assign: {fileID: 0}
@@ -10792,6 +10796,9 @@ MonoBehaviour:
   txt_anim: {fileID: 7762485831351545238}
   Max: 10000
   Min: 0
+  asource: {fileID: 0}
+  buy: {fileID: 8300000, guid: 04ad5012b57ce1b46a3ed972cbd35967, type: 3}
+  sallaries: {fileID: 8300000, guid: d0734a5f17e864c4ca328ff03f24204f, type: 3}
 --- !u!64 &1562407815076908108
 MeshCollider:
   m_ObjectHideFlags: 0
