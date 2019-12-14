@@ -59,7 +59,11 @@ namespace NodeCanvas.Tasks.Actions
                 EndAction(true);
             else if (police.stun)
                 return;
-
+            else if (move.target == null)
+            {
+                police.detected = false;
+                police.to_exit = true;
+            }
             Collider[] colliders = Physics.OverlapSphere(agent.transform.position, 2, mask);
             inside = false;
             for (int i = 0; i < colliders.Length; ++i)

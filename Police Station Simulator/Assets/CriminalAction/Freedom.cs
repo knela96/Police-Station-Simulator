@@ -39,6 +39,7 @@ namespace NodeCanvas.Tasks.Actions
             criminal.anim.SetBool("moving", true);
             move.target = GameObject.Find("Exit");
             criminal.to_exit = true;
+            move.move = true;
             follow_path.calcPath(move.target.transform);
         }
 

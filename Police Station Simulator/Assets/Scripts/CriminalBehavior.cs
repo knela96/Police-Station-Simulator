@@ -144,12 +144,14 @@ public class CriminalBehavior : MonoBehaviour {
             auxm = level.popul.CurrentValue;
             if (escape)
             {
-                level.popul.updatePopul(-popularityloss);
+                level.popul.updatePopul(-10);
+                level.popul.StartAnim(-10);
                 level.num_escaped++;
             }
             else
             {
-                level.popul.updatePopul(popularityloss);
+                level.popul.updatePopul(5);
+                level.popul.StartAnim(5);
                 level.num_liberated++;
             }
             Destroy(gameObject);
