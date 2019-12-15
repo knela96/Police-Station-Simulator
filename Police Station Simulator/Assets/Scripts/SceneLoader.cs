@@ -26,10 +26,23 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
-    public void Credits()
+    public void Credits(GameObject go)
     {
-        Application.OpenURL("http://unity3d.com/");
+        go.SetActive(!go.active);
     }
+
+
+    public void Github() {
+
+        Application.OpenURL("https://github.com/knela96/Police-Station-Simulator");
+    }
+
+    public void Website()
+    {
+
+        Application.OpenURL("");
+    }
+
 
     public void Exit()
     {
