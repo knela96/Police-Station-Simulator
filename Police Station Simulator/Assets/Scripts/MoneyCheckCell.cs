@@ -20,7 +20,7 @@ public class MoneyCheckCell : MonoBehaviour
 
     void Update()
     {
-        if (money.CurrentValue < cost && update == false)
+        if (money.CurrentValue < cost && update == false || level.stop_Game)
         {
             foreach (Transform child in gameObject.transform)
             {

@@ -51,6 +51,8 @@ namespace NodeCanvas.Tasks.Actions
             move.target = target.value;
             move.resetAccelerationRotation();
             police.audioSource.PlayOneShot(police.hey);
+            police.icon.sprite = police.FightIcon;
+            police.icon.gameObject.SetActive(true);
         }
 
         //Called once per frame while the action is active.
@@ -96,6 +98,7 @@ namespace NodeCanvas.Tasks.Actions
         //Called when the task is disabled.
         protected override void OnStop()
         {
+            police.icon.gameObject.SetActive(false);
             police.GetComponent<AIPerceptionManager>().target = null;
             if (!police.stun)
             {

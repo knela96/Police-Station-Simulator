@@ -55,7 +55,11 @@ public class PoliceBehaviour : MonoBehaviour {
     public bool stun = false;
     public bool to_exit = false;
     public int life = 5;
+
     public Sprite InvIcon;
+    public Sprite StunIcon;
+    public Sprite FightIcon;
+    public Sprite Exit;
 
     // Use this for initialization
     void Awake()
@@ -195,6 +199,8 @@ public class PoliceBehaviour : MonoBehaviour {
 
     public IEnumerator StartStunPolice()
     {
+        icon.sprite = StunIcon;
+        icon.gameObject.SetActive(true);
         stun = true;
         to_cell = false;
         animator.SetBool("attack", false);
@@ -206,13 +212,14 @@ public class PoliceBehaviour : MonoBehaviour {
         move.move = true;
         stun = false;
         detected = false;
+        icon.gameObject.SetActive(false);
     }
 
     public void startTask()
     {
         start = true;
         slider_task.gameObject.SetActive(true); //active the progress bar UI
-        icon.GetComponent<Image>().sprite = InvIcon;
+        icon.sprite = InvIcon;
         icon.gameObject.SetActive(true);
     }
     public void resumeTask()

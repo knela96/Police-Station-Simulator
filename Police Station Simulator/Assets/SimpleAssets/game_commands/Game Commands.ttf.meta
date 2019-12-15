@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: e93515e18dc34964fa8cc4978d497e9d
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Game Commands
+  fontNames:
+  - Game Commands
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 0275f80886eafe6448d25ca5c2ed0a43, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

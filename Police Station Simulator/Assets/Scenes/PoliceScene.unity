@@ -147,8 +147,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: d8309b783e3336440903edd332b32996, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -245,7 +245,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1092808612
 PrefabInstance:
@@ -408,7 +408,7 @@ GameObject:
   - component: {fileID: 1445498408}
   - component: {fileID: 1445498407}
   m_Layer: 0
-  m_Name: Audio Source
+  m_Name: Environment_Office
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -565,7 +565,7 @@ GameObject:
   - component: {fileID: 1612065706}
   - component: {fileID: 1612065705}
   m_Layer: 0
-  m_Name: Audio Source (2)
+  m_Name: Environment_Outside
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -679,7 +679,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1902411383
 GameObject:
@@ -692,7 +692,7 @@ GameObject:
   - component: {fileID: 1902411385}
   - component: {fileID: 1902411384}
   m_Layer: 0
-  m_Name: Audio Source (1)
+  m_Name: Environment_Cells
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -971,6 +971,9 @@ MonoBehaviour:
   to_exit: 0
   life: 5
   InvIcon: {fileID: 21300000, guid: 36a20e64d4d314a4e9252d3046bbcbf8, type: 3}
+  StunIcon: {fileID: 21300000, guid: 9a26e8e487fe06d40960691912174d64, type: 3}
+  FightIcon: {fileID: 21300000, guid: efc34e6dec73db44587422135e823e2f, type: 3}
+  Exit: {fileID: 21300000, guid: 45ed6273fc76f90428052138317c5321, type: 3}
 --- !u!114 &114315233033603784
 MonoBehaviour:
   m_ObjectHideFlags: 0

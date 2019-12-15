@@ -51,6 +51,8 @@ public class LevelLoop : MonoBehaviour
     public HealthBar popul;
     public int spawnagents;
 
+    public bool stop_Game;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -60,6 +62,7 @@ public class LevelLoop : MonoBehaviour
         cells = GameObject.Find("Cells").GetComponent<AssignCell>();
         popul = GameObject.Find("Healthbar").GetComponent<HealthBar>();
         money = GameObject.Find("Money").GetComponent<MoneyBar>();
+        stop_Game = false;
     }
 
     private void Start()
@@ -71,113 +74,144 @@ public class LevelLoop : MonoBehaviour
         office_lt.PlayDelayed(12);
         office_lt.volume = 0;
         timer = Time.time;
-    }
+        num_liberated = 0;
+        num_escaped = 0;
+}
 
     // Update is called once per frame
     void Update()
     {
-        if (office_lt.volume < 0.15 && office_lt.isPlaying && Time.time - timer < 17)
-            office_lt.volume = office_lt.volume + 0.01f * Time.deltaTime;
+        if (!stop_Game) {
+            if (office_lt.volume < 0.15 && office_lt.isPlaying && Time.time - timer < 17)
+                office_lt.volume = office_lt.volume + 0.01f * Time.deltaTime;
 
-        if (day)
-        {
-            //Spawn Entites evey x time
-            if (cycle - timer1 > 5)//15
+            if (day)
             {
-                if (assign.numAssigned <= assign.points.Count)
+                //Spawn Entites evey x time
+                if (cycle - timer1 > 5)//15
                 {
+                    if (assign.numAssigned <= assign.points.Count)
+                    {
+                        timer1 = cycle;
+                        addCitizen();
+                    }
+                }
+                if (cycle - timer2 > 1.5)
+                {
+                    timer2 = cycle;
+                    if (spawnagents > 0)
+                    {
+                        addPolicemen();
+                        spawnagents--;
+                    }
+                }
+                if (!actions)
+                {
+                    spawnagents = desks.desksav;
+                    office_lt.spatialBlend = 1;
+                    office_lt.clip = office_day;
+                    //Change the behaviour to Day
+                    foreach (GameObject go in policemen)
+                    {
+                        if (go != null)
+                            go.GetComponent<PoliceBehaviour>().Day();
+                    }
+
+                    foreach (GameObject go in criminals)
+                    {
+                        if (go != null)
+                            go.GetComponent<CriminalBehavior>().Day();
+                    }
+
+                    GameObject ob = Instantiate(policemen_prebab[Random.Range(0, policemen_prebab.Length - 1)], GameObject.Find("Entrance").transform.position, Quaternion.Euler(0, 90, 0));
+                    ob.GetComponent<PoliceBehaviour>().receptionist = true;
+                    ob.GetComponent<GraphOwner>().enabled = true;
+                    policemen.Add(ob);
+
                     timer1 = cycle;
-                    addCitizen();
+                    timer2 = cycle;
+                    timer3 = cycle;
+
+                    actions = true;
                 }
+
             }
-            if (cycle - timer2 > 1.5)
+            else if(!actions && !day)
             {
-                timer2 = cycle;
-                if (spawnagents > 0)
-                {
-                    addPolicemen();
-                    spawnagents--;
-                }
-            }
-            if (!actions)
-            {
-                spawnagents = desks.desksav;
-                office_lt.spatialBlend = 1;
-                office_lt.clip = office_day;
-                //Change the behaviour to Day
-                foreach (GameObject go in policemen)
+                patrol = 0;
+                office_lt.volume = 0;
+                office_lt.spatialBlend = 0;
+                office_lt.clip = office_night;
+                money.updateMoney(desks.num_active * -10);
+                money.StartAnim(desks.num_active * -10,1);
+
+                //Change the behavior of all entities to Night
+                foreach (GameObject go in citizens)
                 {
                     if (go != null)
-                        go.GetComponent<PoliceBehaviour>().Day();
+                        go.GetComponent<CitizenBehaviour>().Night();
                 }
-
+                for (int i = policemen.Count - 1 ; i >= 0; --i)
+                {
+                    GameObject go = policemen[i];
+                    if(go != null)
+                        go.GetComponent<PoliceBehaviour>().Night(patrol++);
+                }
                 foreach (GameObject go in criminals)
                 {
                     if (go != null)
-                        go.GetComponent<CriminalBehavior>().Day();
+                        go.GetComponent<CriminalBehavior>().Night();
                 }
-
-                GameObject ob = Instantiate(policemen_prebab[Random.Range(0, policemen_prebab.Length - 1)], GameObject.Find("Entrance").transform.position, Quaternion.Euler(0, 90, 0));
-                ob.GetComponent<PoliceBehaviour>().receptionist = true;
-                ob.GetComponent<GraphOwner>().enabled = true;
-                policemen.Add(ob);
-
-                timer1 = cycle;
-                timer2 = cycle;
-                timer3 = cycle;
-
                 actions = true;
             }
 
-        }
-        else if(!actions && !day)
-        {
-            patrol = 0;
-            office_lt.volume = 0;
-            office_lt.spatialBlend = 0;
-            office_lt.clip = office_night;
-            money.updateMoney(desks.num_active * -10);
-            money.StartAnim(desks.num_active * -10,1);
-
-            //Change the behavior of all entities to Night
-            foreach (GameObject go in citizens)
+            if (!day)
             {
-                if (go != null)
-                    go.GetComponent<CitizenBehaviour>().Night();
+                if (office_lt.volume > 0.0f)
+                    office_lt.volume = office_lt.volume - 0.1f * Time.deltaTime;
             }
-            for (int i = policemen.Count - 1 ; i >= 0; --i)
+
+            cycle += Time.deltaTime;
+
+            //Resets the counter to show all possible agents
+
+            //Changes the cycle of day and night
+            if (cycle >= 120)
             {
-                GameObject go = policemen[i];
-                if(go != null)
-                    go.GetComponent<PoliceBehaviour>().Night(patrol++);
+                timer = Time.time;
+                day = !day;
+                cycle = 0;
+                actions = false;
             }
-            foreach (GameObject go in criminals)
+        }
+        else
+        {
+            if (!actions)
             {
-                if (go != null)
-                    go.GetComponent<CriminalBehavior>().Night();
+                for (int i = 0; i < citizens.Count; ++i)
+                {
+                    GameObject go = citizens[i];
+                    if (go != null)
+                        Destroy(go);
+                }
+                for (int i = 0; i < policemen.Count; ++i)
+                {
+                    GameObject go = policemen[i];
+                    if (go != null)
+                        Destroy(go);
+                }
+                for (int i = 0; i < criminals.Count; ++i)
+                {
+                    GameObject go = criminals[i];
+                    if (go != null)
+                        Destroy(go);
+                }
+                GameObject.Find("Environment_Office").SetActive(false);
+                GameObject.Find("Environment_Cells").SetActive(false);
+                GameObject.Find("Environment_Outside").SetActive(false);
+                actions = true;
             }
-            actions = true;
         }
-
-        if (!day)
-        {
-            if (office_lt.volume > 0.0f)
-                office_lt.volume = office_lt.volume - 0.1f * Time.deltaTime;
-        }
-
-        cycle += Time.deltaTime;
-
-        //Resets the counter to show all possible agents
-
-        //Changes the cycle of day and night
-        if (cycle >= 120)
-        {
-            timer = Time.time;
-            day = !day;
-            cycle = 0;
-            actions = false;
-        }
-
         UpdateObj1();
         UpdateObj2();
     }
@@ -242,6 +276,10 @@ public class LevelLoop : MonoBehaviour
 
     public void UpdateObj1()
     {
+        if (Input.GetKeyDown("f1"))
+        {
+            num_liberated = 5;
+        }
         obj1.text = string.Format("Liberated: ({0}/5)",num_liberated);
         GameObject go = GameObject.Find("Mission");
         if (num_liberated == 5 && go != null)
@@ -249,17 +287,27 @@ public class LevelLoop : MonoBehaviour
             popul.updatePopul(30);
             //WIN CONDITION
             GameObject.Find("Mission").SetActive(false);
+            stop_Game = true;
+            actions = false;
+            GameObject.Find("Effects").GetComponent<AudioSource>().Play();
         }
 
     }
     public void UpdateObj2()
     {
+        if (Input.GetKeyDown("f2"))
+        {
+            num_escaped = 3;
+        }
         obj2.text = string.Format("Escaped: ({0}/2)",num_escaped);
         GameObject go = GameObject.Find("Mission");
         if (num_escaped == 3 && go != null)
         {
             popul.updatePopul(-30);
             GameObject.Find("Mission").SetActive(false);
+            stop_Game = true;
+            actions = false;
+            GameObject.Find("Effects").GetComponent<AudioSource>().Play();
             //LOSE CONDITION
         }
     }

@@ -11,7 +11,7 @@ public class HealthBar : MonoBehaviour
     public Text txt_anim;
     public int Max;
     public int Min;
-    private int mCurrent;
+    public int mCurrent;
     private float mCurrentPer;
     int value = 0;
 

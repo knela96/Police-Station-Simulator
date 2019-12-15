@@ -929,10 +929,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bcde8ecd8fc19148956648b34329a42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprite0: {fileID: 21300000, guid: 8f4d290373499e94f94187cdc78c6f46, type: 3}
-  sprite1: {fileID: 21300000, guid: 94ab056a92cf75c47ab8adcde965871f, type: 3}
-  sprite2: {fileID: 21300000, guid: 535564b74ec2c1b4d9df8f6f5430a3f5, type: 3}
-  sprite3: {fileID: 21300000, guid: fcc2685fe63bfea449c91455d49e65a5, type: 3}
+  sprite0: {fileID: 21300000, guid: 9a26e8e487fe06d40960691912174d64, type: 3}
+  sprite1: {fileID: 21300000, guid: ade2cd4e095836249838056a472548fe, type: 3}
+  sprite2: {fileID: 21300000, guid: 2545d4b6d49fc4b409db34764faa324c, type: 3}
+  sprite3: {fileID: 21300000, guid: 2ff082f989cf2974e89e1351d176566f, type: 3}
+  sprite4: {fileID: 21300000, guid: d3aad458ffab8fd40ad9a6145d681485, type: 3}
+  sprite5: {fileID: 21300000, guid: efc34e6dec73db44587422135e823e2f, type: 3}
   cells: {fileID: 0}
   move: {fileID: 0}
   attack_icon: {fileID: 1503259746322361298}
@@ -955,10 +957,10 @@ MonoBehaviour:
   popularityloss: 15
   to_exit: 0
   life: 5
-  shit: {fileID: 8300000, guid: fa890447b2cf1de428d2d3d679bffefa, type: 3}
+  shit: {fileID: 8300000, guid: 978aa68664feaaa43b6cb1a8852924c0, type: 3}
   punch: {fileID: 8300000, guid: 7878b40fece3f0c45acda88aab2735cb, type: 3}
   ahhh: {fileID: 8300000, guid: 9e418d8be3569194aab07cf8c8659c9f, type: 3}
-  ohhh: {fileID: 8300000, guid: 978aa68664feaaa43b6cb1a8852924c0, type: 3}
+  ohhh: {fileID: 8300000, guid: fa890447b2cf1de428d2d3d679bffefa, type: 3}
   audioSource: {fileID: 0}
 --- !u!114 &-3179644669509060554
 MonoBehaviour:

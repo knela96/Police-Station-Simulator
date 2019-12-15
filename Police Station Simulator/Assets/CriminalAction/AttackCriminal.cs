@@ -44,11 +44,13 @@ namespace NodeCanvas.Tasks.Actions
             criminal.anim.SetBool("moving", false);
             criminal.anim.SetBool("sitting", false);
             criminal.GetComponent<SteeringAlign>().enabled = false;
+            criminal.attack_icon.gameObject.SetActive(true);
         }
 
         //Called once per frame while the action is active.
         protected override void OnUpdate()
         {
+            criminal.attack_icon.GetComponent<Image>().sprite = criminal.sprite5;
             Collider[] colliders = Physics.OverlapSphere(agent.transform.position, 2, mask);
 
             for (int i = 0; i < colliders.Length; ++i)

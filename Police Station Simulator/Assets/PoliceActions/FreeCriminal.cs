@@ -50,6 +50,8 @@ namespace NodeCanvas.Tasks.Actions
         {
             if (follow_path.arrived)
             {
+                police.icon.sprite = police.Exit;
+                police.icon.gameObject.SetActive(true);
                 police.move.target.GetComponent<CriminalBehavior>().Exit(agent.gameObject);
                 police.to_cell = true;
                 follow_path.deleteCurve();

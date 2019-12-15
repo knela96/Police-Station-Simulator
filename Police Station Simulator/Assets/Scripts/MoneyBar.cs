@@ -11,7 +11,7 @@ public class MoneyBar : MonoBehaviour
     public Text txt_anim;
     public int Max;
     public int Min;
-    private int mCurrent = 0;
+    public int mCurrent = 0;
     int value = 0;
     public AudioSource asource;
 

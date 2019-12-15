@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
 
@@ -35,6 +36,8 @@ namespace NodeCanvas.Tasks.Actions
             move.move = false;
             criminal.countdown = true;
             criminal.follow_path.arrived = true;
+            criminal.attack_icon.GetComponent<Image>().sprite = criminal.sprite4;
+            criminal.attack_icon.gameObject.SetActive(true);
         }
 
         //Called once per frame while the action is active.

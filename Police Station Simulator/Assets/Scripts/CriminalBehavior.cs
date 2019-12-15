@@ -11,6 +11,8 @@ public class CriminalBehavior : MonoBehaviour {
     public Sprite sprite1;
     public Sprite sprite2;
     public Sprite sprite3;
+    public Sprite sprite4;
+    public Sprite sprite5;
     public GameObject cells;
     public Move move;
     SteeringArrive arrive;
@@ -298,7 +300,7 @@ public class CriminalBehavior : MonoBehaviour {
             if (life <= 0)
             {
                 to_cell = true;
-                int c = (int)Random.Range(1, 2);
+                int c = (int)Random.Range(0, 2);
                 if(c == 1)
                     audioSource.PlayOneShot(ohhh);
                 else

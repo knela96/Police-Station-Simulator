@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
@@ -39,6 +40,8 @@ namespace NodeCanvas.Tasks.Actions
             criminal.to_cell = true;
             move.move = true;
             criminal.anim.SetBool("moving", true);
+            criminal.attack_icon.GetComponent<Image>().sprite = criminal.sprite2;
+            criminal.attack_icon.gameObject.SetActive(true);
         }
 
         //Called once per frame while the action is active.
