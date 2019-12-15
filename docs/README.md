@@ -22,91 +22,91 @@ In this GOD style game, you are a new police captain and your duty is to lead th
   </tr>
 </table>
 
-# Github link
-https://github.com/knela96/Police-Station-Simulator
-
-# Wiki Link
-https://github.com/knela96/Police-Station-Simulator/wiki
-
-# License
-MIT License
-
-Copyright (c) 2019 Eric Canela & Ferran Barnes
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-#Controls
-
-W,A,S,D: Camera movement
-Left mouse click: Interact with the game
-Right mouse click: Rotate camera
-
 # Mechanics:
-"UI graphics not final"
-As the police captain your job is to assign different workers to different tasks and try to make the city as safe as possible.
+As the police captain your job is to assign different workers to differents desks to start investigate some cases. Also you will have to provide new cells to capture more criminals. 
+At night as a captain you will be able to stun the criminals that are escaping for a period of time, just to help your officers and avoid the escape.
 
 # Different npc's roles:
 
-- Citizen: Brings crime notifications to the police station
-- Police: Works outside the police station and brings criminals to the containment cell.
-- Police(Guard): Patrols the police station to ensure security
-- Criminal: Tries to scape the containment cell.
+## Citizens
+<table style="width:100%">
+  <tr>
+    <td><img src="https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/Wiki_Assets/Icons/Citizen2.PNG?token=AGOACYLA3X6IFPIKGJTJ4R257KZEK" alt="Citizen" height="200" width="auto"></td>
+    <td>
+<ul>
+<li>Citizen Will Go to the Reception</li>
+<li>If other Citizen is currently on the Reception he will go and Wait on the Waiting Room</li>
+<li>When it is his turn it will go to the Reception</li>
+<li>When he has finished giving the task to the Police he will leave the Building</li>
+</ul>
+</td>
+  </tr>
+</table>
+
+### Behaviour Tree
+![](https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/Wiki_Assets/Citizen_BT.png?token=AGOACYK62TBX5U3SHDJUETK57KY34)
+
+## Police
+<table style="width:100%">
+  <tr>
+    <td><img src="https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/Wiki_Assets/Icons/Police.PNG?token=AGOACYM4N3VFADSCUVGU6GK57KZEU" alt="Policeman" width="180" width="auto"></td>
+    <td>
+<ul>
+<li>Will go to the Desk to start Investigating a case</li>
+<li>When it has finished, it will check if there is any criminal to liberate</li>
+<li>If not, it will exit the building to chase the criminal</li>
+<li>If the policeman has arrested a Criminal he will escort him to a Cell</li>
+<li>At night if he doesn't need to patrol, will go Home</li>
+<li>While Patrolling if he finds a criminal escaping, he will fight him 
+(Also if it is the morning and a criminal was escaping the night before)</li>
+<li>If the attack is a success, will escort the criminal to the Cell</li>
+<li>If he was patrolling, the next morning it will go Home to sleep</li>
+</ul>
+</td>
+  </tr>
+</table>
+
+### Behaviour Tree
+![](https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/Wiki_Assets/Police_BT.png?token=AGOACYNSQ2MKY4KDRH5SX4K57KZBG)
+
+## Criminals
+<table style="width:100%">
+  <tr>
+    <td><img src="https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/Wiki_Assets/Icons/Criminal.PNG?token=AGOACYIOFQVVT4RKILHJRM257KZEQ" alt="Criminal" height="200" width="auto"></td>
+    <td>
+<ul>
+<li>If the Criminal is arrested, it will be escorted to the Cell</li>
+<li>He will wait in the cell for an ammount of time</li>
+<li>If it is the Morning, he will wait until a police liberates and escort him to the Exit</li>
+<li>If it is Night and has Waited enough time, he will escape the cell</li>
+<li>If he is detected he will try to attack the police</li>
+<li>He will return to the Cell if he doesn't succeeds on the attack</li>
+</ul>
+</td>
+  </tr>
+</table>
+
+### Behaviour Tree
+![](https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/Wiki_Assets/Criminal_BT.png?token=AGOACYMUYJGGBOT63BXR5F257KY7S)
 
 # Different Police station Rooms:
-
+![](https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/Wiki_Assets/Criminal_BT.png?token=AGOACYMUYJGGBOT63BXR5F257KY7S)
 - Lobby: Where the citizen make the crime notifications, also where the door to the street is located.
+
+![](https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/Wiki_Assets/Criminal_BT.png?token=AGOACYMUYJGGBOT63BXR5F257KY7S)
 - Containment Cell: Where the criminals are guarded until sent to jail.
+
+![](https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/Wiki_Assets/Criminal_BT.png?token=AGOACYMUYJGGBOT63BXR5F257KY7S)
 - Office: Where the policemen spent most of the time.
 
 # Resources:
 
  - Money
- - Police availability
  - Satisfaction
+ - Police availability
 
- # Behaviour trees
- ## Citizen
  
-- Citizen Will Go to the Reception
-- If other Citizen is currently on the Reception he will go and Wait on the Waiting Room
-- When it is his turn it will go to the Reception
-- When he has finished giving the task to the Police he will leave the Building
  
- ## Police
- 
-- Will go to the Desk to start Investigating a case
-- When it has finished, it will check if there is any criminal to liberate
-- If not, it will exit the building to chase the criminal
-- If the policeman has arrested a Criminal he will escort him to a Cell
-- At night if he doesn't need to patrol, will go Home
-- While Patrolling if he finds a criminal escaping, he will fight him (Also if it is the morning and a criminal was escaping the night before)
-- If the attack is a success, will escort the criminal to the Cell
-- If he was patrolling, the next morning it will go Home to sleep
-- If a criminal is succesfully sent to jail the popularity will rise
- ## Criminals
- 
-- If the Criminal is arrested, it will be escorted to the Cell
-- He will wait in the cell for an ammount of time
-- If it is the Morning, he will wait until a police liberates and escort him to the Exit
-- If it is Night and has Waited enough time, he will escape the cell, if the criminal escapes the popularity will drop
-- If he is detected he will try to attack the police
-- He will return to the Cell if he doesn't succeeds on the attack
 
 **You can check its Behaviour Trees here:** [Entities Behaviour Trees](https://github.com/knela96/Police-Station-Simulator/wiki/Entities-Behaviours)
 
