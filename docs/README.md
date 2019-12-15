@@ -95,6 +95,9 @@ In this GOD style game, you are a new police captain and your duty is to lead th
   </tr>
 </table>
 
+## Criminal scaping
+<video src="Cr1.mp4" width="auto" height="250" controls preload></video>
+
 ### Behaviour Tree
 ![](https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/Wiki_Assets/Criminal_BT.png?token=AGOACYMUYJGGBOT63BXR5F257KY7S)
 
