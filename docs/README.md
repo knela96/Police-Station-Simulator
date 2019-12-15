@@ -1,6 +1,6 @@
 # Police-Station-Simulator
 
-<iframe width="1000" height="auto" src="https://www.youtube.com/embed/W4fsx69ntWM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/W4fsx69ntWM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 In this GOD style game, you are a new police captain and your duty is to lead this police station to maximum efficency. You have the objective to control the situation of your police station and avoid criminals to escape from the justice. You and your officers are the ones that have to set justice in the city!
 
