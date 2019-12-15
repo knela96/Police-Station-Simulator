@@ -115,16 +115,20 @@ In this GOD style game, you are a new police captain and your duty is to lead th
 - Office: Where the policemen investigate the different cases.
 
 # Resources:
-![](https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/docs/money.png?token=AGOACYJ2RGSB3KUTZDFAKGK576OIC)
+<img src="https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/docs/money.png?token=AGOACYJ2RGSB3KUTZDFAKGK576OIC" width="200"/>
+
  - Money
  
-![](https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/docs/Popularity.PNG?token=AGOACYJMFFKDW5SLUFEC62C576PZU)
+ <img src="https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/docs/Popularity.PNG?token=AGOACYJMFFKDW5SLUFEC62C576PZU" width="200"/>
+ 
  - Satisfaction
  
-![](https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/docs/desks.PNG?token=AGOACYOZFIPRT3NYD6VNGKS576QK6)
+  <img src="https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/docs/desks.PNG?token=AGOACYOZFIPRT3NYD6VNGKS576QK6" height="200"/>
+  
  - Police availability
  
- ![](https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/docs/cell.PNG?token=AGOACYM4OPMDTZQEBFSS6S2576QK4)
+  <img src="https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/docs/cell.PNG?token=AGOACYM4OPMDTZQEBFSS6S2576QK4" height="200"/>
+  
  - Cells availability
 
 # Gameloop:
