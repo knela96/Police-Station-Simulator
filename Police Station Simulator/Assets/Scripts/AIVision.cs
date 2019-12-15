@@ -52,7 +52,7 @@ public class AIVision : MonoBehaviour {
                         {
                             if (col.gameObject.GetComponent<CriminalBehavior>().escape && col.gameObject.GetComponent<CriminalBehavior>().free && !gameObject.GetComponent<PoliceBehaviour>().to_cell && !gameObject.GetComponent<PoliceBehaviour>().stun && !gameObject.GetComponent<PoliceBehaviour>().receptionist && !gameObject.GetComponent<PoliceBehaviour>().detected)
                             {
-                                col.gameObject.GetComponent<CriminalBehavior>().escape = false;
+                                //col.gameObject.GetComponent<CriminalBehavior>().escape = false;
                                 col.gameObject.GetComponent<CriminalBehavior>().detected = true;
                                 detected_now.Add(col.gameObject);
                                 break;
