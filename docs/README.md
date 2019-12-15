@@ -1,8 +1,26 @@
 # Police-Station-Simulator
-In this GOD style game, you are a new police captain and your duty is to lead this police station to maximum efficency.
+In this GOD style game, you are a new police captain and your duty is to lead this police station to maximum efficency. You have the objective to control the situation of your police station and avoid criminals to escape from the justice. You and your officers are the ones that have to set justice in the city!
 
 # Authors
-Eric Canela & Ferran Barnes
+<table style="width:100%; border: none;">
+  <tr>
+    <td><img src="https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/docs/Eric.png?token=AGOACYL54SMMVALD23QOTLK576KPG" alt="Eric" />
+	    <br>
+	  <ul>
+		  <li><a href="https://github.com/knela96">Github</a></li>
+		  <li><a href="https://www.linkedin.com/in/eric-canela-sol/">LinkedIn</a></li>
+	    </ul>
+    </td>
+    <td>
+	    <img src="https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/docs/Ferran.png?token=AGOACYITIRRHFADQJSNPI52576LFG" alt="Ferran" />
+	    <br>
+	  <ul>
+		  <li><a href="https://github.com/FBarnes99">Github</a></li>
+		  <li><a href="https://www.linkedin.com/in/ferran-barnes-garcia-a76bb7181/">LinkedIn</a></li>
+	    </ul>
+	</td>
+  </tr>
+</table>
 
 # Github link
 https://github.com/knela96/Police-Station-Simulator
