@@ -35,6 +35,7 @@ namespace NodeCanvas.Tasks.Actions
         //EndAction can be called from anywhere.
         protected override void OnExecute()
         {
+            time_task = Random.Range(20,60);
             cur_time = 0;
             police.gameObject.layer = 0;
             police.move.move = false;
