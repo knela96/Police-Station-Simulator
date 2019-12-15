@@ -82,7 +82,7 @@ public class LevelLoop : MonoBehaviour
     void Update()
     {
         if (!stop_Game) {
-            if (office_lt.volume < 0.15 && office_lt.isPlaying && Time.time - timer < 17)
+            if (office_lt.volume < 0.15)
                 office_lt.volume = office_lt.volume + 0.01f * Time.deltaTime;
 
             if (day)
@@ -141,7 +141,6 @@ public class LevelLoop : MonoBehaviour
                 patrol = 0;
                 office_lt.volume = 0;
                 office_lt.spatialBlend = 0;
-                office_lt.clip = office_night;
                 money.updateMoney(desks.num_active * -10);
                 money.StartAnim(desks.num_active * -10,1);
 
@@ -165,19 +164,18 @@ public class LevelLoop : MonoBehaviour
                 actions = true;
             }
 
-            if (!day)
-            {
-                if (office_lt.volume > 0.0f)
-                    office_lt.volume = office_lt.volume - 0.1f * Time.deltaTime;
-            }
-
             cycle += Time.deltaTime;
 
             //Resets the counter to show all possible agents
 
             //Changes the cycle of day and night
-            if (cycle >= 120)
+            if (cycle >= 20)
             {
+                office_lt.Stop();
+                if (!day)
+                {
+                    office_lt.PlayDelayed(12);
+                }
                 timer = Time.time;
                 day = !day;
                 cycle = 0;

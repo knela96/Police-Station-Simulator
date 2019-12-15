@@ -39,7 +39,7 @@ public class SceneLoader : MonoBehaviour
     public void Website()
     {
 
-        Application.OpenURL("");
+        Application.OpenURL("https://knela96.github.io/Police-Station-Simulator/");
     }
 
 
