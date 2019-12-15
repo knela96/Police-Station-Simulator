@@ -47,6 +47,8 @@ In this GOD style game, you are a new police captain and your duty is to lead th
 ### Behaviour Tree
 ![](https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/Wiki_Assets/Citizen_BT.png?token=AGOACYK62TBX5U3SHDJUETK57KY34)
 
+<video src="C1.mp4" width="auto" height="250" controls preload></video>
+
 ## Police
 <table style="width:100%">
   <tr>
@@ -69,6 +71,10 @@ In this GOD style game, you are a new police captain and your duty is to lead th
 
 ### Behaviour Tree
 ![](https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/Wiki_Assets/Police_BT.png?token=AGOACYNSQ2MKY4KDRH5SX4K57KZBG)
+
+<video src="P1.mp4" width="auto" height="250" controls preload></video>
+<video src="P2.mp4" width="auto" height="250" controls preload></video>
+<video src="P3.mp4" width="auto" height="250" controls preload></video>
 
 ## Criminals
 <table style="width:100%">
