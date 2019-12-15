@@ -26,7 +26,12 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
-    public void Credits()
+    public void Credits(GameObject go)
+    {
+        go.SetActive(!go.active);
+    }
+
+    public void OpenURL()
     {
         Application.OpenURL("http://unity3d.com/");
     }

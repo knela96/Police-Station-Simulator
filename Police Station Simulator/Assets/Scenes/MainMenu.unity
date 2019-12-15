@@ -28950,6 +28950,12 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &1822454566 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3564715910589742740, guid: fe85dcbf572ac4048ae431003ce3967e,
+    type: 3}
+  m_PrefabInstance: {fileID: 3564715909194932373}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1823057828
 GameObject:
   m_ObjectHideFlags: 0
@@ -34797,6 +34803,21 @@ PrefabInstance:
       propertyPath: m_IgnoreReversedGraphics
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3564715910589742742, guid: fe85dcbf572ac4048ae431003ce3967e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3564715910589742742, guid: fe85dcbf572ac4048ae431003ce3967e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3564715910589742742, guid: fe85dcbf572ac4048ae431003ce3967e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1822454566}
     - target: {fileID: 2088966136, guid: fe85dcbf572ac4048ae431003ce3967e, type: 3}
       propertyPath: camera
       value: 
