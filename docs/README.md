@@ -104,16 +104,22 @@ In this GOD style game, you are a new police captain and your duty is to lead th
 ![](https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/docs/money.png?token=AGOACYJ2RGSB3KUTZDFAKGK576OIC)
  - Money
  
-![](https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/Wiki_Assets/Criminal_BT.png?token=AGOACYMUYJGGBOT63BXR5F257KY7S)
+![](https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/docs/Popularity.PNG?token=AGOACYJMFFKDW5SLUFEC62C576PZU)
  - Satisfaction
  
-![](https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/Wiki_Assets/Criminal_BT.png?token=AGOACYMUYJGGBOT63BXR5F257KY7S)
+![](https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/docs/desks.PNG?token=AGOACYOZFIPRT3NYD6VNGKS576QK6)
  - Police availability
  
- ![](https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/Wiki_Assets/Criminal_BT.png?token=AGOACYMUYJGGBOT63BXR5F257KY7S)
+ ![](https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/docs/cell.PNG?token=AGOACYM4OPMDTZQEBFSS6S2576QK4)
  - Cells availability
 
 # Gameloop:
+
+## Objective
+![](https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/docs/objective.PNG?token=AGOACYLZCC6A7MUZG5H7QXC576PNE)
+
+Your objective is to set free 5 criminals without letting escape more than 2, if you accomplish the objective you will gain satisfaction and win the game, but is escapes more than 2 you will lose instantly.
+
 ## DAY (2 minutes)
 ### Citizens
 - Citizen enters the police station
@@ -143,10 +149,6 @@ In this GOD style game, you are a new police captain and your duty is to lead th
 - Criminals scape. If the policemen have enough live to capture the criminal, the criminal will go back to the cell.
 - If the criminal arrives at the door, he will escape and you will lose satisfaction.
 
-## Objective
-![](https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/docs/objective.PNG?token=AGOACYLZCC6A7MUZG5H7QXC576PNE)
-
-Your objective is to set free 5 criminals without letting escape more than 2, if you accomplish the objective you will gain satisfaction and win the game, but is escapes more than 2 you will lose instantly.
 
 
 
