@@ -4,6 +4,10 @@
 
 In this GOD style game, you are a new police captain and your duty is to lead this police station to maximum efficency. You have the objective to control the situation of your police station and avoid criminals to escape from the justice. You and your officers are the ones that have to set justice in the city!
 
+# Download
+You can download the game by clicking [here](https://github.com/knela96/Police-Station-Simulator/releases/download/Assignment3v.01/Police.Station.Simulator.zip). 
+Extract it and before playing remember to read the README file.
+
 # Authors
 <table style="width:100%; border: none;">
   <tr>
