@@ -284,7 +284,7 @@ public class LevelLoop : MonoBehaviour
         GameObject go = GameObject.Find("Mission");
         if (num_liberated == 5 && go != null)
         {
-            popul.updatePopul(100);
+            popul.updatePopul(30);
             //WIN CONDITION
             GameObject.Find("Mission").SetActive(false);
             GameObject.Find("HUD").SetActive(false);
@@ -304,7 +304,7 @@ public class LevelLoop : MonoBehaviour
         GameObject go = GameObject.Find("Mission");
         if (num_escaped == 3 && go != null)
         {
-            popul.updatePopul(-100);
+            popul.updatePopul(-30);
             GameObject.Find("Mission").SetActive(false);
             GameObject.Find("HUD").SetActive(false);
             stop_Game = true;

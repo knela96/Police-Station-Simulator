@@ -66,6 +66,16 @@ public class Camera2Screen : MonoBehaviour
                 else
                     time.text = time.text + string.Format("{0}", c);
 
+
+                if(level.num_liberated >= 5)
+                {
+                    logo.sprite = win;
+                }else if(level.num_escaped >= 3)
+                {
+                    logo.sprite = lose;
+                }
+
+
                 GetComponent<CameraMovement>().enabled = false;
 
                 spawn = true;
