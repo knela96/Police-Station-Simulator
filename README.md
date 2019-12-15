@@ -4,7 +4,7 @@ In this GOD style game, you are a new police captain and your duty is to lead th
 # Authors
 Eric Canela & Ferran Barnes
 
-# Web Link
+# Website Link
 https://knela96.github.io/Police-Station-Simulator/
 
 # Github link
