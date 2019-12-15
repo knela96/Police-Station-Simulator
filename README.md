@@ -4,6 +4,9 @@ In this GOD style game, you are a new police captain and your duty is to lead th
 # Authors
 Eric Canela & Ferran Barnes
 
+# Web Link
+https://knela96.github.io/Police-Station-Simulator/
+
 # Github link
 https://github.com/knela96/Police-Station-Simulator
 
@@ -33,8 +36,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-#Controls
-
+# Controls
 W,A,S,D: Camera movement
 Left mouse click: Interact with the game
 Right mouse click: Rotate camera
@@ -59,8 +61,9 @@ As the police captain your job is to assign different workers to different tasks
 # Resources:
 
  - Money
- - Police availability
  - Satisfaction
+ - Police availability
+ - Cell availability
 
  # Behaviour trees
  ## Citizen
@@ -94,30 +97,36 @@ As the police captain your job is to assign different workers to different tasks
 
 # Gameloop:
 
+## Objective
+Your objective is to set free 5 criminals without letting escape more than 2, if you accomplish the objective you will gain satisfaction and win the game, but is escapes more than 2 you will lose instantly.
+
 ## DAY (2 minutes)
+### Citizens
 - Citizen enters the police station
 - Citizen gives you notification
-- The player asigns a police to the case
-	- Case can be harder needing more policemen or time to be completed, cases that involve criminal require more resources but give more results.
-	- Cases have a timer to assign a policemen.
-	
+
+### Police
+- The policemen go to desk to investigate a case
+	- Case can be harder needing more time to be completed.
 - Policemen starts the case and becomes unavailable
-- Policemen ends the case and returns to available police, the player gains money and satisfaction.
+- Policemen ends the case and returns to available police, the player gains money.
+- If the policemen gets a criminal it goes to a cell
 
-- If the policemen gets a criminal(criminals have levels) it goes to a cell
-	- The criminal can try to scape
-- After the criminals spent a period of time in the cell they are moved outside the station by a policemen
-
-- Every 24 hours the player will have to pay salaries for each police in the station.
-- If the satisfaction reaches 0 or if you have negative money it will be game over.
+### Criminals
+- After the criminals spent a period of time in the cell they are set free by a policemen
 
 
 ## NIGHT (2 minutes)
 
+### Citizens
 - Citizen leave the station
-- Policemen have to be assigned to random emergency cases
-- 2 Policemen in the police station light up their torchlights and make rounds around keeping watch for scaped criminals
-- Criminals scape. If the number of policemen are enough to capture the criminal after a short period of time the crimnal will go back to the cell, if the criminal arrives at the door and opens it (Opening the door lasts a short period of time) it will scape.
 
+### Police
+- Some Policemen will leave the station.
+- 3 Policemen in the police station light up their torchlights and make rounds around keeping watch for scaped criminals
+
+### Criminals
+- Criminals scape. If the policemen have enough live to capture the criminal, the criminal will go back to the cell.
+- If the criminal arrives at the door, he will escape and you will lose satisfaction.
 
 
