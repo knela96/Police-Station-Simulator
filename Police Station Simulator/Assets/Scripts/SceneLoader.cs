@@ -31,10 +31,17 @@ public class SceneLoader : MonoBehaviour
         go.SetActive(!go.active);
     }
 
-    public void OpenURL()
-    {
-        Application.OpenURL("http://unity3d.com/");
+    public void Github() {
+
+        Application.OpenURL("https://github.com/knela96/Police-Station-Simulator");
     }
+
+    public void Website()
+    {
+
+        Application.OpenURL("");
+    }
+
 
     public void Exit()
     {
