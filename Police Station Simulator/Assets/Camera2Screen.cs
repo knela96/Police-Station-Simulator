@@ -40,7 +40,8 @@ public class Camera2Screen : MonoBehaviour
             {
                 if (!spawn)
                 {
-                    Instantiate(screen);
+                    screen = Instantiate(screen);
+
                     liberated = screen.transform.Find("Texts").Find("Liberated").GetComponent<Text>();
                     escaped = screen.transform.Find("Texts").Find("Escaped").GetComponent<Text>();
                     popularity = screen.transform.Find("Texts").Find("Popularity").GetComponent<Text>();
@@ -58,8 +59,9 @@ public class Camera2Screen : MonoBehaviour
                     arrived = true;
                 }
             }
-            else
+            else if(arrived)
             {
+
                 liberated.text = string.Format("{0}", level.num_liberated);
                 escaped.text = string.Format("{0}", level.num_escaped);
                 popularity.text = string.Format("{0}", level.popul.mCurrent);
