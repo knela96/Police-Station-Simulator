@@ -26,9 +26,9 @@ In this GOD style game, you are a new police captain and your duty is to lead th
 </table>
 
 # Mechanics:
-- As the police captain your job is to assign different workers to differents desks to start investigate some cases. 
+- As the police captain your job is to assign different officers to the desks to start investigate some cases. 
 - You will have to provide new cells to capture more criminals. 
-- At night as a captain you will be able to stun the criminals that are escaping for a period of time, just to help your officers and avoid the escape.
+- At night as a captain you will be able to stun, for a period of time, the criminals that are escaping just to help your officers and avoid the escape.
 
 # Different npc's roles:
 
