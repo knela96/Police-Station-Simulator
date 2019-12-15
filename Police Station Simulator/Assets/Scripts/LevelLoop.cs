@@ -274,10 +274,7 @@ public class LevelLoop : MonoBehaviour
 
     public void UpdateObj1()
     {
-        if (Input.GetKeyDown("f1"))
-        {
-            num_liberated = 5;
-        }
+        
         obj1.text = string.Format("Liberated: ({0}/5)",num_liberated);
         GameObject go = GameObject.Find("Mission");
         if (num_liberated == 5 && go != null)
@@ -294,10 +291,7 @@ public class LevelLoop : MonoBehaviour
     }
     public void UpdateObj2()
     {
-        if (Input.GetKeyDown("f2"))
-        {
-            num_escaped = 3;
-        }
+       
         obj2.text = string.Format("Escaped: ({0}/2)",num_escaped);
         GameObject go = GameObject.Find("Mission");
         if (num_escaped == 3 && go != null)
