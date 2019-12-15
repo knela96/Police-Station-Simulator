@@ -10,11 +10,20 @@ public class SceneLoader : MonoBehaviour
     void Start()
     {
     }
-
-    // Update is called once per frame
+    
     public void START()
     {
         SceneManager.LoadScene("PoliceScene");
+    }
+
+    public void Resume(GameObject go)
+    {
+        go.GetComponent<MenuOptions>().show = false;
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void Credits()

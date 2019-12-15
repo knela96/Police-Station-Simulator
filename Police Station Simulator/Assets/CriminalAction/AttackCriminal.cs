@@ -50,7 +50,8 @@ namespace NodeCanvas.Tasks.Actions
         //Called once per frame while the action is active.
         protected override void OnUpdate()
         {
-            criminal.attack_icon.GetComponent<Image>().sprite = criminal.sprite5;
+            if(!criminal.captured)
+                criminal.attack_icon.GetComponent<Image>().sprite = criminal.sprite5;
             Collider[] colliders = Physics.OverlapSphere(agent.transform.position, 2, mask);
 
             for (int i = 0; i < colliders.Length; ++i)

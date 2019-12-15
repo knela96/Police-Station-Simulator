@@ -21,6 +21,7 @@ public class Camera2Screen : MonoBehaviour
 
     public Sprite win;
     public Sprite lose;
+    public Image logo;
 
     // Start is called before the first frame update
     void Start()
@@ -36,38 +37,42 @@ public class Camera2Screen : MonoBehaviour
     {
         if (level.stop_Game)
         {
-            if (!arrived)
+            if (!spawn)
             {
-                if (!spawn)
-                {
-                    screen = Instantiate(screen);
+                screen = Instantiate(screen);
 
-                    liberated = screen.transform.Find("Texts").Find("Liberated").GetComponent<Text>();
-                    escaped = screen.transform.Find("Texts").Find("Escaped").GetComponent<Text>();
-                    popularity = screen.transform.Find("Texts").Find("Popularity").GetComponent<Text>();
-                    money = screen.transform.Find("Texts").Find("Money").GetComponent<Text>();
-                    time = screen.transform.Find("Texts").Find("Time").GetComponent<Text>();
-                    timer = Time.timeSinceLevelLoad;
-
-                    spawn = true;
-                    gameObject.transform.position = new Vector3(Point.transform.position.x, Point.transform.position.y, Point.transform.position.z - 20);
-                }
-                transform.LookAt(screen.transform);
-                gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, new Vector3(Point.transform.position.x, Point.transform.position.y, Point.transform.position.z), 25 * Time.deltaTime);
-                if (gameObject.transform.position == Point.transform.position)
-                {
-                    arrived = true;
-                }
-            }
-            else if(arrived)
-            {
+                liberated = screen.transform.Find("Texts").Find("Liberated").GetComponent<Text>();
+                escaped = screen.transform.Find("Texts").Find("Escaped").GetComponent<Text>();
+                popularity = screen.transform.Find("Texts").Find("Popularity").GetComponent<Text>();
+                money = screen.transform.Find("Texts").Find("Money").GetComponent<Text>();
+                time = screen.transform.Find("Texts").Find("Time").GetComponent<Text>();
+                logo = screen.transform.Find("Logos").Find("You").GetComponent<Image>();
+                timer = Time.timeSinceLevelLoad;
 
                 liberated.text = string.Format("{0}", level.num_liberated);
                 escaped.text = string.Format("{0}", level.num_escaped);
                 popularity.text = string.Format("{0}", level.popul.mCurrent);
                 money.text = string.Format("{0}", level.money.mCurrent);
-                time.text = string.Format("{0}", (int)timer) + " SEG";
+
+                int c = (int)(timer - (timer % 60));
+                if ( c < 10)
+                    time.text = "0" + string.Format("{0}", c);
+                else
+                    time.text = string.Format("{0}", c);
+
+                c = (int)(timer % 60);
+                if (c < 10)
+                    time.text = time.text + ".0" + string.Format("{0}", c);
+                else
+                    time.text = time.text + string.Format("{0}", c);
+
+                GetComponent<CameraMovement>().enabled = false;
+
+                spawn = true;
+                gameObject.transform.position = new Vector3(Point.transform.position.x, Point.transform.position.y, Point.transform.position.z - 20);
             }
+            transform.LookAt(screen.transform);
+            gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, new Vector3(Point.transform.position.x, Point.transform.position.y, Point.transform.position.z), 25 * Time.deltaTime);
         }
     }
 }

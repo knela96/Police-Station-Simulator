@@ -284,9 +284,10 @@ public class LevelLoop : MonoBehaviour
         GameObject go = GameObject.Find("Mission");
         if (num_liberated == 5 && go != null)
         {
-            popul.updatePopul(30);
+            popul.updatePopul(100);
             //WIN CONDITION
             GameObject.Find("Mission").SetActive(false);
+            GameObject.Find("HUD").SetActive(false);
             stop_Game = true;
             actions = false;
             GameObject.Find("Effects").GetComponent<AudioSource>().Play();
@@ -303,8 +304,9 @@ public class LevelLoop : MonoBehaviour
         GameObject go = GameObject.Find("Mission");
         if (num_escaped == 3 && go != null)
         {
-            popul.updatePopul(-30);
+            popul.updatePopul(-100);
             GameObject.Find("Mission").SetActive(false);
+            GameObject.Find("HUD").SetActive(false);
             stop_Game = true;
             actions = false;
             GameObject.Find("Effects").GetComponent<AudioSource>().Play();
