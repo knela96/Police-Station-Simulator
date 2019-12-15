@@ -169,7 +169,7 @@ public class LevelLoop : MonoBehaviour
             //Resets the counter to show all possible agents
 
             //Changes the cycle of day and night
-            if (cycle >= 20)
+            if (cycle >= 120)
             {
                 office_lt.Stop();
                 if (!day)
