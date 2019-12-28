@@ -78,7 +78,7 @@ Extract it and before playing remember to read the README file.
 </table>
 
 ### Behaviour Tree
-![]()
+![](https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/Wiki_Assets/Police_BT.png?token=AGOACYOTHBKDBD6T4PU4FJC6CCLFU)
 
 ## Police arresting a criminal
 <video src="P1.mp4" width="auto" height="300" controls preload></video>
