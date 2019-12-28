@@ -112,7 +112,7 @@ Extract it and before playing remember to read the README file.
 ![](https://github.com/knela96/Police-Station-Simulator/blob/master/docs/Lobby.png)
 - Lobby: Where the citizen make the crime notifications, also where the door to the street is located.
 
-![](https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/docs/Cells.png?token=AGOACYMHHPK52KNIL7TVOAK576ONO)
+![](https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/docs/Cells.png)
 - Containment Cell: Where the criminals are guarded until sent to jail.
 
 ![](https://github.com/knela96/Police-Station-Simulator/blob/master/docs/Office.png)
