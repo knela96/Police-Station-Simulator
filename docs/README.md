@@ -52,7 +52,7 @@ Extract it and before playing remember to read the README file.
 </table>
 
 ### Behaviour Tree
-![](https://github.com/knela96/Police-Station-Simulator/blob/master/Wiki_Assets/Citizen_BT.png)
+![](https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/Wiki_Assets/Citizen_BT.png?token=AGOACYOCC7D6URGUDSRLIC26CCLFK)
 
 ## Citizens in the waiting roomn
 <video src="C1.mp4" width="auto" height="300" controls preload></video>
@@ -78,7 +78,7 @@ Extract it and before playing remember to read the README file.
 </table>
 
 ### Behaviour Tree
-![](https://github.com/knela96/Police-Station-Simulator/blob/master/Wiki_Assets/Police_BT.png)
+![]()
 
 ## Police arresting a criminal
 <video src="P1.mp4" width="auto" height="300" controls preload></video>
@@ -106,7 +106,7 @@ Extract it and before playing remember to read the README file.
 <video src="Cr1.mp4" width="auto" height="300" controls preload></video>
 
 ### Behaviour Tree
-![](https://github.com/knela96/Police-Station-Simulator/blob/master/Wiki_Assets/Criminal_BT.png)
+![](https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/Wiki_Assets/Criminal_BT.png?token=AGOACYIBUKNVOVT7NMX4JY26CCLFO)
 
 # Different Police station Rooms:
 ![](https://github.com/knela96/Police-Station-Simulator/blob/master/docs/Lobby.png)
