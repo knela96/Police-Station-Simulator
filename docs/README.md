@@ -11,7 +11,7 @@ Extract it and before playing remember to read the README file.
 # Authors
 <table style="width:100%; border: none;">
   <tr>
-    <td><img src="https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/docs/Eric.png?token=AGOACYL54SMMVALD23QOTLK576KPG" alt="Eric" />
+    <td><img src="https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/docs/Eric.png?token=AGOACYOCUVZKNSV6CWZPRU26CCJ32" alt="Eric" />
 	    <br>
 	  <ul>
 		  <li><a href="https://github.com/knela96">Github</a></li>
@@ -19,7 +19,7 @@ Extract it and before playing remember to read the README file.
 	    </ul>
     </td>
     <td>
-	    <img src="https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/docs/Ferran.png?token=AGOACYITIRRHFADQJSNPI52576LFG" alt="Ferran" />
+	    <img src="https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/docs/Ferran.png?token=AGOACYN7CWYAUVS6SGAW2U26CCJ5W" alt="Ferran" />
 	    <br>
 	  <ul>
 		  <li><a href="https://github.com/FBarnes99">Github</a></li>
@@ -39,7 +39,7 @@ Extract it and before playing remember to read the README file.
 ## Citizens
 <table style="width:100%">
   <tr>
-    <td><img src="https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/Wiki_Assets/Icons/Citizen2.PNG?token=AGOACYLA3X6IFPIKGJTJ4R257KZEK" alt="Citizen" height="200" width="auto"></td>
+    <td><img src="https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/Wiki_Assets/Icons/Citizen1.PNG?token=AGOACYN5EECEMYN75VOPMYS6CCKU4" alt="Citizen" height="200" width="auto"></td>
     <td>
 <ul>
 <li>Citizen Will Go to the Reception</li>
@@ -52,7 +52,7 @@ Extract it and before playing remember to read the README file.
 </table>
 
 ### Behaviour Tree
-![](https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/Wiki_Assets/Citizen_BT.png?token=AGOACYK62TBX5U3SHDJUETK57KY34)
+![](https://github.com/knela96/Police-Station-Simulator/blob/master/Wiki_Assets/Citizen_BT.png)
 
 ## Citizens in the waiting roomn
 <video src="C1.mp4" width="auto" height="300" controls preload></video>
@@ -60,7 +60,7 @@ Extract it and before playing remember to read the README file.
 ## Police
 <table style="width:100%">
   <tr>
-    <td><img src="https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/Wiki_Assets/Icons/Police.PNG?token=AGOACYM4N3VFADSCUVGU6GK57KZEU" alt="Policeman" width="180" width="auto"></td>
+    <td><img src="https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/Wiki_Assets/Icons/Police.PNG?token=AGOACYPOIQLB3T7WHQ4NPXK6CCKVG" alt="Policeman" width="180" width="auto"></td>
     <td>
 <ul>
 <li>Will go to the Desk to start Investigating a case</li>
@@ -78,7 +78,7 @@ Extract it and before playing remember to read the README file.
 </table>
 
 ### Behaviour Tree
-![](https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/Wiki_Assets/Police_BT.png?token=AGOACYNSQ2MKY4KDRH5SX4K57KZBG)
+![](https://github.com/knela96/Police-Station-Simulator/blob/master/Wiki_Assets/Police_BT.png)
 
 ## Police arresting a criminal
 <video src="P1.mp4" width="auto" height="300" controls preload></video>
@@ -88,7 +88,7 @@ Extract it and before playing remember to read the README file.
 ## Criminals
 <table style="width:100%">
   <tr>
-    <td><img src="https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/Wiki_Assets/Icons/Criminal.PNG?token=AGOACYIOFQVVT4RKILHJRM257KZEQ" alt="Criminal" height="200" width="auto"></td>
+    <td><img src="https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/Wiki_Assets/Icons/Criminal.PNG?token=AGOACYK4TWPAPCEVVXQZNG26CCKVA" alt="Criminal" height="200" width="auto"></td>
     <td>
 <ul>
 <li>If the Criminal is arrested, it will be escorted to the Cell</li>
@@ -106,39 +106,39 @@ Extract it and before playing remember to read the README file.
 <video src="Cr1.mp4" width="auto" height="300" controls preload></video>
 
 ### Behaviour Tree
-![](https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/Wiki_Assets/Criminal_BT.png?token=AGOACYMUYJGGBOT63BXR5F257KY7S)
+![](https://github.com/knela96/Police-Station-Simulator/blob/master/Wiki_Assets/Criminal_BT.png)
 
 # Different Police station Rooms:
-![](https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/docs/Lobby.png?token=AGOACYM4DUPIX6ZZXHN4ZFC576OL4)
+![](https://github.com/knela96/Police-Station-Simulator/blob/master/docs/Lobby.png)
 - Lobby: Where the citizen make the crime notifications, also where the door to the street is located.
 
 ![](https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/docs/Cells.png?token=AGOACYMHHPK52KNIL7TVOAK576ONO)
 - Containment Cell: Where the criminals are guarded until sent to jail.
 
-![](https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/docs/Office.png?token=AGOACYKZPPDSYXMTSRGEI4K576OMW)
+![](https://github.com/knela96/Police-Station-Simulator/blob/master/docs/Office.png)
 - Office: Where the policemen investigate the different cases.
 
 # Resources:
-<img src="https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/docs/money.png?token=AGOACYJ2RGSB3KUTZDFAKGK576OIC" width="200"/>
+![](https://github.com/knela96/Police-Station-Simulator/blob/master/docs/money.png)
 
  - Money
  
- <img src="https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/docs/Popularity.PNG?token=AGOACYJMFFKDW5SLUFEC62C576PZU" width="200"/>
+![](https://github.com/knela96/Police-Station-Simulator/blob/master/docs/Popularity.PNG)
  
  - Satisfaction
  
-  <img src="https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/docs/desks.PNG?token=AGOACYOZFIPRT3NYD6VNGKS576QK6" height="200"/>
+![](https://github.com/knela96/Police-Station-Simulator/blob/master/docs/desks.PNG)
   
  - Police availability
  
-  <img src="https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/docs/cell.PNG?token=AGOACYM4OPMDTZQEBFSS6S2576QK4" height="200"/>
+![](https://github.com/knela96/Police-Station-Simulator/blob/master/docs/cell.PNG)
   
  - Cells availability
 
 # Gameloop:
 
 ## Objective
-![](https://raw.githubusercontent.com/knela96/Police-Station-Simulator/master/docs/objective.PNG?token=AGOACYLZCC6A7MUZG5H7QXC576PNE)
+![](https://github.com/knela96/Police-Station-Simulator/blob/master/docs/objective.PNG)
 
 Your objective is to set free 5 criminals without letting escape more than 2, if you accomplish the objective you will gain satisfaction and win the game, but is escapes more than 2 you will lose instantly.
 
